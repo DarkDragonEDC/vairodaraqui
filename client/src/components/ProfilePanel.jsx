@@ -10,9 +10,85 @@ import { getTierColor } from '../data/items';
 
 const ProfilePanel = ({ gameState, session, socket, onShowInfo }) => {
     const [selectedSlot, setSelectedSlot] = useState(null);
+    const [infoModal, setInfoModal] = useState(null);
 
     const handleEquip = (itemId) => {
-        socket.emit('equip_item', { itemId });
+        // ... existing code ...
+        // ... inside return ...
+        {/* Atributos - Clean HUB Style */ }
+        <div style={{
+            display: 'flex',
+            justifyContent: 'space-around',
+            background: 'rgba(255,255,255,0.02)',
+            padding: '20px',
+            borderRadius: '12px',
+            marginBottom: '30px',
+            border: '1px solid var(--border)'
+        }}>
+            {[
+                { label: 'STR', value: stats.str, color: '#ff4444', desc: 'Cada ponto concede: +10 HP e +1 Dano Base' },
+                { label: 'AGI', value: stats.agi, color: '#4caf50', desc: 'Cada ponto concede: +5 Velocidade de Ataque e +1 Dano Base' },
+                { label: 'INT', value: stats.int, color: '#2196f3', desc: 'Cada ponto concede: +1% XP Global (Eficiência), +2% Prata e +2 Dano Base' }
+            ].map(stat => (
+                <div key={stat.label} style={{ textAlign: 'center' }}>
+                    <div
+                        onClick={() => setInfoModal({ title: stat.label, desc: stat.desc })}
+                        style={{ fontSize: '0.55rem', color: '#555', fontWeight: '900', letterSpacing: '1px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '4px', cursor: 'pointer' }}
+                    >
+                        {stat.label}
+                        <div style={{ display: 'flex', alignItems: 'center' }}>
+                            <Info size={10} color="#777" />
+                        </div>
+                    </div>
+                    <div style={{ fontSize: '1.6rem', fontWeight: '900', color: stat.color }}>{stat.value}</div>
+                </div>
+            ))}
+        </div>
+
+        {/* INFO MODAL FOR STATS */ }
+        {
+            infoModal && (
+                <div style={{
+                    position: 'absolute',
+                    top: 0, left: 0, right: 0, bottom: 0,
+                    background: 'rgba(0,0,0,0.8)',
+                    zIndex: 50,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    backdropFilter: 'blur(2px)'
+                }} onClick={() => setInfoModal(null)}>
+                    <div style={{
+                        background: '#1a1a1a',
+                        border: '1px solid var(--border)',
+                        borderRadius: '12px',
+                        padding: '20px',
+                        maxWidth: '80%',
+                        boxShadow: '0 4px 20px rgba(0,0,0,0.5)'
+                    }}>
+                        <h3 style={{ color: 'var(--accent)', marginTop: 0 }}>{infoModal.title}</h3>
+                        <p style={{ color: '#ccc', fontSize: '0.9rem' }}>{infoModal.desc}</p>
+                        <button
+                            onClick={() => setInfoModal(null)}
+                            style={{
+                                marginTop: '10px',
+                                width: '100%',
+                                padding: '8px',
+                                background: 'var(--accent)',
+                                border: 'none',
+                                borderRadius: '6px',
+                                fontWeight: 'bold',
+                                cursor: 'pointer'
+                            }}
+                        >
+                            Entendi
+                        </button>
+                    </div>
+                </div>
+            )
+        }
+
+        // ... rest of code ...        socket.emit('equip_item', { itemId });
         // Close modal handled by component but good ensuring local state clear if needed, though component does it.
     };
 

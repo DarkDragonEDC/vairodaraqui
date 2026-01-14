@@ -276,7 +276,12 @@ const ActivityWidget = ({ gameState, onStop, socket, onNavigate }) => { // Chang
                                     initial={{ opacity: 0, x: 20, scale: 0.95 }}
                                     animate={{ opacity: 1, x: 0, scale: 1 }}
                                     exit={{ opacity: 0, x: 20, scale: 0.95 }}
-                                    onClick={() => onNavigate && onNavigate('combat')} // Navigate to combat tab
+                                    onClick={() => {
+                                        if (onNavigate) {
+                                            onNavigate('combat');
+                                            setIsOpen(false); // Close widget on navigation
+                                        }
+                                    }}
                                     style={{
                                         width: '320px',
                                         background: 'rgba(20, 10, 10, 0.95)',
