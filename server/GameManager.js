@@ -241,10 +241,13 @@ export class GameManager {
         }
 
         // --- CÁLCULO DE TEMPO POR AÇÃO ---
-        const charStats = char.state.stats || { str: 0, agi: 0, int: 0 };
-        const baseTime = type === 'GATHERING' ? 3 : 1.5;
-        // Removido Skill Haste (AGI effect)
-        const timePerAction = Math.max(0.2, baseTime); // Mínimo 200ms por ação
+        let baseTime = 3; // Default
+        if (type === 'GATHERING') baseTime = 2.0;
+        else if (type === 'REFINING') baseTime = 1.5;
+        else if (type === 'CRAFTING') baseTime = 4.0;
+        else if (type === 'COOKING') baseTime = 3.0;
+
+        const timePerAction = baseTime;
 
         const totalDuration = timePerAction * quantity;
         if (totalDuration > 43200) {
@@ -315,6 +318,60 @@ export class GameManager {
             await this.saveState(char.id, char.state);
         }
         return { success: true, message: "Combate encerrado" };
+    }
+
+    calculateStats(char) {
+        if (!char?.state?.skills) return { str: 0, agi: 0, int: 0, maxHP: 100, damage: 5, defense: 0, dmgBonus: 0 };
+        const skills = char.state.skills;
+        const equipment = char.state.equipment || {};
+
+        let str = 0;
+        let agi = 0;
+        let int = 0;
+
+        const getLvl = (key) => (skills[key]?.level || 1);
+
+        str += getLvl('ORE_MINER');
+        str += getLvl('METAL_BAR_REFINER');
+        str += getLvl('WARRIOR_CRAFTER');
+
+        agi += getLvl('ANIMAL_SKINNER');
+        agi += getLvl('LEATHER_REFINER');
+        agi += getLvl('HUNTER_CRAFTER');
+
+        int += getLvl('FIBER_HARVESTER');
+        int += getLvl('LUMBERJACK');
+        int += getLvl('CLOTH_REFINER');
+        int += getLvl('PLANK_REFINER');
+        int += getLvl('MAGE_CRAFTER');
+        int += getLvl('COOKING');
+        int += getLvl('FISHING');
+
+        let gearHP = 0;
+        let gearDamage = 0;
+        let gearDefense = 0;
+        let gearDmgBonus = 0;
+
+        Object.values(equipment).forEach(item => {
+            if (item && item.stats) {
+                if (item.stats.hp) gearHP += item.stats.hp;
+                if (item.stats.damage) gearDamage += item.stats.damage;
+                if (item.stats.defense) gearDefense += item.stats.defense;
+                if (item.stats.dmgBonus) gearDmgBonus += item.stats.dmgBonus;
+            }
+        });
+
+        // IP Bonus for Weapon
+        const weapon = equipment.mainHand;
+        const ipBonus = weapon ? (weapon.ip || 0) / 10 : 0;
+
+        return {
+            str, agi, int,
+            maxHP: 100 + (str * 10) + gearHP,
+            damage: Math.floor((5 + (str * 1) + gearDamage + ipBonus) * (1 + gearDmgBonus)),
+            defense: gearDefense,
+            dmgBonus: gearDmgBonus
+        };
     }
 
     getSkillKeyForActivity(type, itemId) {
@@ -404,7 +461,7 @@ export class GameManager {
                     currentEquip.amount = (currentEquip.amount || 0) + amount;
                 } else {
                     // Item diferente: Devolve o antigo e subititui
-                    const oldId = currentEquip.id;
+                    const oldId = currentEquip.originalId || currentEquip.id;
                     const oldAmount = currentEquip.amount || 1;
                     state.inventory[oldId] = (state.inventory[oldId] || 0) + oldAmount;
                     state.equipment.food = { ...item, amount: amount };
@@ -420,7 +477,7 @@ export class GameManager {
 
             const currentEquip = state.equipment[slotName];
             if (currentEquip && currentEquip.id) {
-                const oldId = currentEquip.id;
+                const oldId = currentEquip.originalId || currentEquip.id;
                 state.inventory[oldId] = (state.inventory[oldId] || 0) + 1;
             }
 
@@ -448,7 +505,8 @@ export class GameManager {
 
         // Return to inventory
         const amount = item.amount || 1;
-        state.inventory[item.id] = (state.inventory[item.id] || 0) + amount;
+        const returnId = item.originalId || item.id;
+        state.inventory[returnId] = (state.inventory[returnId] || 0) + amount;
 
         // Clear slot
         delete state.equipment[slotName];
@@ -462,10 +520,13 @@ export class GameManager {
         const char = await this.getCharacter(userId, catchup);
         if (!char) return { noCharacter: true };
 
+        const stats = this.calculateStats(char);
+
         return {
             user_id: char.id,
             name: char.name,
             state: char.state,
+            calculatedStats: stats,
             current_activity: char.current_activity,
             activity_started_at: char.activity_started_at,
             dungeon_state: char.dungeon_state,
@@ -561,9 +622,8 @@ export class GameManager {
 
             if (now >= char.state.combat.next_attack_at) {
                 combatResult = await this.processCombatRound(char);
-                // Reset cooldown (1s base for now, can be modified by stats later)
-                // TODO: Implement atk speed stat
-                char.state.combat.next_attack_at = now + 1000;
+                // Standardized combat round time: 1.5s
+                char.state.combat.next_attack_at = now + 1500;
 
                 if (combatResult && combatResult.leveledUp) leveledUp = true;
             }
@@ -590,6 +650,7 @@ export class GameManager {
                 message: lastActivityResult?.message || combatResult?.message || (foodUsed ? "Usou comida" : ""),
                 leveledUp,
                 activityFinished,
+                combatUpdate: combatResult,
                 status: {
                     user_id: char.user_id,
                     name: char.name,
@@ -609,26 +670,9 @@ export class GameManager {
         const combat = char.state.combat;
         if (!combat) return null;
 
-        // 1. Calculate Player Damage (Incluindo Equips)
-        const stats = char.state.stats || { str: 0 };
-        const baseDmg = 5;
-        const strBonus = (stats.str * 1);
-
-        // Weapon Damage
-        let weaponDmg = 0;
-        if (char.state.equipment && char.state.equipment.mainHand && char.state.equipment.mainHand.stats) {
-            const weapon = char.state.equipment.mainHand;
-            weaponDmg = weapon.stats.damage || 0;
-            // Apply Quality Multiplier logic if needed, but assuming stats are flat stored or calc'd elsewhere?
-            // Actually resolveItem adds IP, but damage in stats property is likely base. 
-            // We should use IP to scale damage ideally, but for now lets trust the item stats + IP bonus if any.
-            // If the item in state has updated stats from quality, good. If not, we rely on base.
-            // (Note: resolveItem returns adjusted IP, but 'stats' object inside is static from DB usually)
-            // Lets assume 'ip' does the lifting or simple add for now:
-            weaponDmg += (weapon.ip || 0) / 10; // 10 IP = 1 Dmg roughly
-        }
-
-        const playerDmg = Math.floor(baseDmg + strBonus + weaponDmg);
+        // 1. Calculate Player Damage using centralized logic
+        const playerStats = this.calculateStats(char);
+        const playerDmg = playerStats.damage;
 
         // 2. Calculate Mob Damage & Stats
         let mobData = null;
@@ -663,7 +707,8 @@ export class GameManager {
             lootGained: [],
             xpGained: 0,
             victory: false,
-            defeat: false
+            defeat: false,
+            mobName: combat.mobName
         };
 
         let message = `Dmg: ${playerDmg} | Recebeu: ${mitigatedMobDmg}`;

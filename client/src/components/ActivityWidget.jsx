@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Play, CheckCircle, Clock, Square, Zap, Hammer, Pickaxe, Box, Loader, Hourglass, Sword, Skull, Heart } from 'lucide-react';
+import { Play, CheckCircle, Clock, Square, Zap, Hammer, Pickaxe, Box, Loader, Hourglass, Sword, Skull, Heart, Apple } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const ActivityWidget = ({ gameState, onStop, socket, onNavigate, serverTimeOffset = 0 }) => { // Changed onClaim to onStop
@@ -110,8 +110,19 @@ const ActivityWidget = ({ gameState, onStop, socket, onNavigate, serverTimeOffse
                     transform: isOpen ? 'scale(0.9)' : 'scale(1)'
                 }}
             >
-                <div style={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    {combat ? <Sword size={24} color="#ff4444" /> : getActivityIcon()}
+                <div style={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '32px', height: '32px' }}>
+                    {(activity && combat) ? (
+                        <>
+                            <div style={{ position: 'absolute', top: -4, left: -4, transform: 'rotate(-10deg)' }}>
+                                <Sword size={20} color="#ff4444" />
+                            </div>
+                            <div style={{ position: 'absolute', bottom: -4, right: -4, transform: 'rotate(10deg)' }}>
+                                {React.cloneElement(getActivityIcon(), { size: 20 })}
+                            </div>
+                        </>
+                    ) : (
+                        combat ? <Sword size={24} color="#ff4444" /> : getActivityIcon()
+                    )}
                     <motion.div
                         animate={{ opacity: [0.5, 1, 0.5], scale: [1, 1.1, 1] }}
                         transition={{ repeat: Infinity, duration: combat ? 0.8 : 2 }} // Pulsa mais rápido em combate
@@ -176,6 +187,7 @@ const ActivityWidget = ({ gameState, onStop, socket, onNavigate, serverTimeOffse
                                     onClick={() => onNavigate && onNavigate(activity.item_id)}
                                     style={{
                                         width: '320px',
+                                        maxWidth: 'calc(100vw - 60px)',
                                         background: 'rgba(15, 20, 30, 0.95)',
                                         backdropFilter: 'blur(20px)',
                                         border: '1px solid rgba(212, 175, 55, 0.2)',
@@ -296,6 +308,7 @@ const ActivityWidget = ({ gameState, onStop, socket, onNavigate, serverTimeOffse
                                     }}
                                     style={{
                                         width: '320px',
+                                        maxWidth: 'calc(100vw - 60px)',
                                         background: 'rgba(20, 10, 10, 0.95)',
                                         backdropFilter: 'blur(20px)',
                                         border: '1px solid rgba(255, 68, 68, 0.3)',
@@ -313,7 +326,8 @@ const ActivityWidget = ({ gameState, onStop, socket, onNavigate, serverTimeOffse
                                                 width: '40px', height: '40px', borderRadius: '10px',
                                                 background: 'rgba(255, 68, 68, 0.1)',
                                                 display: 'flex', alignItems: 'center', justifyContent: 'center',
-                                                border: '1px solid rgba(255, 68, 68, 0.3)'
+                                                border: '1px solid rgba(255, 68, 68, 0.3)',
+                                                position: 'relative'
                                             }}>
                                                 <motion.div
                                                     animate={{ rotate: [-10, 10, -10], scale: [1, 1.1, 1] }}
@@ -321,6 +335,16 @@ const ActivityWidget = ({ gameState, onStop, socket, onNavigate, serverTimeOffse
                                                 >
                                                     <Sword size={24} color="#ff4444" />
                                                 </motion.div>
+                                                {gameState?.state?.equipment?.food?.amount > 0 && (
+                                                    <div style={{
+                                                        position: 'absolute', top: -5, right: -5,
+                                                        background: '#ff4d4d', color: '#fff', fontSize: '0.55rem',
+                                                        fontWeight: '900', padding: '1px 4px', borderRadius: '4px',
+                                                        border: '1px solid rgba(255,255,255,0.2)'
+                                                    }}>
+                                                        x{gameState.state.equipment.food.amount}
+                                                    </div>
+                                                )}
                                             </div>
                                             <div>
                                                 <div style={{ fontSize: '0.65rem', color: '#ff8888', fontWeight: '900', letterSpacing: '1px' }}>COMBATE ATIVO</div>

@@ -8,7 +8,7 @@ import {
 } from 'lucide-react';
 import { getTierColor } from '../data/items';
 
-const ProfilePanel = ({ gameState, session, socket, onShowInfo }) => {
+const ProfilePanel = ({ gameState, session, socket, onShowInfo, isMobile }) => {
     const [selectedSlot, setSelectedSlot] = useState(null);
     const [infoModal, setInfoModal] = useState(null);
 
@@ -60,33 +60,62 @@ const ProfilePanel = ({ gameState, session, socket, onShowInfo }) => {
         return { str, agi, int };
     }, [skills]);
 
-    const stats = {
-        hp: 100 + (calculatedStats.str * 10), // STR aumenta HP
-        maxHp: 100 + (calculatedStats.str * 10),
-        damage: 10 + (calculatedStats.str * 1) + (calculatedStats.agi * 1) + (calculatedStats.int * 2), // Todos aumentam dano, INT escala melhor magia? Simplificado: Todos +1
-        defense: 5 + (calculatedStats.str * 1),
-        attackSpeed: 1000 - (calculatedStats.agi * 5), // AGI aumenta velocidade
-        str: calculatedStats.str,
-        agi: calculatedStats.agi,
-        int: calculatedStats.int,
-        efficiency: {
-            WOOD: (calculatedStats.int * 1) + ((skills.LUMBERJACK?.level || 1) * 0.5),
-            ORE: (calculatedStats.int * 1) + ((skills.ORE_MINER?.level || 1) * 0.5),
-            HIDE: (calculatedStats.int * 1) + ((skills.ANIMAL_SKINNER?.level || 1) * 0.5),
-            FIBER: (calculatedStats.int * 1) + ((skills.FIBER_HARVESTER?.level || 1) * 0.5),
-            FISH: (calculatedStats.int * 1) + ((skills.FISHING?.level || 1) * 0.5),
-            PLANK: (calculatedStats.int * 1) + ((skills.PLANK_REFINER?.level || 1) * 0.5),
-            METAL: (calculatedStats.int * 1) + ((skills.METAL_BAR_REFINER?.level || 1) * 0.5),
-            LEATHER: (calculatedStats.int * 1) + ((skills.LEATHER_REFINER?.level || 1) * 0.5),
-            CLOTH: (calculatedStats.int * 1) + ((skills.CLOTH_REFINER?.level || 1) * 0.5),
-            WARRIOR: (calculatedStats.int * 1) + ((skills.WARRIOR_CRAFTER?.level || 1) * 0.5),
-            HUNTER: (calculatedStats.int * 1) + ((skills.HUNTER_CRAFTER?.level || 1) * 0.5),
-            MAGE: (calculatedStats.int * 1) + ((skills.MAGE_CRAFTER?.level || 1) * 0.5),
-            COOKING: (calculatedStats.int * 1) + ((skills.COOKING?.level || 1) * 0.5),
-            GLOBAL: calculatedStats.int * 1 // INT define eficiencia global (XP)
-        },
-        silverMultiplier: 1.0 + (calculatedStats.int * 0.02) // INT aumenta Silver
-    };
+    const stats = useMemo(() => {
+        // Se o servidor enviou os stats calculados, use-os como fonte da verdade absoluta
+        if (gameState.calculatedStats) {
+            return {
+                ...gameState.calculatedStats,
+                hp: health, // HP atual vem do state
+                maxHp: gameState.calculatedStats.maxHP, // O servidor chama de maxHP
+                efficiency: {
+                    WOOD: (gameState.calculatedStats.int * 1) + ((skills.LUMBERJACK?.level || 1) * 0.5),
+                    ORE: (gameState.calculatedStats.int * 1) + ((skills.ORE_MINER?.level || 1) * 0.5),
+                    HIDE: (gameState.calculatedStats.int * 1) + ((skills.ANIMAL_SKINNER?.level || 1) * 0.5),
+                    FIBER: (gameState.calculatedStats.int * 1) + ((skills.FIBER_HARVESTER?.level || 1) * 0.5),
+                    FISH: (gameState.calculatedStats.int * 1) + ((skills.FISHING?.level || 1) * 0.5),
+                    PLANK: (gameState.calculatedStats.int * 1) + ((skills.PLANK_REFINER?.level || 1) * 0.5),
+                    METAL: (gameState.calculatedStats.int * 1) + ((skills.METAL_BAR_REFINER?.level || 1) * 0.5),
+                    LEATHER: (gameState.calculatedStats.int * 1) + ((skills.LEATHER_REFINER?.level || 1) * 0.5),
+                    CLOTH: (gameState.calculatedStats.int * 1) + ((skills.CLOTH_REFINER?.level || 1) * 0.5),
+                    WARRIOR: (gameState.calculatedStats.int * 1) + ((skills.WARRIOR_CRAFTER?.level || 1) * 0.5),
+                    HUNTER: (gameState.calculatedStats.int * 1) + ((skills.HUNTER_CRAFTER?.level || 1) * 0.5),
+                    MAGE: (gameState.calculatedStats.int * 1) + ((skills.MAGE_CRAFTER?.level || 1) * 0.5),
+                    COOKING: (gameState.calculatedStats.int * 1) + ((skills.COOKING?.level || 1) * 0.5),
+                    GLOBAL: gameState.calculatedStats.int * 1
+                },
+                silverMultiplier: 1.0 + (gameState.calculatedStats.int * 0.02)
+            };
+        }
+
+        // Fallback para cálculo local (útil para updates otimistas antes do servidor responder)
+        return {
+            hp: health,
+            maxHp: 100 + (calculatedStats.str * 10),
+            damage: 10 + (calculatedStats.str * 1) + (calculatedStats.agi * 1) + (calculatedStats.int * 2),
+            defense: 5 + (calculatedStats.str * 1),
+            attackSpeed: 1000 - (calculatedStats.agi * 5),
+            str: calculatedStats.str,
+            agi: calculatedStats.agi,
+            int: calculatedStats.int,
+            efficiency: {
+                WOOD: (calculatedStats.int * 1) + ((skills.LUMBERJACK?.level || 1) * 0.5),
+                ORE: (calculatedStats.int * 1) + ((skills.ORE_MINER?.level || 1) * 0.5),
+                HIDE: (calculatedStats.int * 1) + ((skills.ANIMAL_SKINNER?.level || 1) * 0.5),
+                FIBER: (calculatedStats.int * 1) + ((skills.FIBER_HARVESTER?.level || 1) * 0.5),
+                FISH: (calculatedStats.int * 1) + ((skills.FISHING?.level || 1) * 0.5),
+                PLANK: (calculatedStats.int * 1) + ((skills.PLANK_REFINER?.level || 1) * 0.5),
+                METAL: (calculatedStats.int * 1) + ((skills.METAL_BAR_REFINER?.level || 1) * 0.5),
+                LEATHER: (calculatedStats.int * 1) + ((skills.LEATHER_REFINER?.level || 1) * 0.5),
+                CLOTH: (calculatedStats.int * 1) + ((skills.CLOTH_REFINER?.level || 1) * 0.5),
+                WARRIOR: (calculatedStats.int * 1) + ((skills.WARRIOR_CRAFTER?.level || 1) * 0.5),
+                HUNTER: (calculatedStats.int * 1) + ((skills.HUNTER_CRAFTER?.level || 1) * 0.5),
+                MAGE: (calculatedStats.int * 1) + ((skills.MAGE_CRAFTER?.level || 1) * 0.5),
+                COOKING: (calculatedStats.int * 1) + ((skills.COOKING?.level || 1) * 0.5),
+                GLOBAL: calculatedStats.int * 1
+            },
+            silverMultiplier: 1.0 + (calculatedStats.int * 0.02)
+        };
+    }, [gameState.calculatedStats, calculatedStats, health, skills]);
 
     const avgIP = useMemo(() => {
         const combatSlots = ['head', 'chest', 'shoes', 'gloves', 'cape', 'mainHand', 'offHand'];
@@ -130,6 +159,20 @@ const ProfilePanel = ({ gameState, session, socket, onShowInfo }) => {
                 {item ? (
                     <div style={{ color: tierColor, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                         <span style={{ fontSize: '0.6rem', fontWeight: 'bold', position: 'absolute', top: 2, left: 4 }}>T{item.tier}</span>
+                        {/* Quantidade (especialmente para food) */}
+                        {item.amount > 1 && (
+                            <span style={{
+                                position: 'absolute',
+                                bottom: 2,
+                                left: 4,
+                                fontSize: '0.7rem',
+                                color: '#fff',
+                                fontWeight: '900',
+                                textShadow: '0 1px 3px rgba(0,0,0,1)'
+                            }}>
+                                {item.amount}
+                            </span>
+                        )}
                         {/* Se tiver qualidade, mostrar um pequeno indicador (estrela ou ponto) */}
                         {hasQuality && (
                             <div style={{ position: 'absolute', top: 2, right: 2 }}>
@@ -193,7 +236,7 @@ const ProfilePanel = ({ gameState, session, socket, onShowInfo }) => {
             borderRadius: '16px',
             background: 'rgba(15, 20, 30, 0.4)'
         }}>
-            <div className="scroll-container" style={{ padding: '30px' }}>
+            <div className="scroll-container" style={{ padding: isMobile ? '20px' : '30px' }}>
                 {/* Header com IP - HUB Style */}
                 <div style={{
                     display: 'flex',
@@ -232,10 +275,10 @@ const ProfilePanel = ({ gameState, session, socket, onShowInfo }) => {
                 <div style={{
                     display: 'grid',
                     gridTemplateColumns: 'repeat(3, 1fr)',
-                    gap: '30px',
+                    gap: isMobile ? '10px' : '30px',
                     marginBottom: '40px',
                     justifyItems: 'center',
-                    padding: '25px',
+                    padding: isMobile ? '10px 5px' : '25px',
                 }}>
                     <EquipmentSlot slot="cape" icon={<Layers size={24} />} label="CAPA" item={equipment.cape} onClick={() => setSelectedSlot('cape')} onShowInfo={onShowInfo} />
                     <EquipmentSlot slot="helmet" icon={<User size={24} />} label="CABEÇA" item={equipment.helmet} onClick={() => setSelectedSlot('helmet')} onShowInfo={onShowInfo} />
@@ -340,7 +383,7 @@ const ProfilePanel = ({ gameState, session, socket, onShowInfo }) => {
                 <div style={{ borderTop: '1px solid var(--border)', paddingTop: '30px' }}>
                     <h4 style={{ color: '#fff', fontSize: '0.7rem', fontWeight: '900', textTransform: 'uppercase', marginBottom: '20px', letterSpacing: '2px', opacity: 0.8 }}>Eficácia de Habilidades</h4>
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '10px' }}>
-                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px' }}>
+                        <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)', gap: '10px' }}>
                             <EfficiencyCard title="Coleta" items={[
                                 { id: 'WOOD', label: 'Woodcutting' },
                                 { id: 'ORE', label: 'Mining' },

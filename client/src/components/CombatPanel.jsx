@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useEffect, useRef } from 'react';
-import { Sword, Shield, Skull, Coins, Zap, Clock, Trophy, ChevronRight, User, Terminal, Activity, TrendingUp, Star } from 'lucide-react';
+import { Sword, Shield, Skull, Coins, Zap, Clock, Trophy, ChevronRight, User, Terminal, Activity, TrendingUp, Star, Apple } from 'lucide-react';
 import { MONSTERS } from '../data/monsters';
 
 const CombatPanel = ({ socket, gameState, isMobile }) => {
@@ -147,7 +147,7 @@ const CombatPanel = ({ socket, gameState, isMobile }) => {
                     newLogs.push({
                         id: Date.now() + Math.random(),
                         type: 'combat',
-                        content: `${combat.mobName} causou ${details.mobDmg} de dano.`,
+                        content: `${update.details?.mobName || 'Inimigo'} causou ${details.mobDmg} de dano.`,
                         color: '#ff4444'
                     });
 
@@ -182,8 +182,17 @@ const CombatPanel = ({ socket, gameState, isMobile }) => {
                         newLogs.push({
                             id: Date.now() + Math.random(),
                             type: 'victory',
-                            content: `Vitória! ${combat.mobName} abatido.`,
+                            content: `Vitória! ${update.details?.mobName || 'Inimigo'} abatido.`,
                             color: '#4caf50'
+                        });
+                    }
+
+                    if (details.defeat) {
+                        newLogs.push({
+                            id: Date.now() + Math.random(),
+                            type: 'defeat',
+                            content: `Você foi derrotado! Retornando à cidade...`,
+                            color: '#ff4444'
                         });
                     }
 
@@ -300,9 +309,32 @@ const CombatPanel = ({ socket, gameState, isMobile }) => {
                                     borderRadius: '50%', border: isMobile ? '2px solid #fff' : '4px solid #fff',
                                     display: 'flex', alignItems: 'center', justifyContent: 'center',
                                     boxShadow: '0 0 20px rgba(212, 175, 55, 0.4)',
-                                    marginBottom: '10px'
+                                    marginBottom: '10px',
+                                    position: 'relative'
                                 }}>
                                     <User size={isMobile ? 25 : 50} color="#000" />
+                                    {/* Food Badge */}
+                                    {gameState?.state?.equipment?.food?.amount > 0 && (
+                                        <div style={{
+                                            position: 'absolute',
+                                            top: -5,
+                                            right: -5,
+                                            background: '#ff4d4d',
+                                            color: '#fff',
+                                            fontSize: '0.6rem',
+                                            fontWeight: '900',
+                                            padding: '2px 6px',
+                                            borderRadius: '10px',
+                                            border: '1px solid #fff',
+                                            boxShadow: '0 2px 8px rgba(0,0,0,0.3)',
+                                            zIndex: 2,
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            gap: '2px'
+                                        }}>
+                                            <Apple size={10} /> {gameState.state.equipment.food.amount}
+                                        </div>
+                                    )}
                                 </div>
                                 <div style={{ fontSize: isMobile ? '0.6rem' : '0.9rem', fontWeight: '900', color: '#fff' }}>{gameState?.name?.toUpperCase()}</div>
                                 <div style={{ fontSize: isMobile ? '0.9rem' : '1.3rem', fontWeight: '900', color: '#4caf50', marginTop: '2px' }}>{Math.round(combat.playerHealth)} HP</div>

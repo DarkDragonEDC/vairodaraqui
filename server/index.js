@@ -322,7 +322,8 @@ setInterval(async () => {
                             s.emit('action_result', {
                                 success: result.success,
                                 message: result.message,
-                                leveledUp: result.leveledUp
+                                leveledUp: result.leveledUp,
+                                combatUpdate: result.combatUpdate
                             });
                         }
                         if (result.status) {

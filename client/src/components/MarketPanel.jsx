@@ -6,7 +6,7 @@ import {
 } from 'lucide-react';
 import { resolveItem, getTierColor } from '../data/items';
 
-const MarketPanel = ({ socket, gameState, silver = 0, onShowInfo, onListOnMarket }) => {
+const MarketPanel = ({ socket, gameState, silver = 0, onShowInfo, onListOnMarket, isMobile }) => {
     const [activeTab, setActiveTab] = useState('BUY'); // BUY, SELL, LISTINGS, CLAIM
     const [selectedCategory, setSelectedCategory] = useState('ALL');
     const [selectedSubCategory, setSelectedSubCategory] = useState('ALL');
@@ -132,7 +132,7 @@ const MarketPanel = ({ socket, gameState, silver = 0, onShowInfo, onListOnMarket
                 overflow: 'hidden',
                 background: 'var(--panel-bg)',
                 borderRadius: '12px',
-                padding: '24px' // Consistent padding
+                padding: isMobile ? '15px' : '24px' // Consistent padding
             }}>
 
                 {/* HEADER */}
@@ -382,8 +382,8 @@ const MarketPanel = ({ socket, gameState, silver = 0, onShowInfo, onListOnMarket
                         <>
                             <div style={{
                                 display: 'grid',
-                                gridTemplateColumns: 'repeat(5, 1fr)',
-                                gap: '12px',
+                                gridTemplateColumns: isMobile ? 'repeat(auto-fill, minmax(80px, 1fr))' : 'repeat(5, 1fr)',
+                                gap: isMobile ? '8px' : '12px',
                                 paddingBottom: '100px'
                             }}>
                                 {Object.entries(gameState.state?.inventory || {}).filter(([id, qty]) => {

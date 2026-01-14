@@ -148,8 +148,7 @@ function App() {
       });
 
       newSocket.on('skill_level_up', ({ message }) => {
-        // Poderia usar um sistema de toast aqui
-        alert(message);
+        // Log ou sistema de toast silencioso pode ser adicionado futuramente
       });
 
       newSocket.on('error', (msg) => {
@@ -175,6 +174,10 @@ function App() {
     setSession(null);
     setGameState(null);
     setCharacterSelected(false);
+  };
+
+  const handleEquip = (itemId) => {
+    socket.emit('equip_item', { itemId });
   };
 
   const startActivity = (type, itemId, quantity = 1) => {
@@ -371,9 +374,9 @@ function App() {
   const renderContent = () => {
     switch (activeTab) {
       case 'profile':
-        return <ProfilePanel gameState={displayedGameState} session={session} socket={socket} onShowInfo={setInfoItem} />;
+        return <ProfilePanel gameState={displayedGameState} session={session} socket={socket} onShowInfo={setInfoItem} isMobile={isMobile} />;
       case 'market':
-        return <MarketPanel socket={socket} gameState={displayedGameState} silver={displayedGameState.state?.silver || 0} onShowInfo={setInfoItem} onListOnMarket={handleListOnMarket} />;
+        return <MarketPanel socket={socket} gameState={displayedGameState} silver={displayedGameState.state?.silver || 0} onShowInfo={setInfoItem} onListOnMarket={handleListOnMarket} isMobile={isMobile} />;
       case 'gathering':
       case 'refining': {
         const isGathering = activeTab === 'gathering';
@@ -693,9 +696,9 @@ function App() {
         );
       }
       case 'inventory':
-        return <InventoryPanel gameState={displayedGameState} socket={socket} onShowInfo={setInfoItem} onListOnMarket={handleListOnMarket} />;
+        return <InventoryPanel gameState={displayedGameState} socket={socket} onEquip={handleEquip} onShowInfo={setInfoItem} onListOnMarket={handleListOnMarket} isMobile={isMobile} />;
       case 'ranking':
-        return <RankingPanel socket={socket} />;
+        return <RankingPanel socket={socket} isMobile={isMobile} />;
       case 'combat':
         return (
           <div style={{ flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>

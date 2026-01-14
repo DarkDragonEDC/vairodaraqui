@@ -3,7 +3,7 @@ import { resolveItem, getTierColor } from '../data/items';
 import { Package, Shield, Coins, Tag, Trash2, Info } from 'lucide-react';
 import ItemActionModal from './ItemActionModal';
 
-const InventoryPanel = ({ gameState, socket, onEquip, onListOnMarket, onShowInfo }) => {
+const InventoryPanel = ({ gameState, socket, onEquip, onListOnMarket, onShowInfo, isMobile }) => {
     const [selectedItemForModal, setSelectedItemForModal] = useState(null);
     const [sellModal, setSellModal] = useState(null);
     const [filter, setFilter] = useState('ALL');
@@ -95,7 +95,7 @@ const InventoryPanel = ({ gameState, socket, onEquip, onListOnMarket, onShowInfo
             <div className="scroll-container" style={{ flex: 1, paddingRight: '5px' }}>
                 <div style={{
                     display: 'grid',
-                    gridTemplateColumns: 'repeat(4, minmax(0, 1fr))',
+                    gridTemplateColumns: isMobile ? 'repeat(auto-fill, minmax(80px, 1fr))' : 'repeat(4, minmax(0, 1fr))',
                     gap: '8px',
                     paddingBottom: '80px'
                 }}>

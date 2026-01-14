@@ -40,7 +40,7 @@ const CATEGORIES = {
     }
 };
 
-const RankingPanel = ({ socket }) => {
+const RankingPanel = ({ socket, isMobile }) => {
     const [characters, setCharacters] = useState([]);
     const [loading, setLoading] = useState(true);
     const [mainCategory, setMainCategory] = useState('GENERAL');
@@ -104,7 +104,7 @@ const RankingPanel = ({ socket }) => {
             borderRadius: '16px',
             background: 'rgba(15, 20, 30, 0.4)'
         }}>
-            <div style={{ padding: '30px', flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
+            <div style={{ padding: isMobile ? '20px' : '30px', flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
                 {/* Header */}
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '30px' }}>
                     <div>

@@ -85,7 +85,7 @@ const ItemActionModal = ({ item, onClose, onEquip, onSell, onList }) => {
 
                     {/* Actions */}
                     <div style={{ display: 'grid', gap: '10px' }}>
-                        {item.canEquip && (
+                        {['WEAPON', 'ARMOR', 'HELMET', 'BOOTS', 'GLOVES', 'CAPE', 'OFF_HAND', 'TOOL', 'FOOD'].includes(item.type) && (
                             <button
                                 onClick={() => { onEquip(item.id); onClose(); }}
                                 style={{
