@@ -17,7 +17,7 @@ const InventoryPanel = ({ gameState, socket, onEquip, onListOnMarket, onShowInfo
         setSellModal({
             itemId,
             item,
-            max: gameState.state.inventory[itemId] || 0,
+            max: gameState?.state?.inventory?.[itemId] || 0,
             quantity: 1,
             price: item.value || 0,
             onConfirm: () => {
@@ -28,14 +28,10 @@ const InventoryPanel = ({ gameState, socket, onEquip, onListOnMarket, onShowInfo
     };
 
     const inventoryItems = Object.entries(gameState?.state?.inventory || {}).map(([id, qty]) => {
-        console.log("Processing item:", id, qty); // DEBUG
         const item = resolveItem(id);
-        if (!item) console.warn("Item not resolved:", id); // DEBUG
         if (!item || qty <= 0) return null;
         return { ...item, qty, id }; // id is key
     }).filter(Boolean);
-
-    console.log("Computed Inventory Items:", inventoryItems); // DEBUG
 
     const filteredItems = inventoryItems.filter(item => {
         if (filter === 'ALL') return true;

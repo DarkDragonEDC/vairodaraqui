@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { io } from 'socket.io-client';
 import { supabase } from './supabase';
 import Auth from './components/Auth';
@@ -23,6 +23,7 @@ import {
 } from 'lucide-react';
 import { ITEMS } from './data/items';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useOptimisticState } from './hooks/useOptimisticState';
 
 const calculateNextLevelXP = (level) => {
   return Math.floor(100 * Math.pow(1.15, level - 1));
@@ -60,6 +61,8 @@ function App() {
   const [session, setSession] = useState(null);
   const [socket, setSocket] = useState(null);
   const [gameState, setGameState] = useState(null);
+  const clockOffset = useRef(0);
+  const displayedGameState = useOptimisticState(gameState);
   const [error, setError] = useState('');
   const [characterSelected, setCharacterSelected] = useState(false);
 
@@ -119,7 +122,8 @@ function App() {
   useEffect(() => {
     if (session) {
       const newSocket = io(import.meta.env.VITE_API_URL || 'http://localhost:3000', {
-        auth: { token: session.access_token }
+        auth: { token: session.access_token },
+        transports: ['websocket', 'polling']
       });
 
       setSocket(newSocket);
@@ -130,16 +134,39 @@ function App() {
       });
 
       newSocket.on('status_update', (status) => {
-        console.log('Status update:', status);
+        console.log('[REALTIME] Status update received:', status);
+        if (status.serverTime) {
+          clockOffset.current = status.serverTime - Date.now();
+        }
         setGameState(status);
         if (status.name) setCharacterSelected(true);
+      });
+
+      newSocket.on('action_result', (result) => {
+        console.log('Action result:', result);
+        // Aqui podemos disparar uma notificação ou animação personalizada no futuro
+      });
+
+      newSocket.on('skill_level_up', ({ message }) => {
+        // Poderia usar um sistema de toast aqui
+        alert(message);
       });
 
       newSocket.on('error', (msg) => {
         setError(typeof msg === 'string' ? msg : msg.message);
       });
 
-      return () => newSocket.close();
+      // Heartbeat: Sincronização forçada a cada 15 segundos para evitar o "F5"
+      const heartbeat = setInterval(() => {
+        if (newSocket.connected) {
+          newSocket.emit('get_status');
+        }
+      }, 15000);
+
+      return () => {
+        clearInterval(heartbeat);
+        newSocket.close();
+      };
     }
   }, [session]);
 
@@ -186,18 +213,18 @@ function App() {
   const getLevelRequirement = (tier) => tier === 1 ? 1 : (tier - 1) * 10;
 
   const isLocked = (type, item) => {
-    if (!gameState || !gameState.state) return false;
+    if (!displayedGameState?.state) return false;
     const skillKey = getSkillKey(type, item.id);
-    const userLevel = gameState.state.skills[skillKey]?.level || 1;
+    const userLevel = displayedGameState.state.skills[skillKey]?.level || 1;
     const requiredLevel = getLevelRequirement(item.tier);
     return userLevel < requiredLevel;
   };
 
   const SkillProgressHeader = ({ tab, category }) => {
-    if (!gameState?.state?.skills) return null;
+    if (!displayedGameState?.state?.skills) return null;
 
     const skillKey = mapTabCategoryToSkill(tab, category);
-    const skill = gameState.state.skills[skillKey];
+    const skill = displayedGameState.state.skills[skillKey];
 
     if (!skill) return null;
 
@@ -344,9 +371,9 @@ function App() {
   const renderContent = () => {
     switch (activeTab) {
       case 'profile':
-        return <ProfilePanel gameState={gameState} session={session} socket={socket} onShowInfo={setInfoItem} />;
+        return <ProfilePanel gameState={displayedGameState} session={session} socket={socket} onShowInfo={setInfoItem} />;
       case 'market':
-        return <MarketPanel socket={socket} gameState={gameState} silver={gameState.state?.silver || 0} onShowInfo={setInfoItem} onListOnMarket={handleListOnMarket} />;
+        return <MarketPanel socket={socket} gameState={displayedGameState} silver={displayedGameState.state?.silver || 0} onShowInfo={setInfoItem} onListOnMarket={handleListOnMarket} />;
       case 'gathering':
       case 'refining': {
         const isGathering = activeTab === 'gathering';
@@ -372,6 +399,9 @@ function App() {
                     const reqLevel = getLevelRequirement(item.tier);
                     const reqs = item.req || {}; // For refining
 
+                    const isActive = displayedGameState?.current_activity?.item_id === item.id;
+                    const duration = (isGathering ? 3.0 : 1.5) * 1000;
+
                     return (
                       <button
                         key={item.id}
@@ -384,7 +414,7 @@ function App() {
                         disabled={locked}
                         className="resource-card"
                         style={{
-                          borderLeft: 'none',
+                          borderLeft: isActive ? '4px solid var(--accent)' : 'none',
                           display: 'flex',
                           gap: '12px',
                           alignItems: 'center',
@@ -392,18 +422,18 @@ function App() {
                           opacity: locked ? 0.5 : 1,
                           cursor: locked ? 'not-allowed' : 'pointer',
                           filter: 'none',
-                          background: 'rgba(0,0,0,0.2)',
+                          background: isActive ? 'rgba(212, 175, 55, 0.05)' : 'rgba(0,0,0,0.2)',
                           width: '100%',
                           textAlign: 'left',
-                          border: '1px solid rgba(255,255,255,0.05)',
+                          border: isActive ? '1px solid var(--accent)' : '1px solid rgba(255,255,255,0.05)',
                           borderRadius: '8px',
                           marginBottom: '10px',
                           transition: 'all 0.2s ease',
                           position: 'relative',
                           overflow: 'hidden'
                         }}
-                        onMouseEnter={(e) => { if (!locked) e.currentTarget.style.background = 'rgba(255,255,255,0.05)'; }}
-                        onMouseLeave={(e) => { if (!locked) e.currentTarget.style.background = 'rgba(0,0,0,0.2)'; }}
+                        onMouseEnter={(e) => { if (!locked && !isActive) e.currentTarget.style.background = 'rgba(255,255,255,0.05)'; }}
+                        onMouseLeave={(e) => { if (!locked && !isActive) e.currentTarget.style.background = 'rgba(0,0,0,0.2)'; }}
                       >
                         {/* Icon Container */}
                         <div style={{
@@ -427,9 +457,10 @@ function App() {
                         {/* Content */}
                         <div style={{ flex: '1 1 0%' }}>
                           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '8px' }}>
-                            <span style={{ fontWeight: 'bold', fontSize: '1rem', display: 'flex', alignItems: 'center', gap: '8px', color: locked ? '#888' : '#eee' }}>
+                            <span style={{ fontWeight: 'bold', fontSize: '1rem', display: 'flex', alignItems: 'center', gap: '8px', color: locked ? '#888' : (isActive ? 'var(--accent)' : '#eee') }}>
                               {item.name}
                               {locked && <Lock size={14} color="#ff4444" />}
+                              {isActive && <motion.span animate={{ opacity: [1, 0.5, 1] }} transition={{ repeat: Infinity, duration: 2 }} style={{ fontSize: '0.6rem', background: 'var(--accent)', color: '#000', padding: '1px 4px', borderRadius: '3px', fontWeight: '900' }}>ATIVO</motion.span>}
                             </span>
                           </div>
 
@@ -460,7 +491,7 @@ function App() {
 
                             {/* Ingredients Badge (Refining only) */}
                             {!isGathering && reqs && Object.entries(reqs).map(([reqId, reqQty]) => {
-                              const userQty = (gameState?.state?.inventory?.[reqId] || 0);
+                              const userQty = (displayedGameState?.state?.inventory?.[reqId] || 0);
                               const hasEnough = userQty >= reqQty;
                               return (
                                 <div key={reqId} style={{
@@ -474,14 +505,21 @@ function App() {
                                 }}>
                                   <span>{userQty}/{reqQty} {reqId}</span>
                                 </div>
-                              )
+                              );
                             })}
                           </div>
 
-                          {/* Progress Bar Background (Visual Only for now, could be active progress) */}
-                          <div className="progress-bar-bg" style={{ marginTop: '10px', height: '4px', background: 'rgba(255,255,255,0.05)', borderRadius: '2px', overflow: 'hidden' }}>
-                            <div className="progress-bar-fill" style={{ width: '0%', height: '100%', background: 'var(--accent)' }}></div>
-                          </div>
+                          <ActivityProgressBar
+                            active={isActive}
+                            nextActionAt={displayedGameState?.current_activity?.next_action_at}
+                            duration={duration}
+                            serverTimeOffset={clockOffset.current}
+                          />
+                          {isActive && (
+                            <div style={{ fontSize: '0.6rem', color: 'var(--accent)', marginTop: '4px', textAlign: 'right', fontWeight: 'bold' }}>
+                              RESTAM {displayedGameState.current_activity.actions_remaining}
+                            </div>
+                          )}
                         </div>
                       </button>
                     );
@@ -489,9 +527,10 @@ function App() {
                 </div>
               </div>
             </div>
-          </div >
+          </div>
         );
       }
+
       case 'crafting': {
         const craftingItems = ITEMS.GEAR[activeCategory] || {};
         // ITEMS.GEAR[Category] returns { SWORD: {1:.., 2:..}, SHIELD: {1:..} }
@@ -527,6 +566,8 @@ function App() {
                           : null;
 
                     const locked = isLocked('CRAFTING', item);
+                    const isActive = displayedGameState?.current_activity?.item_id === item.id;
+                    const duration = (item.time || 3.0) * 1000;
 
                     return (
                       <button
@@ -540,7 +581,7 @@ function App() {
                         disabled={locked}
                         className="resource-card"
                         style={{
-                          borderLeft: 'none',
+                          borderLeft: isActive ? '4px solid var(--accent)' : 'none',
                           display: 'flex',
                           gap: '12px',
                           alignItems: 'center',
@@ -548,18 +589,18 @@ function App() {
                           opacity: locked ? 0.5 : 1,
                           cursor: locked ? 'not-allowed' : 'pointer',
                           filter: 'none',
-                          background: 'rgba(0,0,0,0.2)',
+                          background: isActive ? 'rgba(212, 175, 55, 0.05)' : 'rgba(0,0,0,0.2)',
                           width: '100%',
                           textAlign: 'left',
-                          border: '1px solid rgba(255,255,255,0.05)',
+                          border: isActive ? '1px solid var(--accent)' : '1px solid rgba(255,255,255,0.05)',
                           borderRadius: '8px',
                           marginBottom: '10px',
                           transition: 'all 0.2s ease',
                           position: 'relative',
                           overflow: 'hidden'
                         }}
-                        onMouseEnter={(e) => { if (!locked) e.currentTarget.style.background = 'rgba(255,255,255,0.05)'; }}
-                        onMouseLeave={(e) => { if (!locked) e.currentTarget.style.background = 'rgba(0,0,0,0.2)'; }}
+                        onMouseEnter={(e) => { if (!locked && !isActive) e.currentTarget.style.background = 'rgba(255,255,255,0.05)'; }}
+                        onMouseLeave={(e) => { if (!locked && !isActive) e.currentTarget.style.background = 'rgba(0,0,0,0.2)'; }}
                       >
                         {/* Icon Container */}
                         <div style={{
@@ -579,8 +620,9 @@ function App() {
                         {/* Content */}
                         <div style={{ flex: '1 1 0%' }}>
                           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '8px' }}>
-                            <span style={{ fontWeight: 'bold', fontSize: '1rem', display: 'flex', alignItems: 'center', gap: '8px', color: locked ? '#888' : '#eee' }}>
+                            <span style={{ fontWeight: 'bold', fontSize: '1rem', display: 'flex', alignItems: 'center', gap: '8px', color: locked ? '#888' : (isActive ? 'var(--accent)' : '#eee') }}>
                               {item.name}
+                              {isActive && <motion.span animate={{ opacity: [1, 0.5, 1] }} transition={{ repeat: Infinity, duration: 2 }} style={{ fontSize: '0.6rem', background: 'var(--accent)', color: '#000', padding: '1px 4px', borderRadius: '3px', fontWeight: '900' }}>ATIVO</motion.span>}
                             </span>
                           </div>
 
@@ -612,7 +654,7 @@ function App() {
 
                             {/* Requirements Badges */}
                             {Object.entries(reqs).map(([reqId, reqQty]) => {
-                              const userQty = (gameState?.state?.inventory?.[reqId] || 0);
+                              const userQty = (displayedGameState?.state?.inventory?.[reqId] || 0);
                               const hasEnough = userQty >= reqQty;
                               return (
                                 <div key={reqId} style={{
@@ -630,10 +672,16 @@ function App() {
                             })}
                           </div>
 
-                          {/* Progress Bar Background */}
-                          <div className="progress-bar-bg" style={{ marginTop: '10px', height: '4px', background: 'rgba(255,255,255,0.05)', borderRadius: '2px', overflow: 'hidden' }}>
-                            <div className="progress-bar-fill" style={{ width: '0%', height: '100%', background: 'var(--accent)' }}></div>
-                          </div>
+                          <ActivityProgressBar
+                            active={isActive}
+                            nextActionAt={displayedGameState?.current_activity?.next_action_at}
+                            duration={duration}
+                          />
+                          {isActive && (
+                            <div style={{ fontSize: '0.6rem', color: 'var(--accent)', marginTop: '4px', textAlign: 'right', fontWeight: 'bold' }}>
+                              RESTAM {displayedGameState.current_activity.actions_remaining}
+                            </div>
+                          )}
                         </div>
                       </button>
                     );
@@ -645,14 +693,14 @@ function App() {
         );
       }
       case 'inventory':
-        return <InventoryPanel gameState={gameState} socket={socket} onShowInfo={setInfoItem} onListOnMarket={handleListOnMarket} />;
+        return <InventoryPanel gameState={displayedGameState} socket={socket} onShowInfo={setInfoItem} onListOnMarket={handleListOnMarket} />;
       case 'ranking':
         return <RankingPanel socket={socket} />;
       case 'combat':
         return (
           <div style={{ flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
             <SkillProgressHeader tab="combat" category="COMBAT" />
-            <CombatPanel socket={socket} gameState={gameState} isMobile={isMobile} />
+            <CombatPanel socket={socket} gameState={displayedGameState} isMobile={isMobile} />
           </div>
         );
       case 'dungeon':
@@ -704,7 +752,7 @@ function App() {
   return (
     <div style={{ display: 'flex', minHeight: '100vh', background: '#0a0a0f', color: '#fff', fontFamily: "'Inter', sans-serif", position: 'relative', overflow: 'hidden' }}>
       <Sidebar
-        gameState={gameState}
+        gameState={displayedGameState}
         activeTab={activeTab}
         setActiveTab={setActiveTab}
         activeCategory={activeCategory}
@@ -729,7 +777,7 @@ function App() {
               <div style={{ width: 32, height: 32, background: 'linear-gradient(135deg, #d4af37 0%, #8a6d0a 100%)', borderRadius: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <User color="#000" size={16} />
               </div>
-              <div style={{ fontWeight: '900', fontSize: isMobile ? '0.85rem' : '1rem', color: '#fff', letterSpacing: '2px' }}>{gameState?.name?.toUpperCase() || 'AVENTUREIRO'}</div>
+              <div style={{ fontWeight: '900', fontSize: isMobile ? '0.85rem' : '1rem', color: '#fff', letterSpacing: '2px' }}>{displayedGameState?.name?.toUpperCase() || 'AVENTUREIRO'}</div>
             </div>
           </div>
           <button onClick={handleLogout} style={{ color: '#fff', fontSize: '0.65rem', fontWeight: '900', letterSpacing: '1.5px', opacity: 0.4 }}>SAIR</button>
@@ -741,9 +789,15 @@ function App() {
         </main>
       </div>
 
-      <ChatWidget socket={socket} user={session.user} characterName={gameState.name} isMobile={isMobile} />
-      <ActivityWidget gameState={gameState} onStop={() => socket.emit('stop_activity')} socket={socket} onNavigate={handleNavigate} />
-      <ActivityModal isOpen={!!modalItem} onClose={() => setModalItem(null)} item={modalItem} type={modalType} gameState={gameState} onStart={startActivity} onNavigate={handleNavigate} />
+      <ChatWidget socket={socket} user={session.user} characterName={displayedGameState?.name} isMobile={isMobile} />
+      <ActivityWidget
+        gameState={displayedGameState}
+        onStop={() => socket.emit('stop_activity')}
+        socket={socket}
+        onNavigate={handleNavigate}
+        serverTimeOffset={clockOffset.current}
+      />
+      <ActivityModal isOpen={!!modalItem} onClose={() => setModalItem(null)} item={modalItem} type={modalType} gameState={displayedGameState} onStart={startActivity} onNavigate={handleNavigate} />
 
       <ItemInfoModal item={infoItem} onClose={() => setInfoItem(null)} />
       {marketSellItem && (
@@ -771,6 +825,40 @@ const actionBtnStyle = {
   display: 'flex',
   flexDirection: 'column',
   gap: '6px'
+};
+
+const ActivityProgressBar = ({ active, nextActionAt, duration, serverTimeOffset = 0 }) => {
+  const [prog, setProg] = React.useState(0);
+
+  React.useEffect(() => {
+    if (!active || !nextActionAt) {
+      setProg(0);
+      return;
+    }
+
+    const tick = () => {
+      const now = Date.now() + serverTimeOffset;
+      const target = Number(nextActionAt);
+      const remaining = target - now;
+      const progress = Math.max(0, Math.min(100, (1 - (remaining / duration)) * 100));
+      setProg(progress);
+    };
+
+    tick();
+    const interval = setInterval(tick, 50);
+    return () => clearInterval(interval);
+  }, [active, nextActionAt, duration, serverTimeOffset]);
+
+  return (
+    <div style={{ marginTop: '10px', height: '4px', background: 'rgba(255,255,255,0.05)', borderRadius: '2px', overflow: 'hidden' }}>
+      <div style={{
+        width: active ? `${prog}%` : '0%',
+        height: '100%',
+        background: active ? 'var(--accent)' : 'transparent',
+        transition: 'none'
+      }}></div>
+    </div>
+  );
 };
 
 export default App;

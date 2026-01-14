@@ -46,7 +46,7 @@ export class GameManager {
         };
     }
 
-    async getCharacter(userId) {
+    async getCharacter(userId, catchup = false) {
         const { data, error } = await this.supabase
             .from('characters')
             .select('*')
@@ -81,13 +81,11 @@ export class GameManager {
             // --- LÓGICA DE GANHOS OFFLINE (CATCH-UP) ---
             // DEBUG: Log check for catchup
             // console.log(`[DEBUG] Checking catchup for ${data.name}. Active: ${!!data.current_activity}`);
-            if (data.current_activity && data.activity_started_at) {
+            if (catchup && data.current_activity && data.activity_started_at) {
                 const now = new Date();
-                const lastSaved = data.last_saved ? new Date(data.last_saved) : new Date(data.activity_started_at);
-                const elapsedSeconds = (now - lastSaved) / 1000;
+                const lastSaved = data.last_saved ? new Date(data.last_saved).getTime() : new Date(data.activity_started_at).getTime();
+                const elapsedSeconds = (now.getTime() - lastSaved) / 1000;
                 const timePerAction = data.current_activity.time_per_action || 3;
-
-                console.log(`[DEBUG] Catchup: Elapsed ${elapsedSeconds}s, TimePerAction ${timePerAction}s`);
 
                 if (elapsedSeconds >= timePerAction) {
                     const actionsPossible = Math.floor(elapsedSeconds / timePerAction);
@@ -261,7 +259,9 @@ export class GameManager {
                     item_id: itemId,
                     actions_remaining: quantity,
                     initial_quantity: quantity,
-                    time_per_action: timePerAction
+                    time_per_action: timePerAction,
+                    next_action_at: Date.now() + (timePerAction * 1000),
+                    req: item.req || null
                 },
                 activity_started_at: new Date().toISOString()
             })
@@ -458,8 +458,8 @@ export class GameManager {
     }
 
 
-    async getStatus(userId) {
-        const char = await this.getCharacter(userId);
+    async getStatus(userId, catchup = false) {
+        const char = await this.getCharacter(userId, catchup);
         if (!char) return { noCharacter: true };
 
         return {
@@ -469,7 +469,8 @@ export class GameManager {
             current_activity: char.current_activity,
             activity_started_at: char.activity_started_at,
             dungeon_state: char.dungeon_state,
-            offlineReport: char.offlineReport
+            offlineReport: char.offlineReport,
+            serverTime: Date.now()
         };
     }
 
@@ -494,13 +495,18 @@ export class GameManager {
         if (char.current_activity) {
             const { type, item_id, actions_remaining, time_per_action = 3, next_action_at } = char.current_activity;
 
-            // Inicializa next_action_at se não existir (primeira execução)
-            if (!next_action_at) {
-                char.current_activity.next_action_at = now + (time_per_action * 1000);
+            // console.log(`[PROCESS-TICK] User ${char.name} has active ${type}. Remaining: ${actions_remaining}`);
+
+            // Compatibilidade: Se não tiver next_action_at (velho), define agora
+            let targetTime = Number(next_action_at);
+            if (!targetTime) {
+                targetTime = now + (time_per_action * 1000);
+                char.current_activity.next_action_at = targetTime;
             }
 
             // Verifica se está na hora de processar
-            if (now >= (char.current_activity.next_action_at || 0)) {
+            if (now >= targetTime) {
+                console.log(`[PROCESS-TICK] Time reached for ${char.name}. Target: ${targetTime}, Now: ${now}`);
                 const item = ITEM_LOOKUP[item_id];
 
                 if (item && actions_remaining > 0) {
@@ -512,8 +518,15 @@ export class GameManager {
                         case 'CRAFTING': result = await this.processCrafting(char, item); break;
                     }
 
-                    // Atualiza próximo tempo
-                    char.current_activity.next_action_at = now + (time_per_action * 1000);
+                    // Atualiza próximo tempo usando o tempo alvo anterior para evitar drift
+                    // Mas garante que não seja menor que 'agora' se houve lag grande (exceto se quisermos catchup rápido)
+                    // Vamos permitir catchup simples acelerado no próximo tick se estiver muito atrasado
+                    char.current_activity.next_action_at = targetTime + (time_per_action * 1000);
+
+                    // Se o atraso for muito grande (ex: servidor travou), ajusta para agora para não processar 1000 itens de uma vez no loop (segurança)
+                    if (now - char.current_activity.next_action_at > 5000) {
+                        char.current_activity.next_action_at = now + (time_per_action * 1000);
+                    }
 
                     if (result && !result.error) {
                         itemsGained++;
@@ -527,6 +540,7 @@ export class GameManager {
                             char.activity_started_at = null;
                         } else {
                             char.current_activity.actions_remaining = newActionsRemaining;
+                            console.log(`[PROCESS-TICK] Action processed for ${char.name}. Remaining: ${newActionsRemaining}`);
                         }
                     } else {
                         // Se deu erro (inventário cheio, etc), para.
@@ -556,8 +570,7 @@ export class GameManager {
         }
 
         // 3. Salvar Estado no Banco (apenas se houve mudança significativa ou intervalo de save)
-        // Para otimizar, salvamos sempre que houver ganho ou combate
-        if (itemsGained > 0 || combatResult || foodUsed) {
+        if (itemsGained > 0 || combatResult || foodUsed || activityFinished) {
             await this.supabase
                 .from('characters')
                 .update({
@@ -567,24 +580,25 @@ export class GameManager {
                     last_saved: new Date().toISOString()
                 })
                 .eq('id', char.id);
+        }
 
-            // Montar mensagem
-            let finalMessage = "";
-            if (itemsGained > 0) {
-                finalMessage = lastActivityResult.message;
-            }
-            if (combatResult) {
-                finalMessage += (finalMessage ? " | " : "") + combatResult.message;
-            }
-            if (!finalMessage && foodUsed) finalMessage = "Usou comida";
-
+        // SEMPRE retorna o status se houver atividade ativa ou combate, 
+        // para o ticker do server avisar o client (importante para barras de progresso suaves)
+        if (char.current_activity || char.state.combat || itemsGained > 0 || combatResult) {
             return {
                 success: true,
-                message: finalMessage,
+                message: lastActivityResult?.message || combatResult?.message || (foodUsed ? "Usou comida" : ""),
                 leveledUp,
-                newState: char.state,
                 activityFinished,
-                combatUpdate: combatResult
+                status: {
+                    user_id: char.user_id,
+                    name: char.name,
+                    state: char.state,
+                    current_activity: char.current_activity,
+                    activity_started_at: char.activity_started_at,
+                    dungeon_state: char.dungeon_state,
+                    serverTime: Date.now()
+                }
             };
         }
 

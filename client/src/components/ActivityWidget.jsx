@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Play, CheckCircle, Clock, Square, Zap, Hammer, Pickaxe, Box, Loader, Hourglass, Sword, Skull, Heart } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const ActivityWidget = ({ gameState, onStop, socket, onNavigate }) => { // Changed onClaim to onStop
+const ActivityWidget = ({ gameState, onStop, socket, onNavigate, serverTimeOffset = 0 }) => { // Changed onClaim to onStop
     const [isOpen, setIsOpen] = useState(false);
     const [elapsed, setElapsed] = useState(0);
     const [combatElapsed, setCombatElapsed] = useState(0);
@@ -12,15 +12,16 @@ const ActivityWidget = ({ gameState, onStop, socket, onNavigate }) => { // Chang
 
     // Timer para Atividade
     useEffect(() => {
-        if (!activity || !gameState.activity_started_at) return;
+        if (!activity || !gameState?.activity_started_at) return;
 
         const interval = setInterval(() => {
-            const start = new Date(gameState.activity_started_at).getTime();
-            setElapsed(Math.floor((Date.now() - start) / 1000));
-        }, 1000);
+            const start = new Date(gameState?.activity_started_at).getTime();
+            const now = Date.now() + serverTimeOffset;
+            setElapsed((now - start) / 1000);
+        }, 100);
 
         return () => clearInterval(interval);
-    }, [activity, gameState.activity_started_at]);
+    }, [activity, gameState?.activity_started_at]);
 
     // Timer para Combate
     useEffect(() => {
@@ -44,13 +45,16 @@ const ActivityWidget = ({ gameState, onStop, socket, onNavigate }) => { // Chang
     const isCrafting = activity?.type === 'CRAFTING';
 
     // Stats Calculations (Activity)
-    const initialQty = activity?.initial_quantity || 1;
+    const initialQty = activity?.initial_quantity || activity?.actions_remaining || 1;
     const remainingQty = activity?.actions_remaining || 0;
-    const doneQty = initialQty - remainingQty;
+    const doneQty = Math.max(0, initialQty - remainingQty);
     const timePerAction = activity?.time_per_action || 3;
-    const remainingSeconds = Math.max(0, remainingQty * timePerAction);
-    const totalExpectedTime = initialQty * timePerAction;
-    const progressPercent = Math.min(100, Math.max(0, (elapsed / totalExpectedTime) * 100));
+
+    // Tempo total decorrido considerando itens já feitos + tempo no item atual
+    const totalElapsed = (doneQty * timePerAction) + (elapsed % timePerAction);
+    const totalDuration = initialQty * timePerAction;
+    const totalProgress = Math.min(100, (totalElapsed / totalDuration) * 100);
+    const remainingSeconds = Math.max(0, totalDuration - totalElapsed);
 
     // Formatar Tempo (MM:SS)
     // Formatar Tempo (HH:MM:SS)
@@ -58,7 +62,7 @@ const ActivityWidget = ({ gameState, onStop, socket, onNavigate }) => { // Chang
         const h = Math.floor(secs / 3600);
         const m = Math.floor((secs % 3600) / 60);
         const s = Math.floor(secs % 60);
-        return `${h > 0 ? h + ':' : ''}${m < 10 && h > 0 ? '0' : ''}${m}:${s < 10 ? '0' : ''}${s}`;
+        return `${h > 0 ? h + ':' : ''}${m < 10 && h > 0 ? '0' : ''}${m}:${s < 10 ? '0' : ''}${s} `;
     };
 
     const getActivityIcon = () => {
@@ -221,16 +225,24 @@ const ActivityWidget = ({ gameState, onStop, socket, onNavigate }) => { // Chang
                                     }}>
                                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '5px' }}>
                                             <span style={{ color: '#fff', fontWeight: 'bold', fontSize: '0.9rem' }}>{activity.item_id || 'Item Desconhecido'}</span>
-                                            <span style={{ color: '#d4af37', fontWeight: 'bold', fontSize: '0.9rem' }}>{remainingQty} <span style={{ fontSize: '0.7rem', color: '#666' }}>/ {initialQty}</span></span>
+                                            <span style={{ color: '#d4af37', fontWeight: 'bold', fontSize: '0.9rem' }}>{doneQty} <span style={{ fontSize: '0.7rem', color: '#666' }}>/ {initialQty}</span></span>
                                         </div>
 
-                                        <div style={{ height: '6px', background: 'rgba(0,0,0,0.5)', borderRadius: '3px', overflow: 'hidden', position: 'relative' }}>
-                                            <motion.div
-                                                initial={{ width: 0 }}
-                                                animate={{ width: `${progressPercent}%` }}
-                                                transition={{ type: "spring", stiffness: 50 }}
-                                                style={{ height: '100%', background: '#d4af37' }}
+                                        {/* Barra de Progresso do Item Atual */}
+                                        <div style={{ height: '6px', background: 'rgba(0,0,0,0.5)', borderRadius: '3px', overflow: 'hidden', position: 'relative', marginBottom: '4px' }}>
+                                            <div
+                                                style={{
+                                                    width: `${Math.max(0, Math.min(100, (1 - ((Number(activity?.next_action_at) - (Date.now() + serverTimeOffset)) / (timePerAction * 1000))) * 100))}% `,
+                                                    height: '100%',
+                                                    background: '#d4af37',
+                                                    transition: 'width 0.1s linear'
+                                                }}
                                             />
+                                        </div>
+
+                                        {/* Barra de Progresso Total */}
+                                        <div style={{ height: '2px', background: 'rgba(255,255,255,0.05)', borderRadius: '1px', overflow: 'hidden', position: 'relative' }}>
+                                            <div style={{ width: `${totalProgress}% `, height: '100%', background: 'rgba(212, 175, 55, 0.4)', transition: 'width 0.3s' }} />
                                         </div>
                                         <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '4px', fontSize: '0.65rem', color: '#666' }}>
                                             <span>{doneQty} concluídos</span>
@@ -339,7 +351,7 @@ const ActivityWidget = ({ gameState, onStop, socket, onNavigate }) => { // Chang
                                             </div>
                                             <div style={{ height: '6px', background: 'rgba(255,255,255,0.1)', borderRadius: '3px', overflow: 'hidden' }}>
                                                 <div style={{
-                                                    width: `${(combat.mobHealth / combat.mobMaxHealth) * 100}%`,
+                                                    width: `${(combat.mobHealth / combat.mobMaxHealth) * 100}% `,
                                                     height: '100%',
                                                     background: '#ff4444',
                                                     transition: 'width 0.2s'
@@ -355,7 +367,7 @@ const ActivityWidget = ({ gameState, onStop, socket, onNavigate }) => { // Chang
                                             </div>
                                             <div style={{ height: '6px', background: 'rgba(255,255,255,0.1)', borderRadius: '3px', overflow: 'hidden' }}>
                                                 <div style={{
-                                                    width: `${Math.min(100, (combat.playerHealth / 100) * 100)}%`, // TODO: Usar maxHealth real se disponível no state
+                                                    width: `${Math.min(100, (combat.playerHealth / 100) * 100)}% `, // TODO: Usar maxHealth real se disponível no state
                                                     height: '100%',
                                                     background: '#4caf50',
                                                     transition: 'width 0.2s'

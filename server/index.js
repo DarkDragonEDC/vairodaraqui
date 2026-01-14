@@ -11,10 +11,13 @@ const app = express();
 const httpServer = createServer(app);
 const io = new Server(httpServer, {
     cors: {
-        origin: "*", // Allow all for dev
+        origin: "*",
         methods: ["GET", "POST"]
     }
 });
+
+// Manual socket registry for Ticker reliability
+const connectedSockets = new Map();
 
 app.use(cors());
 app.use(express.json());
@@ -23,7 +26,7 @@ import { authMiddleware } from './authMiddleware.js';
 
 const PORT = process.env.PORT || 3000;
 const SUPABASE_URL = process.env.SUPABASE_URL;
-const SUPABASE_KEY = process.env.SUPABASE_KEY; // Should be SERVICE_ROLE_KEY
+const SUPABASE_KEY = process.env.SUPABASE_KEY;
 
 if (!SUPABASE_URL || !SUPABASE_KEY) {
     console.warn("WARNING: Supabase credentials not found in .env");
@@ -59,6 +62,7 @@ io.use(async (socket, next) => {
         }
 
         socket.user = user;
+        socket.data.user = user;
         next();
     } catch (err) {
         return next(new Error("Authentication error: " + err.message));
@@ -67,23 +71,19 @@ io.use(async (socket, next) => {
 
 io.on('connection', (socket) => {
     console.log('User connected:', socket.user.email, '(' + socket.id + ')');
+    connectedSockets.set(socket.id, socket);
+
+    socket.on('disconnect', () => {
+        console.log('User disconnected:', socket.id);
+        connectedSockets.delete(socket.id);
+    });
 
     socket.on('get_status', async () => {
         try {
-            console.log(`[DEBUG] get_status for user: ${socket.user.id} (${socket.user.email})`);
-            const char = await gameManager.getCharacter(socket.user.id);
-            if (!char) {
-                console.log(`[DEBUG] No character found for user: ${socket.user.id}`);
-                socket.emit('status_update', { noCharacter: true });
-                return;
-            }
-
-            console.log(`[DEBUG] Character found: ${char.name}`);
-
-            const status = await gameManager.getStatus(socket.user.id);
+            const status = await gameManager.getStatus(socket.user.id, true);
             socket.emit('status_update', status);
         } catch (err) {
-            console.error(`[DEBUG] Error in get_status:`, err);
+            console.error(`[SERVER] Error in get_status:`, err);
             socket.emit('error', { message: err.message });
         }
     });
@@ -109,7 +109,6 @@ io.on('connection', (socket) => {
 
     socket.on('start_activity', async ({ actionType, itemId, quantity }) => {
         try {
-            // Suporte para ambos os nomes de parâmetros por compatibilidade client/server
             const result = await gameManager.startActivity(socket.user.id, actionType, itemId, quantity);
             socket.emit('activity_started', result);
             socket.emit('status_update', await gameManager.getStatus(socket.user.id));
@@ -190,7 +189,6 @@ io.on('connection', (socket) => {
                 .select('*')
                 .order('created_at', { ascending: false })
                 .limit(50);
-
             if (error) throw error;
             socket.emit('chat_history', data.reverse());
         } catch (err) {
@@ -202,7 +200,6 @@ io.on('connection', (socket) => {
         try {
             const char = await gameManager.getCharacter(socket.user.id);
             if (!char) return;
-
             const { data, error } = await supabase
                 .from('messages')
                 .insert({
@@ -212,7 +209,6 @@ io.on('connection', (socket) => {
                 })
                 .select()
                 .single();
-
             if (error) throw error;
             io.emit('new_message', data);
         } catch (err) {
@@ -221,7 +217,6 @@ io.on('connection', (socket) => {
         }
     });
 
-    // --- MARKET SOCKETS ---
     socket.on('get_market_listings', async (filters) => {
         try {
             const listings = await gameManager.getMarketListings(filters);
@@ -236,8 +231,6 @@ io.on('connection', (socket) => {
             const result = await gameManager.listMarketItem(socket.user.id, itemId, amount, price);
             socket.emit('market_action_success', result);
             socket.emit('status_update', await gameManager.getStatus(socket.user.id));
-
-            // Broadcast update for everyone
             const listings = await gameManager.getMarketListings();
             io.emit('market_listings_update', listings);
         } catch (err) {
@@ -250,8 +243,6 @@ io.on('connection', (socket) => {
             const result = await gameManager.buyMarketItem(socket.user.id, listingId);
             socket.emit('market_action_success', result);
             socket.emit('status_update', await gameManager.getStatus(socket.user.id));
-
-            // Broadcast update for everyone
             const listings = await gameManager.getMarketListings();
             io.emit('market_listings_update', listings);
         } catch (err) {
@@ -264,8 +255,6 @@ io.on('connection', (socket) => {
             const result = await gameManager.cancelMarketListing(socket.user.id, listingId);
             socket.emit('market_action_success', result);
             socket.emit('status_update', await gameManager.getStatus(socket.user.id));
-
-            // Broadcast update for everyone
             const listings = await gameManager.getMarketListings();
             io.emit('market_listings_update', listings);
         } catch (err) {
@@ -302,37 +291,56 @@ io.on('connection', (socket) => {
             socket.emit('error', { message: err.message });
         }
     });
-
-    socket.on('disconnect', () => {
-        console.log('User disconnected:', socket.id);
-    });
 });
 
-// --- LOOP GLOBAL DE TRABALHO (TICKS) ---
-// Processa atividades de todos os usuários conectados a cada 1 segundo (High Tick Rate for Combat)
+// --- GLOBAL TICKER LOOP (1s) ---
 setInterval(async () => {
-    const sockets = await io.fetchSockets();
-    for (const s of sockets) {
-        if (s.user) {
-            try {
-                const result = await gameManager.processTick(s.user.id);
-                if (result) {
-                    // Se houve ganho, envia atualização para o cliente
-                    // console.log(`Tick for ${s.user.email}:`, result.message);
-                    s.emit('action_result', result);
-                    s.emit('status_update', await gameManager.getStatus(s.user.id));
+    try {
+        const localSockets = Array.from(connectedSockets.values());
+        const userGroups = {};
 
-                    if (result.leveledUp) {
-                        s.emit('skill_level_up', { message: `Sua skill subiu de nível!` });
-                    }
+        localSockets.forEach(s => {
+            const user = s.user || s.data?.user;
+            if (user && user.id) {
+                if (!userGroups[user.id]) userGroups[user.id] = { user, sockets: [] };
+                userGroups[user.id].sockets.push(s);
+            }
+        });
+
+        const activeUsersCount = Object.keys(userGroups).length;
+        if (activeUsersCount > 0) {
+            // console.log(`[TICKER] Processing ${activeUsersCount} users...`);
+        }
+
+        await Promise.all(Object.values(userGroups).map(async ({ user, sockets }) => {
+            try {
+                const result = await gameManager.processTick(user.id);
+                if (result) {
+                    console.log(`[TICKER] Emitting update for ${user.email} (Status change: ${!!result.status})`);
+                    sockets.forEach(s => {
+                        if (result.message) {
+                            s.emit('action_result', {
+                                success: result.success,
+                                message: result.message,
+                                leveledUp: result.leveledUp
+                            });
+                        }
+                        if (result.status) {
+                            s.emit('status_update', result.status);
+                        }
+                        if (result.leveledUp) {
+                            s.emit('skill_level_up', { message: `Sua skill subiu de nível!` });
+                        }
+                    });
                 }
             } catch (err) {
-                console.error(`Error processing tick for ${s.user.id}:`, err);
+                console.error(`[TICKER] Error for character ${user.id}:`, err);
             }
-        }
+        }));
+    } catch (err) {
+        console.error("[TICKER] Error in global heartbeat loop:", err);
     }
-}, 1000); // 1 segundo por tick (Antes era 3s)
-
+}, 1000);
 
 httpServer.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
