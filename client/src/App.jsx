@@ -329,7 +329,7 @@ function App() {
     );
   };
 
-  if (!session) return <Auth />;
+  if (!session) return <Auth onLogin={setSession} />;
   if (gameState?.noCharacter || !characterSelected) {
     return (
       <CharacterSelect
@@ -645,7 +645,7 @@ function App() {
         );
       }
       case 'inventory':
-        return <InventoryPanel inventory={gameState.state?.inventory || {}} socket={socket} silver={gameState.state?.silver || 0} onShowInfo={setInfoItem} onListOnMarket={handleListOnMarket} />;
+        return <InventoryPanel gameState={gameState} socket={socket} onShowInfo={setInfoItem} onListOnMarket={handleListOnMarket} />;
       case 'ranking':
         return <RankingPanel socket={socket} />;
       case 'combat':

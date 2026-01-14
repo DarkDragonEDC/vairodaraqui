@@ -77,7 +77,9 @@ io.on('connection', (socket) => {
                 socket.emit('status_update', { noCharacter: true });
                 return;
             }
+
             console.log(`[DEBUG] Character found: ${char.name}`);
+
             const status = await gameManager.getStatus(socket.user.id);
             socket.emit('status_update', status);
         } catch (err) {
