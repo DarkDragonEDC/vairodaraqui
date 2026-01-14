@@ -1,0 +1,102 @@
+[dotenv@17.2.3] injecting env (3) from .env -- tip: ⚙️  specify custom .env file path with { path: '/custom/path/.env' }
+--- CHARACTER START ---
+NAME: Euller2
+ACTIVITY: {
+  "item_id": "T1_WOOD"
+}
+INVENTORY: {}
+SKILLS: {}
+--- CHARACTER END ---
+--- CHARACTER START ---
+NAME: euller
+ACTIVITY: {
+  "type": "gathering",
+  "item_id": "T1_HIDE",
+  "time_per_action": 1.5,
+  "initial_quantity": 28800,
+  "actions_remaining": 28800
+}
+INVENTORY: {
+  "T1_ORE": 101,
+  "T1_FISH": 323,
+  "T1_WOOD": 149
+}
+SKILLS: {
+  "COMBAT": {
+    "xp": 0,
+    "level": 1
+  },
+  "COOKING": {
+    "xp": 0,
+    "level": 1
+  },
+  "FISHING": {
+    "xp": 335,
+    "level": 13
+  },
+  "ORE_MINER": {
+    "xp": 102,
+    "level": 2
+  },
+  "LUMBERJACK": {
+    "xp": 76,
+    "level": 3
+  },
+  "lumberjack": {
+    "xp": 8,
+    "level": 1
+  },
+  "BOW_MASTERY": {
+    "xp": 0,
+    "level": 1
+  },
+  "MAGE_CRAFTER": {
+    "xp": 0,
+    "level": 1
+  },
+  "CLOTH_REFINER": {
+    "xp": 0,
+    "level": 1
+  },
+  "DUNGEONEERING": {
+    "xp": 0,
+    "level": 1
+  },
+  "PLANK_REFINER": {
+    "xp": 0,
+    "level": 1
+  },
+  "SWORD_MASTERY": {
+    "xp": 0,
+    "level": 1
+  },
+  "ANIMAL_SKINNER": {
+    "xp": 0,
+    "level": 1
+  },
+  "HUNTER_CRAFTER": {
+    "xp": 0,
+    "level": 1
+  },
+  "FIBER_HARVESTER": {
+    "xp": 0,
+    "level": 1
+  },
+  "LEATHER_REFINER": {
+    "xp": 0,
+    "level": 1
+  },
+  "WARRIOR_CRAFTER": {
+    "xp": 0,
+    "level": 1
+  },
+  "METAL_BAR_REFINER": {
+    "xp": 0,
+    "level": 1
+  },
+  "FIRE_STAFF_MASTERY": {
+    "xp": 0,
+    "level": 1
+  }
+}
+--- CHARACTER END ---
