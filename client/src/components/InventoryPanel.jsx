@@ -6,6 +6,7 @@ import { Shield } from 'lucide-react';
 const InventoryPanel = ({ inventory = {}, socket, silver = 0, onShowInfo, onListOnMarket }) => {
     const [filter, setFilter] = useState('ALL');
     const [sellModal, setSellModal] = useState(null);
+    const [selectedItem, setSelectedItem] = useState(null);
 
     const filterCategories = [
         { id: 'ALL', label: 'All', icon: '📦' },
@@ -60,7 +61,7 @@ const InventoryPanel = ({ inventory = {}, socket, silver = 0, onShowInfo, onList
                 {filterCategories.map(cat => (
                     <button
                         key={cat.id}
-                        onClick={() => setFilter(cat.id)}
+                        onClick={() => { setFilter(cat.id); setSelectedItem(null); }}
                         style={{
                             padding: '6px 12px',
                             fontSize: '0.75rem',
@@ -91,7 +92,7 @@ const InventoryPanel = ({ inventory = {}, socket, silver = 0, onShowInfo, onList
             {/* Grid */}
             <div className="inventory-grid" style={{
                 display: 'grid',
-                gridTemplateColumns: 'repeat(5, 1fr)',
+                gridTemplateColumns: 'repeat(4, 1fr)',
                 gap: '8px',
                 overflowY: 'auto',
                 paddingBottom: '20px',
@@ -114,24 +115,29 @@ const InventoryPanel = ({ inventory = {}, socket, silver = 0, onShowInfo, onList
                     const tierColor = getTierColor(data.tier || 1);
                     const qualityColor = data.rarityColor || 'var(--border)';
                     const isGear = ['WEAPON', 'ARMOR', 'HELMET', 'BOOTS', 'GLOVES', 'CAPE', 'OFF_HAND', 'TOOL'].includes(data.type);
+                    const isSelected = selectedItem === id;
 
                     // Determine border style based on quality if applicable, otherwise default
-                    const borderStyle = data.quality > 0 ? `1px solid ${qualityColor}` : '1px solid var(--border)';
+                    const borderStyle = data.quality > 0 ? `1px solid ${qualityColor}` : (isSelected ? '1px solid var(--accent)' : '1px solid var(--border)');
 
                     return (
-                        <div key={id} style={{
-                            background: 'rgba(255, 255, 255, 0.05)',
-                            padding: '8px',
-                            borderRadius: '6px',
-                            display: 'flex',
-                            flexDirection: 'column',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            position: 'relative',
-                            fontSize: '0.65rem',
-                            border: borderStyle,
-                            aspectRatio: '1/1' // Maintain square aspect ratio
-                        }}>
+                        <div key={id}
+                            onClick={() => setSelectedItem(isSelected ? null : id)}
+                            style={{
+                                background: isSelected ? 'rgba(255, 255, 255, 0.08)' : 'rgba(255, 255, 255, 0.05)',
+                                padding: '8px',
+                                borderRadius: '6px',
+                                display: 'flex',
+                                flexDirection: 'column',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                position: 'relative',
+                                fontSize: '0.65rem',
+                                border: borderStyle,
+                                aspectRatio: '1/1', // Maintain square aspect ratio
+                                cursor: 'pointer',
+                                overflow: 'hidden'
+                            }}>
                             {/* Info Icon */}
                             <div
                                 onClick={(e) => { e.stopPropagation(); onShowInfo(data); }}
@@ -198,15 +204,59 @@ const InventoryPanel = ({ inventory = {}, socket, silver = 0, onShowInfo, onList
                             )}
 
 
-                            {/* Actions */}
-                            <div style={{ display: 'flex', gap: '2px', width: '100%', marginTop: 'auto', flexWrap: 'wrap', justifyContent: 'center' }}>
-                                {isGear && (
+                            {/* Actions Overlay */}
+                            {isSelected && (
+                                <div style={{
+                                    display: 'flex',
+                                    gap: '4px',
+                                    width: '100%',
+                                    padding: '4px',
+                                    position: 'absolute',
+                                    bottom: 0,
+                                    left: 0,
+                                    right: 0,
+                                    background: 'rgba(0,0,0,0.9)',
+                                    flexWrap: 'wrap',
+                                    justifyContent: 'center',
+                                    zIndex: 10,
+                                    animation: 'fadeIn 0.2s ease-in-out'
+                                }}>
+                                    {isGear && (
+                                        <button
+                                            onClick={(e) => { e.stopPropagation(); socket.emit('equip_item', { itemId: id }); setSelectedItem(null); }}
+                                            style={{
+                                                flex: '1 1 0%',
+                                                padding: '6px 2px',
+                                                fontSize: '0.6rem',
+                                                background: 'var(--accent)',
+                                                border: 'none',
+                                                borderRadius: '4px',
+                                                cursor: 'pointer',
+                                                color: 'rgb(0, 0, 0)',
+                                                fontWeight: 'bold'
+                                            }}
+                                        >EQUIP</button>
+                                    )}
                                     <button
-                                        onClick={() => socket.emit('equip_item', { itemId: id })}
+                                        onClick={(e) => { e.stopPropagation(); setSellModal({ itemId: id, max: amount, quantity: 1, name: data.name }); setSelectedItem(null); }}
                                         style={{
                                             flex: '1 1 0%',
-                                            padding: '4px 0px',
-                                            fontSize: '0.55rem',
+                                            padding: '6px 2px',
+                                            fontSize: '0.6rem',
+                                            background: 'rgb(255, 68, 68)',
+                                            border: 'none',
+                                            borderRadius: '4px',
+                                            cursor: 'pointer',
+                                            color: 'rgb(255, 255, 255)',
+                                            fontWeight: 'bold'
+                                        }}
+                                    >SELL</button>
+                                    <button
+                                        onClick={(e) => { e.stopPropagation(); onListOnMarket && onListOnMarket({ itemId: id, max: amount }); setSelectedItem(null); }}
+                                        style={{
+                                            flex: '1 1 0%',
+                                            padding: '6px 2px',
+                                            fontSize: '0.6rem',
                                             background: 'var(--accent)',
                                             border: 'none',
                                             borderRadius: '4px',
@@ -214,37 +264,9 @@ const InventoryPanel = ({ inventory = {}, socket, silver = 0, onShowInfo, onList
                                             color: 'rgb(0, 0, 0)',
                                             fontWeight: 'bold'
                                         }}
-                                    >EQUIP</button>
-                                )}
-                                <button
-                                    onClick={() => setSellModal({ itemId: id, max: amount, quantity: 1, name: data.name })}
-                                    style={{
-                                        flex: '1 1 0%',
-                                        padding: '4px 0px',
-                                        fontSize: '0.55rem',
-                                        background: 'rgb(255, 68, 68)',
-                                        border: 'none',
-                                        borderRadius: '4px',
-                                        cursor: 'pointer',
-                                        color: 'rgb(255, 255, 255)',
-                                        fontWeight: 'bold'
-                                    }}
-                                >SELL</button>
-                                <button
-                                    onClick={() => onListOnMarket && onListOnMarket({ itemId: id, max: amount })}
-                                    style={{
-                                        flex: '1 1 0%',
-                                        padding: '4px 0px',
-                                        fontSize: '0.55rem',
-                                        background: 'var(--accent)',
-                                        border: 'none',
-                                        borderRadius: '4px',
-                                        cursor: 'pointer',
-                                        color: 'rgb(0, 0, 0)',
-                                        fontWeight: 'bold'
-                                    }}
-                                >LIST</button>
-                            </div>
+                                    >LIST</button>
+                                </div>
+                            )}
                         </div>
                     );
                 })}
