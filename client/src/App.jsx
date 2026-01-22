@@ -902,7 +902,16 @@ function App() {
           socket={socket}
         />
       )}
-      <OfflineGainsModal isOpen={!!offlineReport} data={offlineReport} onClose={() => setOfflineReport(null)} />
+      <OfflineGainsModal
+        isOpen={!!offlineReport}
+        data={offlineReport}
+        onClose={() => {
+          setOfflineReport(null);
+          if (socket) {
+            socket.emit('acknowledge_offline_report');
+          }
+        }}
+      />
     </div >
   );
 }

@@ -329,6 +329,14 @@ io.on('connection', (socket) => {
             socket.emit('error', { message: err.message });
         }
     });
+
+    socket.on('acknowledge_offline_report', async () => {
+        try {
+            await gameManager.clearOfflineReport(socket.user.id);
+        } catch (err) {
+            console.error('Error clearing offline report:', err);
+        }
+    });
 });
 
 // --- GLOBAL TICKER LOOP (1s) ---

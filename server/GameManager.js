@@ -191,7 +191,7 @@ export class GameManager {
 
         const stats = this.inventoryManager.calculateStats(char);
 
-        return {
+        const status = {
             user_id: char.id,
             name: char.name,
             state: char.state,
@@ -202,6 +202,18 @@ export class GameManager {
             offlineReport: char.offlineReport,
             serverTime: Date.now()
         };
+
+        // Clear report from memory after it's been included in status once
+        // (Wait, better but not enough if the client hasn't received it yet)
+        // Let's stick to the explicit acknowledgment plan.
+        return status;
+    }
+
+    async clearOfflineReport(userId) {
+        const char = await this.getCharacter(userId);
+        if (char) {
+            char.offlineReport = null;
+        }
     }
 
     async processTick(userId) {
