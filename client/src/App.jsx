@@ -910,7 +910,7 @@ function App() {
         )
       }
 
-      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', width: '100%', overflow: 'hidden' }}>
+      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', width: '100%', overflow: 'hidden', minHeight: 0 }}>
         <header style={{ background: 'rgba(10, 14, 20, 0.4)', backdropFilter: 'blur(20px)', borderBottom: '1px solid rgba(255, 255, 255, 0.03)', padding: isMobile ? '12px 20px' : '15px 40px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', zIndex: 100 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
             {isMobile && <button onClick={() => setSidebarOpen(true)} style={{ color: '#fff', opacity: 0.6 }}><Menu size={24} /></button>}
@@ -953,7 +953,7 @@ function App() {
           </div>
         </header>
 
-        <main style={{ flex: 1, overflow: 'hidden', display: 'flex', flexDirection: 'column', padding: isMobile ? '10px' : '20px 30px', position: 'relative' }}>
+        <main style={{ flex: 1, overflow: 'hidden', display: 'flex', flexDirection: 'column', padding: isMobile ? '10px' : '20px 30px', position: 'relative', minHeight: 0 }}>
           {error && <div style={{ background: 'rgba(255, 68, 68, 0.05)', color: '#ff4444', padding: '12px 20px', marginBottom: 25, borderRadius: 8, border: '1px solid rgba(255, 68, 68, 0.1)', fontSize: '0.8rem' }}>{error}</div>}
           {renderContent()}
         </main>
