@@ -333,8 +333,6 @@ const CombatPanel = ({ socket, gameState, isMobile, onShowHistory }) => {
                             {/* Player Side */}
                             <div style={{ textAlign: 'center', position: 'relative' }}>
                                 <motion.div
-                                    animate={isPlayerHit ? { x: [-10, 10, -10, 10, 0], filter: 'brightness(2)' } : {}}
-                                    transition={{ duration: 0.2 }}
                                     style={{
                                         width: isMobile ? '50px' : '100px', height: isMobile ? '50px' : '100px',
                                         background: 'linear-gradient(135deg, #d4af37 0%, #8a6d0a 100%)',
@@ -378,8 +376,6 @@ const CombatPanel = ({ socket, gameState, isMobile, onShowHistory }) => {
                             {/* Mob Side */}
                             <div style={{ textAlign: 'center', position: 'relative' }}>
                                 <motion.div
-                                    animate={isMobHit ? { x: [10, -10, 10, -10, 0], filter: 'brightness(2)' } : {}}
-                                    transition={{ duration: 0.2 }}
                                     style={{
                                         width: isMobile ? '50px' : '100px', height: isMobile ? '50px' : '100px',
                                         background: 'rgba(20, 20, 25, 0.8)',

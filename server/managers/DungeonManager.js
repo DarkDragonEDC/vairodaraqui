@@ -13,6 +13,7 @@ export class DungeonManager {
     async startDungeon(userId, dungeonId, repeatCount = 0) {
         const char = await this.gameManager.getCharacter(userId);
         if (char.state.dungeon) throw new Error("Already in a dungeon");
+        if (char.state.combat) throw new Error("Cannot enter dungeon while in combat");
 
         const dungeon = Object.values(DUNGEONS).find(d => d.id === dungeonId);
         if (!dungeon) throw new Error("Dungeon not found");
@@ -160,7 +161,7 @@ export class DungeonManager {
 
         console.log(`[DUNGEON] Spawning ${mobId} for ${char.name} (Boss: ${isBoss})`);
         try {
-            await this.gameManager.combatManager.startCombat(char.user_id, mobId, config.tier, char);
+            await this.gameManager.combatManager.startCombat(char.user_id, mobId, config.tier, char, true);
         } catch (e) {
             console.error(`[DUNGEON] Failed to start combat for ${char.name}:`, e.message);
             // If combat failed (e.g. level too low), we should probably fail the dungeon or inform the user

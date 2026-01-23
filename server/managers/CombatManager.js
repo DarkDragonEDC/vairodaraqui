@@ -5,8 +5,12 @@ export class CombatManager {
         this.gameManager = gameManager;
     }
 
-    async startCombat(userId, mobId, tier, existingChar = null) {
+    async startCombat(userId, mobId, tier, existingChar = null, isDungeon = false) {
         const char = existingChar || await this.gameManager.getCharacter(userId);
+
+        if (char.state.dungeon && !isDungeon) {
+            throw new Error("Cannot start combat while in a dungeon");
+        }
 
         let mobData = null;
         if (MONSTERS[tier]) {
