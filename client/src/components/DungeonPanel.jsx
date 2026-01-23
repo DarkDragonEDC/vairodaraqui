@@ -299,17 +299,19 @@ const DungeonPanel = ({ gameState, socket, isMobile }) => {
                     onClick={() => socket.emit('stop_dungeon')}
                     style={{
                         padding: '8px 20px',
-                        background: 'rgba(255, 68, 68, 0.05)',
-                        border: '1px solid #ff4444',
-                        color: '#ff4444',
+                        background: dungeonState.status === 'COMPLETED' ? 'rgba(76, 175, 80, 0.05)' : 'rgba(255, 68, 68, 0.05)',
+                        border: '1px solid',
+                        borderColor: dungeonState.status === 'COMPLETED' ? 'rgba(76, 175, 80, 0.5)' : '#ff4444',
+                        color: dungeonState.status === 'COMPLETED' ? '#4caf50' : '#ff4444',
                         borderRadius: '10px',
                         cursor: 'pointer',
                         fontWeight: '900',
                         fontSize: '0.75rem',
-                        zIndex: 1
+                        zIndex: 1,
+                        transition: '0.2s'
                     }}
                 >
-                    ABANDON
+                    {dungeonState.status === 'COMPLETED' ? 'FINISH' : 'ABANDON'}
                 </button>
             </motion.div>
         );

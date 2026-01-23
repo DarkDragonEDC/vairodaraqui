@@ -5,14 +5,10 @@ import { QUALITIES, resolveItem } from '@shared/items';
 const ItemInfoModal = ({ item: rawItem, onClose }) => {
     if (!rawItem) return null;
 
-    // Robust resolution: ensure we have full details including qualityName
-    // We merge resolved stats UNDER rawItem to keep server variations, 
-    // but we ensure qualityName and rarityColor come from the authoritative resolveItem
     const resolved = resolveItem(rawItem.id || rawItem.item_id);
     const item = {
         ...rawItem,
         ...resolved,
-        // Se o rawItem tinha stats customizados (ex: do servidor), mantém os stats do rawItem
         stats: { ...resolved?.stats, ...rawItem.stats }
     };
 
@@ -25,14 +21,23 @@ const ItemInfoModal = ({ item: rawItem, onClose }) => {
     const baseStats = item.stats || {};
     const statKeys = Object.keys(baseStats).filter(k => typeof baseStats[k] === 'number' && ['damage', 'defense', 'hp', 'str', 'agi', 'int'].includes(k));
 
+    // For comparison, we need the AUTHENTIC base stats of the item (Quality 0)
+    // otherwise we are scaling a scaled value.
+    const baseItemResult = resolveItem(item.originalId || item.id);
+    const comparisonBaseStats = baseItemResult?.stats || {};
+    const comparisonStatKeys = Object.keys(comparisonBaseStats).filter(k =>
+        typeof comparisonBaseStats[k] === 'number' &&
+        ['damage', 'defense', 'hp', 'str', 'agi', 'int'].includes(k)
+    );
+
     const calculateStat = (baseValue, ipBonus) => {
-        return parseFloat((baseValue * (1 + ipBonus / 100)).toFixed(1)); // Permitir decimais (ex: 3.5 Dmg)
+        return parseFloat((baseValue * (1 + ipBonus / 100)).toFixed(1));
     };
 
     const rarityComparison = Object.values(QUALITIES).map(q => {
         const calculatedStats = {};
-        statKeys.forEach(key => {
-            calculatedStats[key] = calculateStat(baseStats[key], q.ipBonus);
+        comparisonStatKeys.forEach(key => {
+            calculatedStats[key] = calculateStat(comparisonBaseStats[key], q.ipBonus);
         });
         return {
             ...q,

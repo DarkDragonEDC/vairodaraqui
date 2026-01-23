@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 import { resolveItem, getTierColor, calculateItemSellPrice } from '@shared/items';
-import { Package, Shield, Coins, Tag, Trash2, Info } from 'lucide-react';
+import { Package, Shield, Coins, Tag, Trash2, Info, ChevronDown, ChevronUp, ArrowUpAZ, ArrowDownZA, Search } from 'lucide-react';
 import ItemActionModal from './ItemActionModal';
 
 const InventoryPanel = ({ gameState, socket, onEquip, onListOnMarket, onShowInfo, isMobile }) => {
     const [selectedItemForModal, setSelectedItemForModal] = useState(null);
     const [sellModal, setSellModal] = useState(null);
     const [filter, setFilter] = useState('ALL');
+    const [sortBy, setSortBy] = useState('NAME'); // NAME, QUALITY, QUANTITY, TYPE, VALUE, DATE
+    const [sortDir, setSortDir] = useState('asc');
+    const [isSortMenuOpen, setIsSortMenuOpen] = useState(false);
+    const [searchQuery, setSearchQuery] = useState('');
 
     const handleItemClick = (item) => {
         setSelectedItemForModal(item);
@@ -34,21 +38,57 @@ const InventoryPanel = ({ gameState, socket, onEquip, onListOnMarket, onShowInfo
     }).filter(Boolean);
 
     const filteredItems = inventoryItems.filter(item => {
-        if (filter === 'ALL') return true;
+        // Category Filter
+        if (filter !== 'ALL') {
+            const isGear = ['WEAPON', 'ARMOR', 'HELMET', 'BOOTS', 'GLOVES', 'OFF_HAND', 'TOOL', 'CAPE'].includes(item.type);
+            const isRaw = ['RESOURCE', 'RAW'].includes(item.type) || item.id.includes('_ORE') || item.id.includes('_WOOD');
+            const isConsumable = ['FOOD', 'POTION'].includes(item.type);
 
-        // Categoria Simplificada
-        const isGear = ['WEAPON', 'ARMOR', 'HELMET', 'BOOTS', 'GLOVES', 'OFF_HAND', 'TOOL', 'CAPE'].includes(item.type);
-        const isRaw = ['RESOURCE', 'RAW'].includes(item.type) || item.id.includes('_ORE') || item.id.includes('_WOOD'); // Fallback
-        const isConsumable = ['FOOD', 'POTION'].includes(item.type);
+            if (filter === 'EQUIPMENT' && !isGear) return false;
+            if (filter === 'RESOURCE' && !isRaw) return false;
+            if (filter === 'CONSUMABLE' && !isConsumable) return false;
+        }
 
-        if (filter === 'EQUIPMENT') return isGear;
-        if (filter === 'RESOURCE') return isRaw;
-        if (filter === 'CONSUMABLE') return isConsumable;
+        // Search Filter
+        if (searchQuery) {
+            return item.name.toLowerCase().includes(searchQuery.toLowerCase());
+        }
         return true;
     });
 
+    // Sorting Logic
+    const sortedItems = [...filteredItems].sort((a, b) => {
+        let comparison = 0;
+        switch (sortBy) {
+            case 'NAME':
+                comparison = a.name.localeCompare(b.name);
+                break;
+            case 'QUALITY':
+                comparison = (a.quality || 0) - (b.quality || 0);
+                break;
+            case 'QUANTITY':
+                comparison = a.qty - b.qty;
+                break;
+            case 'TYPE':
+                comparison = a.type.localeCompare(b.type);
+                break;
+            case 'VALUE':
+                const valA = calculateItemSellPrice(a, a.id);
+                const valB = calculateItemSellPrice(b, b.id);
+                comparison = valA - valB;
+                break;
+            case 'DATE':
+                // Using index in the original inventory as a proxy for acquisition date if not stored
+                const indexA = Object.keys(gameState?.state?.inventory || {}).indexOf(a.id);
+                const indexB = Object.keys(gameState?.state?.inventory || {}).indexOf(b.id);
+                comparison = indexA - indexB;
+                break;
+        }
+        return sortDir === 'asc' ? comparison : -comparison;
+    });
+
     const totalSlots = 50;
-    const itemsToRender = [...filteredItems];
+    const itemsToRender = [...sortedItems];
     while (itemsToRender.length < totalSlots) {
         itemsToRender.push(null);
     }
@@ -59,34 +99,143 @@ const InventoryPanel = ({ gameState, socket, onEquip, onListOnMarket, onShowInfo
                 display: 'flex',
                 gap: '10px',
                 padding: '10px 0',
-                overflowX: 'auto',
+                alignItems: 'center',
                 borderBottom: '1px solid var(--border)',
                 marginBottom: '10px'
             }}>
-                {/* Filter Tabs */}
-                {['ALL', 'EQUIPMENT', 'RESOURCE', 'CONSUMABLE'].map(f => (
-                    <button
-                        key={f}
-                        onClick={() => setFilter(f)}
+                <div style={{ display: 'flex', gap: '8px', flex: 1, overflowX: 'auto' }}>
+                    {['ALL', 'EQUIPMENT', 'RESOURCE', 'CONSUMABLE'].map(f => (
+                        <button
+                            key={f}
+                            onClick={() => setFilter(f)}
+                            style={{
+                                padding: '6px 12px',
+                                borderRadius: '8px',
+                                background: filter === f ? 'rgba(212, 175, 55, 0.15)' : 'rgba(255,255,255,0.05)',
+                                color: filter === f ? 'var(--accent)' : 'var(--text-dim)',
+                                border: filter === f ? '1px solid rgba(212, 175, 55, 0.3)' : '1px solid transparent',
+                                fontWeight: 'bold',
+                                fontSize: '0.75rem',
+                                cursor: 'pointer',
+                                transition: '0.2s',
+                                whiteSpace: 'nowrap'
+                            }}
+                        >
+                            {f}
+                        </button>
+                    ))}
+                </div>
+
+                <div style={{ position: 'relative', width: isMobile ? '100px' : '140px', flexShrink: 0 }}>
+                    <Search size={14} style={{ position: 'absolute', left: '10px', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-dim)', opacity: 0.6 }} />
+                    <input
+                        type="text"
+                        placeholder="Search..."
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
                         style={{
-                            padding: '6px 12px',
+                            width: '100%',
+                            background: 'rgba(255,255,255,0.05)',
+                            border: '1px solid var(--border)',
                             borderRadius: '8px',
-                            border: 'none',
-                            background: filter === f ? 'var(--accent)' : 'rgba(255,255,255,0.05)',
-                            color: filter === f ? '#000' : 'var(--text-dim)',
-                            fontWeight: 'bold',
+                            padding: '6px 10px 6px 30px',
+                            color: '#fff',
+                            fontSize: '0.75rem',
+                            outline: 'none',
+                            transition: '0.2s'
+                        }}
+                    />
+                </div>
+
+                {/* Sort Dropdown */}
+                <div style={{ position: 'relative', width: isMobile ? '100px' : '140px', flexShrink: 0 }}>
+                    <button
+                        onClick={() => setIsSortMenuOpen(!isSortMenuOpen)}
+                        style={{
+                            width: '100%',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'space-between',
+                            background: 'rgba(255,255,255,0.05)',
+                            border: '1px solid var(--border)',
+                            borderRadius: '8px',
+                            padding: '6px 10px',
+                            color: '#fff',
                             fontSize: '0.75rem',
                             cursor: 'pointer'
                         }}
                     >
-                        {f}
+                        <span style={{ color: 'var(--text-dim)', marginRight: '4px' }}>By:</span>
+                        <span style={{ fontWeight: 'bold' }}>{sortBy.charAt(0) + sortBy.slice(1).toLowerCase()}</span>
+                        <ChevronDown size={12} style={{ marginLeft: 'auto', opacity: 0.6, transform: isSortMenuOpen ? 'rotate(180deg)' : 'none', transition: '0.2s' }} />
                     </button>
-                ))}
+
+                    {isSortMenuOpen && (
+                        <>
+                            <div
+                                onClick={() => setIsSortMenuOpen(false)}
+                                style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, zIndex: 100 }}
+                            />
+                            <div style={{
+                                position: 'absolute',
+                                top: 'calc(100% + 5px)',
+                                right: 0,
+                                width: '120px',
+                                background: '#1a1a2e',
+                                border: '1px solid var(--border)',
+                                borderRadius: '8px',
+                                padding: '5px',
+                                zIndex: 101,
+                                boxShadow: '0 10px 25px rgba(0,0,0,0.5)'
+                            }}>
+                                {['DATE', 'QUALITY', 'QUANTITY', 'TYPE', 'VALUE', 'NAME'].map(opt => (
+                                    <button
+                                        key={opt}
+                                        onClick={() => { setSortBy(opt); setIsSortMenuOpen(false); }}
+                                        style={{
+                                            width: '100%',
+                                            padding: '8px 12px',
+                                            textAlign: 'left',
+                                            background: sortBy === opt ? 'rgba(255,255,255,0.05)' : 'transparent',
+                                            border: 'none',
+                                            color: sortBy === opt ? 'var(--accent)' : '#fff',
+                                            fontSize: '0.75rem',
+                                            cursor: 'pointer',
+                                            borderRadius: '4px'
+                                        }}
+                                    >
+                                        {opt.charAt(0) + opt.slice(1).toLowerCase()}
+                                    </button>
+                                ))}
+                            </div>
+                        </>
+                    )}
+                </div>
+
+                {/* Sort Direction Toggle */}
+                <button
+                    onClick={() => setSortDir(sortDir === 'asc' ? 'desc' : 'asc')}
+                    style={{
+                        padding: '6px',
+                        background: 'rgba(255,255,255,0.05)',
+                        border: '1px solid var(--border)',
+                        borderRadius: '8px',
+                        color: 'var(--accent)',
+                        cursor: 'pointer',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        flexShrink: 0
+                    }}
+                    title={sortDir === 'asc' ? 'Ascending' : 'Descending'}
+                >
+                    {sortDir === 'asc' ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+                </button>
             </div>
 
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px', fontSize: '0.8rem', color: 'var(--text-dim)' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px', fontSize: '0.75rem', color: 'var(--text-dim)', padding: '0 5px' }}>
                 <span>Slots Used:</span>
-                <span style={{ color: 'var(--accent)', fontWeight: 'bold' }}>{inventoryItems.length} / {totalSlots}</span>
+                <span style={{ color: 'var(--accent)', opacity: 0.8, fontWeight: 'bold' }}>{inventoryItems.length} / {totalSlots}</span>
             </div>
 
 
@@ -179,152 +328,156 @@ const InventoryPanel = ({ gameState, socket, onEquip, onListOnMarket, onShowInfo
             </div>
 
             {/* Action Modal */}
-            {selectedItemForModal && (
-                <ItemActionModal
-                    item={selectedItemForModal}
-                    onClose={() => setSelectedItemForModal(null)}
-                    onEquip={onEquip}
-                    onSell={(id) => { setSelectedItemForModal(null); handleQuickSell(id); }}
-                    onList={(id, item) => { setSelectedItemForModal(null); onListOnMarket({ itemId: id, max: item.qty }); }}
-                />
-            )}
+            {
+                selectedItemForModal && (
+                    <ItemActionModal
+                        item={selectedItemForModal}
+                        onClose={() => setSelectedItemForModal(null)}
+                        onEquip={onEquip}
+                        onSell={(id) => { setSelectedItemForModal(null); handleQuickSell(id); }}
+                        onList={(id, item) => { setSelectedItemForModal(null); onListOnMarket({ itemId: id, max: item.qty }); }}
+                    />
+                )
+            }
 
             {/* Quick Sell Confirmation Modal */}
-            {sellModal && (
-                <div style={{
-                    position: 'absolute',
-                    top: 0, left: 0, right: 0, bottom: 0,
-                    background: 'rgba(0,0,0,0.8)',
-                    zIndex: 200,
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    backdropFilter: 'blur(8px)'
-                }} onClick={() => setSellModal(null)}>
+            {
+                sellModal && (
                     <div style={{
-                        background: '#1a1a1a',
-                        border: '1px solid rgba(255, 215, 0, 0.3)',
-                        borderRadius: '16px',
-                        padding: '24px',
-                        width: '90%',
-                        maxWidth: '320px',
-                        boxShadow: '0 0 30px rgba(0,0,0,0.5)'
-                    }} onClick={e => e.stopPropagation()}>
-                        <div style={{ textAlign: 'center', marginBottom: '20px' }}>
-                            <h3 style={{ margin: 0, fontSize: '1.1rem', color: '#fff' }}>Sell {sellModal.item.name}</h3>
-                            <div style={{ fontSize: '0.8rem', color: 'var(--text-dim)', marginTop: '4px' }}>
-                                Unit Price: <span style={{ color: '#ffd700', fontWeight: 'bold' }}>{sellModal.unitPrice} Silver</span>
+                        position: 'fixed',
+                        top: 0, left: 0, right: 0, bottom: 0,
+                        background: 'rgba(0,0,0,0.8)',
+                        zIndex: 2000,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        backdropFilter: 'blur(8px)'
+                    }} onClick={() => setSellModal(null)}>
+                        <div style={{
+                            background: '#1a1a1a',
+                            border: '1px solid rgba(255, 215, 0, 0.3)',
+                            borderRadius: '16px',
+                            padding: '24px',
+                            width: '90%',
+                            maxWidth: '320px',
+                            boxShadow: '0 0 30px rgba(0,0,0,0.5)'
+                        }} onClick={e => e.stopPropagation()}>
+                            <div style={{ textAlign: 'center', marginBottom: '20px' }}>
+                                <h3 style={{ margin: 0, fontSize: '1.1rem', color: '#fff' }}>Sell {sellModal.item.name}</h3>
+                                <div style={{ fontSize: '0.8rem', color: 'var(--text-dim)', marginTop: '4px' }}>
+                                    Unit Price: <span style={{ color: '#ffd700', fontWeight: 'bold' }}>{sellModal.unitPrice} Silver</span>
+                                </div>
                             </div>
-                        </div>
 
-                        <div style={{ marginBottom: '20px' }}>
-                            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px', fontSize: '0.75rem' }}>
-                                <span style={{ color: 'var(--text-dim)' }}>Quantity:</span>
-                                <span style={{ color: '#fff', fontWeight: 'bold' }}>Max: {sellModal.max}</span>
-                            </div>
+                            <div style={{ marginBottom: '20px' }}>
+                                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px', fontSize: '0.75rem' }}>
+                                    <span style={{ color: 'var(--text-dim)' }}>Quantity:</span>
+                                    <span style={{ color: '#fff', fontWeight: 'bold' }}>Max: {sellModal.max}</span>
+                                </div>
 
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                                <button
-                                    onClick={() => setSellModal({ ...sellModal, quantity: 1 })}
-                                    style={{ padding: '8px 12px', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: '#ccc', borderRadius: '6px', cursor: 'pointer', fontWeight: 'bold', fontSize: '0.7rem' }}
-                                >
-                                    MIN
-                                </button>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                                    <button
+                                        onClick={() => setSellModal({ ...sellModal, quantity: 1 })}
+                                        style={{ padding: '8px 12px', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: '#ccc', borderRadius: '6px', cursor: 'pointer', fontWeight: 'bold', fontSize: '0.7rem' }}
+                                    >
+                                        MIN
+                                    </button>
 
-                                <button
-                                    onClick={() => setSellModal({ ...sellModal, quantity: Math.max(1, sellModal.quantity - 1) })}
-                                    style={{ width: '36px', height: '36px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: '#fff', borderRadius: '6px', cursor: 'pointer', fontWeight: 'bold' }}
-                                >
-                                    -
-                                </button>
+                                    <button
+                                        onClick={() => setSellModal({ ...sellModal, quantity: Math.max(1, sellModal.quantity - 1) })}
+                                        style={{ width: '36px', height: '36px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: '#fff', borderRadius: '6px', cursor: 'pointer', fontWeight: 'bold' }}
+                                    >
+                                        -
+                                    </button>
+
+                                    <input
+                                        type="number"
+                                        min="1"
+                                        max={sellModal.max}
+                                        value={sellModal.quantity}
+                                        onChange={(e) => {
+                                            let val = parseInt(e.target.value);
+                                            if (isNaN(val)) val = 1;
+                                            if (val < 1) val = 1;
+                                            if (val > sellModal.max) val = sellModal.max;
+                                            setSellModal({ ...sellModal, quantity: val });
+                                        }}
+                                        style={{
+                                            flex: 1,
+                                            background: 'rgba(0,0,0,0.3)',
+                                            border: '1px solid var(--border)',
+                                            borderRadius: '6px',
+                                            color: '#fff',
+                                            padding: '8px',
+                                            textAlign: 'center',
+                                            fontWeight: 'bold',
+                                            fontSize: '1rem',
+                                            outline: 'none'
+                                        }}
+                                    />
+
+                                    <button
+                                        onClick={() => setSellModal({ ...sellModal, quantity: Math.min(sellModal.max, sellModal.quantity + 1) })}
+                                        style={{ width: '36px', height: '36px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: '#fff', borderRadius: '6px', cursor: 'pointer', fontWeight: 'bold' }}
+                                    >
+                                        +
+                                    </button>
+
+                                    <button
+                                        onClick={() => setSellModal({ ...sellModal, quantity: sellModal.max })}
+                                        style={{ padding: '8px 12px', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: '#ccc', borderRadius: '6px', cursor: 'pointer', fontWeight: 'bold', fontSize: '0.7rem' }}
+                                    >
+                                        MAX
+                                    </button>
+                                </div>
 
                                 <input
-                                    type="number"
+                                    type="range"
                                     min="1"
                                     max={sellModal.max}
                                     value={sellModal.quantity}
-                                    onChange={(e) => {
-                                        let val = parseInt(e.target.value);
-                                        if (isNaN(val)) val = 1;
-                                        if (val < 1) val = 1;
-                                        if (val > sellModal.max) val = sellModal.max;
-                                        setSellModal({ ...sellModal, quantity: val });
-                                    }}
-                                    style={{
-                                        flex: 1,
-                                        background: 'rgba(0,0,0,0.3)',
-                                        border: '1px solid var(--border)',
-                                        borderRadius: '6px',
-                                        color: '#fff',
-                                        padding: '8px',
-                                        textAlign: 'center',
-                                        fontWeight: 'bold',
-                                        fontSize: '1rem',
-                                        outline: 'none'
-                                    }}
+                                    onChange={(e) => setSellModal({ ...sellModal, quantity: parseInt(e.target.value) })}
+                                    style={{ width: '100%', accentColor: 'var(--accent)', cursor: 'pointer', marginTop: '15px' }}
                                 />
-
-                                <button
-                                    onClick={() => setSellModal({ ...sellModal, quantity: Math.min(sellModal.max, sellModal.quantity + 1) })}
-                                    style={{ width: '36px', height: '36px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: '#fff', borderRadius: '6px', cursor: 'pointer', fontWeight: 'bold' }}
-                                >
-                                    +
-                                </button>
-
-                                <button
-                                    onClick={() => setSellModal({ ...sellModal, quantity: sellModal.max })}
-                                    style={{ padding: '8px 12px', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: '#ccc', borderRadius: '6px', cursor: 'pointer', fontWeight: 'bold', fontSize: '0.7rem' }}
-                                >
-                                    MAX
-                                </button>
                             </div>
 
-                            <input
-                                type="range"
-                                min="1"
-                                max={sellModal.max}
-                                value={sellModal.quantity}
-                                onChange={(e) => setSellModal({ ...sellModal, quantity: parseInt(e.target.value) })}
-                                style={{ width: '100%', accentColor: 'var(--accent)', cursor: 'pointer', marginTop: '15px' }}
-                            />
-                        </div>
-
-                        <div style={{
-                            background: 'rgba(255, 215, 0, 0.05)',
-                            border: '1px solid rgba(255, 215, 0, 0.1)',
-                            borderRadius: '8px',
-                            padding: '12px',
-                            textAlign: 'center',
-                            marginBottom: '20px'
-                        }}>
-                            <div style={{ fontSize: '0.7rem', color: 'var(--text-dim)', textTransform: 'uppercase', letterSpacing: '1px' }}>Total Profit</div>
-                            <div style={{ fontSize: '1.4rem', fontWeight: '900', color: '#ffd700' }}>
-                                <Coins size={18} style={{ verticalAlign: 'middle', marginRight: '6px' }} />
-                                {(sellModal.unitPrice * sellModal.quantity).toLocaleString()}
+                            <div style={{
+                                background: 'rgba(255, 215, 0, 0.05)',
+                                border: '1px solid rgba(255, 215, 0, 0.1)',
+                                borderRadius: '8px',
+                                padding: '12px',
+                                textAlign: 'center',
+                                marginBottom: '20px'
+                            }}>
+                                <div style={{ fontSize: '0.7rem', color: 'var(--text-dim)', textTransform: 'uppercase', letterSpacing: '1px' }}>Total Profit</div>
+                                <div style={{ fontSize: '1.4rem', fontWeight: '900', color: '#ffd700' }}>
+                                    <Coins size={18} style={{ verticalAlign: 'middle', marginRight: '6px' }} />
+                                    {(sellModal.unitPrice * sellModal.quantity).toLocaleString()}
+                                </div>
                             </div>
-                        </div>
 
-                        <div style={{ display: 'flex', gap: '10px' }}>
-                            <button
-                                onClick={() => setSellModal(null)}
-                                style={{ flex: 1, padding: '12px', background: 'transparent', border: '1px solid rgba(255,255,255,0.1)', color: '#888', borderRadius: '8px', fontWeight: 'bold' }}
-                            >
-                                CANCEL
-                            </button>
-                            <button
-                                onClick={() => {
-                                    socket.emit('sell_item', { itemId: sellModal.itemId, quantity: sellModal.quantity });
-                                    setSellModal(null);
-                                }}
-                                style={{ flex: 1, padding: '12px', background: 'var(--accent)', border: 'none', color: '#000', borderRadius: '8px', fontWeight: 'bold' }}
-                            >
-                                SELL NOW
-                            </button>
+                            <div style={{ display: 'flex', gap: '10px' }}>
+                                <button
+                                    onClick={() => setSellModal(null)}
+                                    style={{ flex: 1, padding: '12px', background: 'transparent', border: '1px solid rgba(255,255,255,0.1)', color: '#888', borderRadius: '8px', fontWeight: 'bold' }}
+                                >
+                                    CANCEL
+                                </button>
+                                <button
+                                    onClick={() => {
+                                        socket.emit('sell_item', { itemId: sellModal.itemId, quantity: sellModal.quantity });
+                                        setSellModal(null);
+                                    }}
+                                    style={{ flex: 1, padding: '12px', background: 'var(--accent)', border: 'none', color: '#000', borderRadius: '8px', fontWeight: 'bold' }}
+                                >
+                                    SELL NOW
+                                </button>
+                            </div>
                         </div>
                     </div>
-                </div>
-            )}
-        </div>
+                )
+            }
+        </div >
     );
 };
 

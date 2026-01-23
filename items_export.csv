@@ -1,0 +1,1221 @@
+ID,Name,Tier,Type,Rarity,HP,Defense,Damage,IP
+T1_WOOD,Wood,1,RESOURCE,Normal,0,0,0,undefined
+T2_WOOD,Wood,2,RESOURCE,Normal,0,0,0,undefined
+T3_WOOD,Wood,3,RESOURCE,Normal,0,0,0,undefined
+T4_WOOD,Wood,4,RESOURCE,Normal,0,0,0,undefined
+T5_WOOD,Wood,5,RESOURCE,Normal,0,0,0,undefined
+T6_WOOD,Wood,6,RESOURCE,Normal,0,0,0,undefined
+T7_WOOD,Wood,7,RESOURCE,Normal,0,0,0,undefined
+T8_WOOD,Wood,8,RESOURCE,Normal,0,0,0,undefined
+T9_WOOD,Wood,9,RESOURCE,Normal,0,0,0,undefined
+T10_WOOD,Wood,10,RESOURCE,Normal,0,0,0,undefined
+T1_ORE,Ore,1,RESOURCE,Normal,0,0,0,undefined
+T2_ORE,Ore,2,RESOURCE,Normal,0,0,0,undefined
+T3_ORE,Ore,3,RESOURCE,Normal,0,0,0,undefined
+T4_ORE,Ore,4,RESOURCE,Normal,0,0,0,undefined
+T5_ORE,Ore,5,RESOURCE,Normal,0,0,0,undefined
+T6_ORE,Ore,6,RESOURCE,Normal,0,0,0,undefined
+T7_ORE,Ore,7,RESOURCE,Normal,0,0,0,undefined
+T8_ORE,Ore,8,RESOURCE,Normal,0,0,0,undefined
+T9_ORE,Ore,9,RESOURCE,Normal,0,0,0,undefined
+T10_ORE,Ore,10,RESOURCE,Normal,0,0,0,undefined
+T1_HIDE,Hide,1,RESOURCE,Normal,0,0,0,undefined
+T2_HIDE,Hide,2,RESOURCE,Normal,0,0,0,undefined
+T3_HIDE,Hide,3,RESOURCE,Normal,0,0,0,undefined
+T4_HIDE,Hide,4,RESOURCE,Normal,0,0,0,undefined
+T5_HIDE,Hide,5,RESOURCE,Normal,0,0,0,undefined
+T6_HIDE,Hide,6,RESOURCE,Normal,0,0,0,undefined
+T7_HIDE,Hide,7,RESOURCE,Normal,0,0,0,undefined
+T8_HIDE,Hide,8,RESOURCE,Normal,0,0,0,undefined
+T9_HIDE,Hide,9,RESOURCE,Normal,0,0,0,undefined
+T10_HIDE,Hide,10,RESOURCE,Normal,0,0,0,undefined
+T1_FIBER,Fiber,1,RESOURCE,Normal,0,0,0,undefined
+T2_FIBER,Fiber,2,RESOURCE,Normal,0,0,0,undefined
+T3_FIBER,Fiber,3,RESOURCE,Normal,0,0,0,undefined
+T4_FIBER,Fiber,4,RESOURCE,Normal,0,0,0,undefined
+T5_FIBER,Fiber,5,RESOURCE,Normal,0,0,0,undefined
+T6_FIBER,Fiber,6,RESOURCE,Normal,0,0,0,undefined
+T7_FIBER,Fiber,7,RESOURCE,Normal,0,0,0,undefined
+T8_FIBER,Fiber,8,RESOURCE,Normal,0,0,0,undefined
+T9_FIBER,Fiber,9,RESOURCE,Normal,0,0,0,undefined
+T10_FIBER,Fiber,10,RESOURCE,Normal,0,0,0,undefined
+T1_FISH,Fish,1,RESOURCE,Normal,0,0,0,undefined
+T2_FISH,Fish,2,RESOURCE,Normal,0,0,0,undefined
+T3_FISH,Fish,3,RESOURCE,Normal,0,0,0,undefined
+T4_FISH,Fish,4,RESOURCE,Normal,0,0,0,undefined
+T5_FISH,Fish,5,RESOURCE,Normal,0,0,0,undefined
+T6_FISH,Fish,6,RESOURCE,Normal,0,0,0,undefined
+T7_FISH,Fish,7,RESOURCE,Normal,0,0,0,undefined
+T8_FISH,Fish,8,RESOURCE,Normal,0,0,0,undefined
+T9_FISH,Fish,9,RESOURCE,Normal,0,0,0,undefined
+T10_FISH,Fish,10,RESOURCE,Normal,0,0,0,undefined
+T1_PLANK,Plank,1,RESOURCE,Normal,0,0,0,undefined
+T2_PLANK,Plank,2,RESOURCE,Normal,0,0,0,undefined
+T3_PLANK,Plank,3,RESOURCE,Normal,0,0,0,undefined
+T4_PLANK,Plank,4,RESOURCE,Normal,0,0,0,undefined
+T5_PLANK,Plank,5,RESOURCE,Normal,0,0,0,undefined
+T6_PLANK,Plank,6,RESOURCE,Normal,0,0,0,undefined
+T7_PLANK,Plank,7,RESOURCE,Normal,0,0,0,undefined
+T8_PLANK,Plank,8,RESOURCE,Normal,0,0,0,undefined
+T9_PLANK,Plank,9,RESOURCE,Normal,0,0,0,undefined
+T10_PLANK,Plank,10,RESOURCE,Normal,0,0,0,undefined
+T1_BAR,Bar,1,RESOURCE,Normal,0,0,0,undefined
+T2_BAR,Bar,2,RESOURCE,Normal,0,0,0,undefined
+T3_BAR,Bar,3,RESOURCE,Normal,0,0,0,undefined
+T4_BAR,Bar,4,RESOURCE,Normal,0,0,0,undefined
+T5_BAR,Bar,5,RESOURCE,Normal,0,0,0,undefined
+T6_BAR,Bar,6,RESOURCE,Normal,0,0,0,undefined
+T7_BAR,Bar,7,RESOURCE,Normal,0,0,0,undefined
+T8_BAR,Bar,8,RESOURCE,Normal,0,0,0,undefined
+T9_BAR,Bar,9,RESOURCE,Normal,0,0,0,undefined
+T10_BAR,Bar,10,RESOURCE,Normal,0,0,0,undefined
+T1_LEATHER,Leather,1,RESOURCE,Normal,0,0,0,undefined
+T2_LEATHER,Leather,2,RESOURCE,Normal,0,0,0,undefined
+T3_LEATHER,Leather,3,RESOURCE,Normal,0,0,0,undefined
+T4_LEATHER,Leather,4,RESOURCE,Normal,0,0,0,undefined
+T5_LEATHER,Leather,5,RESOURCE,Normal,0,0,0,undefined
+T6_LEATHER,Leather,6,RESOURCE,Normal,0,0,0,undefined
+T7_LEATHER,Leather,7,RESOURCE,Normal,0,0,0,undefined
+T8_LEATHER,Leather,8,RESOURCE,Normal,0,0,0,undefined
+T9_LEATHER,Leather,9,RESOURCE,Normal,0,0,0,undefined
+T10_LEATHER,Leather,10,RESOURCE,Normal,0,0,0,undefined
+T1_CLOTH,Cloth,1,RESOURCE,Normal,0,0,0,undefined
+T2_CLOTH,Cloth,2,RESOURCE,Normal,0,0,0,undefined
+T3_CLOTH,Cloth,3,RESOURCE,Normal,0,0,0,undefined
+T4_CLOTH,Cloth,4,RESOURCE,Normal,0,0,0,undefined
+T5_CLOTH,Cloth,5,RESOURCE,Normal,0,0,0,undefined
+T6_CLOTH,Cloth,6,RESOURCE,Normal,0,0,0,undefined
+T7_CLOTH,Cloth,7,RESOURCE,Normal,0,0,0,undefined
+T8_CLOTH,Cloth,8,RESOURCE,Normal,0,0,0,undefined
+T9_CLOTH,Cloth,9,RESOURCE,Normal,0,0,0,undefined
+T10_CLOTH,Cloth,10,RESOURCE,Normal,0,0,0,undefined
+T1_FOOD,Food,1,FOOD,Normal,0,0,0,undefined
+T2_FOOD,Food,2,FOOD,Normal,0,0,0,undefined
+T3_FOOD,Food,3,FOOD,Normal,0,0,0,undefined
+T4_FOOD,Food,4,FOOD,Normal,0,0,0,undefined
+T5_FOOD,Food,5,FOOD,Normal,0,0,0,undefined
+T6_FOOD,Food,6,FOOD,Normal,0,0,0,undefined
+T7_FOOD,Food,7,FOOD,Normal,0,0,0,undefined
+T8_FOOD,Food,8,FOOD,Normal,0,0,0,undefined
+T9_FOOD,Food,9,FOOD,Normal,0,0,0,undefined
+T10_FOOD,Food,10,FOOD,Normal,0,0,0,undefined
+T1_SWORD,Sword,1,WEAPON,Normal,0,0,10,100
+T1_SWORD_Q1,Good Sword,1,WEAPON,Good,0,0,12,120
+T1_SWORD_Q2,Outstanding Sword,1,WEAPON,Outstanding,0,0,15,150
+T1_SWORD_Q3,Excellent Sword,1,WEAPON,Excellent,0,0,20,200
+T1_SWORD_Q4,Masterpiece Sword,1,WEAPON,Masterpiece,0,0,30,300
+T2_SWORD,Sword,2,WEAPON,Normal,0,0,25,200
+T2_SWORD_Q1,Good Sword,2,WEAPON,Good,0,0,30,220
+T2_SWORD_Q2,Outstanding Sword,2,WEAPON,Outstanding,0,0,37.5,250
+T2_SWORD_Q3,Excellent Sword,2,WEAPON,Excellent,0,0,50,300
+T2_SWORD_Q4,Masterpiece Sword,2,WEAPON,Masterpiece,0,0,75,400
+T3_SWORD,Sword,3,WEAPON,Normal,0,0,60,300
+T3_SWORD_Q1,Good Sword,3,WEAPON,Good,0,0,72,320
+T3_SWORD_Q2,Outstanding Sword,3,WEAPON,Outstanding,0,0,90,350
+T3_SWORD_Q3,Excellent Sword,3,WEAPON,Excellent,0,0,120,400
+T3_SWORD_Q4,Masterpiece Sword,3,WEAPON,Masterpiece,0,0,180,500
+T4_SWORD,Sword,4,WEAPON,Normal,0,0,150,400
+T4_SWORD_Q1,Good Sword,4,WEAPON,Good,0,0,180,420
+T4_SWORD_Q2,Outstanding Sword,4,WEAPON,Outstanding,0,0,225,450
+T4_SWORD_Q3,Excellent Sword,4,WEAPON,Excellent,0,0,300,500
+T4_SWORD_Q4,Masterpiece Sword,4,WEAPON,Masterpiece,0,0,450,600
+T5_SWORD,Sword,5,WEAPON,Normal,0,0,400,500
+T5_SWORD_Q1,Good Sword,5,WEAPON,Good,0,0,480,520
+T5_SWORD_Q2,Outstanding Sword,5,WEAPON,Outstanding,0,0,600,550
+T5_SWORD_Q3,Excellent Sword,5,WEAPON,Excellent,0,0,800,600
+T5_SWORD_Q4,Masterpiece Sword,5,WEAPON,Masterpiece,0,0,1200,700
+T6_SWORD,Sword,6,WEAPON,Normal,0,0,1000,600
+T6_SWORD_Q1,Good Sword,6,WEAPON,Good,0,0,1200,620
+T6_SWORD_Q2,Outstanding Sword,6,WEAPON,Outstanding,0,0,1500,650
+T6_SWORD_Q3,Excellent Sword,6,WEAPON,Excellent,0,0,2000,700
+T6_SWORD_Q4,Masterpiece Sword,6,WEAPON,Masterpiece,0,0,3000,800
+T7_SWORD,Sword,7,WEAPON,Normal,0,0,2500,700
+T7_SWORD_Q1,Good Sword,7,WEAPON,Good,0,0,3000,720
+T7_SWORD_Q2,Outstanding Sword,7,WEAPON,Outstanding,0,0,3750,750
+T7_SWORD_Q3,Excellent Sword,7,WEAPON,Excellent,0,0,5000,800
+T7_SWORD_Q4,Masterpiece Sword,7,WEAPON,Masterpiece,0,0,7500,900
+T8_SWORD,Sword,8,WEAPON,Normal,0,0,6000,800
+T8_SWORD_Q1,Good Sword,8,WEAPON,Good,0,0,7200,820
+T8_SWORD_Q2,Outstanding Sword,8,WEAPON,Outstanding,0,0,9000,850
+T8_SWORD_Q3,Excellent Sword,8,WEAPON,Excellent,0,0,12000,900
+T8_SWORD_Q4,Masterpiece Sword,8,WEAPON,Masterpiece,0,0,18000,1000
+T9_SWORD,Sword,9,WEAPON,Normal,0,0,14000,900
+T9_SWORD_Q1,Good Sword,9,WEAPON,Good,0,0,16800,920
+T9_SWORD_Q2,Outstanding Sword,9,WEAPON,Outstanding,0,0,21000,950
+T9_SWORD_Q3,Excellent Sword,9,WEAPON,Excellent,0,0,28000,1000
+T9_SWORD_Q4,Masterpiece Sword,9,WEAPON,Masterpiece,0,0,42000,1100
+T10_SWORD,Sword,10,WEAPON,Normal,0,0,30000,1000
+T10_SWORD_Q1,Good Sword,10,WEAPON,Good,0,0,36000,1020
+T10_SWORD_Q2,Outstanding Sword,10,WEAPON,Outstanding,0,0,45000,1050
+T10_SWORD_Q3,Excellent Sword,10,WEAPON,Excellent,0,0,60000,1100
+T10_SWORD_Q4,Masterpiece Sword,10,WEAPON,Masterpiece,0,0,90000,1200
+T1_SHIELD,Shield,1,OFF_HAND,Normal,25,2,0,100
+T1_SHIELD_Q1,Good Shield,1,OFF_HAND,Good,30,2.4,0,120
+T1_SHIELD_Q2,Outstanding Shield,1,OFF_HAND,Outstanding,37.5,3,0,150
+T1_SHIELD_Q3,Excellent Shield,1,OFF_HAND,Excellent,50,4,0,200
+T1_SHIELD_Q4,Masterpiece Shield,1,OFF_HAND,Masterpiece,75,6,0,300
+T2_SHIELD,Shield,2,OFF_HAND,Normal,60,7,0,200
+T2_SHIELD_Q1,Good Shield,2,OFF_HAND,Good,72,8.4,0,220
+T2_SHIELD_Q2,Outstanding Shield,2,OFF_HAND,Outstanding,90,10.5,0,250
+T2_SHIELD_Q3,Excellent Shield,2,OFF_HAND,Excellent,120,14,0,300
+T2_SHIELD_Q4,Masterpiece Shield,2,OFF_HAND,Masterpiece,180,21,0,400
+T3_SHIELD,Shield,3,OFF_HAND,Normal,120,14,0,300
+T3_SHIELD_Q1,Good Shield,3,OFF_HAND,Good,144,16.8,0,320
+T3_SHIELD_Q2,Outstanding Shield,3,OFF_HAND,Outstanding,180,21,0,350
+T3_SHIELD_Q3,Excellent Shield,3,OFF_HAND,Excellent,240,28,0,400
+T3_SHIELD_Q4,Masterpiece Shield,3,OFF_HAND,Masterpiece,360,42,0,500
+T4_SHIELD,Shield,4,OFF_HAND,Normal,400,37,0,400
+T4_SHIELD_Q1,Good Shield,4,OFF_HAND,Good,480,44.4,0,420
+T4_SHIELD_Q2,Outstanding Shield,4,OFF_HAND,Outstanding,600,55.5,0,450
+T4_SHIELD_Q3,Excellent Shield,4,OFF_HAND,Excellent,800,74,0,500
+T4_SHIELD_Q4,Masterpiece Shield,4,OFF_HAND,Masterpiece,1200,111,0,600
+T5_SHIELD,Shield,5,OFF_HAND,Normal,1000,93,0,500
+T5_SHIELD_Q1,Good Shield,5,OFF_HAND,Good,1200,111.6,0,520
+T5_SHIELD_Q2,Outstanding Shield,5,OFF_HAND,Outstanding,1500,139.5,0,550
+T5_SHIELD_Q3,Excellent Shield,5,OFF_HAND,Excellent,2000,186,0,600
+T5_SHIELD_Q4,Masterpiece Shield,5,OFF_HAND,Masterpiece,3000,279,0,700
+T6_SHIELD,Shield,6,OFF_HAND,Normal,2500,233,0,600
+T6_SHIELD_Q1,Good Shield,6,OFF_HAND,Good,3000,279.6,0,620
+T6_SHIELD_Q2,Outstanding Shield,6,OFF_HAND,Outstanding,3750,349.5,0,650
+T6_SHIELD_Q3,Excellent Shield,6,OFF_HAND,Excellent,5000,466,0,700
+T6_SHIELD_Q4,Masterpiece Shield,6,OFF_HAND,Masterpiece,7500,699,0,800
+T7_SHIELD,Shield,7,OFF_HAND,Normal,6000,560,0,700
+T7_SHIELD_Q1,Good Shield,7,OFF_HAND,Good,7200,672,0,720
+T7_SHIELD_Q2,Outstanding Shield,7,OFF_HAND,Outstanding,9000,840,0,750
+T7_SHIELD_Q3,Excellent Shield,7,OFF_HAND,Excellent,12000,1120,0,800
+T7_SHIELD_Q4,Masterpiece Shield,7,OFF_HAND,Masterpiece,18000,1680,0,900
+T8_SHIELD,Shield,8,OFF_HAND,Normal,15000,1401,0,800
+T8_SHIELD_Q1,Good Shield,8,OFF_HAND,Good,18000,1681.2,0,820
+T8_SHIELD_Q2,Outstanding Shield,8,OFF_HAND,Outstanding,22500,2101.5,0,850
+T8_SHIELD_Q3,Excellent Shield,8,OFF_HAND,Excellent,30000,2802,0,900
+T8_SHIELD_Q4,Masterpiece Shield,8,OFF_HAND,Masterpiece,45000,4203,0,1000
+T9_SHIELD,Shield,9,OFF_HAND,Normal,40000,3269,0,900
+T9_SHIELD_Q1,Good Shield,9,OFF_HAND,Good,48000,3922.8,0,920
+T9_SHIELD_Q2,Outstanding Shield,9,OFF_HAND,Outstanding,60000,4903.5,0,950
+T9_SHIELD_Q3,Excellent Shield,9,OFF_HAND,Excellent,80000,6538,0,1000
+T9_SHIELD_Q4,Masterpiece Shield,9,OFF_HAND,Masterpiece,120000,9807,0,1100
+T10_SHIELD,Shield,10,OFF_HAND,Normal,100000,7005,0,1000
+T10_SHIELD_Q1,Good Shield,10,OFF_HAND,Good,120000,8406,0,1020
+T10_SHIELD_Q2,Outstanding Shield,10,OFF_HAND,Outstanding,150000,10507.5,0,1050
+T10_SHIELD_Q3,Excellent Shield,10,OFF_HAND,Excellent,200000,14010,0,1100
+T10_SHIELD_Q4,Masterpiece Shield,10,OFF_HAND,Masterpiece,300000,21015,0,1200
+T1_PLATE_ARMOR,Plate Armor,1,ARMOR,Normal,50,5,0,100
+T1_PLATE_ARMOR_Q1,Good Plate Armor,1,ARMOR,Good,60,6,0,120
+T1_PLATE_ARMOR_Q2,Outstanding Plate Armor,1,ARMOR,Outstanding,75,7.5,0,150
+T1_PLATE_ARMOR_Q3,Excellent Plate Armor,1,ARMOR,Excellent,100,10,0,200
+T1_PLATE_ARMOR_Q4,Masterpiece Plate Armor,1,ARMOR,Masterpiece,150,15,0,300
+T2_PLATE_ARMOR,Plate Armor,2,ARMOR,Normal,120,15,0,200
+T2_PLATE_ARMOR_Q1,Good Plate Armor,2,ARMOR,Good,144,18,0,220
+T2_PLATE_ARMOR_Q2,Outstanding Plate Armor,2,ARMOR,Outstanding,180,22.5,0,250
+T2_PLATE_ARMOR_Q3,Excellent Plate Armor,2,ARMOR,Excellent,240,30,0,300
+T2_PLATE_ARMOR_Q4,Masterpiece Plate Armor,2,ARMOR,Masterpiece,360,45,0,400
+T3_PLATE_ARMOR,Plate Armor,3,ARMOR,Normal,240,30,0,300
+T3_PLATE_ARMOR_Q1,Good Plate Armor,3,ARMOR,Good,288,36,0,320
+T3_PLATE_ARMOR_Q2,Outstanding Plate Armor,3,ARMOR,Outstanding,360,45,0,350
+T3_PLATE_ARMOR_Q3,Excellent Plate Armor,3,ARMOR,Excellent,480,60,0,400
+T3_PLATE_ARMOR_Q4,Masterpiece Plate Armor,3,ARMOR,Masterpiece,720,90,0,500
+T4_PLATE_ARMOR,Plate Armor,4,ARMOR,Normal,800,80,0,400
+T4_PLATE_ARMOR_Q1,Good Plate Armor,4,ARMOR,Good,960,96,0,420
+T4_PLATE_ARMOR_Q2,Outstanding Plate Armor,4,ARMOR,Outstanding,1200,120,0,450
+T4_PLATE_ARMOR_Q3,Excellent Plate Armor,4,ARMOR,Excellent,1600,160,0,500
+T4_PLATE_ARMOR_Q4,Masterpiece Plate Armor,4,ARMOR,Masterpiece,2400,240,0,600
+T5_PLATE_ARMOR,Plate Armor,5,ARMOR,Normal,2000,200,0,500
+T5_PLATE_ARMOR_Q1,Good Plate Armor,5,ARMOR,Good,2400,240,0,520
+T5_PLATE_ARMOR_Q2,Outstanding Plate Armor,5,ARMOR,Outstanding,3000,300,0,550
+T5_PLATE_ARMOR_Q3,Excellent Plate Armor,5,ARMOR,Excellent,4000,400,0,600
+T5_PLATE_ARMOR_Q4,Masterpiece Plate Armor,5,ARMOR,Masterpiece,6000,600,0,700
+T6_PLATE_ARMOR,Plate Armor,6,ARMOR,Normal,5000,500,0,600
+T6_PLATE_ARMOR_Q1,Good Plate Armor,6,ARMOR,Good,6000,600,0,620
+T6_PLATE_ARMOR_Q2,Outstanding Plate Armor,6,ARMOR,Outstanding,7500,750,0,650
+T6_PLATE_ARMOR_Q3,Excellent Plate Armor,6,ARMOR,Excellent,10000,1000,0,700
+T6_PLATE_ARMOR_Q4,Masterpiece Plate Armor,6,ARMOR,Masterpiece,15000,1500,0,800
+T7_PLATE_ARMOR,Plate Armor,7,ARMOR,Normal,12000,1200,0,700
+T7_PLATE_ARMOR_Q1,Good Plate Armor,7,ARMOR,Good,14400,1440,0,720
+T7_PLATE_ARMOR_Q2,Outstanding Plate Armor,7,ARMOR,Outstanding,18000,1800,0,750
+T7_PLATE_ARMOR_Q3,Excellent Plate Armor,7,ARMOR,Excellent,24000,2400,0,800
+T7_PLATE_ARMOR_Q4,Masterpiece Plate Armor,7,ARMOR,Masterpiece,36000,3600,0,900
+T8_PLATE_ARMOR,Plate Armor,8,ARMOR,Normal,30000,3000,0,800
+T8_PLATE_ARMOR_Q1,Good Plate Armor,8,ARMOR,Good,36000,3600,0,820
+T8_PLATE_ARMOR_Q2,Outstanding Plate Armor,8,ARMOR,Outstanding,45000,4500,0,850
+T8_PLATE_ARMOR_Q3,Excellent Plate Armor,8,ARMOR,Excellent,60000,6000,0,900
+T8_PLATE_ARMOR_Q4,Masterpiece Plate Armor,8,ARMOR,Masterpiece,90000,9000,0,1000
+T9_PLATE_ARMOR,Plate Armor,9,ARMOR,Normal,80000,7000,0,900
+T9_PLATE_ARMOR_Q1,Good Plate Armor,9,ARMOR,Good,96000,8400,0,920
+T9_PLATE_ARMOR_Q2,Outstanding Plate Armor,9,ARMOR,Outstanding,120000,10500,0,950
+T9_PLATE_ARMOR_Q3,Excellent Plate Armor,9,ARMOR,Excellent,160000,14000,0,1000
+T9_PLATE_ARMOR_Q4,Masterpiece Plate Armor,9,ARMOR,Masterpiece,240000,21000,0,1100
+T10_PLATE_ARMOR,Plate Armor,10,ARMOR,Normal,200000,15000,0,1000
+T10_PLATE_ARMOR_Q1,Good Plate Armor,10,ARMOR,Good,240000,18000,0,1020
+T10_PLATE_ARMOR_Q2,Outstanding Plate Armor,10,ARMOR,Outstanding,300000,22500,0,1050
+T10_PLATE_ARMOR_Q3,Excellent Plate Armor,10,ARMOR,Excellent,400000,30000,0,1100
+T10_PLATE_ARMOR_Q4,Masterpiece Plate Armor,10,ARMOR,Masterpiece,600000,45000,0,1200
+T1_PLATE_HELMET,Plate Helmet,1,HELMET,Normal,12,1,0,100
+T1_PLATE_HELMET_Q1,Good Plate Helmet,1,HELMET,Good,14.4,1.2,0,120
+T1_PLATE_HELMET_Q2,Outstanding Plate Helmet,1,HELMET,Outstanding,18,1.5,0,150
+T1_PLATE_HELMET_Q3,Excellent Plate Helmet,1,HELMET,Excellent,24,2,0,200
+T1_PLATE_HELMET_Q4,Masterpiece Plate Helmet,1,HELMET,Masterpiece,36,3,0,300
+T2_PLATE_HELMET,Plate Helmet,2,HELMET,Normal,30,3,0,200
+T2_PLATE_HELMET_Q1,Good Plate Helmet,2,HELMET,Good,36,3.6,0,220
+T2_PLATE_HELMET_Q2,Outstanding Plate Helmet,2,HELMET,Outstanding,45,4.5,0,250
+T2_PLATE_HELMET_Q3,Excellent Plate Helmet,2,HELMET,Excellent,60,6,0,300
+T2_PLATE_HELMET_Q4,Masterpiece Plate Helmet,2,HELMET,Masterpiece,90,9,0,400
+T3_PLATE_HELMET,Plate Helmet,3,HELMET,Normal,60,7,0,300
+T3_PLATE_HELMET_Q1,Good Plate Helmet,3,HELMET,Good,72,8.4,0,320
+T3_PLATE_HELMET_Q2,Outstanding Plate Helmet,3,HELMET,Outstanding,90,10.5,0,350
+T3_PLATE_HELMET_Q3,Excellent Plate Helmet,3,HELMET,Excellent,120,14,0,400
+T3_PLATE_HELMET_Q4,Masterpiece Plate Helmet,3,HELMET,Masterpiece,180,21,0,500
+T4_PLATE_HELMET,Plate Helmet,4,HELMET,Normal,200,20,0,400
+T4_PLATE_HELMET_Q1,Good Plate Helmet,4,HELMET,Good,240,24,0,420
+T4_PLATE_HELMET_Q2,Outstanding Plate Helmet,4,HELMET,Outstanding,300,30,0,450
+T4_PLATE_HELMET_Q3,Excellent Plate Helmet,4,HELMET,Excellent,400,40,0,500
+T4_PLATE_HELMET_Q4,Masterpiece Plate Helmet,4,HELMET,Masterpiece,600,60,0,600
+T5_PLATE_HELMET,Plate Helmet,5,HELMET,Normal,500,50,0,500
+T5_PLATE_HELMET_Q1,Good Plate Helmet,5,HELMET,Good,600,60,0,520
+T5_PLATE_HELMET_Q2,Outstanding Plate Helmet,5,HELMET,Outstanding,750,75,0,550
+T5_PLATE_HELMET_Q3,Excellent Plate Helmet,5,HELMET,Excellent,1000,100,0,600
+T5_PLATE_HELMET_Q4,Masterpiece Plate Helmet,5,HELMET,Masterpiece,1500,150,0,700
+T6_PLATE_HELMET,Plate Helmet,6,HELMET,Normal,1250,125,0,600
+T6_PLATE_HELMET_Q1,Good Plate Helmet,6,HELMET,Good,1500,150,0,620
+T6_PLATE_HELMET_Q2,Outstanding Plate Helmet,6,HELMET,Outstanding,1875,187.5,0,650
+T6_PLATE_HELMET_Q3,Excellent Plate Helmet,6,HELMET,Excellent,2500,250,0,700
+T6_PLATE_HELMET_Q4,Masterpiece Plate Helmet,6,HELMET,Masterpiece,3750,375,0,800
+T7_PLATE_HELMET,Plate Helmet,7,HELMET,Normal,3000,300,0,700
+T7_PLATE_HELMET_Q1,Good Plate Helmet,7,HELMET,Good,3600,360,0,720
+T7_PLATE_HELMET_Q2,Outstanding Plate Helmet,7,HELMET,Outstanding,4500,450,0,750
+T7_PLATE_HELMET_Q3,Excellent Plate Helmet,7,HELMET,Excellent,6000,600,0,800
+T7_PLATE_HELMET_Q4,Masterpiece Plate Helmet,7,HELMET,Masterpiece,9000,900,0,900
+T8_PLATE_HELMET,Plate Helmet,8,HELMET,Normal,7500,750,0,800
+T8_PLATE_HELMET_Q1,Good Plate Helmet,8,HELMET,Good,9000,900,0,820
+T8_PLATE_HELMET_Q2,Outstanding Plate Helmet,8,HELMET,Outstanding,11250,1125,0,850
+T8_PLATE_HELMET_Q3,Excellent Plate Helmet,8,HELMET,Excellent,15000,1500,0,900
+T8_PLATE_HELMET_Q4,Masterpiece Plate Helmet,8,HELMET,Masterpiece,22500,2250,0,1000
+T9_PLATE_HELMET,Plate Helmet,9,HELMET,Normal,20000,1750,0,900
+T9_PLATE_HELMET_Q1,Good Plate Helmet,9,HELMET,Good,24000,2100,0,920
+T9_PLATE_HELMET_Q2,Outstanding Plate Helmet,9,HELMET,Outstanding,30000,2625,0,950
+T9_PLATE_HELMET_Q3,Excellent Plate Helmet,9,HELMET,Excellent,40000,3500,0,1000
+T9_PLATE_HELMET_Q4,Masterpiece Plate Helmet,9,HELMET,Masterpiece,60000,5250,0,1100
+T10_PLATE_HELMET,Plate Helmet,10,HELMET,Normal,50000,3750,0,1000
+T10_PLATE_HELMET_Q1,Good Plate Helmet,10,HELMET,Good,60000,4500,0,1020
+T10_PLATE_HELMET_Q2,Outstanding Plate Helmet,10,HELMET,Outstanding,75000,5625,0,1050
+T10_PLATE_HELMET_Q3,Excellent Plate Helmet,10,HELMET,Excellent,100000,7500,0,1100
+T10_PLATE_HELMET_Q4,Masterpiece Plate Helmet,10,HELMET,Masterpiece,150000,11250,0,1200
+T1_PLATE_BOOTS,Plate Boots,1,BOOTS,Normal,12,1,0,100
+T1_PLATE_BOOTS_Q1,Good Plate Boots,1,BOOTS,Good,14.4,1.2,0,120
+T1_PLATE_BOOTS_Q2,Outstanding Plate Boots,1,BOOTS,Outstanding,18,1.5,0,150
+T1_PLATE_BOOTS_Q3,Excellent Plate Boots,1,BOOTS,Excellent,24,2,0,200
+T1_PLATE_BOOTS_Q4,Masterpiece Plate Boots,1,BOOTS,Masterpiece,36,3,0,300
+T2_PLATE_BOOTS,Plate Boots,2,BOOTS,Normal,30,3,0,200
+T2_PLATE_BOOTS_Q1,Good Plate Boots,2,BOOTS,Good,36,3.6,0,220
+T2_PLATE_BOOTS_Q2,Outstanding Plate Boots,2,BOOTS,Outstanding,45,4.5,0,250
+T2_PLATE_BOOTS_Q3,Excellent Plate Boots,2,BOOTS,Excellent,60,6,0,300
+T2_PLATE_BOOTS_Q4,Masterpiece Plate Boots,2,BOOTS,Masterpiece,90,9,0,400
+T3_PLATE_BOOTS,Plate Boots,3,BOOTS,Normal,60,7,0,300
+T3_PLATE_BOOTS_Q1,Good Plate Boots,3,BOOTS,Good,72,8.4,0,320
+T3_PLATE_BOOTS_Q2,Outstanding Plate Boots,3,BOOTS,Outstanding,90,10.5,0,350
+T3_PLATE_BOOTS_Q3,Excellent Plate Boots,3,BOOTS,Excellent,120,14,0,400
+T3_PLATE_BOOTS_Q4,Masterpiece Plate Boots,3,BOOTS,Masterpiece,180,21,0,500
+T4_PLATE_BOOTS,Plate Boots,4,BOOTS,Normal,200,20,0,400
+T4_PLATE_BOOTS_Q1,Good Plate Boots,4,BOOTS,Good,240,24,0,420
+T4_PLATE_BOOTS_Q2,Outstanding Plate Boots,4,BOOTS,Outstanding,300,30,0,450
+T4_PLATE_BOOTS_Q3,Excellent Plate Boots,4,BOOTS,Excellent,400,40,0,500
+T4_PLATE_BOOTS_Q4,Masterpiece Plate Boots,4,BOOTS,Masterpiece,600,60,0,600
+T5_PLATE_BOOTS,Plate Boots,5,BOOTS,Normal,500,50,0,500
+T5_PLATE_BOOTS_Q1,Good Plate Boots,5,BOOTS,Good,600,60,0,520
+T5_PLATE_BOOTS_Q2,Outstanding Plate Boots,5,BOOTS,Outstanding,750,75,0,550
+T5_PLATE_BOOTS_Q3,Excellent Plate Boots,5,BOOTS,Excellent,1000,100,0,600
+T5_PLATE_BOOTS_Q4,Masterpiece Plate Boots,5,BOOTS,Masterpiece,1500,150,0,700
+T6_PLATE_BOOTS,Plate Boots,6,BOOTS,Normal,1250,125,0,600
+T6_PLATE_BOOTS_Q1,Good Plate Boots,6,BOOTS,Good,1500,150,0,620
+T6_PLATE_BOOTS_Q2,Outstanding Plate Boots,6,BOOTS,Outstanding,1875,187.5,0,650
+T6_PLATE_BOOTS_Q3,Excellent Plate Boots,6,BOOTS,Excellent,2500,250,0,700
+T6_PLATE_BOOTS_Q4,Masterpiece Plate Boots,6,BOOTS,Masterpiece,3750,375,0,800
+T7_PLATE_BOOTS,Plate Boots,7,BOOTS,Normal,3000,300,0,700
+T7_PLATE_BOOTS_Q1,Good Plate Boots,7,BOOTS,Good,3600,360,0,720
+T7_PLATE_BOOTS_Q2,Outstanding Plate Boots,7,BOOTS,Outstanding,4500,450,0,750
+T7_PLATE_BOOTS_Q3,Excellent Plate Boots,7,BOOTS,Excellent,6000,600,0,800
+T7_PLATE_BOOTS_Q4,Masterpiece Plate Boots,7,BOOTS,Masterpiece,9000,900,0,900
+T8_PLATE_BOOTS,Plate Boots,8,BOOTS,Normal,7500,750,0,800
+T8_PLATE_BOOTS_Q1,Good Plate Boots,8,BOOTS,Good,9000,900,0,820
+T8_PLATE_BOOTS_Q2,Outstanding Plate Boots,8,BOOTS,Outstanding,11250,1125,0,850
+T8_PLATE_BOOTS_Q3,Excellent Plate Boots,8,BOOTS,Excellent,15000,1500,0,900
+T8_PLATE_BOOTS_Q4,Masterpiece Plate Boots,8,BOOTS,Masterpiece,22500,2250,0,1000
+T9_PLATE_BOOTS,Plate Boots,9,BOOTS,Normal,20000,1750,0,900
+T9_PLATE_BOOTS_Q1,Good Plate Boots,9,BOOTS,Good,24000,2100,0,920
+T9_PLATE_BOOTS_Q2,Outstanding Plate Boots,9,BOOTS,Outstanding,30000,2625,0,950
+T9_PLATE_BOOTS_Q3,Excellent Plate Boots,9,BOOTS,Excellent,40000,3500,0,1000
+T9_PLATE_BOOTS_Q4,Masterpiece Plate Boots,9,BOOTS,Masterpiece,60000,5250,0,1100
+T10_PLATE_BOOTS,Plate Boots,10,BOOTS,Normal,50000,3750,0,1000
+T10_PLATE_BOOTS_Q1,Good Plate Boots,10,BOOTS,Good,60000,4500,0,1020
+T10_PLATE_BOOTS_Q2,Outstanding Plate Boots,10,BOOTS,Outstanding,75000,5625,0,1050
+T10_PLATE_BOOTS_Q3,Excellent Plate Boots,10,BOOTS,Excellent,100000,7500,0,1100
+T10_PLATE_BOOTS_Q4,Masterpiece Plate Boots,10,BOOTS,Masterpiece,150000,11250,0,1200
+T1_PLATE_GLOVES,Plate Gloves,1,GLOVES,Normal,7,0,0,100
+T1_PLATE_GLOVES_Q1,Good Plate Gloves,1,GLOVES,Good,8.4,0,0,120
+T1_PLATE_GLOVES_Q2,Outstanding Plate Gloves,1,GLOVES,Outstanding,10.5,0,0,150
+T1_PLATE_GLOVES_Q3,Excellent Plate Gloves,1,GLOVES,Excellent,14,0,0,200
+T1_PLATE_GLOVES_Q4,Masterpiece Plate Gloves,1,GLOVES,Masterpiece,21,0,0,300
+T2_PLATE_GLOVES,Plate Gloves,2,GLOVES,Normal,18,2,1,200
+T2_PLATE_GLOVES_Q1,Good Plate Gloves,2,GLOVES,Good,21.6,2.4,1.2,220
+T2_PLATE_GLOVES_Q2,Outstanding Plate Gloves,2,GLOVES,Outstanding,27,3,1.5,250
+T2_PLATE_GLOVES_Q3,Excellent Plate Gloves,2,GLOVES,Excellent,36,4,2,300
+T2_PLATE_GLOVES_Q4,Masterpiece Plate Gloves,2,GLOVES,Masterpiece,54,6,3,400
+T3_PLATE_GLOVES,Plate Gloves,3,GLOVES,Normal,36,4,3,300
+T3_PLATE_GLOVES_Q1,Good Plate Gloves,3,GLOVES,Good,43.2,4.8,3.6,320
+T3_PLATE_GLOVES_Q2,Outstanding Plate Gloves,3,GLOVES,Outstanding,54,6,4.5,350
+T3_PLATE_GLOVES_Q3,Excellent Plate Gloves,3,GLOVES,Excellent,72,8,6,400
+T3_PLATE_GLOVES_Q4,Masterpiece Plate Gloves,3,GLOVES,Masterpiece,108,12,9,500
+T4_PLATE_GLOVES,Plate Gloves,4,GLOVES,Normal,120,12,7,400
+T4_PLATE_GLOVES_Q1,Good Plate Gloves,4,GLOVES,Good,144,14.4,8.4,420
+T4_PLATE_GLOVES_Q2,Outstanding Plate Gloves,4,GLOVES,Outstanding,180,18,10.5,450
+T4_PLATE_GLOVES_Q3,Excellent Plate Gloves,4,GLOVES,Excellent,240,24,14,500
+T4_PLATE_GLOVES_Q4,Masterpiece Plate Gloves,4,GLOVES,Masterpiece,360,36,21,600
+T5_PLATE_GLOVES,Plate Gloves,5,GLOVES,Normal,300,30,20,500
+T5_PLATE_GLOVES_Q1,Good Plate Gloves,5,GLOVES,Good,360,36,24,520
+T5_PLATE_GLOVES_Q2,Outstanding Plate Gloves,5,GLOVES,Outstanding,450,45,30,550
+T5_PLATE_GLOVES_Q3,Excellent Plate Gloves,5,GLOVES,Excellent,600,60,40,600
+T5_PLATE_GLOVES_Q4,Masterpiece Plate Gloves,5,GLOVES,Masterpiece,900,90,60,700
+T6_PLATE_GLOVES,Plate Gloves,6,GLOVES,Normal,750,75,50,600
+T6_PLATE_GLOVES_Q1,Good Plate Gloves,6,GLOVES,Good,900,90,60,620
+T6_PLATE_GLOVES_Q2,Outstanding Plate Gloves,6,GLOVES,Outstanding,1125,112.5,75,650
+T6_PLATE_GLOVES_Q3,Excellent Plate Gloves,6,GLOVES,Excellent,1500,150,100,700
+T6_PLATE_GLOVES_Q4,Masterpiece Plate Gloves,6,GLOVES,Masterpiece,2250,225,150,800
+T7_PLATE_GLOVES,Plate Gloves,7,GLOVES,Normal,1800,180,125,700
+T7_PLATE_GLOVES_Q1,Good Plate Gloves,7,GLOVES,Good,2160,216,150,720
+T7_PLATE_GLOVES_Q2,Outstanding Plate Gloves,7,GLOVES,Outstanding,2700,270,187.5,750
+T7_PLATE_GLOVES_Q3,Excellent Plate Gloves,7,GLOVES,Excellent,3600,360,250,800
+T7_PLATE_GLOVES_Q4,Masterpiece Plate Gloves,7,GLOVES,Masterpiece,5400,540,375,900
+T8_PLATE_GLOVES,Plate Gloves,8,GLOVES,Normal,4500,450,300,800
+T8_PLATE_GLOVES_Q1,Good Plate Gloves,8,GLOVES,Good,5400,540,360,820
+T8_PLATE_GLOVES_Q2,Outstanding Plate Gloves,8,GLOVES,Outstanding,6750,675,450,850
+T8_PLATE_GLOVES_Q3,Excellent Plate Gloves,8,GLOVES,Excellent,9000,900,600,900
+T8_PLATE_GLOVES_Q4,Masterpiece Plate Gloves,8,GLOVES,Masterpiece,13500,1350,900,1000
+T9_PLATE_GLOVES,Plate Gloves,9,GLOVES,Normal,12000,1050,700,900
+T9_PLATE_GLOVES_Q1,Good Plate Gloves,9,GLOVES,Good,14400,1260,840,920
+T9_PLATE_GLOVES_Q2,Outstanding Plate Gloves,9,GLOVES,Outstanding,18000,1575,1050,950
+T9_PLATE_GLOVES_Q3,Excellent Plate Gloves,9,GLOVES,Excellent,24000,2100,1400,1000
+T9_PLATE_GLOVES_Q4,Masterpiece Plate Gloves,9,GLOVES,Masterpiece,36000,3150,2100,1100
+T10_PLATE_GLOVES,Plate Gloves,10,GLOVES,Normal,30000,2250,1500,1000
+T10_PLATE_GLOVES_Q1,Good Plate Gloves,10,GLOVES,Good,36000,2700,1800,1020
+T10_PLATE_GLOVES_Q2,Outstanding Plate Gloves,10,GLOVES,Outstanding,45000,3375,2250,1050
+T10_PLATE_GLOVES_Q3,Excellent Plate Gloves,10,GLOVES,Excellent,60000,4500,3000,1100
+T10_PLATE_GLOVES_Q4,Masterpiece Plate Gloves,10,GLOVES,Masterpiece,90000,6750,4500,1200
+T1_PLATE_CAPE,Plate Cape,1,CAPE,Normal,10,0,0,100
+T1_PLATE_CAPE_Q1,Good Plate Cape,1,CAPE,Good,12,0,0,120
+T1_PLATE_CAPE_Q2,Outstanding Plate Cape,1,CAPE,Outstanding,15,0,0,150
+T1_PLATE_CAPE_Q3,Excellent Plate Cape,1,CAPE,Excellent,20,0,0,200
+T1_PLATE_CAPE_Q4,Masterpiece Plate Cape,1,CAPE,Masterpiece,30,0,0,300
+T2_PLATE_CAPE,Plate Cape,2,CAPE,Normal,24,0,0,200
+T2_PLATE_CAPE_Q1,Good Plate Cape,2,CAPE,Good,28.8,0,0,220
+T2_PLATE_CAPE_Q2,Outstanding Plate Cape,2,CAPE,Outstanding,36,0,0,250
+T2_PLATE_CAPE_Q3,Excellent Plate Cape,2,CAPE,Excellent,48,0,0,300
+T2_PLATE_CAPE_Q4,Masterpiece Plate Cape,2,CAPE,Masterpiece,72,0,0,400
+T3_PLATE_CAPE,Plate Cape,3,CAPE,Normal,48,0,0,300
+T3_PLATE_CAPE_Q1,Good Plate Cape,3,CAPE,Good,57.6,0,0,320
+T3_PLATE_CAPE_Q2,Outstanding Plate Cape,3,CAPE,Outstanding,72,0,0,350
+T3_PLATE_CAPE_Q3,Excellent Plate Cape,3,CAPE,Excellent,96,0,0,400
+T3_PLATE_CAPE_Q4,Masterpiece Plate Cape,3,CAPE,Masterpiece,144,0,0,500
+T4_PLATE_CAPE,Plate Cape,4,CAPE,Normal,160,0,0,400
+T4_PLATE_CAPE_Q1,Good Plate Cape,4,CAPE,Good,192,0,0,420
+T4_PLATE_CAPE_Q2,Outstanding Plate Cape,4,CAPE,Outstanding,240,0,0,450
+T4_PLATE_CAPE_Q3,Excellent Plate Cape,4,CAPE,Excellent,320,0,0,500
+T4_PLATE_CAPE_Q4,Masterpiece Plate Cape,4,CAPE,Masterpiece,480,0,0,600
+T5_PLATE_CAPE,Plate Cape,5,CAPE,Normal,400,0,0,500
+T5_PLATE_CAPE_Q1,Good Plate Cape,5,CAPE,Good,480,0,0,520
+T5_PLATE_CAPE_Q2,Outstanding Plate Cape,5,CAPE,Outstanding,600,0,0,550
+T5_PLATE_CAPE_Q3,Excellent Plate Cape,5,CAPE,Excellent,800,0,0,600
+T5_PLATE_CAPE_Q4,Masterpiece Plate Cape,5,CAPE,Masterpiece,1200,0,0,700
+T6_PLATE_CAPE,Plate Cape,6,CAPE,Normal,1000,0,0,600
+T6_PLATE_CAPE_Q1,Good Plate Cape,6,CAPE,Good,1200,0,0,620
+T6_PLATE_CAPE_Q2,Outstanding Plate Cape,6,CAPE,Outstanding,1500,0,0,650
+T6_PLATE_CAPE_Q3,Excellent Plate Cape,6,CAPE,Excellent,2000,0,0,700
+T6_PLATE_CAPE_Q4,Masterpiece Plate Cape,6,CAPE,Masterpiece,3000,0,0,800
+T7_PLATE_CAPE,Plate Cape,7,CAPE,Normal,2400,0,0,700
+T7_PLATE_CAPE_Q1,Good Plate Cape,7,CAPE,Good,2880,0,0,720
+T7_PLATE_CAPE_Q2,Outstanding Plate Cape,7,CAPE,Outstanding,3600,0,0,750
+T7_PLATE_CAPE_Q3,Excellent Plate Cape,7,CAPE,Excellent,4800,0,0,800
+T7_PLATE_CAPE_Q4,Masterpiece Plate Cape,7,CAPE,Masterpiece,7200,0,0,900
+T8_PLATE_CAPE,Plate Cape,8,CAPE,Normal,6000,0,0,800
+T8_PLATE_CAPE_Q1,Good Plate Cape,8,CAPE,Good,7200,0,0,820
+T8_PLATE_CAPE_Q2,Outstanding Plate Cape,8,CAPE,Outstanding,9000,0,0,850
+T8_PLATE_CAPE_Q3,Excellent Plate Cape,8,CAPE,Excellent,12000,0,0,900
+T8_PLATE_CAPE_Q4,Masterpiece Plate Cape,8,CAPE,Masterpiece,18000,0,0,1000
+T9_PLATE_CAPE,Plate Cape,9,CAPE,Normal,16000,0,0,900
+T9_PLATE_CAPE_Q1,Good Plate Cape,9,CAPE,Good,19200,0,0,920
+T9_PLATE_CAPE_Q2,Outstanding Plate Cape,9,CAPE,Outstanding,24000,0,0,950
+T9_PLATE_CAPE_Q3,Excellent Plate Cape,9,CAPE,Excellent,32000,0,0,1000
+T9_PLATE_CAPE_Q4,Masterpiece Plate Cape,9,CAPE,Masterpiece,48000,0,0,1100
+T10_PLATE_CAPE,Plate Cape,10,CAPE,Normal,40000,0,0,1000
+T10_PLATE_CAPE_Q1,Good Plate Cape,10,CAPE,Good,48000,0,0,1020
+T10_PLATE_CAPE_Q2,Outstanding Plate Cape,10,CAPE,Outstanding,60000,0,0,1050
+T10_PLATE_CAPE_Q3,Excellent Plate Cape,10,CAPE,Excellent,80000,0,0,1100
+T10_PLATE_CAPE_Q4,Masterpiece Plate Cape,10,CAPE,Masterpiece,120000,0,0,1200
+T1_PICKAXE,Pickaxe,1,TOOL_PICKAXE,Normal,0,0,0,100
+T2_PICKAXE,Pickaxe,2,TOOL_PICKAXE,Normal,0,0,0,200
+T3_PICKAXE,Pickaxe,3,TOOL_PICKAXE,Normal,0,0,0,300
+T4_PICKAXE,Pickaxe,4,TOOL_PICKAXE,Normal,0,0,0,400
+T5_PICKAXE,Pickaxe,5,TOOL_PICKAXE,Normal,0,0,0,500
+T6_PICKAXE,Pickaxe,6,TOOL_PICKAXE,Normal,0,0,0,600
+T7_PICKAXE,Pickaxe,7,TOOL_PICKAXE,Normal,0,0,0,700
+T8_PICKAXE,Pickaxe,8,TOOL_PICKAXE,Normal,0,0,0,800
+T9_PICKAXE,Pickaxe,9,TOOL_PICKAXE,Normal,0,0,0,900
+T10_PICKAXE,Pickaxe,10,TOOL_PICKAXE,Normal,0,0,0,1000
+T1_BOW,Bow,1,WEAPON,Normal,0,0,8,100
+T1_BOW_Q1,Good Bow,1,WEAPON,Good,0,0,9.6,120
+T1_BOW_Q2,Outstanding Bow,1,WEAPON,Outstanding,0,0,12,150
+T1_BOW_Q3,Excellent Bow,1,WEAPON,Excellent,0,0,16,200
+T1_BOW_Q4,Masterpiece Bow,1,WEAPON,Masterpiece,0,0,24,300
+T2_BOW,Bow,2,WEAPON,Normal,0,0,20,200
+T2_BOW_Q1,Good Bow,2,WEAPON,Good,0,0,24,220
+T2_BOW_Q2,Outstanding Bow,2,WEAPON,Outstanding,0,0,30,250
+T2_BOW_Q3,Excellent Bow,2,WEAPON,Excellent,0,0,40,300
+T2_BOW_Q4,Masterpiece Bow,2,WEAPON,Masterpiece,0,0,60,400
+T3_BOW,Bow,3,WEAPON,Normal,0,0,48,300
+T3_BOW_Q1,Good Bow,3,WEAPON,Good,0,0,57.6,320
+T3_BOW_Q2,Outstanding Bow,3,WEAPON,Outstanding,0,0,72,350
+T3_BOW_Q3,Excellent Bow,3,WEAPON,Excellent,0,0,96,400
+T3_BOW_Q4,Masterpiece Bow,3,WEAPON,Masterpiece,0,0,144,500
+T4_BOW,Bow,4,WEAPON,Normal,0,0,120,400
+T4_BOW_Q1,Good Bow,4,WEAPON,Good,0,0,144,420
+T4_BOW_Q2,Outstanding Bow,4,WEAPON,Outstanding,0,0,180,450
+T4_BOW_Q3,Excellent Bow,4,WEAPON,Excellent,0,0,240,500
+T4_BOW_Q4,Masterpiece Bow,4,WEAPON,Masterpiece,0,0,360,600
+T5_BOW,Bow,5,WEAPON,Normal,0,0,320,500
+T5_BOW_Q1,Good Bow,5,WEAPON,Good,0,0,384,520
+T5_BOW_Q2,Outstanding Bow,5,WEAPON,Outstanding,0,0,480,550
+T5_BOW_Q3,Excellent Bow,5,WEAPON,Excellent,0,0,640,600
+T5_BOW_Q4,Masterpiece Bow,5,WEAPON,Masterpiece,0,0,960,700
+T6_BOW,Bow,6,WEAPON,Normal,0,0,800,600
+T6_BOW_Q1,Good Bow,6,WEAPON,Good,0,0,960,620
+T6_BOW_Q2,Outstanding Bow,6,WEAPON,Outstanding,0,0,1200,650
+T6_BOW_Q3,Excellent Bow,6,WEAPON,Excellent,0,0,1600,700
+T6_BOW_Q4,Masterpiece Bow,6,WEAPON,Masterpiece,0,0,2400,800
+T7_BOW,Bow,7,WEAPON,Normal,0,0,2000,700
+T7_BOW_Q1,Good Bow,7,WEAPON,Good,0,0,2400,720
+T7_BOW_Q2,Outstanding Bow,7,WEAPON,Outstanding,0,0,3000,750
+T7_BOW_Q3,Excellent Bow,7,WEAPON,Excellent,0,0,4000,800
+T7_BOW_Q4,Masterpiece Bow,7,WEAPON,Masterpiece,0,0,6000,900
+T8_BOW,Bow,8,WEAPON,Normal,0,0,4800,800
+T8_BOW_Q1,Good Bow,8,WEAPON,Good,0,0,5760,820
+T8_BOW_Q2,Outstanding Bow,8,WEAPON,Outstanding,0,0,7200,850
+T8_BOW_Q3,Excellent Bow,8,WEAPON,Excellent,0,0,9600,900
+T8_BOW_Q4,Masterpiece Bow,8,WEAPON,Masterpiece,0,0,14400,1000
+T9_BOW,Bow,9,WEAPON,Normal,0,0,11200,900
+T9_BOW_Q1,Good Bow,9,WEAPON,Good,0,0,13440,920
+T9_BOW_Q2,Outstanding Bow,9,WEAPON,Outstanding,0,0,16800,950
+T9_BOW_Q3,Excellent Bow,9,WEAPON,Excellent,0,0,22400,1000
+T9_BOW_Q4,Masterpiece Bow,9,WEAPON,Masterpiece,0,0,33600,1100
+T10_BOW,Bow,10,WEAPON,Normal,0,0,24000,1000
+T10_BOW_Q1,Good Bow,10,WEAPON,Good,0,0,28800,1020
+T10_BOW_Q2,Outstanding Bow,10,WEAPON,Outstanding,0,0,36000,1050
+T10_BOW_Q3,Excellent Bow,10,WEAPON,Excellent,0,0,48000,1100
+T10_BOW_Q4,Masterpiece Bow,10,WEAPON,Masterpiece,0,0,72000,1200
+T1_TORCH,Torch,1,OFF_HAND,Normal,10,0,0,100
+T1_TORCH_Q1,Good Torch,1,OFF_HAND,Good,12,0,0,120
+T1_TORCH_Q2,Outstanding Torch,1,OFF_HAND,Outstanding,15,0,0,150
+T1_TORCH_Q3,Excellent Torch,1,OFF_HAND,Excellent,20,0,0,200
+T1_TORCH_Q4,Masterpiece Torch,1,OFF_HAND,Masterpiece,30,0,0,300
+T2_TORCH,Torch,2,OFF_HAND,Normal,24,0,0,200
+T2_TORCH_Q1,Good Torch,2,OFF_HAND,Good,28.8,0,0,220
+T2_TORCH_Q2,Outstanding Torch,2,OFF_HAND,Outstanding,36,0,0,250
+T2_TORCH_Q3,Excellent Torch,2,OFF_HAND,Excellent,48,0,0,300
+T2_TORCH_Q4,Masterpiece Torch,2,OFF_HAND,Masterpiece,72,0,0,400
+T3_TORCH,Torch,3,OFF_HAND,Normal,48,0,0,300
+T3_TORCH_Q1,Good Torch,3,OFF_HAND,Good,57.6,0,0,320
+T3_TORCH_Q2,Outstanding Torch,3,OFF_HAND,Outstanding,72,0,0,350
+T3_TORCH_Q3,Excellent Torch,3,OFF_HAND,Excellent,96,0,0,400
+T3_TORCH_Q4,Masterpiece Torch,3,OFF_HAND,Masterpiece,144,0,0,500
+T4_TORCH,Torch,4,OFF_HAND,Normal,160,0,0,400
+T4_TORCH_Q1,Good Torch,4,OFF_HAND,Good,192,0,0,420
+T4_TORCH_Q2,Outstanding Torch,4,OFF_HAND,Outstanding,240,0,0,450
+T4_TORCH_Q3,Excellent Torch,4,OFF_HAND,Excellent,320,0,0,500
+T4_TORCH_Q4,Masterpiece Torch,4,OFF_HAND,Masterpiece,480,0,0,600
+T5_TORCH,Torch,5,OFF_HAND,Normal,400,0,0,500
+T5_TORCH_Q1,Good Torch,5,OFF_HAND,Good,480,0,0,520
+T5_TORCH_Q2,Outstanding Torch,5,OFF_HAND,Outstanding,600,0,0,550
+T5_TORCH_Q3,Excellent Torch,5,OFF_HAND,Excellent,800,0,0,600
+T5_TORCH_Q4,Masterpiece Torch,5,OFF_HAND,Masterpiece,1200,0,0,700
+T6_TORCH,Torch,6,OFF_HAND,Normal,1000,0,0,600
+T6_TORCH_Q1,Good Torch,6,OFF_HAND,Good,1200,0,0,620
+T6_TORCH_Q2,Outstanding Torch,6,OFF_HAND,Outstanding,1500,0,0,650
+T6_TORCH_Q3,Excellent Torch,6,OFF_HAND,Excellent,2000,0,0,700
+T6_TORCH_Q4,Masterpiece Torch,6,OFF_HAND,Masterpiece,3000,0,0,800
+T7_TORCH,Torch,7,OFF_HAND,Normal,2400,0,0,700
+T7_TORCH_Q1,Good Torch,7,OFF_HAND,Good,2880,0,0,720
+T7_TORCH_Q2,Outstanding Torch,7,OFF_HAND,Outstanding,3600,0,0,750
+T7_TORCH_Q3,Excellent Torch,7,OFF_HAND,Excellent,4800,0,0,800
+T7_TORCH_Q4,Masterpiece Torch,7,OFF_HAND,Masterpiece,7200,0,0,900
+T8_TORCH,Torch,8,OFF_HAND,Normal,6000,0,0,800
+T8_TORCH_Q1,Good Torch,8,OFF_HAND,Good,7200,0,0,820
+T8_TORCH_Q2,Outstanding Torch,8,OFF_HAND,Outstanding,9000,0,0,850
+T8_TORCH_Q3,Excellent Torch,8,OFF_HAND,Excellent,12000,0,0,900
+T8_TORCH_Q4,Masterpiece Torch,8,OFF_HAND,Masterpiece,18000,0,0,1000
+T9_TORCH,Torch,9,OFF_HAND,Normal,16000,0,0,900
+T9_TORCH_Q1,Good Torch,9,OFF_HAND,Good,19200,0,0,920
+T9_TORCH_Q2,Outstanding Torch,9,OFF_HAND,Outstanding,24000,0,0,950
+T9_TORCH_Q3,Excellent Torch,9,OFF_HAND,Excellent,32000,0,0,1000
+T9_TORCH_Q4,Masterpiece Torch,9,OFF_HAND,Masterpiece,48000,0,0,1100
+T10_TORCH,Torch,10,OFF_HAND,Normal,40000,0,0,1000
+T10_TORCH_Q1,Good Torch,10,OFF_HAND,Good,48000,0,0,1020
+T10_TORCH_Q2,Outstanding Torch,10,OFF_HAND,Outstanding,60000,0,0,1050
+T10_TORCH_Q3,Excellent Torch,10,OFF_HAND,Excellent,80000,0,0,1100
+T10_TORCH_Q4,Masterpiece Torch,10,OFF_HAND,Masterpiece,120000,0,0,1200
+T1_LEATHER_ARMOR,Leather Armor,1,ARMOR,Normal,35,3,0,100
+T1_LEATHER_ARMOR_Q1,Good Leather Armor,1,ARMOR,Good,42,3.6,0,120
+T1_LEATHER_ARMOR_Q2,Outstanding Leather Armor,1,ARMOR,Outstanding,52.5,4.5,0,150
+T1_LEATHER_ARMOR_Q3,Excellent Leather Armor,1,ARMOR,Excellent,70,6,0,200
+T1_LEATHER_ARMOR_Q4,Masterpiece Leather Armor,1,ARMOR,Masterpiece,105,9,0,300
+T2_LEATHER_ARMOR,Leather Armor,2,ARMOR,Normal,84,10,0,200
+T2_LEATHER_ARMOR_Q1,Good Leather Armor,2,ARMOR,Good,100.8,12,0,220
+T2_LEATHER_ARMOR_Q2,Outstanding Leather Armor,2,ARMOR,Outstanding,126,15,0,250
+T2_LEATHER_ARMOR_Q3,Excellent Leather Armor,2,ARMOR,Excellent,168,20,0,300
+T2_LEATHER_ARMOR_Q4,Masterpiece Leather Armor,2,ARMOR,Masterpiece,252,30,0,400
+T3_LEATHER_ARMOR,Leather Armor,3,ARMOR,Normal,168,21,0,300
+T3_LEATHER_ARMOR_Q1,Good Leather Armor,3,ARMOR,Good,201.6,25.2,0,320
+T3_LEATHER_ARMOR_Q2,Outstanding Leather Armor,3,ARMOR,Outstanding,252,31.5,0,350
+T3_LEATHER_ARMOR_Q3,Excellent Leather Armor,3,ARMOR,Excellent,336,42,0,400
+T3_LEATHER_ARMOR_Q4,Masterpiece Leather Armor,3,ARMOR,Masterpiece,504,63,0,500
+T4_LEATHER_ARMOR,Leather Armor,4,ARMOR,Normal,560,56,0,400
+T4_LEATHER_ARMOR_Q1,Good Leather Armor,4,ARMOR,Good,672,67.2,0,420
+T4_LEATHER_ARMOR_Q2,Outstanding Leather Armor,4,ARMOR,Outstanding,840,84,0,450
+T4_LEATHER_ARMOR_Q3,Excellent Leather Armor,4,ARMOR,Excellent,1120,112,0,500
+T4_LEATHER_ARMOR_Q4,Masterpiece Leather Armor,4,ARMOR,Masterpiece,1680,168,0,600
+T5_LEATHER_ARMOR,Leather Armor,5,ARMOR,Normal,1400,140,0,500
+T5_LEATHER_ARMOR_Q1,Good Leather Armor,5,ARMOR,Good,1680,168,0,520
+T5_LEATHER_ARMOR_Q2,Outstanding Leather Armor,5,ARMOR,Outstanding,2100,210,0,550
+T5_LEATHER_ARMOR_Q3,Excellent Leather Armor,5,ARMOR,Excellent,2800,280,0,600
+T5_LEATHER_ARMOR_Q4,Masterpiece Leather Armor,5,ARMOR,Masterpiece,4200,420,0,700
+T6_LEATHER_ARMOR,Leather Armor,6,ARMOR,Normal,3500,350,0,600
+T6_LEATHER_ARMOR_Q1,Good Leather Armor,6,ARMOR,Good,4200,420,0,620
+T6_LEATHER_ARMOR_Q2,Outstanding Leather Armor,6,ARMOR,Outstanding,5250,525,0,650
+T6_LEATHER_ARMOR_Q3,Excellent Leather Armor,6,ARMOR,Excellent,7000,700,0,700
+T6_LEATHER_ARMOR_Q4,Masterpiece Leather Armor,6,ARMOR,Masterpiece,10500,1050,0,800
+T7_LEATHER_ARMOR,Leather Armor,7,ARMOR,Normal,8400,840,0,700
+T7_LEATHER_ARMOR_Q1,Good Leather Armor,7,ARMOR,Good,10080,1008,0,720
+T7_LEATHER_ARMOR_Q2,Outstanding Leather Armor,7,ARMOR,Outstanding,12600,1260,0,750
+T7_LEATHER_ARMOR_Q3,Excellent Leather Armor,7,ARMOR,Excellent,16800,1680,0,800
+T7_LEATHER_ARMOR_Q4,Masterpiece Leather Armor,7,ARMOR,Masterpiece,25200,2520,0,900
+T8_LEATHER_ARMOR,Leather Armor,8,ARMOR,Normal,21000,2100,0,800
+T8_LEATHER_ARMOR_Q1,Good Leather Armor,8,ARMOR,Good,25200,2520,0,820
+T8_LEATHER_ARMOR_Q2,Outstanding Leather Armor,8,ARMOR,Outstanding,31500,3150,0,850
+T8_LEATHER_ARMOR_Q3,Excellent Leather Armor,8,ARMOR,Excellent,42000,4200,0,900
+T8_LEATHER_ARMOR_Q4,Masterpiece Leather Armor,8,ARMOR,Masterpiece,63000,6300,0,1000
+T9_LEATHER_ARMOR,Leather Armor,9,ARMOR,Normal,56000,4900,0,900
+T9_LEATHER_ARMOR_Q1,Good Leather Armor,9,ARMOR,Good,67200,5880,0,920
+T9_LEATHER_ARMOR_Q2,Outstanding Leather Armor,9,ARMOR,Outstanding,84000,7350,0,950
+T9_LEATHER_ARMOR_Q3,Excellent Leather Armor,9,ARMOR,Excellent,112000,9800,0,1000
+T9_LEATHER_ARMOR_Q4,Masterpiece Leather Armor,9,ARMOR,Masterpiece,168000,14700,0,1100
+T10_LEATHER_ARMOR,Leather Armor,10,ARMOR,Normal,140000,10500,0,1000
+T10_LEATHER_ARMOR_Q1,Good Leather Armor,10,ARMOR,Good,168000,12600,0,1020
+T10_LEATHER_ARMOR_Q2,Outstanding Leather Armor,10,ARMOR,Outstanding,210000,15750,0,1050
+T10_LEATHER_ARMOR_Q3,Excellent Leather Armor,10,ARMOR,Excellent,280000,21000,0,1100
+T10_LEATHER_ARMOR_Q4,Masterpiece Leather Armor,10,ARMOR,Masterpiece,420000,31500,0,1200
+T1_LEATHER_HELMET,Leather Helmet,1,HELMET,Normal,10,1,0,100
+T1_LEATHER_HELMET_Q1,Good Leather Helmet,1,HELMET,Good,12,1.2,0,120
+T1_LEATHER_HELMET_Q2,Outstanding Leather Helmet,1,HELMET,Outstanding,15,1.5,0,150
+T1_LEATHER_HELMET_Q3,Excellent Leather Helmet,1,HELMET,Excellent,20,2,0,200
+T1_LEATHER_HELMET_Q4,Masterpiece Leather Helmet,1,HELMET,Masterpiece,30,3,0,300
+T2_LEATHER_HELMET,Leather Helmet,2,HELMET,Normal,24,3,0,200
+T2_LEATHER_HELMET_Q1,Good Leather Helmet,2,HELMET,Good,28.8,3.6,0,220
+T2_LEATHER_HELMET_Q2,Outstanding Leather Helmet,2,HELMET,Outstanding,36,4.5,0,250
+T2_LEATHER_HELMET_Q3,Excellent Leather Helmet,2,HELMET,Excellent,48,6,0,300
+T2_LEATHER_HELMET_Q4,Masterpiece Leather Helmet,2,HELMET,Masterpiece,72,9,0,400
+T3_LEATHER_HELMET,Leather Helmet,3,HELMET,Normal,48,6,0,300
+T3_LEATHER_HELMET_Q1,Good Leather Helmet,3,HELMET,Good,57.6,7.2,0,320
+T3_LEATHER_HELMET_Q2,Outstanding Leather Helmet,3,HELMET,Outstanding,72,9,0,350
+T3_LEATHER_HELMET_Q3,Excellent Leather Helmet,3,HELMET,Excellent,96,12,0,400
+T3_LEATHER_HELMET_Q4,Masterpiece Leather Helmet,3,HELMET,Masterpiece,144,18,0,500
+T4_LEATHER_HELMET,Leather Helmet,4,HELMET,Normal,160,16,0,400
+T4_LEATHER_HELMET_Q1,Good Leather Helmet,4,HELMET,Good,192,19.2,0,420
+T4_LEATHER_HELMET_Q2,Outstanding Leather Helmet,4,HELMET,Outstanding,240,24,0,450
+T4_LEATHER_HELMET_Q3,Excellent Leather Helmet,4,HELMET,Excellent,320,32,0,500
+T4_LEATHER_HELMET_Q4,Masterpiece Leather Helmet,4,HELMET,Masterpiece,480,48,0,600
+T5_LEATHER_HELMET,Leather Helmet,5,HELMET,Normal,400,40,0,500
+T5_LEATHER_HELMET_Q1,Good Leather Helmet,5,HELMET,Good,480,48,0,520
+T5_LEATHER_HELMET_Q2,Outstanding Leather Helmet,5,HELMET,Outstanding,600,60,0,550
+T5_LEATHER_HELMET_Q3,Excellent Leather Helmet,5,HELMET,Excellent,800,80,0,600
+T5_LEATHER_HELMET_Q4,Masterpiece Leather Helmet,5,HELMET,Masterpiece,1200,120,0,700
+T6_LEATHER_HELMET,Leather Helmet,6,HELMET,Normal,1000,100,0,600
+T6_LEATHER_HELMET_Q1,Good Leather Helmet,6,HELMET,Good,1200,120,0,620
+T6_LEATHER_HELMET_Q2,Outstanding Leather Helmet,6,HELMET,Outstanding,1500,150,0,650
+T6_LEATHER_HELMET_Q3,Excellent Leather Helmet,6,HELMET,Excellent,2000,200,0,700
+T6_LEATHER_HELMET_Q4,Masterpiece Leather Helmet,6,HELMET,Masterpiece,3000,300,0,800
+T7_LEATHER_HELMET,Leather Helmet,7,HELMET,Normal,2400,240,0,700
+T7_LEATHER_HELMET_Q1,Good Leather Helmet,7,HELMET,Good,2880,288,0,720
+T7_LEATHER_HELMET_Q2,Outstanding Leather Helmet,7,HELMET,Outstanding,3600,360,0,750
+T7_LEATHER_HELMET_Q3,Excellent Leather Helmet,7,HELMET,Excellent,4800,480,0,800
+T7_LEATHER_HELMET_Q4,Masterpiece Leather Helmet,7,HELMET,Masterpiece,7200,720,0,900
+T8_LEATHER_HELMET,Leather Helmet,8,HELMET,Normal,6000,600,0,800
+T8_LEATHER_HELMET_Q1,Good Leather Helmet,8,HELMET,Good,7200,720,0,820
+T8_LEATHER_HELMET_Q2,Outstanding Leather Helmet,8,HELMET,Outstanding,9000,900,0,850
+T8_LEATHER_HELMET_Q3,Excellent Leather Helmet,8,HELMET,Excellent,12000,1200,0,900
+T8_LEATHER_HELMET_Q4,Masterpiece Leather Helmet,8,HELMET,Masterpiece,18000,1800,0,1000
+T9_LEATHER_HELMET,Leather Helmet,9,HELMET,Normal,16000,1400,0,900
+T9_LEATHER_HELMET_Q1,Good Leather Helmet,9,HELMET,Good,19200,1680,0,920
+T9_LEATHER_HELMET_Q2,Outstanding Leather Helmet,9,HELMET,Outstanding,24000,2100,0,950
+T9_LEATHER_HELMET_Q3,Excellent Leather Helmet,9,HELMET,Excellent,32000,2800,0,1000
+T9_LEATHER_HELMET_Q4,Masterpiece Leather Helmet,9,HELMET,Masterpiece,48000,4200,0,1100
+T10_LEATHER_HELMET,Leather Helmet,10,HELMET,Normal,40000,3000,0,1000
+T10_LEATHER_HELMET_Q1,Good Leather Helmet,10,HELMET,Good,48000,3600,0,1020
+T10_LEATHER_HELMET_Q2,Outstanding Leather Helmet,10,HELMET,Outstanding,60000,4500,0,1050
+T10_LEATHER_HELMET_Q3,Excellent Leather Helmet,10,HELMET,Excellent,80000,6000,0,1100
+T10_LEATHER_HELMET_Q4,Masterpiece Leather Helmet,10,HELMET,Masterpiece,120000,9000,0,1200
+T1_LEATHER_BOOTS,Leather Boots,1,BOOTS,Normal,10,1,0,100
+T1_LEATHER_BOOTS_Q1,Good Leather Boots,1,BOOTS,Good,12,1.2,0,120
+T1_LEATHER_BOOTS_Q2,Outstanding Leather Boots,1,BOOTS,Outstanding,15,1.5,0,150
+T1_LEATHER_BOOTS_Q3,Excellent Leather Boots,1,BOOTS,Excellent,20,2,0,200
+T1_LEATHER_BOOTS_Q4,Masterpiece Leather Boots,1,BOOTS,Masterpiece,30,3,0,300
+T2_LEATHER_BOOTS,Leather Boots,2,BOOTS,Normal,24,3,0,200
+T2_LEATHER_BOOTS_Q1,Good Leather Boots,2,BOOTS,Good,28.8,3.6,0,220
+T2_LEATHER_BOOTS_Q2,Outstanding Leather Boots,2,BOOTS,Outstanding,36,4.5,0,250
+T2_LEATHER_BOOTS_Q3,Excellent Leather Boots,2,BOOTS,Excellent,48,6,0,300
+T2_LEATHER_BOOTS_Q4,Masterpiece Leather Boots,2,BOOTS,Masterpiece,72,9,0,400
+T3_LEATHER_BOOTS,Leather Boots,3,BOOTS,Normal,48,6,0,300
+T3_LEATHER_BOOTS_Q1,Good Leather Boots,3,BOOTS,Good,57.6,7.2,0,320
+T3_LEATHER_BOOTS_Q2,Outstanding Leather Boots,3,BOOTS,Outstanding,72,9,0,350
+T3_LEATHER_BOOTS_Q3,Excellent Leather Boots,3,BOOTS,Excellent,96,12,0,400
+T3_LEATHER_BOOTS_Q4,Masterpiece Leather Boots,3,BOOTS,Masterpiece,144,18,0,500
+T4_LEATHER_BOOTS,Leather Boots,4,BOOTS,Normal,160,16,0,400
+T4_LEATHER_BOOTS_Q1,Good Leather Boots,4,BOOTS,Good,192,19.2,0,420
+T4_LEATHER_BOOTS_Q2,Outstanding Leather Boots,4,BOOTS,Outstanding,240,24,0,450
+T4_LEATHER_BOOTS_Q3,Excellent Leather Boots,4,BOOTS,Excellent,320,32,0,500
+T4_LEATHER_BOOTS_Q4,Masterpiece Leather Boots,4,BOOTS,Masterpiece,480,48,0,600
+T5_LEATHER_BOOTS,Leather Boots,5,BOOTS,Normal,400,40,0,500
+T5_LEATHER_BOOTS_Q1,Good Leather Boots,5,BOOTS,Good,480,48,0,520
+T5_LEATHER_BOOTS_Q2,Outstanding Leather Boots,5,BOOTS,Outstanding,600,60,0,550
+T5_LEATHER_BOOTS_Q3,Excellent Leather Boots,5,BOOTS,Excellent,800,80,0,600
+T5_LEATHER_BOOTS_Q4,Masterpiece Leather Boots,5,BOOTS,Masterpiece,1200,120,0,700
+T6_LEATHER_BOOTS,Leather Boots,6,BOOTS,Normal,1000,100,0,600
+T6_LEATHER_BOOTS_Q1,Good Leather Boots,6,BOOTS,Good,1200,120,0,620
+T6_LEATHER_BOOTS_Q2,Outstanding Leather Boots,6,BOOTS,Outstanding,1500,150,0,650
+T6_LEATHER_BOOTS_Q3,Excellent Leather Boots,6,BOOTS,Excellent,2000,200,0,700
+T6_LEATHER_BOOTS_Q4,Masterpiece Leather Boots,6,BOOTS,Masterpiece,3000,300,0,800
+T7_LEATHER_BOOTS,Leather Boots,7,BOOTS,Normal,2400,240,0,700
+T7_LEATHER_BOOTS_Q1,Good Leather Boots,7,BOOTS,Good,2880,288,0,720
+T7_LEATHER_BOOTS_Q2,Outstanding Leather Boots,7,BOOTS,Outstanding,3600,360,0,750
+T7_LEATHER_BOOTS_Q3,Excellent Leather Boots,7,BOOTS,Excellent,4800,480,0,800
+T7_LEATHER_BOOTS_Q4,Masterpiece Leather Boots,7,BOOTS,Masterpiece,7200,720,0,900
+T8_LEATHER_BOOTS,Leather Boots,8,BOOTS,Normal,6000,600,0,800
+T8_LEATHER_BOOTS_Q1,Good Leather Boots,8,BOOTS,Good,7200,720,0,820
+T8_LEATHER_BOOTS_Q2,Outstanding Leather Boots,8,BOOTS,Outstanding,9000,900,0,850
+T8_LEATHER_BOOTS_Q3,Excellent Leather Boots,8,BOOTS,Excellent,12000,1200,0,900
+T8_LEATHER_BOOTS_Q4,Masterpiece Leather Boots,8,BOOTS,Masterpiece,18000,1800,0,1000
+T9_LEATHER_BOOTS,Leather Boots,9,BOOTS,Normal,16000,1400,0,900
+T9_LEATHER_BOOTS_Q1,Good Leather Boots,9,BOOTS,Good,19200,1680,0,920
+T9_LEATHER_BOOTS_Q2,Outstanding Leather Boots,9,BOOTS,Outstanding,24000,2100,0,950
+T9_LEATHER_BOOTS_Q3,Excellent Leather Boots,9,BOOTS,Excellent,32000,2800,0,1000
+T9_LEATHER_BOOTS_Q4,Masterpiece Leather Boots,9,BOOTS,Masterpiece,48000,4200,0,1100
+T10_LEATHER_BOOTS,Leather Boots,10,BOOTS,Normal,40000,3000,0,1000
+T10_LEATHER_BOOTS_Q1,Good Leather Boots,10,BOOTS,Good,48000,3600,0,1020
+T10_LEATHER_BOOTS_Q2,Outstanding Leather Boots,10,BOOTS,Outstanding,60000,4500,0,1050
+T10_LEATHER_BOOTS_Q3,Excellent Leather Boots,10,BOOTS,Excellent,80000,6000,0,1100
+T10_LEATHER_BOOTS_Q4,Masterpiece Leather Boots,10,BOOTS,Masterpiece,120000,9000,0,1200
+T1_LEATHER_GLOVES,Leather Gloves,1,GLOVES,Normal,5,0,1,100
+T1_LEATHER_GLOVES_Q1,Good Leather Gloves,1,GLOVES,Good,6,0,1.2,120
+T1_LEATHER_GLOVES_Q2,Outstanding Leather Gloves,1,GLOVES,Outstanding,7.5,0,1.5,150
+T1_LEATHER_GLOVES_Q3,Excellent Leather Gloves,1,GLOVES,Excellent,10,0,2,200
+T1_LEATHER_GLOVES_Q4,Masterpiece Leather Gloves,1,GLOVES,Masterpiece,15,0,3,300
+T2_LEATHER_GLOVES,Leather Gloves,2,GLOVES,Normal,12,1,2,200
+T2_LEATHER_GLOVES_Q1,Good Leather Gloves,2,GLOVES,Good,14.4,1.2,2.4,220
+T2_LEATHER_GLOVES_Q2,Outstanding Leather Gloves,2,GLOVES,Outstanding,18,1.5,3,250
+T2_LEATHER_GLOVES_Q3,Excellent Leather Gloves,2,GLOVES,Excellent,24,2,4,300
+T2_LEATHER_GLOVES_Q4,Masterpiece Leather Gloves,2,GLOVES,Masterpiece,36,3,6,400
+T3_LEATHER_GLOVES,Leather Gloves,3,GLOVES,Normal,24,3,6,300
+T3_LEATHER_GLOVES_Q1,Good Leather Gloves,3,GLOVES,Good,28.8,3.6,7.2,320
+T3_LEATHER_GLOVES_Q2,Outstanding Leather Gloves,3,GLOVES,Outstanding,36,4.5,9,350
+T3_LEATHER_GLOVES_Q3,Excellent Leather Gloves,3,GLOVES,Excellent,48,6,12,400
+T3_LEATHER_GLOVES_Q4,Masterpiece Leather Gloves,3,GLOVES,Masterpiece,72,9,18,500
+T4_LEATHER_GLOVES,Leather Gloves,4,GLOVES,Normal,80,8,15,400
+T4_LEATHER_GLOVES_Q1,Good Leather Gloves,4,GLOVES,Good,96,9.6,18,420
+T4_LEATHER_GLOVES_Q2,Outstanding Leather Gloves,4,GLOVES,Outstanding,120,12,22.5,450
+T4_LEATHER_GLOVES_Q3,Excellent Leather Gloves,4,GLOVES,Excellent,160,16,30,500
+T4_LEATHER_GLOVES_Q4,Masterpiece Leather Gloves,4,GLOVES,Masterpiece,240,24,45,600
+T5_LEATHER_GLOVES,Leather Gloves,5,GLOVES,Normal,200,20,40,500
+T5_LEATHER_GLOVES_Q1,Good Leather Gloves,5,GLOVES,Good,240,24,48,520
+T5_LEATHER_GLOVES_Q2,Outstanding Leather Gloves,5,GLOVES,Outstanding,300,30,60,550
+T5_LEATHER_GLOVES_Q3,Excellent Leather Gloves,5,GLOVES,Excellent,400,40,80,600
+T5_LEATHER_GLOVES_Q4,Masterpiece Leather Gloves,5,GLOVES,Masterpiece,600,60,120,700
+T6_LEATHER_GLOVES,Leather Gloves,6,GLOVES,Normal,500,50,100,600
+T6_LEATHER_GLOVES_Q1,Good Leather Gloves,6,GLOVES,Good,600,60,120,620
+T6_LEATHER_GLOVES_Q2,Outstanding Leather Gloves,6,GLOVES,Outstanding,750,75,150,650
+T6_LEATHER_GLOVES_Q3,Excellent Leather Gloves,6,GLOVES,Excellent,1000,100,200,700
+T6_LEATHER_GLOVES_Q4,Masterpiece Leather Gloves,6,GLOVES,Masterpiece,1500,150,300,800
+T7_LEATHER_GLOVES,Leather Gloves,7,GLOVES,Normal,1200,120,250,700
+T7_LEATHER_GLOVES_Q1,Good Leather Gloves,7,GLOVES,Good,1440,144,300,720
+T7_LEATHER_GLOVES_Q2,Outstanding Leather Gloves,7,GLOVES,Outstanding,1800,180,375,750
+T7_LEATHER_GLOVES_Q3,Excellent Leather Gloves,7,GLOVES,Excellent,2400,240,500,800
+T7_LEATHER_GLOVES_Q4,Masterpiece Leather Gloves,7,GLOVES,Masterpiece,3600,360,750,900
+T8_LEATHER_GLOVES,Leather Gloves,8,GLOVES,Normal,3000,300,600,800
+T8_LEATHER_GLOVES_Q1,Good Leather Gloves,8,GLOVES,Good,3600,360,720,820
+T8_LEATHER_GLOVES_Q2,Outstanding Leather Gloves,8,GLOVES,Outstanding,4500,450,900,850
+T8_LEATHER_GLOVES_Q3,Excellent Leather Gloves,8,GLOVES,Excellent,6000,600,1200,900
+T8_LEATHER_GLOVES_Q4,Masterpiece Leather Gloves,8,GLOVES,Masterpiece,9000,900,1800,1000
+T9_LEATHER_GLOVES,Leather Gloves,9,GLOVES,Normal,8000,700,1400,900
+T9_LEATHER_GLOVES_Q1,Good Leather Gloves,9,GLOVES,Good,9600,840,1680,920
+T9_LEATHER_GLOVES_Q2,Outstanding Leather Gloves,9,GLOVES,Outstanding,12000,1050,2100,950
+T9_LEATHER_GLOVES_Q3,Excellent Leather Gloves,9,GLOVES,Excellent,16000,1400,2800,1000
+T9_LEATHER_GLOVES_Q4,Masterpiece Leather Gloves,9,GLOVES,Masterpiece,24000,2100,4200,1100
+T10_LEATHER_GLOVES,Leather Gloves,10,GLOVES,Normal,20000,1500,3000,1000
+T10_LEATHER_GLOVES_Q1,Good Leather Gloves,10,GLOVES,Good,24000,1800,3600,1020
+T10_LEATHER_GLOVES_Q2,Outstanding Leather Gloves,10,GLOVES,Outstanding,30000,2250,4500,1050
+T10_LEATHER_GLOVES_Q3,Excellent Leather Gloves,10,GLOVES,Excellent,40000,3000,6000,1100
+T10_LEATHER_GLOVES_Q4,Masterpiece Leather Gloves,10,GLOVES,Masterpiece,60000,4500,9000,1200
+T1_LEATHER_CAPE,Leather Cape,1,CAPE,Normal,10,0,0,100
+T1_LEATHER_CAPE_Q1,Good Leather Cape,1,CAPE,Good,12,0,0,120
+T1_LEATHER_CAPE_Q2,Outstanding Leather Cape,1,CAPE,Outstanding,15,0,0,150
+T1_LEATHER_CAPE_Q3,Excellent Leather Cape,1,CAPE,Excellent,20,0,0,200
+T1_LEATHER_CAPE_Q4,Masterpiece Leather Cape,1,CAPE,Masterpiece,30,0,0,300
+T2_LEATHER_CAPE,Leather Cape,2,CAPE,Normal,24,0,0,200
+T2_LEATHER_CAPE_Q1,Good Leather Cape,2,CAPE,Good,28.8,0,0,220
+T2_LEATHER_CAPE_Q2,Outstanding Leather Cape,2,CAPE,Outstanding,36,0,0,250
+T2_LEATHER_CAPE_Q3,Excellent Leather Cape,2,CAPE,Excellent,48,0,0,300
+T2_LEATHER_CAPE_Q4,Masterpiece Leather Cape,2,CAPE,Masterpiece,72,0,0,400
+T3_LEATHER_CAPE,Leather Cape,3,CAPE,Normal,48,0,0,300
+T3_LEATHER_CAPE_Q1,Good Leather Cape,3,CAPE,Good,57.6,0,0,320
+T3_LEATHER_CAPE_Q2,Outstanding Leather Cape,3,CAPE,Outstanding,72,0,0,350
+T3_LEATHER_CAPE_Q3,Excellent Leather Cape,3,CAPE,Excellent,96,0,0,400
+T3_LEATHER_CAPE_Q4,Masterpiece Leather Cape,3,CAPE,Masterpiece,144,0,0,500
+T4_LEATHER_CAPE,Leather Cape,4,CAPE,Normal,160,0,0,400
+T4_LEATHER_CAPE_Q1,Good Leather Cape,4,CAPE,Good,192,0,0,420
+T4_LEATHER_CAPE_Q2,Outstanding Leather Cape,4,CAPE,Outstanding,240,0,0,450
+T4_LEATHER_CAPE_Q3,Excellent Leather Cape,4,CAPE,Excellent,320,0,0,500
+T4_LEATHER_CAPE_Q4,Masterpiece Leather Cape,4,CAPE,Masterpiece,480,0,0,600
+T5_LEATHER_CAPE,Leather Cape,5,CAPE,Normal,400,0,0,500
+T5_LEATHER_CAPE_Q1,Good Leather Cape,5,CAPE,Good,480,0,0,520
+T5_LEATHER_CAPE_Q2,Outstanding Leather Cape,5,CAPE,Outstanding,600,0,0,550
+T5_LEATHER_CAPE_Q3,Excellent Leather Cape,5,CAPE,Excellent,800,0,0,600
+T5_LEATHER_CAPE_Q4,Masterpiece Leather Cape,5,CAPE,Masterpiece,1200,0,0,700
+T6_LEATHER_CAPE,Leather Cape,6,CAPE,Normal,1000,0,0,600
+T6_LEATHER_CAPE_Q1,Good Leather Cape,6,CAPE,Good,1200,0,0,620
+T6_LEATHER_CAPE_Q2,Outstanding Leather Cape,6,CAPE,Outstanding,1500,0,0,650
+T6_LEATHER_CAPE_Q3,Excellent Leather Cape,6,CAPE,Excellent,2000,0,0,700
+T6_LEATHER_CAPE_Q4,Masterpiece Leather Cape,6,CAPE,Masterpiece,3000,0,0,800
+T7_LEATHER_CAPE,Leather Cape,7,CAPE,Normal,2400,0,0,700
+T7_LEATHER_CAPE_Q1,Good Leather Cape,7,CAPE,Good,2880,0,0,720
+T7_LEATHER_CAPE_Q2,Outstanding Leather Cape,7,CAPE,Outstanding,3600,0,0,750
+T7_LEATHER_CAPE_Q3,Excellent Leather Cape,7,CAPE,Excellent,4800,0,0,800
+T7_LEATHER_CAPE_Q4,Masterpiece Leather Cape,7,CAPE,Masterpiece,7200,0,0,900
+T8_LEATHER_CAPE,Leather Cape,8,CAPE,Normal,6000,0,0,800
+T8_LEATHER_CAPE_Q1,Good Leather Cape,8,CAPE,Good,7200,0,0,820
+T8_LEATHER_CAPE_Q2,Outstanding Leather Cape,8,CAPE,Outstanding,9000,0,0,850
+T8_LEATHER_CAPE_Q3,Excellent Leather Cape,8,CAPE,Excellent,12000,0,0,900
+T8_LEATHER_CAPE_Q4,Masterpiece Leather Cape,8,CAPE,Masterpiece,18000,0,0,1000
+T9_LEATHER_CAPE,Leather Cape,9,CAPE,Normal,16000,0,0,900
+T9_LEATHER_CAPE_Q1,Good Leather Cape,9,CAPE,Good,19200,0,0,920
+T9_LEATHER_CAPE_Q2,Outstanding Leather Cape,9,CAPE,Outstanding,24000,0,0,950
+T9_LEATHER_CAPE_Q3,Excellent Leather Cape,9,CAPE,Excellent,32000,0,0,1000
+T9_LEATHER_CAPE_Q4,Masterpiece Leather Cape,9,CAPE,Masterpiece,48000,0,0,1100
+T10_LEATHER_CAPE,Leather Cape,10,CAPE,Normal,40000,0,0,1000
+T10_LEATHER_CAPE_Q1,Good Leather Cape,10,CAPE,Good,48000,0,0,1020
+T10_LEATHER_CAPE_Q2,Outstanding Leather Cape,10,CAPE,Outstanding,60000,0,0,1050
+T10_LEATHER_CAPE_Q3,Excellent Leather Cape,10,CAPE,Excellent,80000,0,0,1100
+T10_LEATHER_CAPE_Q4,Masterpiece Leather Cape,10,CAPE,Masterpiece,120000,0,0,1200
+T1_AXE,Axe,1,TOOL_AXE,Normal,0,0,0,100
+T2_AXE,Axe,2,TOOL_AXE,Normal,0,0,0,200
+T3_AXE,Axe,3,TOOL_AXE,Normal,0,0,0,300
+T4_AXE,Axe,4,TOOL_AXE,Normal,0,0,0,400
+T5_AXE,Axe,5,TOOL_AXE,Normal,0,0,0,500
+T6_AXE,Axe,6,TOOL_AXE,Normal,0,0,0,600
+T7_AXE,Axe,7,TOOL_AXE,Normal,0,0,0,700
+T8_AXE,Axe,8,TOOL_AXE,Normal,0,0,0,800
+T9_AXE,Axe,9,TOOL_AXE,Normal,0,0,0,900
+T10_AXE,Axe,10,TOOL_AXE,Normal,0,0,0,1000
+T1_SKINNING_KNIFE,Skinning Knife,1,TOOL_KNIFE,Normal,0,0,0,100
+T2_SKINNING_KNIFE,Skinning Knife,2,TOOL_KNIFE,Normal,0,0,0,200
+T3_SKINNING_KNIFE,Skinning Knife,3,TOOL_KNIFE,Normal,0,0,0,300
+T4_SKINNING_KNIFE,Skinning Knife,4,TOOL_KNIFE,Normal,0,0,0,400
+T5_SKINNING_KNIFE,Skinning Knife,5,TOOL_KNIFE,Normal,0,0,0,500
+T6_SKINNING_KNIFE,Skinning Knife,6,TOOL_KNIFE,Normal,0,0,0,600
+T7_SKINNING_KNIFE,Skinning Knife,7,TOOL_KNIFE,Normal,0,0,0,700
+T8_SKINNING_KNIFE,Skinning Knife,8,TOOL_KNIFE,Normal,0,0,0,800
+T9_SKINNING_KNIFE,Skinning Knife,9,TOOL_KNIFE,Normal,0,0,0,900
+T10_SKINNING_KNIFE,Skinning Knife,10,TOOL_KNIFE,Normal,0,0,0,1000
+T1_FIRE_STAFF,Fire Staff,1,WEAPON,Normal,0,0,12,100
+T1_FIRE_STAFF_Q1,Good Fire Staff,1,WEAPON,Good,0,0,14.4,120
+T1_FIRE_STAFF_Q2,Outstanding Fire Staff,1,WEAPON,Outstanding,0,0,18,150
+T1_FIRE_STAFF_Q3,Excellent Fire Staff,1,WEAPON,Excellent,0,0,24,200
+T1_FIRE_STAFF_Q4,Masterpiece Fire Staff,1,WEAPON,Masterpiece,0,0,36,300
+T2_FIRE_STAFF,Fire Staff,2,WEAPON,Normal,0,0,30,200
+T2_FIRE_STAFF_Q1,Good Fire Staff,2,WEAPON,Good,0,0,36,220
+T2_FIRE_STAFF_Q2,Outstanding Fire Staff,2,WEAPON,Outstanding,0,0,45,250
+T2_FIRE_STAFF_Q3,Excellent Fire Staff,2,WEAPON,Excellent,0,0,60,300
+T2_FIRE_STAFF_Q4,Masterpiece Fire Staff,2,WEAPON,Masterpiece,0,0,90,400
+T3_FIRE_STAFF,Fire Staff,3,WEAPON,Normal,0,0,72,300
+T3_FIRE_STAFF_Q1,Good Fire Staff,3,WEAPON,Good,0,0,86.4,320
+T3_FIRE_STAFF_Q2,Outstanding Fire Staff,3,WEAPON,Outstanding,0,0,108,350
+T3_FIRE_STAFF_Q3,Excellent Fire Staff,3,WEAPON,Excellent,0,0,144,400
+T3_FIRE_STAFF_Q4,Masterpiece Fire Staff,3,WEAPON,Masterpiece,0,0,216,500
+T4_FIRE_STAFF,Fire Staff,4,WEAPON,Normal,0,0,180,400
+T4_FIRE_STAFF_Q1,Good Fire Staff,4,WEAPON,Good,0,0,216,420
+T4_FIRE_STAFF_Q2,Outstanding Fire Staff,4,WEAPON,Outstanding,0,0,270,450
+T4_FIRE_STAFF_Q3,Excellent Fire Staff,4,WEAPON,Excellent,0,0,360,500
+T4_FIRE_STAFF_Q4,Masterpiece Fire Staff,4,WEAPON,Masterpiece,0,0,540,600
+T5_FIRE_STAFF,Fire Staff,5,WEAPON,Normal,0,0,480,500
+T5_FIRE_STAFF_Q1,Good Fire Staff,5,WEAPON,Good,0,0,576,520
+T5_FIRE_STAFF_Q2,Outstanding Fire Staff,5,WEAPON,Outstanding,0,0,720,550
+T5_FIRE_STAFF_Q3,Excellent Fire Staff,5,WEAPON,Excellent,0,0,960,600
+T5_FIRE_STAFF_Q4,Masterpiece Fire Staff,5,WEAPON,Masterpiece,0,0,1440,700
+T6_FIRE_STAFF,Fire Staff,6,WEAPON,Normal,0,0,1200,600
+T6_FIRE_STAFF_Q1,Good Fire Staff,6,WEAPON,Good,0,0,1440,620
+T6_FIRE_STAFF_Q2,Outstanding Fire Staff,6,WEAPON,Outstanding,0,0,1800,650
+T6_FIRE_STAFF_Q3,Excellent Fire Staff,6,WEAPON,Excellent,0,0,2400,700
+T6_FIRE_STAFF_Q4,Masterpiece Fire Staff,6,WEAPON,Masterpiece,0,0,3600,800
+T7_FIRE_STAFF,Fire Staff,7,WEAPON,Normal,0,0,3000,700
+T7_FIRE_STAFF_Q1,Good Fire Staff,7,WEAPON,Good,0,0,3600,720
+T7_FIRE_STAFF_Q2,Outstanding Fire Staff,7,WEAPON,Outstanding,0,0,4500,750
+T7_FIRE_STAFF_Q3,Excellent Fire Staff,7,WEAPON,Excellent,0,0,6000,800
+T7_FIRE_STAFF_Q4,Masterpiece Fire Staff,7,WEAPON,Masterpiece,0,0,9000,900
+T8_FIRE_STAFF,Fire Staff,8,WEAPON,Normal,0,0,7200,800
+T8_FIRE_STAFF_Q1,Good Fire Staff,8,WEAPON,Good,0,0,8640,820
+T8_FIRE_STAFF_Q2,Outstanding Fire Staff,8,WEAPON,Outstanding,0,0,10800,850
+T8_FIRE_STAFF_Q3,Excellent Fire Staff,8,WEAPON,Excellent,0,0,14400,900
+T8_FIRE_STAFF_Q4,Masterpiece Fire Staff,8,WEAPON,Masterpiece,0,0,21600,1000
+T9_FIRE_STAFF,Fire Staff,9,WEAPON,Normal,0,0,16800,900
+T9_FIRE_STAFF_Q1,Good Fire Staff,9,WEAPON,Good,0,0,20160,920
+T9_FIRE_STAFF_Q2,Outstanding Fire Staff,9,WEAPON,Outstanding,0,0,25200,950
+T9_FIRE_STAFF_Q3,Excellent Fire Staff,9,WEAPON,Excellent,0,0,33600,1000
+T9_FIRE_STAFF_Q4,Masterpiece Fire Staff,9,WEAPON,Masterpiece,0,0,50400,1100
+T10_FIRE_STAFF,Fire Staff,10,WEAPON,Normal,0,0,36000,1000
+T10_FIRE_STAFF_Q1,Good Fire Staff,10,WEAPON,Good,0,0,43200,1020
+T10_FIRE_STAFF_Q2,Outstanding Fire Staff,10,WEAPON,Outstanding,0,0,54000,1050
+T10_FIRE_STAFF_Q3,Excellent Fire Staff,10,WEAPON,Excellent,0,0,72000,1100
+T10_FIRE_STAFF_Q4,Masterpiece Fire Staff,10,WEAPON,Masterpiece,0,0,108000,1200
+T1_TOME,Tome,1,OFF_HAND,Normal,0,0,3,100
+T1_TOME_Q1,Good Tome,1,OFF_HAND,Good,0,0,3.6,120
+T1_TOME_Q2,Outstanding Tome,1,OFF_HAND,Outstanding,0,0,4.5,150
+T1_TOME_Q3,Excellent Tome,1,OFF_HAND,Excellent,0,0,6,200
+T1_TOME_Q4,Masterpiece Tome,1,OFF_HAND,Masterpiece,0,0,9,300
+T2_TOME,Tome,2,OFF_HAND,Normal,0,0,7,200
+T2_TOME_Q1,Good Tome,2,OFF_HAND,Good,0,0,8.4,220
+T2_TOME_Q2,Outstanding Tome,2,OFF_HAND,Outstanding,0,0,10.5,250
+T2_TOME_Q3,Excellent Tome,2,OFF_HAND,Excellent,0,0,14,300
+T2_TOME_Q4,Masterpiece Tome,2,OFF_HAND,Masterpiece,0,0,21,400
+T3_TOME,Tome,3,OFF_HAND,Normal,0,0,18,300
+T3_TOME_Q1,Good Tome,3,OFF_HAND,Good,0,0,21.6,320
+T3_TOME_Q2,Outstanding Tome,3,OFF_HAND,Outstanding,0,0,27,350
+T3_TOME_Q3,Excellent Tome,3,OFF_HAND,Excellent,0,0,36,400
+T3_TOME_Q4,Masterpiece Tome,3,OFF_HAND,Masterpiece,0,0,54,500
+T4_TOME,Tome,4,OFF_HAND,Normal,0,0,45,400
+T4_TOME_Q1,Good Tome,4,OFF_HAND,Good,0,0,54,420
+T4_TOME_Q2,Outstanding Tome,4,OFF_HAND,Outstanding,0,0,67.5,450
+T4_TOME_Q3,Excellent Tome,4,OFF_HAND,Excellent,0,0,90,500
+T4_TOME_Q4,Masterpiece Tome,4,OFF_HAND,Masterpiece,0,0,135,600
+T5_TOME,Tome,5,OFF_HAND,Normal,0,0,120,500
+T5_TOME_Q1,Good Tome,5,OFF_HAND,Good,0,0,144,520
+T5_TOME_Q2,Outstanding Tome,5,OFF_HAND,Outstanding,0,0,180,550
+T5_TOME_Q3,Excellent Tome,5,OFF_HAND,Excellent,0,0,240,600
+T5_TOME_Q4,Masterpiece Tome,5,OFF_HAND,Masterpiece,0,0,360,700
+T6_TOME,Tome,6,OFF_HAND,Normal,0,0,300,600
+T6_TOME_Q1,Good Tome,6,OFF_HAND,Good,0,0,360,620
+T6_TOME_Q2,Outstanding Tome,6,OFF_HAND,Outstanding,0,0,450,650
+T6_TOME_Q3,Excellent Tome,6,OFF_HAND,Excellent,0,0,600,700
+T6_TOME_Q4,Masterpiece Tome,6,OFF_HAND,Masterpiece,0,0,900,800
+T7_TOME,Tome,7,OFF_HAND,Normal,0,0,750,700
+T7_TOME_Q1,Good Tome,7,OFF_HAND,Good,0,0,900,720
+T7_TOME_Q2,Outstanding Tome,7,OFF_HAND,Outstanding,0,0,1125,750
+T7_TOME_Q3,Excellent Tome,7,OFF_HAND,Excellent,0,0,1500,800
+T7_TOME_Q4,Masterpiece Tome,7,OFF_HAND,Masterpiece,0,0,2250,900
+T8_TOME,Tome,8,OFF_HAND,Normal,0,0,1800,800
+T8_TOME_Q1,Good Tome,8,OFF_HAND,Good,0,0,2160,820
+T8_TOME_Q2,Outstanding Tome,8,OFF_HAND,Outstanding,0,0,2700,850
+T8_TOME_Q3,Excellent Tome,8,OFF_HAND,Excellent,0,0,3600,900
+T8_TOME_Q4,Masterpiece Tome,8,OFF_HAND,Masterpiece,0,0,5400,1000
+T9_TOME,Tome,9,OFF_HAND,Normal,0,0,4200,900
+T9_TOME_Q1,Good Tome,9,OFF_HAND,Good,0,0,5040,920
+T9_TOME_Q2,Outstanding Tome,9,OFF_HAND,Outstanding,0,0,6300,950
+T9_TOME_Q3,Excellent Tome,9,OFF_HAND,Excellent,0,0,8400,1000
+T9_TOME_Q4,Masterpiece Tome,9,OFF_HAND,Masterpiece,0,0,12600,1100
+T10_TOME,Tome,10,OFF_HAND,Normal,0,0,9000,1000
+T10_TOME_Q1,Good Tome,10,OFF_HAND,Good,0,0,10800,1020
+T10_TOME_Q2,Outstanding Tome,10,OFF_HAND,Outstanding,0,0,13500,1050
+T10_TOME_Q3,Excellent Tome,10,OFF_HAND,Excellent,0,0,18000,1100
+T10_TOME_Q4,Masterpiece Tome,10,OFF_HAND,Masterpiece,0,0,27000,1200
+T1_CLOTH_ARMOR,Cloth Armor,1,ARMOR,Normal,25,2,2,100
+T1_CLOTH_ARMOR_Q1,Good Cloth Armor,1,ARMOR,Good,30,2.4,2.4,120
+T1_CLOTH_ARMOR_Q2,Outstanding Cloth Armor,1,ARMOR,Outstanding,37.5,3,3,150
+T1_CLOTH_ARMOR_Q3,Excellent Cloth Armor,1,ARMOR,Excellent,50,4,4,200
+T1_CLOTH_ARMOR_Q4,Masterpiece Cloth Armor,1,ARMOR,Masterpiece,75,6,6,300
+T2_CLOTH_ARMOR,Cloth Armor,2,ARMOR,Normal,60,6,5,200
+T2_CLOTH_ARMOR_Q1,Good Cloth Armor,2,ARMOR,Good,72,7.2,6,220
+T2_CLOTH_ARMOR_Q2,Outstanding Cloth Armor,2,ARMOR,Outstanding,90,9,7.5,250
+T2_CLOTH_ARMOR_Q3,Excellent Cloth Armor,2,ARMOR,Excellent,120,12,10,300
+T2_CLOTH_ARMOR_Q4,Masterpiece Cloth Armor,2,ARMOR,Masterpiece,180,18,15,400
+T3_CLOTH_ARMOR,Cloth Armor,3,ARMOR,Normal,120,12,12,300
+T3_CLOTH_ARMOR_Q1,Good Cloth Armor,3,ARMOR,Good,144,14.4,14.4,320
+T3_CLOTH_ARMOR_Q2,Outstanding Cloth Armor,3,ARMOR,Outstanding,180,18,18,350
+T3_CLOTH_ARMOR_Q3,Excellent Cloth Armor,3,ARMOR,Excellent,240,24,24,400
+T3_CLOTH_ARMOR_Q4,Masterpiece Cloth Armor,3,ARMOR,Masterpiece,360,36,36,500
+T4_CLOTH_ARMOR,Cloth Armor,4,ARMOR,Normal,400,32,30,400
+T4_CLOTH_ARMOR_Q1,Good Cloth Armor,4,ARMOR,Good,480,38.4,36,420
+T4_CLOTH_ARMOR_Q2,Outstanding Cloth Armor,4,ARMOR,Outstanding,600,48,45,450
+T4_CLOTH_ARMOR_Q3,Excellent Cloth Armor,4,ARMOR,Excellent,800,64,60,500
+T4_CLOTH_ARMOR_Q4,Masterpiece Cloth Armor,4,ARMOR,Masterpiece,1200,96,90,600
+T5_CLOTH_ARMOR,Cloth Armor,5,ARMOR,Normal,1000,80,80,500
+T5_CLOTH_ARMOR_Q1,Good Cloth Armor,5,ARMOR,Good,1200,96,96,520
+T5_CLOTH_ARMOR_Q2,Outstanding Cloth Armor,5,ARMOR,Outstanding,1500,120,120,550
+T5_CLOTH_ARMOR_Q3,Excellent Cloth Armor,5,ARMOR,Excellent,2000,160,160,600
+T5_CLOTH_ARMOR_Q4,Masterpiece Cloth Armor,5,ARMOR,Masterpiece,3000,240,240,700
+T6_CLOTH_ARMOR,Cloth Armor,6,ARMOR,Normal,2500,200,200,600
+T6_CLOTH_ARMOR_Q1,Good Cloth Armor,6,ARMOR,Good,3000,240,240,620
+T6_CLOTH_ARMOR_Q2,Outstanding Cloth Armor,6,ARMOR,Outstanding,3750,300,300,650
+T6_CLOTH_ARMOR_Q3,Excellent Cloth Armor,6,ARMOR,Excellent,5000,400,400,700
+T6_CLOTH_ARMOR_Q4,Masterpiece Cloth Armor,6,ARMOR,Masterpiece,7500,600,600,800
+T7_CLOTH_ARMOR,Cloth Armor,7,ARMOR,Normal,6000,480,500,700
+T7_CLOTH_ARMOR_Q1,Good Cloth Armor,7,ARMOR,Good,7200,576,600,720
+T7_CLOTH_ARMOR_Q2,Outstanding Cloth Armor,7,ARMOR,Outstanding,9000,720,750,750
+T7_CLOTH_ARMOR_Q3,Excellent Cloth Armor,7,ARMOR,Excellent,12000,960,1000,800
+T7_CLOTH_ARMOR_Q4,Masterpiece Cloth Armor,7,ARMOR,Masterpiece,18000,1440,1500,900
+T8_CLOTH_ARMOR,Cloth Armor,8,ARMOR,Normal,15000,1200,1200,800
+T8_CLOTH_ARMOR_Q1,Good Cloth Armor,8,ARMOR,Good,18000,1440,1440,820
+T8_CLOTH_ARMOR_Q2,Outstanding Cloth Armor,8,ARMOR,Outstanding,22500,1800,1800,850
+T8_CLOTH_ARMOR_Q3,Excellent Cloth Armor,8,ARMOR,Excellent,30000,2400,2400,900
+T8_CLOTH_ARMOR_Q4,Masterpiece Cloth Armor,8,ARMOR,Masterpiece,45000,3600,3600,1000
+T9_CLOTH_ARMOR,Cloth Armor,9,ARMOR,Normal,40000,2800,2800,900
+T9_CLOTH_ARMOR_Q1,Good Cloth Armor,9,ARMOR,Good,48000,3360,3360,920
+T9_CLOTH_ARMOR_Q2,Outstanding Cloth Armor,9,ARMOR,Outstanding,60000,4200,4200,950
+T9_CLOTH_ARMOR_Q3,Excellent Cloth Armor,9,ARMOR,Excellent,80000,5600,5600,1000
+T9_CLOTH_ARMOR_Q4,Masterpiece Cloth Armor,9,ARMOR,Masterpiece,120000,8400,8400,1100
+T10_CLOTH_ARMOR,Cloth Armor,10,ARMOR,Normal,100000,6000,6000,1000
+T10_CLOTH_ARMOR_Q1,Good Cloth Armor,10,ARMOR,Good,120000,7200,7200,1020
+T10_CLOTH_ARMOR_Q2,Outstanding Cloth Armor,10,ARMOR,Outstanding,150000,9000,9000,1050
+T10_CLOTH_ARMOR_Q3,Excellent Cloth Armor,10,ARMOR,Excellent,200000,12000,12000,1100
+T10_CLOTH_ARMOR_Q4,Masterpiece Cloth Armor,10,ARMOR,Masterpiece,300000,18000,18000,1200
+T1_CLOTH_HELMET,Cloth Helmet,1,HELMET,Normal,7,0,0,100
+T1_CLOTH_HELMET_Q1,Good Cloth Helmet,1,HELMET,Good,8.4,0,0,120
+T1_CLOTH_HELMET_Q2,Outstanding Cloth Helmet,1,HELMET,Outstanding,10.5,0,0,150
+T1_CLOTH_HELMET_Q3,Excellent Cloth Helmet,1,HELMET,Excellent,14,0,0,200
+T1_CLOTH_HELMET_Q4,Masterpiece Cloth Helmet,1,HELMET,Masterpiece,21,0,0,300
+T2_CLOTH_HELMET,Cloth Helmet,2,HELMET,Normal,18,1,1,200
+T2_CLOTH_HELMET_Q1,Good Cloth Helmet,2,HELMET,Good,21.6,1.2,1.2,220
+T2_CLOTH_HELMET_Q2,Outstanding Cloth Helmet,2,HELMET,Outstanding,27,1.5,1.5,250
+T2_CLOTH_HELMET_Q3,Excellent Cloth Helmet,2,HELMET,Excellent,36,2,2,300
+T2_CLOTH_HELMET_Q4,Masterpiece Cloth Helmet,2,HELMET,Masterpiece,54,3,3,400
+T3_CLOTH_HELMET,Cloth Helmet,3,HELMET,Normal,36,3,3,300
+T3_CLOTH_HELMET_Q1,Good Cloth Helmet,3,HELMET,Good,43.2,3.6,3.6,320
+T3_CLOTH_HELMET_Q2,Outstanding Cloth Helmet,3,HELMET,Outstanding,54,4.5,4.5,350
+T3_CLOTH_HELMET_Q3,Excellent Cloth Helmet,3,HELMET,Excellent,72,6,6,400
+T3_CLOTH_HELMET_Q4,Masterpiece Cloth Helmet,3,HELMET,Masterpiece,108,9,9,500
+T4_CLOTH_HELMET,Cloth Helmet,4,HELMET,Normal,120,8,7,400
+T4_CLOTH_HELMET_Q1,Good Cloth Helmet,4,HELMET,Good,144,9.6,8.4,420
+T4_CLOTH_HELMET_Q2,Outstanding Cloth Helmet,4,HELMET,Outstanding,180,12,10.5,450
+T4_CLOTH_HELMET_Q3,Excellent Cloth Helmet,4,HELMET,Excellent,240,16,14,500
+T4_CLOTH_HELMET_Q4,Masterpiece Cloth Helmet,4,HELMET,Masterpiece,360,24,21,600
+T5_CLOTH_HELMET,Cloth Helmet,5,HELMET,Normal,300,20,20,500
+T5_CLOTH_HELMET_Q1,Good Cloth Helmet,5,HELMET,Good,360,24,24,520
+T5_CLOTH_HELMET_Q2,Outstanding Cloth Helmet,5,HELMET,Outstanding,450,30,30,550
+T5_CLOTH_HELMET_Q3,Excellent Cloth Helmet,5,HELMET,Excellent,600,40,40,600
+T5_CLOTH_HELMET_Q4,Masterpiece Cloth Helmet,5,HELMET,Masterpiece,900,60,60,700
+T6_CLOTH_HELMET,Cloth Helmet,6,HELMET,Normal,750,50,50,600
+T6_CLOTH_HELMET_Q1,Good Cloth Helmet,6,HELMET,Good,900,60,60,620
+T6_CLOTH_HELMET_Q2,Outstanding Cloth Helmet,6,HELMET,Outstanding,1125,75,75,650
+T6_CLOTH_HELMET_Q3,Excellent Cloth Helmet,6,HELMET,Excellent,1500,100,100,700
+T6_CLOTH_HELMET_Q4,Masterpiece Cloth Helmet,6,HELMET,Masterpiece,2250,150,150,800
+T7_CLOTH_HELMET,Cloth Helmet,7,HELMET,Normal,1800,120,125,700
+T7_CLOTH_HELMET_Q1,Good Cloth Helmet,7,HELMET,Good,2160,144,150,720
+T7_CLOTH_HELMET_Q2,Outstanding Cloth Helmet,7,HELMET,Outstanding,2700,180,187.5,750
+T7_CLOTH_HELMET_Q3,Excellent Cloth Helmet,7,HELMET,Excellent,3600,240,250,800
+T7_CLOTH_HELMET_Q4,Masterpiece Cloth Helmet,7,HELMET,Masterpiece,5400,360,375,900
+T8_CLOTH_HELMET,Cloth Helmet,8,HELMET,Normal,4500,300,300,800
+T8_CLOTH_HELMET_Q1,Good Cloth Helmet,8,HELMET,Good,5400,360,360,820
+T8_CLOTH_HELMET_Q2,Outstanding Cloth Helmet,8,HELMET,Outstanding,6750,450,450,850
+T8_CLOTH_HELMET_Q3,Excellent Cloth Helmet,8,HELMET,Excellent,9000,600,600,900
+T8_CLOTH_HELMET_Q4,Masterpiece Cloth Helmet,8,HELMET,Masterpiece,13500,900,900,1000
+T9_CLOTH_HELMET,Cloth Helmet,9,HELMET,Normal,12000,700,700,900
+T9_CLOTH_HELMET_Q1,Good Cloth Helmet,9,HELMET,Good,14400,840,840,920
+T9_CLOTH_HELMET_Q2,Outstanding Cloth Helmet,9,HELMET,Outstanding,18000,1050,1050,950
+T9_CLOTH_HELMET_Q3,Excellent Cloth Helmet,9,HELMET,Excellent,24000,1400,1400,1000
+T9_CLOTH_HELMET_Q4,Masterpiece Cloth Helmet,9,HELMET,Masterpiece,36000,2100,2100,1100
+T10_CLOTH_HELMET,Cloth Helmet,10,HELMET,Normal,30000,1500,1500,1000
+T10_CLOTH_HELMET_Q1,Good Cloth Helmet,10,HELMET,Good,36000,1800,1800,1020
+T10_CLOTH_HELMET_Q2,Outstanding Cloth Helmet,10,HELMET,Outstanding,45000,2250,2250,1050
+T10_CLOTH_HELMET_Q3,Excellent Cloth Helmet,10,HELMET,Excellent,60000,3000,3000,1100
+T10_CLOTH_HELMET_Q4,Masterpiece Cloth Helmet,10,HELMET,Masterpiece,90000,4500,4500,1200
+T1_CLOTH_BOOTS,Cloth Boots,1,BOOTS,Normal,7,0,0,100
+T1_CLOTH_BOOTS_Q1,Good Cloth Boots,1,BOOTS,Good,8.4,0,0,120
+T1_CLOTH_BOOTS_Q2,Outstanding Cloth Boots,1,BOOTS,Outstanding,10.5,0,0,150
+T1_CLOTH_BOOTS_Q3,Excellent Cloth Boots,1,BOOTS,Excellent,14,0,0,200
+T1_CLOTH_BOOTS_Q4,Masterpiece Cloth Boots,1,BOOTS,Masterpiece,21,0,0,300
+T2_CLOTH_BOOTS,Cloth Boots,2,BOOTS,Normal,18,1,1,200
+T2_CLOTH_BOOTS_Q1,Good Cloth Boots,2,BOOTS,Good,21.6,1.2,1.2,220
+T2_CLOTH_BOOTS_Q2,Outstanding Cloth Boots,2,BOOTS,Outstanding,27,1.5,1.5,250
+T2_CLOTH_BOOTS_Q3,Excellent Cloth Boots,2,BOOTS,Excellent,36,2,2,300
+T2_CLOTH_BOOTS_Q4,Masterpiece Cloth Boots,2,BOOTS,Masterpiece,54,3,3,400
+T3_CLOTH_BOOTS,Cloth Boots,3,BOOTS,Normal,36,3,3,300
+T3_CLOTH_BOOTS_Q1,Good Cloth Boots,3,BOOTS,Good,43.2,3.6,3.6,320
+T3_CLOTH_BOOTS_Q2,Outstanding Cloth Boots,3,BOOTS,Outstanding,54,4.5,4.5,350
+T3_CLOTH_BOOTS_Q3,Excellent Cloth Boots,3,BOOTS,Excellent,72,6,6,400
+T3_CLOTH_BOOTS_Q4,Masterpiece Cloth Boots,3,BOOTS,Masterpiece,108,9,9,500
+T4_CLOTH_BOOTS,Cloth Boots,4,BOOTS,Normal,120,8,7,400
+T4_CLOTH_BOOTS_Q1,Good Cloth Boots,4,BOOTS,Good,144,9.6,8.4,420
+T4_CLOTH_BOOTS_Q2,Outstanding Cloth Boots,4,BOOTS,Outstanding,180,12,10.5,450
+T4_CLOTH_BOOTS_Q3,Excellent Cloth Boots,4,BOOTS,Excellent,240,16,14,500
+T4_CLOTH_BOOTS_Q4,Masterpiece Cloth Boots,4,BOOTS,Masterpiece,360,24,21,600
+T5_CLOTH_BOOTS,Cloth Boots,5,BOOTS,Normal,300,20,20,500
+T5_CLOTH_BOOTS_Q1,Good Cloth Boots,5,BOOTS,Good,360,24,24,520
+T5_CLOTH_BOOTS_Q2,Outstanding Cloth Boots,5,BOOTS,Outstanding,450,30,30,550
+T5_CLOTH_BOOTS_Q3,Excellent Cloth Boots,5,BOOTS,Excellent,600,40,40,600
+T5_CLOTH_BOOTS_Q4,Masterpiece Cloth Boots,5,BOOTS,Masterpiece,900,60,60,700
+T6_CLOTH_BOOTS,Cloth Boots,6,BOOTS,Normal,750,50,50,600
+T6_CLOTH_BOOTS_Q1,Good Cloth Boots,6,BOOTS,Good,900,60,60,620
+T6_CLOTH_BOOTS_Q2,Outstanding Cloth Boots,6,BOOTS,Outstanding,1125,75,75,650
+T6_CLOTH_BOOTS_Q3,Excellent Cloth Boots,6,BOOTS,Excellent,1500,100,100,700
+T6_CLOTH_BOOTS_Q4,Masterpiece Cloth Boots,6,BOOTS,Masterpiece,2250,150,150,800
+T7_CLOTH_BOOTS,Cloth Boots,7,BOOTS,Normal,1800,120,125,700
+T7_CLOTH_BOOTS_Q1,Good Cloth Boots,7,BOOTS,Good,2160,144,150,720
+T7_CLOTH_BOOTS_Q2,Outstanding Cloth Boots,7,BOOTS,Outstanding,2700,180,187.5,750
+T7_CLOTH_BOOTS_Q3,Excellent Cloth Boots,7,BOOTS,Excellent,3600,240,250,800
+T7_CLOTH_BOOTS_Q4,Masterpiece Cloth Boots,7,BOOTS,Masterpiece,5400,360,375,900
+T8_CLOTH_BOOTS,Cloth Boots,8,BOOTS,Normal,4500,300,300,800
+T8_CLOTH_BOOTS_Q1,Good Cloth Boots,8,BOOTS,Good,5400,360,360,820
+T8_CLOTH_BOOTS_Q2,Outstanding Cloth Boots,8,BOOTS,Outstanding,6750,450,450,850
+T8_CLOTH_BOOTS_Q3,Excellent Cloth Boots,8,BOOTS,Excellent,9000,600,600,900
+T8_CLOTH_BOOTS_Q4,Masterpiece Cloth Boots,8,BOOTS,Masterpiece,13500,900,900,1000
+T9_CLOTH_BOOTS,Cloth Boots,9,BOOTS,Normal,12000,700,700,900
+T9_CLOTH_BOOTS_Q1,Good Cloth Boots,9,BOOTS,Good,14400,840,840,920
+T9_CLOTH_BOOTS_Q2,Outstanding Cloth Boots,9,BOOTS,Outstanding,18000,1050,1050,950
+T9_CLOTH_BOOTS_Q3,Excellent Cloth Boots,9,BOOTS,Excellent,24000,1400,1400,1000
+T9_CLOTH_BOOTS_Q4,Masterpiece Cloth Boots,9,BOOTS,Masterpiece,36000,2100,2100,1100
+T10_CLOTH_BOOTS,Cloth Boots,10,BOOTS,Normal,30000,1500,1500,1000
+T10_CLOTH_BOOTS_Q1,Good Cloth Boots,10,BOOTS,Good,36000,1800,1800,1020
+T10_CLOTH_BOOTS_Q2,Outstanding Cloth Boots,10,BOOTS,Outstanding,45000,2250,2250,1050
+T10_CLOTH_BOOTS_Q3,Excellent Cloth Boots,10,BOOTS,Excellent,60000,3000,3000,1100
+T10_CLOTH_BOOTS_Q4,Masterpiece Cloth Boots,10,BOOTS,Masterpiece,90000,4500,4500,1200
+T1_CLOTH_GLOVES,Cloth Gloves,1,GLOVES,Normal,5,0,1,100
+T1_CLOTH_GLOVES_Q1,Good Cloth Gloves,1,GLOVES,Good,6,0,1.2,120
+T1_CLOTH_GLOVES_Q2,Outstanding Cloth Gloves,1,GLOVES,Outstanding,7.5,0,1.5,150
+T1_CLOTH_GLOVES_Q3,Excellent Cloth Gloves,1,GLOVES,Excellent,10,0,2,200
+T1_CLOTH_GLOVES_Q4,Masterpiece Cloth Gloves,1,GLOVES,Masterpiece,15,0,3,300
+T2_CLOTH_GLOVES,Cloth Gloves,2,GLOVES,Normal,12,1,2,200
+T2_CLOTH_GLOVES_Q1,Good Cloth Gloves,2,GLOVES,Good,14.4,1.2,2.4,220
+T2_CLOTH_GLOVES_Q2,Outstanding Cloth Gloves,2,GLOVES,Outstanding,18,1.5,3,250
+T2_CLOTH_GLOVES_Q3,Excellent Cloth Gloves,2,GLOVES,Excellent,24,2,4,300
+T2_CLOTH_GLOVES_Q4,Masterpiece Cloth Gloves,2,GLOVES,Masterpiece,36,3,6,400
+T3_CLOTH_GLOVES,Cloth Gloves,3,GLOVES,Normal,24,3,6,300
+T3_CLOTH_GLOVES_Q1,Good Cloth Gloves,3,GLOVES,Good,28.8,3.6,7.2,320
+T3_CLOTH_GLOVES_Q2,Outstanding Cloth Gloves,3,GLOVES,Outstanding,36,4.5,9,350
+T3_CLOTH_GLOVES_Q3,Excellent Cloth Gloves,3,GLOVES,Excellent,48,6,12,400
+T3_CLOTH_GLOVES_Q4,Masterpiece Cloth Gloves,3,GLOVES,Masterpiece,72,9,18,500
+T4_CLOTH_GLOVES,Cloth Gloves,4,GLOVES,Normal,80,8,15,400
+T4_CLOTH_GLOVES_Q1,Good Cloth Gloves,4,GLOVES,Good,96,9.6,18,420
+T4_CLOTH_GLOVES_Q2,Outstanding Cloth Gloves,4,GLOVES,Outstanding,120,12,22.5,450
+T4_CLOTH_GLOVES_Q3,Excellent Cloth Gloves,4,GLOVES,Excellent,160,16,30,500
+T4_CLOTH_GLOVES_Q4,Masterpiece Cloth Gloves,4,GLOVES,Masterpiece,240,24,45,600
+T5_CLOTH_GLOVES,Cloth Gloves,5,GLOVES,Normal,200,20,40,500
+T5_CLOTH_GLOVES_Q1,Good Cloth Gloves,5,GLOVES,Good,240,24,48,520
+T5_CLOTH_GLOVES_Q2,Outstanding Cloth Gloves,5,GLOVES,Outstanding,300,30,60,550
+T5_CLOTH_GLOVES_Q3,Excellent Cloth Gloves,5,GLOVES,Excellent,400,40,80,600
+T5_CLOTH_GLOVES_Q4,Masterpiece Cloth Gloves,5,GLOVES,Masterpiece,600,60,120,700
+T6_CLOTH_GLOVES,Cloth Gloves,6,GLOVES,Normal,500,50,100,600
+T6_CLOTH_GLOVES_Q1,Good Cloth Gloves,6,GLOVES,Good,600,60,120,620
+T6_CLOTH_GLOVES_Q2,Outstanding Cloth Gloves,6,GLOVES,Outstanding,750,75,150,650
+T6_CLOTH_GLOVES_Q3,Excellent Cloth Gloves,6,GLOVES,Excellent,1000,100,200,700
+T6_CLOTH_GLOVES_Q4,Masterpiece Cloth Gloves,6,GLOVES,Masterpiece,1500,150,300,800
+T7_CLOTH_GLOVES,Cloth Gloves,7,GLOVES,Normal,1200,120,250,700
+T7_CLOTH_GLOVES_Q1,Good Cloth Gloves,7,GLOVES,Good,1440,144,300,720
+T7_CLOTH_GLOVES_Q2,Outstanding Cloth Gloves,7,GLOVES,Outstanding,1800,180,375,750
+T7_CLOTH_GLOVES_Q3,Excellent Cloth Gloves,7,GLOVES,Excellent,2400,240,500,800
+T7_CLOTH_GLOVES_Q4,Masterpiece Cloth Gloves,7,GLOVES,Masterpiece,3600,360,750,900
+T8_CLOTH_GLOVES,Cloth Gloves,8,GLOVES,Normal,3000,300,600,800
+T8_CLOTH_GLOVES_Q1,Good Cloth Gloves,8,GLOVES,Good,3600,360,720,820
+T8_CLOTH_GLOVES_Q2,Outstanding Cloth Gloves,8,GLOVES,Outstanding,4500,450,900,850
+T8_CLOTH_GLOVES_Q3,Excellent Cloth Gloves,8,GLOVES,Excellent,6000,600,1200,900
+T8_CLOTH_GLOVES_Q4,Masterpiece Cloth Gloves,8,GLOVES,Masterpiece,9000,900,1800,1000
+T9_CLOTH_GLOVES,Cloth Gloves,9,GLOVES,Normal,8000,700,1400,900
+T9_CLOTH_GLOVES_Q1,Good Cloth Gloves,9,GLOVES,Good,9600,840,1680,920
+T9_CLOTH_GLOVES_Q2,Outstanding Cloth Gloves,9,GLOVES,Outstanding,12000,1050,2100,950
+T9_CLOTH_GLOVES_Q3,Excellent Cloth Gloves,9,GLOVES,Excellent,16000,1400,2800,1000
+T9_CLOTH_GLOVES_Q4,Masterpiece Cloth Gloves,9,GLOVES,Masterpiece,24000,2100,4200,1100
+T10_CLOTH_GLOVES,Cloth Gloves,10,GLOVES,Normal,20000,1500,3000,1000
+T10_CLOTH_GLOVES_Q1,Good Cloth Gloves,10,GLOVES,Good,24000,1800,3600,1020
+T10_CLOTH_GLOVES_Q2,Outstanding Cloth Gloves,10,GLOVES,Outstanding,30000,2250,4500,1050
+T10_CLOTH_GLOVES_Q3,Excellent Cloth Gloves,10,GLOVES,Excellent,40000,3000,6000,1100
+T10_CLOTH_GLOVES_Q4,Masterpiece Cloth Gloves,10,GLOVES,Masterpiece,60000,4500,9000,1200
+T1_MAGE_CAPE,Mage Cape,1,CAPE,Normal,10,0,0,100
+T1_MAGE_CAPE_Q1,Good Mage Cape,1,CAPE,Good,12,0,0,120
+T1_MAGE_CAPE_Q2,Outstanding Mage Cape,1,CAPE,Outstanding,15,0,0,150
+T1_MAGE_CAPE_Q3,Excellent Mage Cape,1,CAPE,Excellent,20,0,0,200
+T1_MAGE_CAPE_Q4,Masterpiece Mage Cape,1,CAPE,Masterpiece,30,0,0,300
+T2_MAGE_CAPE,Mage Cape,2,CAPE,Normal,24,0,0,200
+T2_MAGE_CAPE_Q1,Good Mage Cape,2,CAPE,Good,28.8,0,0,220
+T2_MAGE_CAPE_Q2,Outstanding Mage Cape,2,CAPE,Outstanding,36,0,0,250
+T2_MAGE_CAPE_Q3,Excellent Mage Cape,2,CAPE,Excellent,48,0,0,300
+T2_MAGE_CAPE_Q4,Masterpiece Mage Cape,2,CAPE,Masterpiece,72,0,0,400
+T3_MAGE_CAPE,Mage Cape,3,CAPE,Normal,48,0,0,300
+T3_MAGE_CAPE_Q1,Good Mage Cape,3,CAPE,Good,57.6,0,0,320
+T3_MAGE_CAPE_Q2,Outstanding Mage Cape,3,CAPE,Outstanding,72,0,0,350
+T3_MAGE_CAPE_Q3,Excellent Mage Cape,3,CAPE,Excellent,96,0,0,400
+T3_MAGE_CAPE_Q4,Masterpiece Mage Cape,3,CAPE,Masterpiece,144,0,0,500
+T4_MAGE_CAPE,Mage Cape,4,CAPE,Normal,160,0,0,400
+T4_MAGE_CAPE_Q1,Good Mage Cape,4,CAPE,Good,192,0,0,420
+T4_MAGE_CAPE_Q2,Outstanding Mage Cape,4,CAPE,Outstanding,240,0,0,450
+T4_MAGE_CAPE_Q3,Excellent Mage Cape,4,CAPE,Excellent,320,0,0,500
+T4_MAGE_CAPE_Q4,Masterpiece Mage Cape,4,CAPE,Masterpiece,480,0,0,600
+T5_MAGE_CAPE,Mage Cape,5,CAPE,Normal,400,0,0,500
+T5_MAGE_CAPE_Q1,Good Mage Cape,5,CAPE,Good,480,0,0,520
+T5_MAGE_CAPE_Q2,Outstanding Mage Cape,5,CAPE,Outstanding,600,0,0,550
+T5_MAGE_CAPE_Q3,Excellent Mage Cape,5,CAPE,Excellent,800,0,0,600
+T5_MAGE_CAPE_Q4,Masterpiece Mage Cape,5,CAPE,Masterpiece,1200,0,0,700
+T6_MAGE_CAPE,Mage Cape,6,CAPE,Normal,1000,0,0,600
+T6_MAGE_CAPE_Q1,Good Mage Cape,6,CAPE,Good,1200,0,0,620
+T6_MAGE_CAPE_Q2,Outstanding Mage Cape,6,CAPE,Outstanding,1500,0,0,650
+T6_MAGE_CAPE_Q3,Excellent Mage Cape,6,CAPE,Excellent,2000,0,0,700
+T6_MAGE_CAPE_Q4,Masterpiece Mage Cape,6,CAPE,Masterpiece,3000,0,0,800
+T7_MAGE_CAPE,Mage Cape,7,CAPE,Normal,2400,0,0,700
+T7_MAGE_CAPE_Q1,Good Mage Cape,7,CAPE,Good,2880,0,0,720
+T7_MAGE_CAPE_Q2,Outstanding Mage Cape,7,CAPE,Outstanding,3600,0,0,750
+T7_MAGE_CAPE_Q3,Excellent Mage Cape,7,CAPE,Excellent,4800,0,0,800
+T7_MAGE_CAPE_Q4,Masterpiece Mage Cape,7,CAPE,Masterpiece,7200,0,0,900
+T8_MAGE_CAPE,Mage Cape,8,CAPE,Normal,6000,0,0,800
+T8_MAGE_CAPE_Q1,Good Mage Cape,8,CAPE,Good,7200,0,0,820
+T8_MAGE_CAPE_Q2,Outstanding Mage Cape,8,CAPE,Outstanding,9000,0,0,850
+T8_MAGE_CAPE_Q3,Excellent Mage Cape,8,CAPE,Excellent,12000,0,0,900
+T8_MAGE_CAPE_Q4,Masterpiece Mage Cape,8,CAPE,Masterpiece,18000,0,0,1000
+T9_MAGE_CAPE,Mage Cape,9,CAPE,Normal,16000,0,0,900
+T9_MAGE_CAPE_Q1,Good Mage Cape,9,CAPE,Good,19200,0,0,920
+T9_MAGE_CAPE_Q2,Outstanding Mage Cape,9,CAPE,Outstanding,24000,0,0,950
+T9_MAGE_CAPE_Q3,Excellent Mage Cape,9,CAPE,Excellent,32000,0,0,1000
+T9_MAGE_CAPE_Q4,Masterpiece Mage Cape,9,CAPE,Masterpiece,48000,0,0,1100
+T10_MAGE_CAPE,Mage Cape,10,CAPE,Normal,40000,0,0,1000
+T10_MAGE_CAPE_Q1,Good Mage Cape,10,CAPE,Good,48000,0,0,1020
+T10_MAGE_CAPE_Q2,Outstanding Mage Cape,10,CAPE,Outstanding,60000,0,0,1050
+T10_MAGE_CAPE_Q3,Excellent Mage Cape,10,CAPE,Excellent,80000,0,0,1100
+T10_MAGE_CAPE_Q4,Masterpiece Mage Cape,10,CAPE,Masterpiece,120000,0,0,1200
+T1_SICKLE,Sickle,1,TOOL_SICKLE,Normal,0,0,0,100
+T2_SICKLE,Sickle,2,TOOL_SICKLE,Normal,0,0,0,200
+T3_SICKLE,Sickle,3,TOOL_SICKLE,Normal,0,0,0,300
+T4_SICKLE,Sickle,4,TOOL_SICKLE,Normal,0,0,0,400
+T5_SICKLE,Sickle,5,TOOL_SICKLE,Normal,0,0,0,500
+T6_SICKLE,Sickle,6,TOOL_SICKLE,Normal,0,0,0,600
+T7_SICKLE,Sickle,7,TOOL_SICKLE,Normal,0,0,0,700
+T8_SICKLE,Sickle,8,TOOL_SICKLE,Normal,0,0,0,800
+T9_SICKLE,Sickle,9,TOOL_SICKLE,Normal,0,0,0,900
+T10_SICKLE,Sickle,10,TOOL_SICKLE,Normal,0,0,0,1000
+T1_FISHING_ROD,Fishing Rod,1,TOOL_ROD,Normal,0,0,0,100
+T2_FISHING_ROD,Fishing Rod,2,TOOL_ROD,Normal,0,0,0,200
+T3_FISHING_ROD,Fishing Rod,3,TOOL_ROD,Normal,0,0,0,300
+T4_FISHING_ROD,Fishing Rod,4,TOOL_ROD,Normal,0,0,0,400
+T5_FISHING_ROD,Fishing Rod,5,TOOL_ROD,Normal,0,0,0,500
+T6_FISHING_ROD,Fishing Rod,6,TOOL_ROD,Normal,0,0,0,600
+T7_FISHING_ROD,Fishing Rod,7,TOOL_ROD,Normal,0,0,0,700
+T8_FISHING_ROD,Fishing Rod,8,TOOL_ROD,Normal,0,0,0,800
+T9_FISHING_ROD,Fishing Rod,9,TOOL_ROD,Normal,0,0,0,900
+T10_FISHING_ROD,Fishing Rod,10,TOOL_ROD,Normal,0,0,0,1000
+T1_DUNGEON_MAP,Dungeon Map,1,MAP,Normal,0,0,0,undefined
+T2_DUNGEON_MAP,Dungeon Map,2,MAP,Normal,0,0,0,undefined
+T3_DUNGEON_MAP,Dungeon Map,3,MAP,Normal,0,0,0,undefined
+T4_DUNGEON_MAP,Dungeon Map,4,MAP,Normal,0,0,0,undefined
+T5_DUNGEON_MAP,Dungeon Map,5,MAP,Normal,0,0,0,undefined
+T6_DUNGEON_MAP,Dungeon Map,6,MAP,Normal,0,0,0,undefined
+T7_DUNGEON_MAP,Dungeon Map,7,MAP,Normal,0,0,0,undefined
+T8_DUNGEON_MAP,Dungeon Map,8,MAP,Normal,0,0,0,undefined
+T9_DUNGEON_MAP,Dungeon Map,9,MAP,Normal,0,0,0,undefined
+T10_DUNGEON_MAP,Dungeon Map,10,MAP,Normal,0,0,0,undefined
+T1_CREST,Boss Crest,1,CRAFTING_MATERIAL,Normal,0,0,0,undefined
+T2_CREST,Boss Crest,2,CRAFTING_MATERIAL,Normal,0,0,0,undefined
+T3_CREST,Boss Crest,3,CRAFTING_MATERIAL,Normal,0,0,0,undefined
+T4_CREST,Boss Crest,4,CRAFTING_MATERIAL,Normal,0,0,0,undefined
+T5_CREST,Boss Crest,5,CRAFTING_MATERIAL,Normal,0,0,0,undefined
+T6_CREST,Boss Crest,6,CRAFTING_MATERIAL,Normal,0,0,0,undefined
+T7_CREST,Boss Crest,7,CRAFTING_MATERIAL,Normal,0,0,0,undefined
+T8_CREST,Boss Crest,8,CRAFTING_MATERIAL,Normal,0,0,0,undefined
+T9_CREST,Boss Crest,9,CRAFTING_MATERIAL,Normal,0,0,0,undefined
+T10_CREST,Boss Crest,10,CRAFTING_MATERIAL,Normal,0,0,0,undefined

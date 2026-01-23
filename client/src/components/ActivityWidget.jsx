@@ -580,9 +580,10 @@ const ActivityWidget = ({ gameState, onStop, socket, onNavigate, isMobile, serve
                                         }}
                                         style={{
                                             width: '100%',
-                                            background: 'rgba(255, 59, 48, 0.1)',
-                                            border: '1px solid rgba(255, 59, 48, 0.5)',
-                                            color: '#ff3b30',
+                                            background: dungeonState.status === 'COMPLETED' ? 'rgba(76, 175, 80, 0.1)' : 'rgba(255, 59, 48, 0.1)',
+                                            border: '1px solid',
+                                            borderColor: dungeonState.status === 'COMPLETED' ? 'rgba(76, 175, 80, 0.5)' : 'rgba(255, 59, 48, 0.5)',
+                                            color: dungeonState.status === 'COMPLETED' ? '#4caf50' : '#ff3b30',
                                             padding: '8px',
                                             borderRadius: '6px',
                                             cursor: 'pointer',
@@ -597,7 +598,7 @@ const ActivityWidget = ({ gameState, onStop, socket, onNavigate, isMobile, serve
                                         }}
                                     >
                                         <Skull size={14} />
-                                        ABANDON
+                                        {dungeonState.status === 'COMPLETED' ? 'FINISH' : 'ABANDON'}
                                     </button>
                                 </motion.div>
                             )}

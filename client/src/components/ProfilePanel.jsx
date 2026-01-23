@@ -254,118 +254,106 @@ Each point grants: +10 HP and +1 Base Damage`;
 Each point grants: +1% Global XP, +1% Gold Gain and +1 Base Damage`;
 
     return (
-        <div className="glass-panel" style={{
-            height: '100%',
-            width: '100%',
-            display: 'flex',
-            flexDirection: 'column',
-            overflow: 'hidden', // Keeps rounded corners
-            borderRadius: '16px',
-            background: 'rgba(15, 20, 30, 0.4)',
-            minHeight: 0 // Crucial for nested flex scrolling
-        }}>
-            <div className="scroll-container" style={{ padding: isMobile ? '20px' : '30px', overflowY: 'auto' }}>
-                {/* Header com IP - HUB Style */}
-                <div style={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                    borderBottom: '1px solid var(--border)',
-                    paddingBottom: '20px',
-                    marginBottom: '30px'
-                }}>
-                    <div>
-                        <h2 style={{ margin: 0, color: '#fff', fontSize: '1.4rem', fontWeight: '900', letterSpacing: '1px' }}>{name.toUpperCase()}</h2>
-                        <div style={{ fontSize: '0.6rem', color: '#555', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '2px' }}>Lands Explorer</div>
-                    </div>
-                    <div style={{ textAlign: 'right' }}>
-                        <div style={{ fontSize: '1.8rem', fontWeight: '900', color: '#d4af37', textShadow: '0 0 15px rgba(212, 175, 55, 0.2)' }}>{avgIP}</div>
-                        <div style={{ fontSize: '0.55rem', color: '#555', fontWeight: '900', letterSpacing: '1px' }}>ITEM POWER</div>
-                    </div>
-                </div>
-
-                {/* Barra de Vida - Sophisticated */}
-                <div style={{ marginBottom: '35px' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.65rem', marginBottom: '8px', fontWeight: '900', letterSpacing: '1px', color: '#888' }}>
-                        <span>VITALITY</span>
-                        <span style={{ color: '#fff' }}>{Math.floor(stats.hp)} / {Math.floor(stats.maxHp)} HP</span>
-                    </div>
-                    <div style={{ background: 'rgba(255, 0, 0, 0.05)', height: '6px', borderRadius: '10px', overflow: 'hidden', border: '1px solid rgba(255, 0, 0, 0.1)' }}>
-                        <motion.div
-                            initial={{ width: 0 }}
-                            animate={{ width: `${(stats.hp / stats.maxHp) * 100}%` }}
-                            style={{ height: '100%', background: 'linear-gradient(90deg, #ff4d4d, #b30000)' }}
-                        />
-                    </div>
-                </div>
-
-                {/* Grid de Equipamentos - Compact Layout */}
-                <div style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(3, auto)',
-                    gap: isMobile ? '10px' : '15px',
-                    marginBottom: '40px',
-                    justifyContent: 'center',
-                    padding: isMobile ? '10px 5px' : '25px',
-                }}>
-                    <EquipmentSlot slot="cape" icon={<Layers size={20} />} label="CAPE" item={equipment.cape} onClick={() => setSelectedSlot('cape')} onShowInfo={onShowInfo} />
-                    <EquipmentSlot slot="helmet" icon={<User size={20} />} label="HEAD" item={equipment.helmet} onClick={() => setSelectedSlot('helmet')} onShowInfo={onShowInfo} />
-                    <EquipmentSlot slot="food" icon={<Apple size={20} />} label="FOOD" item={equipment.food} onClick={() => setSelectedSlot('food')} onShowInfo={onShowInfo} />
-
-                    <EquipmentSlot slot="gloves" icon={<Shield size={20} />} label="HANDS" item={equipment.gloves} onClick={() => setSelectedSlot('gloves')} onShowInfo={onShowInfo} />
-                    <EquipmentSlot slot="chest" icon={<Shield size={20} />} label="CHEST" item={equipment.chest} onClick={() => setSelectedSlot('chest')} onShowInfo={onShowInfo} />
-                    <EquipmentSlot slot="offHand" icon={<Target size={20} />} label="OFF-HAND" item={equipment.offHand} onClick={() => setSelectedSlot('offHand')} onShowInfo={onShowInfo} />
-
-                    <EquipmentSlot slot="mainHand" icon={<Sword size={20} />} label="WEAPON" item={equipment.mainHand} onClick={() => setSelectedSlot('mainHand')} onShowInfo={onShowInfo} />
-                    <EquipmentSlot slot="boots" icon={<Target size={20} />} label="FEET" item={equipment.boots} onClick={() => setSelectedSlot('boots')} onShowInfo={onShowInfo} />
+        <>
+            <div className="glass-panel" style={{
+                height: '100%',
+                width: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                overflow: 'hidden', // Keeps rounded corners
+                borderRadius: '16px',
+                background: 'rgba(15, 20, 30, 0.4)',
+                minHeight: 0 // Crucial for nested flex scrolling
+            }}>
+                <div className="scroll-container" style={{ padding: isMobile ? '20px' : '30px', overflowY: 'auto' }}>
+                    {/* Header com IP - HUB Style */}
                     <div style={{
-                        width: '64px',
-                        height: '64px',
-                        border: '2px dashed rgba(255,255,255,0.1)',
-                        borderRadius: '12px',
-                        background: 'rgba(0,0,0,0.2)',
                         display: 'flex',
-                        flexDirection: 'column',
+                        justifyContent: 'space-between',
                         alignItems: 'center',
-                        justifyContent: 'center',
-                        color: 'rgba(255,255,255,0.15)',
-                        cursor: 'not-allowed'
+                        borderBottom: '1px solid var(--border)',
+                        paddingBottom: '20px',
+                        marginBottom: '30px'
                     }}>
-                        <div style={{ fontSize: '0.6rem', fontWeight: 'bold' }}>LOCKED</div>
+                        <div>
+                            <h2 style={{ margin: 0, color: '#fff', fontSize: '1.4rem', fontWeight: '900', letterSpacing: '1px' }}>{name.toUpperCase()}</h2>
+                            <div style={{ fontSize: '0.6rem', color: '#555', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '2px' }}>Lands Explorer</div>
+                        </div>
+                        <div style={{ textAlign: 'right' }}>
+                            <div style={{ fontSize: '1.8rem', fontWeight: '900', color: '#d4af37', textShadow: '0 0 15px rgba(212, 175, 55, 0.2)' }}>{avgIP}</div>
+                            <div style={{ fontSize: '0.55rem', color: '#555', fontWeight: '900', letterSpacing: '1px' }}>ITEM POWER</div>
+                        </div>
                     </div>
-                </div>
 
-                {/* Gathering Tools - New Section */}
-                <div style={{ marginBottom: '40px' }}>
-                    <h4 style={{ color: 'var(--accent, #d4af37)', fontSize: '0.8rem', textTransform: 'uppercase', marginBottom: '1rem', textAlign: 'center', letterSpacing: '1px' }}>Gathering Tools</h4>
+                    {/* Barra de Vida - Sophisticated */}
+                    <div style={{ marginBottom: '35px' }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.65rem', marginBottom: '8px', fontWeight: '900', letterSpacing: '1px', color: '#888' }}>
+                            <span>VITALITY</span>
+                            <span style={{ color: '#fff' }}>{Math.floor(stats.hp)} / {Math.floor(stats.maxHp)} HP</span>
+                        </div>
+                        <div style={{ background: 'rgba(255, 0, 0, 0.05)', height: '6px', borderRadius: '10px', overflow: 'hidden', border: '1px solid rgba(255, 0, 0, 0.1)' }}>
+                            <motion.div
+                                initial={{ width: 0 }}
+                                animate={{ width: `${(stats.hp / stats.maxHp) * 100}%` }}
+                                style={{ height: '100%', background: 'linear-gradient(90deg, #ff4d4d, #b30000)' }}
+                            />
+                        </div>
+                    </div>
+
+                    {/* Grid de Equipamentos - Compact Layout */}
                     <div style={{
-                        display: 'flex',
+                        display: 'grid',
+                        gridTemplateColumns: 'repeat(3, auto)',
+                        gap: isMobile ? '10px' : '15px',
+                        marginBottom: '40px',
                         justifyContent: 'center',
-                        gap: '10px',
-                        flexWrap: 'wrap'
+                        padding: isMobile ? '10px 5px' : '25px',
                     }}>
-                        <EquipmentSlot slot="tool_axe" icon={<Axe size={20} />} label="AXE" item={equipment.tool_axe} onClick={() => setSelectedSlot('tool_axe')} onShowInfo={onShowInfo} />
-                        <EquipmentSlot slot="tool_pickaxe" icon={<Pickaxe size={20} />} label="PICKAXE" item={equipment.tool_pickaxe} onClick={() => setSelectedSlot('tool_pickaxe')} onShowInfo={onShowInfo} />
-                        <EquipmentSlot slot="tool_sickle" icon={<Scissors size={20} />} label="SICKLE" item={equipment.tool_sickle} onClick={() => setSelectedSlot('tool_sickle')} onShowInfo={onShowInfo} />
-                        <EquipmentSlot slot="tool_knife" icon={<Sword size={20} style={{ transform: 'rotate(45deg)' }} />} label="KNIFE" item={equipment.tool_knife} onClick={() => setSelectedSlot('tool_knife')} onShowInfo={onShowInfo} />
-                        <EquipmentSlot slot="tool_rod" icon={<Anchor size={20} />} label="ROD" item={equipment.tool_rod} onClick={() => setSelectedSlot('tool_rod')} onShowInfo={onShowInfo} />
+                        <EquipmentSlot slot="cape" icon={<Layers size={20} />} label="CAPE" item={equipment.cape} onClick={() => setSelectedSlot('cape')} onShowInfo={onShowInfo} />
+                        <EquipmentSlot slot="helmet" icon={<User size={20} />} label="HEAD" item={equipment.helmet} onClick={() => setSelectedSlot('helmet')} onShowInfo={onShowInfo} />
+                        <EquipmentSlot slot="food" icon={<Apple size={20} />} label="FOOD" item={equipment.food} onClick={() => setSelectedSlot('food')} onShowInfo={onShowInfo} />
+
+                        <EquipmentSlot slot="gloves" icon={<Shield size={20} />} label="HANDS" item={equipment.gloves} onClick={() => setSelectedSlot('gloves')} onShowInfo={onShowInfo} />
+                        <EquipmentSlot slot="chest" icon={<Shield size={20} />} label="CHEST" item={equipment.chest} onClick={() => setSelectedSlot('chest')} onShowInfo={onShowInfo} />
+                        <EquipmentSlot slot="offHand" icon={<Target size={20} />} label="OFF-HAND" item={equipment.offHand} onClick={() => setSelectedSlot('offHand')} onShowInfo={onShowInfo} />
+
+                        <EquipmentSlot slot="mainHand" icon={<Sword size={20} />} label="WEAPON" item={equipment.mainHand} onClick={() => setSelectedSlot('mainHand')} onShowInfo={onShowInfo} />
+                        <EquipmentSlot slot="boots" icon={<Target size={20} />} label="FEET" item={equipment.boots} onClick={() => setSelectedSlot('boots')} onShowInfo={onShowInfo} />
+                        <div style={{
+                            width: '64px',
+                            height: '64px',
+                            border: '2px dashed rgba(255,255,255,0.1)',
+                            borderRadius: '12px',
+                            background: 'rgba(0,0,0,0.2)',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            color: 'rgba(255,255,255,0.15)',
+                            cursor: 'not-allowed'
+                        }}>
+                            <div style={{ fontSize: '0.6rem', fontWeight: 'bold' }}>LOCKED</div>
+                        </div>
                     </div>
-                </div>
 
-                <div style={{ display: 'none' }}> {/* Hidden Legacy slot just in case */}
-                </div>
+                    {/* Gathering Tools - New Section */}
+                    <div style={{ marginBottom: '40px' }}>
+                        <h4 style={{ color: 'var(--accent, #d4af37)', fontSize: '0.8rem', textTransform: 'uppercase', marginBottom: '1rem', textAlign: 'center', letterSpacing: '1px' }}>Gathering Tools</h4>
+                        <div style={{
+                            display: 'flex',
+                            justifyContent: 'center',
+                            gap: '10px',
+                            flexWrap: 'wrap'
+                        }}>
+                            <EquipmentSlot slot="tool_axe" icon={<Axe size={20} />} label="AXE" item={equipment.tool_axe} onClick={() => setSelectedSlot('tool_axe')} onShowInfo={onShowInfo} />
+                            <EquipmentSlot slot="tool_pickaxe" icon={<Pickaxe size={20} />} label="PICKAXE" item={equipment.tool_pickaxe} onClick={() => setSelectedSlot('tool_pickaxe')} onShowInfo={onShowInfo} />
+                            <EquipmentSlot slot="tool_sickle" icon={<Scissors size={20} />} label="SICKLE" item={equipment.tool_sickle} onClick={() => setSelectedSlot('tool_sickle')} onShowInfo={onShowInfo} />
+                            <EquipmentSlot slot="tool_knife" icon={<Sword size={20} style={{ transform: 'rotate(45deg)' }} />} label="KNIFE" item={equipment.tool_knife} onClick={() => setSelectedSlot('tool_knife')} onShowInfo={onShowInfo} />
+                            <EquipmentSlot slot="tool_rod" icon={<Anchor size={20} />} label="ROD" item={equipment.tool_rod} onClick={() => setSelectedSlot('tool_rod')} onShowInfo={onShowInfo} />
+                        </div>
+                    </div>
 
-                {selectedSlot && (
-                    <EquipmentSelectModal
-                        slot={selectedSlot}
-                        onClose={() => setSelectedSlot(null)}
-                        currentItem={equipment[selectedSlot]}
-                        inventory={gameState.state.inventory || {}}
-                        onEquip={handleEquip}
-                        onUnequip={handleUnequip}
-                        onShowInfo={onShowInfo}
-                    />
-                )}
+                </div>
 
                 {/* Attributes - Clean HUB Style */}
                 <div style={{
@@ -436,17 +424,6 @@ Each point grants: +1% Global XP, +1% Gold Gain and +1 Base Damage`;
                     </div>
                 </div>
 
-                {breakdownModal && (
-                    <StatBreakdownModal
-                        statType={breakdownModal.type}
-                        value={typeof breakdownModal.value === 'object' ? breakdownModal.value.total : breakdownModal.value}
-                        stats={{ ...stats, skills }} // Pass skills for efficiency breakdown
-                        equipment={equipment}
-                        onClose={() => setBreakdownModal(null)}
-                    />
-                )}
-
-                {/* Efficiencies - Sophisticated Sub-HUB */}
                 <div style={{ borderTop: '1px solid var(--border)', paddingTop: '30px' }}>
                     <h4 style={{ color: '#fff', fontSize: '0.7rem', fontWeight: '900', textTransform: 'uppercase', marginBottom: '20px', letterSpacing: '2px', opacity: 0.8 }}>Skill Efficiency</h4>
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '10px' }}>
@@ -474,6 +451,28 @@ Each point grants: +1% Global XP, +1% Gold Gain and +1 Base Damage`;
                     </div>
                 </div>
             </div>
+
+            {selectedSlot && (
+                <EquipmentSelectModal
+                    slot={selectedSlot}
+                    onClose={() => setSelectedSlot(null)}
+                    currentItem={equipment[selectedSlot]}
+                    inventory={gameState.state.inventory || {}}
+                    onEquip={handleEquip}
+                    onUnequip={handleUnequip}
+                    onShowInfo={onShowInfo}
+                />
+            )}
+
+            {breakdownModal && (
+                <StatBreakdownModal
+                    statType={breakdownModal.type}
+                    value={typeof breakdownModal.value === 'object' ? breakdownModal.value.total : breakdownModal.value}
+                    stats={{ ...stats, skills }} // Pass skills for efficiency breakdown
+                    equipment={equipment}
+                    onClose={() => setBreakdownModal(null)}
+                />
+            )}
 
             {/* INFO MODAL FOR STATS */}
             {infoModal && (
@@ -515,7 +514,7 @@ Each point grants: +1% Global XP, +1% Gold Gain and +1 Base Damage`;
                     </div>
                 </div>
             )}
-        </div >
+        </>
     );
 };
 

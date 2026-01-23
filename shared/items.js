@@ -24,8 +24,8 @@ export const QUALITIES = {
 // --- SCALING CONSTANTS ---
 // Exponential Growth Factor for Tiers
 const DMG_CURVE = [10, 25, 60, 150, 400, 1000, 2500, 6000, 14000, 30000]; // Weapon Dmg
-const DEF_CURVE = [5, 15, 35, 80, 200, 500, 1200, 3000, 7000, 15000];   // Armor Def
-const HP_CURVE = [50, 120, 300, 800, 2000, 5000, 12000, 30000, 80000, 200000]; // Armor HP
+const DEF_CURVE = [5, 15, 30, 80, 200, 500, 1200, 3000, 7000, 15000];   // Armor Def
+const HP_CURVE = [50, 120, 240, 800, 2000, 5000, 12000, 30000, 80000, 200000]; // Armor HP
 
 // USER PROVIDED DATA FOR XP AND TIME
 const GATHER_DATA = {
@@ -68,6 +68,7 @@ const genRaw = (type, idPrefix) => {
             id: `T${t}_${idPrefix}`,
             name: `${type.charAt(0) + type.slice(1).toLowerCase()}`,
             tier: t,
+            type: 'RESOURCE',
             xp: GATHER_DATA.xp[t - 1],
             time: GATHER_DATA.time[t - 1]
         };
@@ -83,6 +84,7 @@ const genRefined = (type, idPrefix, rawId) => {
             id: `T${t}_${idPrefix}`,
             name: type.charAt(0) + type.slice(1).toLowerCase(),
             tier: t,
+            type: 'RESOURCE',
             req,
             xp: REFINE_DATA.xp[t - 1],
             time: REFINE_DATA.time[t - 1]
@@ -168,7 +170,7 @@ const genGear = (category, slot, type, idSuffix, matType, statMultipliers = {}) 
 
 // --- WARRIOR GEAR ---
 genGear('WARRIORS_FORGE', 'SWORD', 'WEAPON', 'SWORD', 'BAR', { dmg: 1.0, atkSpeed: 1000 });
-genGear('WARRIORS_FORGE', 'SHIELD', 'OFF_HAND', 'SHIELD', 'BAR', { def: 0.5, hp: 0.5, dmg: 0.1 });
+genGear('WARRIORS_FORGE', 'SHIELD', 'OFF_HAND', 'SHIELD', 'BAR', { def: 0.467, hp: 0.5 }); // Matches T2 10.5 Def / 90 HP
 genGear('WARRIORS_FORGE', 'PLATE_ARMOR', 'ARMOR', 'PLATE_ARMOR', 'BAR', { hp: 1.0, def: 1.0 });
 genGear('WARRIORS_FORGE', 'PLATE_HELMET', 'HELMET', 'PLATE_HELMET', 'BAR', { hp: 0.25, def: 0.25 });
 genGear('WARRIORS_FORGE', 'PLATE_BOOTS', 'BOOTS', 'PLATE_BOOTS', 'BAR', { hp: 0.25, def: 0.25 });
@@ -262,8 +264,18 @@ export const resolveItem = (itemId) => {
 
     // 4. Build return object
     const quality = QUALITIES[qualityId] || QUALITIES[0];
-    const ipBonus = quality.ipBonus || 0;
-    const statMultiplier = 1 + (ipBonus / 200);
+
+    // RESTRICTION: Only Equipment types can have quality bonuses.
+    // Materials (WOOD, ORE, etc), Refined (PLANK, BAR, etc), and Consumables (FOOD) are always Normal.
+    const equipmentTypes = ['WEAPON', 'OFF_HAND', 'ARMOR', 'HELMET', 'BOOTS', 'GLOVES', 'CAPE'];
+    const canHaveQuality = equipmentTypes.includes(baseItem.type);
+
+    // If it can't have quality but we have a quality suffix, we treat it as Normal (Id stays original)
+    const effectiveQualityId = canHaveQuality ? qualityId : 0;
+    const effectiveQuality = canHaveQuality ? quality : QUALITIES[0];
+
+    const ipBonus = effectiveQuality.ipBonus || 0;
+    const statMultiplier = 1 + (ipBonus / 100);
 
     const newStats = {};
     if (baseItem.stats) {
@@ -284,9 +296,9 @@ export const resolveItem = (itemId) => {
         ...baseItem,
         id: rawId,
         name: `${qualityPrefix}${baseItem.name}`,
-        rarityColor: quality.color,
-        quality: qualityId,
-        qualityName: quality.name,
+        rarityColor: effectiveQuality.color,
+        quality: effectiveQualityId,
+        qualityName: effectiveQuality.name,
         originalId: baseId,
         ip: (baseItem.ip || 0) + ipBonus,
         stats: newStats

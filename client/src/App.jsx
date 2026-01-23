@@ -953,7 +953,18 @@ function App() {
           </div>
         </header>
 
-        <main style={{ flex: 1, overflow: 'hidden', display: 'flex', flexDirection: 'column', padding: isMobile ? '10px' : '20px 30px', position: 'relative', minHeight: 0 }}>
+        <main style={{
+          flex: 1,
+          overflow: 'hidden',
+          display: 'flex',
+          flexDirection: 'column',
+          padding: isMobile ? '10px' : '20px 30px',
+          position: 'relative',
+          minHeight: 0,
+          maxWidth: isMobile ? '100%' : '1000px',
+          margin: '0 auto',
+          width: '100%'
+        }}>
           {error && <div style={{ background: 'rgba(255, 68, 68, 0.05)', color: '#ff4444', padding: '12px 20px', marginBottom: 25, borderRadius: 8, border: '1px solid rgba(255, 68, 68, 0.1)', fontSize: '0.8rem' }}>{error}</div>}
           {renderContent()}
         </main>

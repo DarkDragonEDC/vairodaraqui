@@ -166,8 +166,9 @@ const MarketPanel = ({ socket, gameState, silver = 0, onShowInfo, onListOnMarket
                                 cursor: 'pointer',
                                 fontSize: '0.85rem',
                                 fontWeight: 'bold',
-                                background: activeTab === 'BUY' ? 'var(--accent)' : 'transparent',
-                                color: activeTab === 'BUY' ? '#000' : 'var(--text-dim)',
+                                background: activeTab === 'BUY' ? 'rgba(212, 175, 55, 0.15)' : 'transparent',
+                                color: activeTab === 'BUY' ? 'var(--accent)' : 'var(--text-dim)',
+                                border: activeTab === 'BUY' ? '1px solid rgba(212, 175, 55, 0.2)' : '1px solid transparent',
                                 transition: '0.2s'
                             }}>
                             Browse
@@ -181,8 +182,9 @@ const MarketPanel = ({ socket, gameState, silver = 0, onShowInfo, onListOnMarket
                                 cursor: 'pointer',
                                 fontSize: '0.85rem',
                                 fontWeight: 'bold',
-                                background: activeTab === 'MY_ORDERS' ? 'var(--accent)' : 'transparent',
-                                color: activeTab === 'MY_ORDERS' ? '#000' : 'var(--text-dim)',
+                                background: activeTab === 'MY_ORDERS' ? 'rgba(212, 175, 55, 0.15)' : 'transparent',
+                                color: activeTab === 'MY_ORDERS' ? 'var(--accent)' : 'var(--text-dim)',
+                                border: activeTab === 'MY_ORDERS' ? '1px solid rgba(212, 175, 55, 0.2)' : '1px solid transparent',
                                 transition: '0.2s'
                             }}>
                             My Listings
@@ -196,8 +198,9 @@ const MarketPanel = ({ socket, gameState, silver = 0, onShowInfo, onListOnMarket
                                 cursor: 'pointer',
                                 fontSize: '0.85rem',
                                 fontWeight: 'bold',
-                                background: activeTab === 'SELL' ? 'var(--accent)' : 'transparent',
-                                color: activeTab === 'SELL' ? '#000' : 'var(--text-dim)',
+                                background: activeTab === 'SELL' ? 'rgba(212, 175, 55, 0.15)' : 'transparent',
+                                color: activeTab === 'SELL' ? 'var(--accent)' : 'var(--text-dim)',
+                                border: activeTab === 'SELL' ? '1px solid rgba(212, 175, 55, 0.2)' : '1px solid transparent',
                                 transition: '0.2s'
                             }}>
                             Sell
@@ -211,8 +214,9 @@ const MarketPanel = ({ socket, gameState, silver = 0, onShowInfo, onListOnMarket
                                 cursor: 'pointer',
                                 fontSize: '0.85rem',
                                 fontWeight: 'bold',
-                                background: activeTab === 'CLAIM' ? 'var(--accent)' : 'transparent',
-                                color: activeTab === 'CLAIM' ? '#000' : 'var(--text-dim)',
+                                background: activeTab === 'CLAIM' ? 'rgba(212, 175, 55, 0.15)' : 'transparent',
+                                color: activeTab === 'CLAIM' ? 'var(--accent)' : 'var(--text-dim)',
+                                border: activeTab === 'CLAIM' ? '1px solid rgba(212, 175, 55, 0.2)' : '1px solid transparent',
                                 transition: '0.2s',
                                 position: 'relative'
                             }}>
@@ -687,16 +691,16 @@ const MarketPanel = ({ socket, gameState, silver = 0, onShowInfo, onListOnMarket
                 {
                     confirmModal && (
                         <div style={{
-                            position: 'absolute',
+                            position: 'fixed',
                             top: 0,
                             left: 0,
-                            width: '100%',
-                            height: '100%',
+                            right: 0,
+                            bottom: 0,
                             background: 'rgba(0,0,0,0.8)',
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',
-                            zIndex: 200,
+                            zIndex: 3000,
                             backdropFilter: 'blur(2px)'
                         }} onClick={(e) => {
                             if (e.target === e.currentTarget) setConfirmModal(null);
@@ -752,16 +756,16 @@ const MarketPanel = ({ socket, gameState, silver = 0, onShowInfo, onListOnMarket
                 {
                     buyModal && (
                         <div style={{
-                            position: 'absolute',
+                            position: 'fixed',
                             top: 0,
                             left: 0,
-                            width: '100%',
-                            height: '100%',
+                            right: 0,
+                            bottom: 0,
                             background: 'rgba(0,0,0,0.8)',
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',
-                            zIndex: 200,
+                            zIndex: 3000,
                             backdropFilter: 'blur(2px)'
                         }} onClick={(e) => {
                             if (e.target === e.currentTarget) setBuyModal(null);
