@@ -259,11 +259,12 @@ Each point grants: +1% Global XP, +1% Gold Gain and +1 Base Damage`;
             width: '100%',
             display: 'flex',
             flexDirection: 'column',
-            overflow: 'hidden',
+            overflow: 'hidden', // Keeps rounded corners
             borderRadius: '16px',
-            background: 'rgba(15, 20, 30, 0.4)'
+            background: 'rgba(15, 20, 30, 0.4)',
+            minHeight: 0 // Crucial for nested flex scrolling
         }}>
-            <div className="scroll-container" style={{ padding: isMobile ? '20px' : '30px' }}>
+            <div className="scroll-container" style={{ padding: isMobile ? '20px' : '30px', overflowY: 'auto' }}>
                 {/* Header com IP - HUB Style */}
                 <div style={{
                     display: 'flex',

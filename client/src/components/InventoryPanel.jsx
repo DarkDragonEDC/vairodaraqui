@@ -92,7 +92,7 @@ const InventoryPanel = ({ gameState, socket, onEquip, onListOnMarket, onShowInfo
 
 
 
-            <div className="scroll-container" style={{ flex: 1, paddingRight: '5px' }}>
+            <div className="scroll-container" style={{ flex: 1, paddingRight: '5px', overflowY: 'auto' }}>
                 <div style={{
                     display: 'grid',
                     gridTemplateColumns: isMobile ? 'repeat(auto-fill, minmax(80px, 1fr))' : 'repeat(4, minmax(0, 1fr))',

@@ -100,9 +100,10 @@ const RankingPanel = ({ socket, isMobile }) => {
             width: '100%',
             display: 'flex',
             flexDirection: 'column',
-            overflow: 'hidden',
             borderRadius: '16px',
-            background: 'rgba(15, 20, 30, 0.4)'
+            background: 'rgba(15, 20, 30, 0.4)',
+            minHeight: 0,
+            overflow: 'hidden'
         }}>
             <div style={{ padding: isMobile ? '20px' : '30px', flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
                 {/* Header */}
@@ -167,7 +168,7 @@ const RankingPanel = ({ socket, isMobile }) => {
                 </div>
 
                 {/* Lista */}
-                <div className="scroll-container" style={{ flex: 1, paddingRight: '10px' }}>
+                <div className="scroll-container" style={{ flex: 1, paddingRight: '10px', overflowY: 'auto' }}>
                     {loading ? (
                         <div style={{ textAlign: 'center', padding: '100px 0', opacity: 0.3 }}>
                             <div className="loading-spinner" />
