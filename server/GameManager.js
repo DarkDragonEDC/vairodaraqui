@@ -175,21 +175,28 @@ export class GameManager {
         const existing = await this.getCharacter(userId);
         if (existing) throw new Error("You already have a character");
 
+        const initialState = {
+            inventory: {},
+            skills: { ...INITIAL_SKILLS },
+            stats: { str: 0, agi: 0, int: 0 },
+            silver: 0,
+            notifications: []
+        };
+
+        // Calculate initial stats (HP) based on skills
+        const tempChar = { state: initialState };
+        const stats = this.inventoryManager.calculateStats(tempChar);
+
+        initialState.health = stats.maxHP || 100;
+        initialState.maxHealth = stats.maxHP || 100;
+
         const { data, error } = await this.supabase
             .from('characters')
             .insert({
                 id: userId,
                 user_id: userId,
                 name: name,
-                state: {
-                    inventory: {},
-                    skills: { ...INITIAL_SKILLS },
-                    stats: { str: 0, agi: 0, int: 0 },
-                    silver: 0,
-                    health: 100,
-                    maxHealth: 100,
-                    notifications: []
-                }
+                state: initialState
             })
             .select()
             .single();

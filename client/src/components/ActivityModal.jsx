@@ -239,9 +239,9 @@ const ActivityModal = ({ isOpen, onClose, item, type, gameState, onStart, onNavi
 
                             <div style={{ marginBottom: '1.25rem', padding: '16px', background: 'rgba(0,0,0,0.2)', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.03)', width: '100%' }}>
                                 <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.8rem' }}>
-                                        <span style={{ color: 'rgba(255,255,255,0.4)', fontWeight: '600' }}>Efficiency</span>
-                                        <span style={{ color: '#4caf50', fontWeight: '800' }}>+{efficiency}%</span>
+                                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '1rem' }}>
+                                        <span style={{ color: 'rgba(255,255,255,0.6)', fontWeight: '700' }}>Efficiency</span>
+                                        <span style={{ color: '#4caf50', fontWeight: '900', fontSize: '1.2rem' }}>+{efficiency}%</span>
                                     </div>
                                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.8rem' }}>
                                         <span style={{ color: 'rgba(255,255,255,0.4)', fontWeight: '600' }}>Time per action</span>
@@ -644,9 +644,9 @@ const ActivityModal = ({ isOpen, onClose, item, type, gameState, onStart, onNavi
 
                             <div style={{ marginBottom: '1.25rem', padding: '16px', background: 'rgba(0,0,0,0.2)', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.03)', width: '100%' }}>
                                 <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.8rem' }}>
-                                        <span style={{ color: 'rgba(255,255,255,0.4)', fontWeight: '600' }}>Efficiency</span>
-                                        <span style={{ color: '#d4af37', fontWeight: '800' }}>+{efficiency}%</span>
+                                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '1rem' }}>
+                                        <span style={{ color: 'rgba(255,255,255,0.6)', fontWeight: '700' }}>Efficiency</span>
+                                        <span style={{ color: '#d4af37', fontWeight: '900', fontSize: '1.2rem' }}>+{efficiency}%</span>
                                     </div>
                                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.8rem' }}>
                                         <span style={{ color: 'rgba(255,255,255,0.4)', fontWeight: '600' }}>Time per action</span>

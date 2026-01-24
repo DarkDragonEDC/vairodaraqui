@@ -444,9 +444,31 @@ const ActivityWidget = ({ gameState, onStop, socket, onNavigate, isMobile, serve
 
                                                         if (mobDmg > 0) {
                                                             const roundsToDie = totalEffectiveHp / mobDmg;
-                                                            const secondsToDie = roundsToDie * (atkSpeed / 1000);
+                                                            // Interpolation Logic:
+                                                            // Time = (Time until next hit) + (Remaining hits * Interval)
+                                                            // roundsToDie is roughly (1 + remaining)
+                                                            // So we take (roundsToDie - 1) * Interval + (nextAttack - now)
 
-                                                            // Threshold: 12 Hours
+                                                            let secondsToDie = 0;
+
+                                                            // Note: We need currentTime state for smooth interpolation in Widget
+                                                            // The widget uses syncedElapsed (50ms interval) for activity, 
+                                                            // but here we are in a render scope.
+                                                            // We can use Date.now() if this component re-renders often.
+                                                            // The Widget pulsates so it might re-render, but better to use a driving state.
+                                                            // syncedElapsed is updated every 50ms, triggering re-render.
+                                                            // So we can use Date.now() here safely.
+
+                                                            const now = Date.now() + (serverTimeOffset || 0);
+                                                            const nextAttack = combat.next_attack_at ? new Date(combat.next_attack_at).getTime() : now;
+                                                            const timeToNext = Math.max(0, nextAttack - now);
+
+                                                            if (roundsToDie <= 1) {
+                                                                secondsToDie = timeToNext / 1000;
+                                                            } else {
+                                                                secondsToDie = (timeToNext + ((roundsToDie - 1) * atkSpeed)) / 1000;
+                                                            }
+
                                                             if (secondsToDie > 43200) {
                                                                 survivalText = "∞";
                                                                 survivalColor = "#4caf50";

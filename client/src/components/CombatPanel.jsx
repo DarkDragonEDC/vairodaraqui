@@ -105,10 +105,10 @@ const CombatPanel = ({ socket, gameState, isMobile, onShowHistory }) => {
             const newLog = { id: generateLogId(), type: 'start-info', content: `Starting combat against ${combat.mobName}...` };
             const newLogs = [...prev, newLog];
 
-            // Pruning: Keep only last 10 'start' markers
+            // Pruning: Keep only last 5 'start' markers (User requested 5 mobs history)
             const startMarkers = newLogs.filter(l => l.type === 'start-info');
-            if (startMarkers.length > 10) {
-                const cutoffIndex = newLogs.findIndex(l => l === startMarkers[startMarkers.length - 10]);
+            if (startMarkers.length > 5) {
+                const cutoffIndex = newLogs.findIndex(l => l === startMarkers[startMarkers.length - 5]);
                 return newLogs.slice(cutoffIndex);
             }
             return newLogs;
@@ -377,7 +377,21 @@ const CombatPanel = ({ socket, gameState, isMobile, onShowHistory }) => {
 
                                 if (mobDmg > 0) {
                                     const roundsToDie = totalEffectiveHp / mobDmg;
-                                    const secondsToDie = roundsToDie * (atkSpeed / 1000);
+
+                                    // Interpolation Logic:
+                                    // Time = (Time until next hit) + (Remaining hits * Interval)
+                                    // roundsToDie is roughly (1 + remaining)
+                                    // So we take (roundsToDie - 1) * Interval + (nextAttack - now)
+
+                                    let secondsToDie = 0;
+                                    const nextAttack = combat.next_attack_at ? new Date(combat.next_attack_at).getTime() : Date.now();
+                                    const timeToNext = Math.max(0, nextAttack - currentTime);
+
+                                    if (roundsToDie <= 1) {
+                                        secondsToDie = timeToNext / 1000;
+                                    } else {
+                                        secondsToDie = (timeToNext + ((roundsToDie - 1) * atkSpeed)) / 1000;
+                                    }
 
                                     // Threshold: 12 Hours
                                     if (secondsToDie > 43200) {
