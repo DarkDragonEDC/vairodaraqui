@@ -1,0 +1,261 @@
+{
+  "stats": {
+    "agi": 500,
+    "int": 300,
+    "str": 500,
+    "totalKills": 999999
+  },
+  "health": 965100,
+  "maxHealth": 965100,
+  "silver": 999999999,
+  "skills": {
+    "LUMBERJACK": {
+      "level": 100,
+      "xp": 20000000,
+      "nextLevelXp": 999999999
+    },
+    "ORE_MINER": {
+      "level": 100,
+      "xp": 20000000,
+      "nextLevelXp": 999999999
+    },
+    "ANIMAL_SKINNER": {
+      "level": 100,
+      "xp": 20000000,
+      "nextLevelXp": 999999999
+    },
+    "FIBER_HARVESTER": {
+      "level": 100,
+      "xp": 20000000,
+      "nextLevelXp": 999999999
+    },
+    "PLANK_REFINER": {
+      "level": 100,
+      "xp": 20000000,
+      "nextLevelXp": 999999999
+    },
+    "METAL_BAR_REFINER": {
+      "level": 100,
+      "xp": 20000000,
+      "nextLevelXp": 999999999
+    },
+    "LEATHER_REFINER": {
+      "level": 100,
+      "xp": 20000000,
+      "nextLevelXp": 999999999
+    },
+    "CLOTH_REFINER": {
+      "level": 100,
+      "xp": 20000000,
+      "nextLevelXp": 999999999
+    },
+    "WARRIOR_CRAFTER": {
+      "level": 100,
+      "xp": 20000000,
+      "nextLevelXp": 999999999
+    },
+    "HUNTER_CRAFTER": {
+      "level": 100,
+      "xp": 20000000,
+      "nextLevelXp": 999999999
+    },
+    "MAGE_CRAFTER": {
+      "level": 100,
+      "xp": 20000000,
+      "nextLevelXp": 999999999
+    },
+    "COMBAT": {
+      "level": 100,
+      "xp": 20000000,
+      "nextLevelXp": 999999999
+    },
+    "SWORD_MASTERY": {
+      "level": 100,
+      "xp": 20000000,
+      "nextLevelXp": 999999999
+    },
+    "BOW_MASTERY": {
+      "level": 100,
+      "xp": 20000000,
+      "nextLevelXp": 999999999
+    },
+    "FIRE_STAFF_MASTERY": {
+      "level": 100,
+      "xp": 20000000,
+      "nextLevelXp": 999999999
+    },
+    "FISHING": {
+      "level": 100,
+      "xp": 20000000,
+      "nextLevelXp": 999999999
+    },
+    "COOKING": {
+      "level": 100,
+      "xp": 20000000,
+      "nextLevelXp": 999999999
+    },
+    "DUNGEONEERING": {
+      "level": 100,
+      "xp": 20000000,
+      "nextLevelXp": 999999999
+    }
+  },
+  "equipment": {
+    "mainHand": {
+      "id": "T10_BOW_Q4",
+      "name": "Masterpiece Bow",
+      "tier": 10,
+      "req": {
+        "T10_PLANK": 20
+      },
+      "xp": 829,
+      "time": 1520,
+      "ip": 1200,
+      "type": "WEAPON",
+      "stats": {
+        "damage": 72000,
+        "attackSpeed": 700
+      },
+      "rarityColor": "#f5a623",
+      "quality": 4,
+      "qualityName": "Masterpiece",
+      "originalId": "T10_BOW"
+    },
+    "offHand": {
+      "id": "T10_TORCH_Q4",
+      "name": "Masterpiece Torch",
+      "tier": 10,
+      "req": {
+        "T10_PLANK": 20
+      },
+      "xp": 829,
+      "time": 1520,
+      "ip": 1200,
+      "type": "OFF_HAND",
+      "stats": {
+        "hp": 120000,
+        "speed": 60
+      },
+      "rarityColor": "#f5a623",
+      "quality": 4,
+      "qualityName": "Masterpiece",
+      "originalId": "T10_TORCH"
+    },
+    "helmet": {
+      "id": "T10_LEATHER_HELMET_Q4",
+      "name": "Masterpiece Leather Helmet",
+      "tier": 10,
+      "req": {
+        "T10_LEATHER": 20
+      },
+      "xp": 829,
+      "time": 1520,
+      "ip": 1200,
+      "type": "HELMET",
+      "stats": {
+        "defense": 9000,
+        "hp": 120000,
+        "speed": 30
+      },
+      "rarityColor": "#f5a623",
+      "quality": 4,
+      "qualityName": "Masterpiece",
+      "originalId": "T10_LEATHER_HELMET"
+    },
+    "chest": {
+      "id": "T10_LEATHER_ARMOR_Q4",
+      "name": "Masterpiece Leather Armor",
+      "tier": 10,
+      "req": {
+        "T10_LEATHER": 20
+      },
+      "xp": 829,
+      "time": 1520,
+      "ip": 1200,
+      "type": "ARMOR",
+      "stats": {
+        "defense": 31500,
+        "hp": 420000,
+        "speed": 60
+      },
+      "rarityColor": "#f5a623",
+      "quality": 4,
+      "qualityName": "Masterpiece",
+      "originalId": "T10_LEATHER_ARMOR"
+    },
+    "boots": {
+      "id": "T10_LEATHER_BOOTS_Q4",
+      "name": "Masterpiece Leather Boots",
+      "tier": 10,
+      "req": {
+        "T10_LEATHER": 20
+      },
+      "xp": 829,
+      "time": 1520,
+      "ip": 1200,
+      "type": "BOOTS",
+      "stats": {
+        "defense": 9000,
+        "hp": 120000,
+        "speed": 30
+      },
+      "rarityColor": "#f5a623",
+      "quality": 4,
+      "qualityName": "Masterpiece",
+      "originalId": "T10_LEATHER_BOOTS"
+    },
+    "gloves": {
+      "id": "T10_LEATHER_GLOVES_Q4",
+      "name": "Masterpiece Leather Gloves",
+      "tier": 10,
+      "req": {
+        "T10_LEATHER": 20
+      },
+      "xp": 829,
+      "time": 1520,
+      "ip": 1200,
+      "type": "GLOVES",
+      "stats": {
+        "damage": 9000,
+        "defense": 4500,
+        "hp": 60000
+      },
+      "rarityColor": "#f5a623",
+      "quality": 4,
+      "qualityName": "Masterpiece",
+      "originalId": "T10_LEATHER_GLOVES"
+    },
+    "cape": {
+      "id": "T10_LEATHER_CAPE_Q4",
+      "name": "Masterpiece Leather Cape",
+      "tier": 10,
+      "req": {
+        "T10_LEATHER": 20,
+        "T10_CREST": 1
+      },
+      "xp": 829,
+      "time": 1520,
+      "ip": 1200,
+      "type": "CAPE",
+      "stats": {
+        "hp": 120000,
+        "efficiency": {
+          "GLOBAL": 20
+        }
+      },
+      "rarityColor": "#f5a623",
+      "quality": 4,
+      "qualityName": "Masterpiece",
+      "originalId": "T10_LEATHER_CAPE"
+    }
+  },
+  "inventory": {
+    "T10_WOOD": 999,
+    "T10_ORE": 999,
+    "T10_HIDE": 999,
+    "T10_FIBER": 999,
+    "T10_FISH": 999,
+    "T10_FOOD": 999,
+    "T10_DUNGEON_MAP": 100
+  }
+}

@@ -336,7 +336,7 @@ function App() {
               Lv {skill.level} <span style={{ fontSize: '0.65rem', color: '#888', fontWeight: 'normal' }}>({Math.floor(progress)}%)</span>
             </div>
             <div style={{ fontSize: '0.55rem', color: '#555', fontWeight: 'bold' }}>
-              {(XP_TABLE[skill.level - 1] + skill.xp).toLocaleString()} / {XP_TABLE[skill.level].toLocaleString()} XP
+              {((XP_TABLE[skill.level - 1] || 0) + skill.xp).toLocaleString()} / {XP_TABLE[skill.level] ? XP_TABLE[skill.level].toLocaleString() : 'MAX'} XP
             </div>
           </div>
         </div>

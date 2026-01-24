@@ -481,6 +481,7 @@ export class GameManager {
         let query = this.supabase
             .from('characters')
             .select('id, name, state')
+            .or('is_admin.is.null,is_admin.eq.false') // Exclude characters where is_admin is true
 
         if (type === 'COMBAT') {
             // Sort by state->stats->totalKills DESC

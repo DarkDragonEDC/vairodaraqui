@@ -18,6 +18,14 @@ export class DungeonManager {
         const dungeon = Object.values(DUNGEONS).find(d => d.id === dungeonId);
         if (!dungeon) throw new Error("Dungeon not found");
 
+        // ---- Silver cost check ----
+        const entryCost = dungeon.entrySilver || 0;
+        if ((char.state.silver || 0) < entryCost) {
+            throw new Error(`Not enough silver to enter dungeon (requires ${entryCost})`);
+        }
+        // Deduct silver
+        char.state.silver = (char.state.silver || 0) - entryCost;
+
         const inventory = char.state.inventory || {};
         const mapId = dungeon.reqItem;
         if (!inventory[mapId] || inventory[mapId] < 1) {
@@ -217,8 +225,8 @@ export class DungeonManager {
         const leveledUpDungeon = this.gameManager.addXP(char, 'DUNGEONEERING', rewards.xp);
         const leveledUp = leveledUpCombat || leveledUpDungeon;
 
-        // Silver
-        char.state.silver = (char.state.silver || 0) + rewards.silver;
+        // Silver reward removed (now charged on entry)
+        // char.state.silver = (char.state.silver || 0) + rewards.silver;
 
         // Crest (Chance) - Boss drop only roughly, but keeping existing logic if any
         if (rewards.crest && Math.random() <= rewards.crest.chance) {
