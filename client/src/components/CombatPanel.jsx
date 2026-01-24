@@ -80,14 +80,12 @@ const CombatPanel = ({ socket, gameState, isMobile, onShowHistory }) => {
         if (saved) {
             try {
                 const parsed = JSON.parse(saved);
-                // Se o monstro é o mesmo, recuperamos a sessão do localStorage
-                if (parsed.mobId === combat.mobId) {
-                    setBattleStats(parsed.stats);
-                    setSessionLoot(parsed.loot);
-                    setBattleLogs(parsed.logs || []);
-                    setIsRestored(true);
-                    return;
-                }
+                // Session Persistence: Always restore if we have saved data and remain in combat
+                setBattleStats(parsed.stats);
+                setSessionLoot(parsed.loot);
+                setBattleLogs(parsed.logs || []);
+                setIsRestored(true);
+                return;
             } catch (e) {
                 console.error("Erro ao carregar sessão de combate:", e);
             }
@@ -718,6 +716,7 @@ const CombatPanel = ({ socket, gameState, isMobile, onShowHistory }) => {
                                         <div style={{ color: 'var(--text-dim)', fontSize: '0.7rem', display: 'flex', gap: '8px' }}>
                                             <span style={{ color: '#ff4444' }}>HP: {mob.health}</span>
                                             <span style={{ color: '#ff9800' }}>DMG: {mob.damage}</span>
+                                            <span style={{ color: '#4caf50' }}>XP: {mob.xp}</span>
                                         </div>
                                     </div>
                                 </div>
