@@ -20,6 +20,10 @@ export class CombatManager {
 
         if (!mobData) throw new Error("Monster not found");
 
+        if (mobData.dungeonOnly && !isDungeon) {
+            throw new Error("This monster is found only in dungeons");
+        }
+
         const userLevel = char.state.skills?.COMBAT?.level || 1;
         const requiredLevel = tier == 1 ? 1 : (tier - 1) * 10;
 
@@ -132,6 +136,10 @@ export class CombatManager {
                 const finalXp = Math.floor(baseXp * (1 + xpBonus / 100)); // +1% per point
                 leveledUp = this.gameManager.addXP(char, 'COMBAT', finalXp);
                 roundDetails.xpGained = finalXp;
+
+                // Track Persistent Stats (Kills)
+                if (!char.state.stats) char.state.stats = {};
+                char.state.stats.totalKills = (char.state.stats.totalKills || 0) + 1;
 
                 let finalSilver = 0;
                 if (mobData && mobData.silver) {

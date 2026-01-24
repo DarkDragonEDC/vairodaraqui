@@ -465,13 +465,51 @@ export class GameManager {
         return { used: eatenCount > 0, amount: totalHealed };
     }
 
-    async getLeaderboard() {
-        const { data, error } = await this.supabase
+    async getLeaderboard(type = 'COMBAT') {
+        // type: COMBAT | DUNGEON
+
+        // Note: Sort logic requires Supabase Indexing or Client-side Sort if few users
+        // For scalability, index on: (state->'stats'->>'totalKills')::int
+
+        let query = this.supabase
             .from('characters')
             .select('id, name, state')
-            .limit(100);
-        if (error) return [];
-        return data || [];
+
+        if (type === 'COMBAT') {
+            // Sort by state->stats->totalKills DESC
+            // Note: Supabase JS limit handling via order() arg
+            // raw SQL equivalent: ORDER BY (state->'stats'->>'totalKills')::int DESC
+
+            // Temporary JS Sort for simplicity (assumes < 1000 users)
+            // Ideally should be done in DB query
+            const { data, error } = await query.limit(100);
+            if (error) return [];
+
+            return data
+                .sort((a, b) => {
+                    const skillA = a.state?.skills?.COMBAT || { level: 1, xp: 0 };
+                    const skillB = b.state?.skills?.COMBAT || { level: 1, xp: 0 };
+                    if (skillB.level !== skillA.level) return skillB.level - skillA.level;
+                    return skillB.xp - skillA.xp;
+                })
+                .slice(0, 50);
+
+        } else if (type === 'DUNGEON') {
+            // Sort by state->stats->dungeonsCleared DESC
+            const { data, error } = await query.limit(100);
+            if (error) return [];
+
+            return data
+                .sort((a, b) => {
+                    const skillA = a.state?.skills?.DUNGEONEERING || { level: 1, xp: 0 };
+                    const skillB = b.state?.skills?.DUNGEONEERING || { level: 1, xp: 0 };
+                    if (skillB.level !== skillA.level) return skillB.level - skillA.level;
+                    return skillB.xp - skillA.xp;
+                })
+                .slice(0, 50);
+        }
+
+        return [];
     }
 
     // Delegation Methods

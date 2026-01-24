@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Play, CheckCircle, Clock, Square, Zap, Hammer, Pickaxe, Box, Loader, Hourglass, Sword, Skull, Heart, Apple } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { resolveItem, formatItemId } from '@shared/items';
+import { MONSTERS } from '@shared/monsters';
 
 const ActivityWidget = ({ gameState, onStop, socket, onNavigate, isMobile, serverTimeOffset = 0, skillProgress = 0 }) => { // Added skillProgress prop
     const [isOpen, setIsOpen] = useState(false);
@@ -417,10 +418,70 @@ const ActivityWidget = ({ gameState, onStop, socket, onNavigate, isMobile, serve
                                                 <div style={{ fontSize: '0.8rem', color: '#ff4444', fontWeight: '900' }}>{combat.mobName}</div>
                                             </div>
                                         </div>
-                                        <div style={{ textAlign: 'right' }}>
-                                            <div style={{ fontSize: '0.55rem', color: '#ff8888', fontWeight: 'bold' }}>DURATION</div>
-                                            <div style={{ fontFamily: 'monospace', fontSize: '0.85rem', color: '#fff', fontWeight: 'bold' }}>
-                                                {formatTime(combatElapsed)}
+                                        <div style={{ textAlign: 'right', display: 'flex', gap: '15px' }}>
+                                            {/* Survival Estimator */}
+                                            <div>
+                                                <div style={{ fontSize: '0.55rem', color: '#ff8888', fontWeight: 'bold' }}>SURVIVAL</div>
+                                                <div style={{ fontFamily: 'monospace', fontSize: '0.85rem', color: '#fff', fontWeight: 'bold' }}>
+                                                    {(() => {
+                                                        const activeMob = (MONSTERS[combat.tier] || []).find(m => m.id === combat.mobId);
+                                                        if (!activeMob) return <span>-</span>;
+
+                                                        const defense = gameState?.calculatedStats?.defense || 0;
+                                                        const mitigation = defense / (defense + 2000);
+                                                        const mobDmg = Math.max(1, Math.floor(activeMob.damage * (1 - mitigation)));
+
+                                                        // Food Logic
+                                                        const food = gameState?.state?.equipment?.food;
+                                                        const foodTotalHeal = (food && food.amount > 0) ? (food.amount * (food.heal || 0)) : 0;
+
+                                                        const playerHp = combat.playerHealth || 1;
+                                                        const totalEffectiveHp = playerHp + foodTotalHeal;
+                                                        const atkSpeed = gameState?.calculatedStats?.attackSpeed || 1000;
+
+                                                        let survivalText = "∞";
+                                                        let survivalColor = "#4caf50";
+
+                                                        if (mobDmg > 0) {
+                                                            const roundsToDie = totalEffectiveHp / mobDmg;
+                                                            const secondsToDie = roundsToDie * (atkSpeed / 1000);
+
+                                                            // Threshold: 12 Hours
+                                                            if (secondsToDie > 43200) {
+                                                                survivalText = "∞";
+                                                                survivalColor = "#4caf50";
+                                                            } else {
+                                                                const hrs = Math.floor(secondsToDie / 3600);
+                                                                const mins = Math.floor((secondsToDie % 3600) / 60);
+                                                                const secs = Math.floor(secondsToDie % 60);
+
+                                                                if (hrs > 0) {
+                                                                    survivalText = `${hrs}h ${mins}m ${secs}s`;
+                                                                    survivalColor = "#ff9800";
+                                                                } else if (mins > 0) {
+                                                                    survivalText = `${mins}m ${secs}s`;
+                                                                    survivalColor = "#ff9800";
+                                                                } else {
+                                                                    survivalText = `${secs}s`;
+                                                                    survivalColor = "#ff4444";
+                                                                }
+                                                            }
+                                                        }
+
+                                                        return (
+                                                            <span style={{ color: survivalColor }}>
+                                                                {survivalText}
+                                                            </span>
+                                                        );
+                                                    })()}
+                                                </div>
+                                            </div>
+
+                                            <div>
+                                                <div style={{ fontSize: '0.55rem', color: '#ff8888', fontWeight: 'bold' }}>DURATION</div>
+                                                <div style={{ fontFamily: 'monospace', fontSize: '0.85rem', color: '#fff', fontWeight: 'bold' }}>
+                                                    {formatTime(combatElapsed)}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

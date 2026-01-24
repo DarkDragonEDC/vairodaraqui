@@ -151,7 +151,7 @@ export class ActivityManager {
 
         let finalItemId = item.id;
         let qualityName = '';
-        const equippableTypes = ['WEAPON', 'ARMOR', 'HELMET', 'BOOTS', 'GLOVES', 'CAPE', 'OFF_HAND', 'TOOL'];
+        const equippableTypes = ['WEAPON', 'ARMOR', 'HELMET', 'BOOTS', 'GLOVES', 'CAPE', 'OFF_HAND', 'TOOL', 'TOOL_PICKAXE', 'TOOL_AXE', 'TOOL_KNIFE', 'TOOL_SICKLE', 'TOOL_ROD'];
 
         if (equippableTypes.includes(item.type)) {
             const rand = Math.random();

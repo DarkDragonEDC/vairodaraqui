@@ -96,10 +96,10 @@ io.on('connection', (socket) => {
         }
     });
 
-    socket.on('get_leaderboard', async () => {
+    socket.on('get_leaderboard', async (type) => {
         try {
-            const leaderboard = await gameManager.getLeaderboard();
-            socket.emit('leaderboard_update', leaderboard);
+            const leaderboard = await gameManager.getLeaderboard(type);
+            socket.emit('leaderboard_update', { type, data: leaderboard });
         } catch (err) {
             socket.emit('error', { message: err.message });
         }

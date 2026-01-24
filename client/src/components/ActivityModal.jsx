@@ -206,20 +206,29 @@ const ActivityModal = ({ isOpen, onClose, item, type, gameState, onStart, onNavi
                                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', justifyContent: 'center' }}>
                                     {Object.entries(reqs).map(([reqId, reqQty]) => {
                                         const userQty = (gameState?.state?.inventory?.[reqId] || 0);
-                                        const totalReq = reqQty * qtyNum; // Fixed logic to show total required
+                                        const totalReq = reqQty * qtyNum;
                                         const hasEnough = userQty >= totalReq;
                                         // Resolver nome
                                         const resolvedFn = resolveItem(reqId);
                                         const displayName = resolvedFn ? `T${resolvedFn.tier} ${resolvedFn.name}` : formatItemId(reqId);
+                                        const isSingle = Object.keys(reqs).length === 1;
 
                                         return (
-                                            <div onClick={() => onNavigate && onNavigate(reqId)} key={reqId} style={{ flex: '1 1 calc(50% - 4px)', maxWidth: '160px', background: 'rgba(255, 255, 255, 0.03)', padding: '10px', borderRadius: '8px', border: `1px solid ${hasEnough ? 'rgba(76, 175, 80, 0.3)' : 'rgba(255, 68, 68, 0.3)'}`, cursor: 'pointer' }}>
-                                                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '5px' }}>
-                                                    <div style={{ fontSize: '0.7rem', color: '#d4af37', fontWeight: '700' }}>{displayName}</div>
-                                                    <Package size={12} color="#d4af37" />
+                                            <div onClick={() => onNavigate && onNavigate(reqId)} key={reqId} style={{
+                                                flex: isSingle ? '1 1 100%' : '1 1 calc(50% - 6px)',
+                                                minWidth: '140px',
+                                                background: 'rgba(255, 255, 255, 0.03)',
+                                                padding: '12px 15px',
+                                                borderRadius: '8px',
+                                                border: `1px solid ${hasEnough ? 'rgba(76, 175, 80, 0.3)' : 'rgba(255, 68, 68, 0.3)'}`,
+                                                cursor: 'pointer'
+                                            }}>
+                                                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
+                                                    <div style={{ fontSize: '0.85rem', color: '#d4af37', fontWeight: '700' }}>{displayName}</div>
+                                                    <Package size={14} color="#d4af37" />
                                                 </div>
                                                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                                    <span style={{ fontSize: '0.65rem', color: 'rgb(136, 136, 136)' }}>x{totalReq}</span>
+                                                    <span style={{ fontSize: '0.75rem', color: 'rgb(136, 136, 136)' }}>Required: {totalReq}</span>
                                                     <span style={{ fontSize: '1rem', fontWeight: '900', color: hasEnough ? '#4caf50' : '#ff4444' }}>{userQty}</span>
                                                 </div>
                                             </div>
@@ -304,9 +313,9 @@ const ActivityModal = ({ isOpen, onClose, item, type, gameState, onStart, onNavi
             bonuxMultiplier: 1 + (q.ipBonus / 200) // Mesma lógica do resolveItem
         }));
 
-        // Determinar stat principal para mostrar (Damage ou Armor)
-        const mainStatKey = item.stats?.damage ? 'Damage' : item.stats?.armor ? 'Armor' : 'Power';
-        const mainStatVal = item.stats?.damage || item.stats?.armor || 0;
+        // Determinar stat principal para mostrar (Damage, Armor ou Efficiency)
+        const mainStatKey = item.stats?.damage ? 'Damage' : item.stats?.armor ? 'Armor' : item.stats?.efficiency ? 'Efficiency' : 'Power';
+        const mainStatVal = item.stats?.damage || item.stats?.armor || item.stats?.efficiency || 0;
 
         return (
             <AnimatePresence>
@@ -408,7 +417,7 @@ const ActivityModal = ({ isOpen, onClose, item, type, gameState, onStart, onNavi
                                 <div style={{ fontSize: '0.6rem', color: 'rgb(102, 102, 102)', marginTop: '3px' }}>Max: {maxQuantity.toLocaleString()}</div>
                             </div>
 
-                            <div style={{ marginBottom: '0.75rem' }}>
+                            <div style={{ marginBottom: '0.75rem', width: '100%' }}>
                                 <div style={{ fontSize: '0.65rem', color: 'rgb(136, 136, 136)', textTransform: 'uppercase', marginBottom: '6px', letterSpacing: '0.5px' }}>Required Materials</div>
                                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
                                     {Object.entries(reqs).map(([reqId, reqQty]) => {
@@ -466,7 +475,7 @@ const ActivityModal = ({ isOpen, onClose, item, type, gameState, onStart, onNavi
                             </div>
 
                             {/* Probabilities Section */}
-                            <div style={{ marginBottom: '0.75rem' }}>
+                            <div style={{ marginBottom: '0.75rem', width: '100%' }}>
                                 <button
                                     onClick={() => setShowProbabilities(!showProbabilities)}
                                     style={{ width: '100%', background: 'rgba(212, 175, 55, 0.05)', padding: '8px 10px', borderRadius: '4px', border: '1px solid rgba(212, 175, 55, 0.2)', cursor: 'pointer', display: 'flex', justifyContent: 'space-between', alignItems: 'center', color: '#d4af37', fontSize: '0.7rem', fontWeight: 'bold', textTransform: 'uppercase' }}

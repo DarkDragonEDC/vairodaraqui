@@ -351,10 +351,69 @@ const CombatPanel = ({ socket, gameState, isMobile, onShowHistory }) => {
                             <div style={{ fontSize: '0.9rem', fontWeight: 'bold' }}>T{combat.tier}: {combat.mobName}</div>
                         </div>
                     </div>
-                    <div style={{ textAlign: 'right' }}>
-                        <div style={{ fontSize: '0.55rem', color: 'var(--text-dim)', letterSpacing: '1px' }}>DURATION</div>
-                        <div style={{ fontSize: '1rem', fontWeight: 'bold', fontFamily: 'monospace', color: '#fff' }}>
-                            {Math.floor(duration / 60)}:{(duration % 60).toString().padStart(2, '0')}
+
+                    <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
+                        {/* Survival Estimator */}
+                        <div style={{ textAlign: 'right' }}>
+                            <div style={{ fontSize: '0.55rem', color: 'var(--text-dim)', letterSpacing: '1px' }}>SURVIVAL</div>
+                            {(() => {
+                                const activeMob = (MONSTERS[combat.tier] || []).find(m => m.id === combat.mobId);
+                                if (!activeMob) return <span style={{ fontSize: '1rem', fontWeight: 'bold', fontFamily: 'monospace', color: '#888' }}>-</span>;
+
+                                const defense = gameState?.calculatedStats?.defense || 0;
+                                const mitigation = defense / (defense + 2000);
+                                const mobDmg = Math.max(1, Math.floor(activeMob.damage * (1 - mitigation)));
+
+                                // Food Logic
+                                const food = gameState?.state?.equipment?.food;
+                                const foodTotalHeal = (food && food.amount > 0) ? (food.amount * (food.heal || 0)) : 0;
+
+                                const playerHp = combat.playerHealth || 1;
+                                const totalEffectiveHp = playerHp + foodTotalHeal;
+                                const atkSpeed = gameState?.calculatedStats?.attackSpeed || 1000;
+
+                                let survivalText = "∞";
+                                let survivalColor = "#4caf50";
+
+                                if (mobDmg > 0) {
+                                    const roundsToDie = totalEffectiveHp / mobDmg;
+                                    const secondsToDie = roundsToDie * (atkSpeed / 1000);
+
+                                    // Threshold: 12 Hours
+                                    if (secondsToDie > 43200) {
+                                        survivalText = "∞";
+                                        survivalColor = "#4caf50";
+                                    } else {
+                                        const hrs = Math.floor(secondsToDie / 3600);
+                                        const mins = Math.floor((secondsToDie % 3600) / 60);
+                                        const secs = Math.floor(secondsToDie % 60);
+
+                                        if (hrs > 0) {
+                                            survivalText = `${hrs}h ${mins}m ${secs}s`;
+                                            survivalColor = "#ff9800";
+                                        } else if (mins > 0) {
+                                            survivalText = `${mins}m ${secs}s`;
+                                            survivalColor = "#ff9800";
+                                        } else {
+                                            survivalText = `${secs}s`;
+                                            survivalColor = "#ff4444";
+                                        }
+                                    }
+                                }
+
+                                return (
+                                    <div style={{ fontSize: '1rem', fontWeight: 'bold', fontFamily: 'monospace', color: survivalColor }}>
+                                        {survivalText}
+                                    </div>
+                                );
+                            })()}
+                        </div>
+
+                        <div style={{ textAlign: 'right' }}>
+                            <div style={{ fontSize: '0.55rem', color: 'var(--text-dim)', letterSpacing: '1px' }}>DURATION</div>
+                            <div style={{ fontSize: '1rem', fontWeight: 'bold', fontFamily: 'monospace', color: '#fff' }}>
+                                {Math.floor(duration / 60)}:{(duration % 60).toString().padStart(2, '0')}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -676,7 +735,7 @@ const CombatPanel = ({ socket, gameState, isMobile, onShowHistory }) => {
             {/* Mobs List */}
             <div className="glass-panel scroll-container" style={{ flex: 1, padding: isMobile ? '10px' : '15px', background: 'rgba(10, 10, 15, 0.4)', overflowY: 'auto' }}>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', paddingBottom: '40px' }}>
-                    {(MONSTERS[activeTier] || []).filter(m => !m.id.startsWith('BOSS_') && !m.dungeonOnly).slice(0, 2).map(mob => {
+                    {(MONSTERS[activeTier] || []).filter(m => !m.id.startsWith('BOSS_') && !m.dungeonOnly).map(mob => {
                         const playerDmg = stats.damage;
                         const roundsToKill = Math.ceil(mob.health / playerDmg);
                         const ttk = roundsToKill * 3;
@@ -723,7 +782,7 @@ const CombatPanel = ({ socket, gameState, isMobile, onShowHistory }) => {
 
                                 {/* Efficiency Stats */}
                                 {!isMobile && (
-                                    <div style={{ flex: '2', display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '15px', borderLeft: '1px solid rgba(255,255,255,0.05)', borderRight: '1px solid rgba(255,255,255,0.05)', padding: '0 15px' }}>
+                                    <div style={{ flex: '2', display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px', borderLeft: '1px solid rgba(255,255,255,0.05)', borderRight: '1px solid rgba(255,255,255,0.05)', padding: '0 15px' }}>
                                         <div style={{ textAlign: 'center' }}>
                                             <div style={{ fontSize: '0.6rem', color: '#888' }}>XP/H</div>
                                             <div style={{ fontSize: '0.85rem', fontWeight: 'bold', color: '#4caf50' }}>{xpHour.toLocaleString()}</div>
@@ -732,9 +791,57 @@ const CombatPanel = ({ socket, gameState, isMobile, onShowHistory }) => {
                                             <div style={{ fontSize: '0.6rem', color: '#888' }}>SILVER/H</div>
                                             <div style={{ fontSize: '0.85rem', fontWeight: 'bold', color: '#d4af37' }}>{silverHour.toLocaleString()}</div>
                                         </div>
+
                                         <div style={{ textAlign: 'center' }}>
-                                            <div style={{ fontSize: '0.6rem', color: '#888' }}>TTK / RISK</div>
-                                            <div style={{ fontSize: '0.85rem', fontWeight: 'bold', color: '#fff' }}>{ttk}s / {risk}HP</div>
+                                            <div style={{ fontSize: '0.6rem', color: '#888' }}>SURVIVAL</div>
+                                            {(() => {
+                                                const defense = gameState?.calculatedStats?.defense || 0;
+                                                const mitigation = defense / (defense + 2000);
+                                                const mobDmg = Math.max(1, Math.floor(mob.damage * (1 - mitigation)));
+
+                                                // Food Logic
+                                                const food = gameState?.state?.equipment?.food;
+                                                const foodTotalHeal = (food && food.amount > 0) ? (food.amount * (food.heal || 0)) : 0;
+
+                                                const playerHp = gameState?.state?.health || 1;
+                                                const totalEffectiveHp = playerHp + foodTotalHeal;
+                                                const atkSpeed = gameState?.calculatedStats?.attackSpeed || 1000;
+
+                                                let survivalText = "∞";
+                                                let survivalColor = "#4caf50";
+
+                                                if (mobDmg > 0) {
+                                                    const roundsToDie = totalEffectiveHp / mobDmg;
+                                                    const secondsToDie = roundsToDie * (atkSpeed / 1000);
+
+                                                    // Threshold: 12 Hours
+                                                    if (secondsToDie > 43200) {
+                                                        survivalText = "∞";
+                                                        survivalColor = "#4caf50";
+                                                    } else {
+                                                        const hrs = Math.floor(secondsToDie / 3600);
+                                                        const mins = Math.floor((secondsToDie % 3600) / 60);
+                                                        const secs = Math.floor(secondsToDie % 60);
+
+                                                        if (hrs > 0) {
+                                                            survivalText = `${hrs}h ${mins}m ${secs}s`;
+                                                            survivalColor = "#ff9800";
+                                                        } else if (mins > 0) {
+                                                            survivalText = `${mins}m ${secs}s`;
+                                                            survivalColor = "#ff9800";
+                                                        } else {
+                                                            survivalText = `${secs}s`;
+                                                            survivalColor = "#ff4444";
+                                                        }
+                                                    }
+                                                }
+
+                                                return (
+                                                    <div style={{ fontSize: '0.85rem', fontWeight: 'bold', color: survivalColor }}>
+                                                        {survivalText}
+                                                    </div>
+                                                );
+                                            })()}
                                         </div>
                                     </div>
                                 )}

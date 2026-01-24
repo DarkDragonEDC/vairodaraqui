@@ -1,6 +1,6 @@
 
 import { GameManager } from './GameManager.js';
-import { MONSTERS } from './data/monsters.js';
+import { MONSTERS } from '../shared/monsters.js';
 
 // Mock Mock Supabase
 const mockSupabase = {};

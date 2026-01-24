@@ -233,6 +233,10 @@ export class DungeonManager {
             loot.push(`${qty}x ${rewards.resource.id}`);
         }
 
+        // Track Persistent Stats (Dungeons)
+        if (!char.state.stats) char.state.stats = {};
+        char.state.stats.dungeonsCleared = (char.state.stats.dungeonsCleared || 0) + 1;
+
         const inventory = char.state.inventory || {};
         const mapId = config.reqItem;
 

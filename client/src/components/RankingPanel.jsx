@@ -10,6 +10,18 @@ const CATEGORIES = {
             { key: 'SILVER', label: 'Total Silver' }
         ]
     },
+    COMBAT: {
+        label: 'COMBAT',
+        options: [
+            { key: 'COMBAT', label: 'Combat Level' }
+        ]
+    },
+    DUNGEON: {
+        label: 'DUNGEON',
+        options: [
+            { key: 'DUNGEONEERING', label: 'Dungeoneering Level' }
+        ]
+    },
     GATHERING: {
         label: 'GATHERING',
         options: [
@@ -49,16 +61,25 @@ const RankingPanel = ({ socket, isMobile }) => {
     useEffect(() => {
         if (!socket) return;
 
-        socket.emit('get_leaderboard');
+        // Determine which server-side leaderboard type to fetch
+        let type = 'COMBAT';
 
-        const handleLeaderboard = (data) => {
+        if (mainCategory === 'COMBAT') type = 'COMBAT';
+        else if (mainCategory === 'DUNGEON') type = 'DUNGEON';
+        else type = 'COMBAT';
+
+        setLoading(true);
+        socket.emit('get_leaderboard', type);
+
+        const handleLeaderboard = (response) => {
+            const data = Array.isArray(response) ? response : (response.data || []);
             setCharacters(data);
             setLoading(false);
         };
 
         socket.on('leaderboard_update', handleLeaderboard);
         return () => socket.off('leaderboard_update', handleLeaderboard);
-    }, [socket]);
+    }, [socket, mainCategory]);
 
     const handleMainCategoryChange = (key) => {
         setMainCategory(key);
@@ -72,20 +93,34 @@ const RankingPanel = ({ socket, isMobile }) => {
             const state = char.state || {};
             let value = 0;
             let subValue = 0;
+            let label = 'LEVEL';
 
-            if (subCategory === 'SILVER') {
+            if (mainCategory === 'COMBAT') {
+                const skill = state.skills?.COMBAT || { level: 1, xp: 0 };
+                value = skill.level;
+                subValue = skill.xp;
+                label = 'COMBAT LEVEL';
+            } else if (mainCategory === 'DUNGEON') {
+                const skill = state.skills?.DUNGEONEERING || { level: 1, xp: 0 };
+                value = skill.level;
+                subValue = skill.xp;
+                label = 'DUNGEONEERING LEVEL';
+            } else if (subCategory === 'SILVER') {
                 value = state.silver || 0;
+                label = 'SILVER';
             } else if (subCategory === 'LEVEL') {
                 const skills = state.skills || {};
                 value = Object.values(skills).reduce((acc, s) => acc + (s.level || 1), 0);
                 subValue = Object.values(skills).reduce((acc, s) => acc + (s.xp || 0), 0);
+                label = 'TOTAL LEVEL';
             } else {
                 const skill = (state.skills || {})[subCategory];
                 value = skill ? skill.level : 1;
                 subValue = skill ? skill.xp : 0;
+                label = 'SKILL LEVEL';
             }
 
-            return { ...char, value, subValue };
+            return { ...char, value, subValue, label };
         }).sort((a, b) => {
             if (b.value !== a.value) return b.value - a.value;
             return b.subValue - a.subValue;
@@ -134,9 +169,14 @@ const RankingPanel = ({ socket, isMobile }) => {
                                     fontSize: '0.65rem',
                                     fontWeight: '900',
                                     cursor: 'pointer',
-                                    transition: '0.2s'
+                                    transition: '0.2s',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: '6px'
                                 }}
                             >
+                                {key === 'COMBAT' && <Star size={12} />}
+                                {key === 'DUNGEON' && <Crown size={12} />}
                                 {CATEGORIES[key].label}
                             </button>
                         ))}
@@ -201,9 +241,9 @@ const RankingPanel = ({ socket, isMobile }) => {
 
                                     {/* Player Info */}
                                     <div style={{ flex: 1 }}>
-                                        <div style={{ fontSize: '0.9rem', fontWeight: '900', color: index < 3 ? '#fff' : '#aaa' }}>{char.name.toUpperCase()}</div>
+                                        <div style={{ fontSize: '0.9rem', fontWeight: '900', color: index < 3 ? '#fff' : '#aaa' }}>{char.name}</div>
                                         <div style={{ fontSize: '0.55rem', color: '#555', fontWeight: 'bold', letterSpacing: '1px' }}>
-                                            {subCategory === 'SILVER' ? 'FORTUNE HUNTER' : 'MASTER CRAFTER'}
+                                            {char.label}
                                         </div>
                                     </div>
 
@@ -213,7 +253,7 @@ const RankingPanel = ({ socket, isMobile }) => {
                                             {subCategory === 'SILVER' ? char.value.toLocaleString() : char.value}
                                         </div>
                                         <div style={{ fontSize: '0.55rem', color: '#555', fontWeight: 'bold' }}>
-                                            {subCategory === 'SILVER' ? 'SILVER' : subCategory === 'LEVEL' ? 'TOTAL LEVEL' : 'SKILL LEVEL'}
+                                            {char.label}
                                         </div>
                                     </div>
                                 </motion.div>
