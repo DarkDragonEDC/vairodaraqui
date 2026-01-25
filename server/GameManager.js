@@ -261,7 +261,9 @@ export class GameManager {
         const atkSpeed = Number(stats.attackSpeed) || 1000;
         const monsterName = char.state.combat?.mobName || "Unknown Monster";
 
+        let roundsProcessed = 0;
         for (let i = 0; i < rounds; i++) {
+            roundsProcessed = i + 1;
             // Check food before each round
             const foodResult = this.processFood(char);
             if (foodResult.used) foodConsumed += foodResult.amount;
@@ -287,14 +289,14 @@ export class GameManager {
         }
 
         return {
-            processedRounds: rounds,
+            processedRounds: roundsProcessed,
             kills,
             xpGained: { COMBAT: combatXp },
             silverGained,
             itemsGained,
             died,
             foodConsumed,
-            totalTime: (i * atkSpeed) / 1000,
+            totalTime: (roundsProcessed * atkSpeed) / 1000,
             monsterName
         };
     }

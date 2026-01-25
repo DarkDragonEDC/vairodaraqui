@@ -293,7 +293,7 @@ const InventoryPanel = ({ gameState, socket, onEquip, onListOnMarket, onShowInfo
 
                                 <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%', height: '100%', overflow: 'hidden' }}>
                                     {item.icon ? (
-                                        <img src={item.icon} alt={item.name} style={{ width: '130%', height: '130%', objectFit: 'contain' }} />
+                                        <img src={item.icon} alt={item.name} style={{ width: item.scale || '130%', height: item.scale || '130%', objectFit: 'contain' }} />
                                     ) : (
                                         <Package size={32} color="#666" style={{ opacity: 0.8 }} />
                                     )}

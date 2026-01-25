@@ -33,9 +33,10 @@ export class DungeonManager {
         }
 
         // Level Requirement Check
-        const combatLevel = char.state.skills?.COMBAT?.level || 1;
-        if (combatLevel < (dungeon.reqLevel || 1)) {
-            throw new Error(`Combat level ${dungeon.reqLevel} required to enter this dungeon`);
+        // Level Requirement Check
+        const dungeonLevel = char.state.skills?.DUNGEONEERING?.level || 1;
+        if (dungeonLevel < (dungeon.reqLevel || 1)) {
+            throw new Error(`Dungeoneering level ${dungeon.reqLevel} required to enter this dungeon`);
         }
 
         // Consume Map

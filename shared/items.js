@@ -110,6 +110,66 @@ ITEMS.RAW.WOOD[10].icon = '/items/T10_WOOD.png';
 
 // Override Icon for T1 Ore
 if (ITEMS.RAW.ORE[1]) ITEMS.RAW.ORE[1].icon = '/items/T1_ORE.png';
+
+// Override Icon for T1 Hide
+if (ITEMS.RAW.HIDE[1]) ITEMS.RAW.HIDE[1].icon = '/items/T1_HIDE.png';
+
+// Override Icon for T2 Hide
+if (ITEMS.RAW.HIDE[2]) ITEMS.RAW.HIDE[2].icon = '/items/T2_HIDE.png';
+
+// Override Icon for T3 Hide
+if (ITEMS.RAW.HIDE[3]) ITEMS.RAW.HIDE[3].icon = '/items/T3_HIDE.png';
+
+// Override Icon for T4 Hide
+if (ITEMS.RAW.HIDE[4]) ITEMS.RAW.HIDE[4].icon = '/items/T4_HIDE.png';
+
+// Override Icon for T5 Hide
+if (ITEMS.RAW.HIDE[5]) ITEMS.RAW.HIDE[5].icon = '/items/T5_HIDE.png';
+
+// Override Icon for T6 Hide
+if (ITEMS.RAW.HIDE[6]) ITEMS.RAW.HIDE[6].icon = '/items/T6_HIDE.png';
+
+// Override Icon for T7 Hide
+if (ITEMS.RAW.HIDE[7]) ITEMS.RAW.HIDE[7].icon = '/items/T7_HIDE.png';
+
+// Override Icon for T8 Hide
+if (ITEMS.RAW.HIDE[8]) ITEMS.RAW.HIDE[8].icon = '/items/T8_HIDE.png';
+
+// Override Icon for T9 Hide
+if (ITEMS.RAW.HIDE[9]) ITEMS.RAW.HIDE[9].icon = '/items/T9_HIDE.png';
+
+// Override Icon for T10 Hide
+if (ITEMS.RAW.HIDE[10]) ITEMS.RAW.HIDE[10].icon = '/items/T10_HIDE.png';
+
+// Override Icon for T1 Fish
+if (ITEMS.RAW.FISH[1]) ITEMS.RAW.FISH[1].icon = '/items/T1_FISH.png';
+
+// Override Icon for T2 Fish
+if (ITEMS.RAW.FISH[2]) ITEMS.RAW.FISH[2].icon = '/items/T2_FISH.png';
+
+// Override Icon for T3 Fish
+if (ITEMS.RAW.FISH[3]) ITEMS.RAW.FISH[3].icon = '/items/T3_FISH.png';
+
+// Override Icon for T4 Fish
+if (ITEMS.RAW.FISH[4]) ITEMS.RAW.FISH[4].icon = '/items/T4_FISH.png';
+
+// Override Icon for T5 Fish
+if (ITEMS.RAW.FISH[5]) ITEMS.RAW.FISH[5].icon = '/items/T5_FISH.png';
+
+// Override Icon for T6 Fish
+if (ITEMS.RAW.FISH[6]) ITEMS.RAW.FISH[6].icon = '/items/T6_FISH.png';
+
+// Override Icon for T7 Fish
+if (ITEMS.RAW.FISH[7]) ITEMS.RAW.FISH[7].icon = '/items/T7_FISH.png';
+
+// Override Icon for T8 Fish
+if (ITEMS.RAW.FISH[8]) ITEMS.RAW.FISH[8].icon = '/items/T8_FISH.png';
+
+// Override Icon for T9 Fish
+if (ITEMS.RAW.FISH[9]) ITEMS.RAW.FISH[9].icon = '/items/T9_FISH.png';
+
+// Override Icon for T10 Fish
+if (ITEMS.RAW.FISH[10]) ITEMS.RAW.FISH[10].icon = '/items/T10_FISH.png';
 if (ITEMS.RAW.ORE[2]) ITEMS.RAW.ORE[2].icon = '/items/T2_ORE.png';
 if (ITEMS.RAW.ORE[3]) ITEMS.RAW.ORE[3].icon = '/items/T3_ORE.png';
 if (ITEMS.RAW.ORE[4]) ITEMS.RAW.ORE[4].icon = '/items/T4_ORE.png';

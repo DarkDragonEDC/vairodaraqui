@@ -6,7 +6,7 @@ import { MONSTERS } from '@shared/monsters';
 const CombatPanel = ({ socket, gameState, isMobile, onShowHistory }) => {
     const [activeTier, setActiveTier] = useState(1);
     const [battleLogs, setBattleLogs] = useState([]);
-    const [sessionLoot, setSessionLoot] = useState({});
+    const [sessionLoot, setSessionLoot] = useState(gameState?.state?.combat?.sessionLoot || {});
 
     const logsEndRef = useRef(null);
     const scrollContainerRef = useRef(null);
@@ -57,6 +57,14 @@ const CombatPanel = ({ socket, gameState, isMobile, onShowHistory }) => {
     const activeMobName = combat ? combat.mobName : null;
 
     // Reset ou Restauração de stats quando o combate muda/inicia
+    // Initialize session loot from server state whenever it updates (e.g. initial load or background update)
+    useEffect(() => {
+        if (gameState?.state?.combat?.sessionLoot) {
+            setSessionLoot(gameState.state.combat.sessionLoot);
+        }
+    }, [gameState?.state?.combat?.sessionLoot]);
+
+    // Reset ou Restauração de stats quando o combate muda/inicia
     useEffect(() => {
         if (!combat || !gameState?.name) return;
 
@@ -70,26 +78,17 @@ const CombatPanel = ({ socket, gameState, isMobile, onShowHistory }) => {
                 const parsed = JSON.parse(saved);
                 loadedLogs = parsed.logs || [];
                 loadedSessionId = parsed.startedAt;
-                setSessionLoot(parsed.loot);
+                // sessionLoot is handled by server state now
             } catch (e) {
                 console.error("Erro ao carregar sessão de combate:", e);
             }
         }
 
-        // Se a sessão salva é a MESMA que a atual (ex: F5), apenas restaura
+        // Se a sessão salva é a MESMA que a atual (ex: F5), apenas restaura logs
         if (loadedSessionId === combat.started_at) {
-            // Restore but respect limit
             setBattleLogs(loadedLogs.length > 30 ? loadedLogs.slice(loadedLogs.length - 30) : loadedLogs);
             setIsRestored(true);
             return;
-        }
-
-        // Se é uma sessão nova (loadedSessionId != started_at), adiciona marcador e faz prune
-        // Mantemos o sessionLoot antigo como histórico? Não, sessionLoot deve resetar por mob.
-        // O log deve manter histórico.
-
-        if (loadedSessionId !== combat.started_at) {
-            setSessionLoot({}); // New session = New loot counter
         }
 
         const newLog = { id: generateLogId(), type: 'start-info', content: `Starting combat against ${combat.mobName}...` };
@@ -115,11 +114,11 @@ const CombatPanel = ({ socket, gameState, isMobile, onShowHistory }) => {
         const data = {
             mobId: combat.mobId,
             startedAt: combat.started_at, // Save ID to separate sessions
-            loot: sessionLoot,
             logs: battleLogs
+            // Loot not saved here anymore, relies on server
         };
         localStorage.setItem(storageKey, JSON.stringify(data));
-    }, [sessionLoot, battleLogs, combat?.mobId, combat?.started_at, gameState?.name, isRestored]);
+    }, [battleLogs, combat?.mobId, combat?.started_at, gameState?.name, isRestored]);
 
     // Limpar storage quando o combate acaba explicitamente (não apenas no mount)
     useEffect(() => {
@@ -127,6 +126,7 @@ const CombatPanel = ({ socket, gameState, isMobile, onShowHistory }) => {
         if (prevCombatRef.current && !combat && gameState?.name) {
             localStorage.removeItem(`combat_${gameState.name}`);
             setIsRestored(false);
+            setSessionLoot({});
         }
         prevCombatRef.current = combat;
     }, [combat, gameState?.name]);
@@ -864,7 +864,7 @@ const CombatPanel = ({ socket, gameState, isMobile, onShowHistory }) => {
                                             padding: '2px 6px', borderRadius: '4px', fontSize: '0.65rem', color: chance <= 0.05 ? '#ae00ff' : '#aaa',
                                             border: '1px solid rgba(255,255,255,0.03)'
                                         }}>
-                                            {id.replace(/_/g, ' ')} {isMobile ? '' : `(${Math.round(chance * 100)}%)`}
+                                            {id.replace(/_/g, ' ')} <span style={{ opacity: 0.7, fontSize: '0.6rem', marginLeft: '3px' }}>{(chance * 100).toFixed(1).replace('.0', '')}%</span>
                                         </span>
                                     ))}
                                 </div>

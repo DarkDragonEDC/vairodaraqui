@@ -313,7 +313,7 @@ const ActivityModal = ({ isOpen, onClose, item, type, gameState, onStart, onNavi
             name: q.name,
             chance: (q.chance * 100).toFixed(1) + '%',
             color: q.color,
-            bonuxMultiplier: 1 + (q.ipBonus / 200) // Mesma lógica do resolveItem
+            ipBonus: q.ipBonus
         }));
 
         // Determinar stat principal para mostrar (Damage, Armor ou Efficiency)
@@ -516,7 +516,14 @@ const ActivityModal = ({ isOpen, onClose, item, type, gameState, onStart, onNavi
                                                             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', opacity: 0.9, borderTop: '1px solid rgba(255, 255, 255, 0.04)', paddingTop: '6px' }}>
                                                                 <div style={{ display: 'flex', alignItems: 'center', gap: '3px', color: '#ff4d4d' }}>
                                                                     <Target size={11} />
-                                                                    <span style={{ fontWeight: '600' }}>{Math.floor(mainStatVal * q.bonuxMultiplier)} {mainStatKey}</span>
+                                                                    <span style={{ fontWeight: '600' }}>
+                                                                        {(() => {
+                                                                            const multiplier = 1 + (q.ipBonus / 100);
+                                                                            let val = parseFloat((mainStatVal * multiplier).toFixed(1));
+                                                                            // Prevent small floats from looking like ints if they are huge? No, fixed(1) is good.
+                                                                            return `${val}${mainStatKey === 'Efficiency' ? '%' : ''} ${mainStatKey}`;
+                                                                        })()}
+                                                                    </span>
                                                                 </div>
                                                             </div>
                                                         </div>

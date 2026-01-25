@@ -449,9 +449,9 @@ const DungeonPanel = ({ gameState, socket, isMobile, serverTimeOffset = 0 }) => 
                         const mapQty = inventory[mapId] || 0;
                         const hasMap = mapQty > 0;
 
-                        const combatLevel = gameState?.state?.skills?.COMBAT?.level || 1;
+                        const dungeonLevel = gameState?.state?.skills?.DUNGEONEERING?.level || 1;
                         const reqLevel = (tier === 1 ? 1 : (tier - 1) * 10);
-                        const levelLocked = combatLevel < reqLevel;
+                        const levelLocked = dungeonLevel < reqLevel;
                         const isTotalLocked = levelLocked;
 
                         const estimatedTimeRun = calculateEstimatedTime(tier, 1);
