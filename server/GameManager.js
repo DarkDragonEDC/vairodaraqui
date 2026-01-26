@@ -100,7 +100,8 @@ export class GameManager {
 
                 // Unified report structure
                 let finalReport = {
-                    totalTime: 0,
+                    elapsedTime: elapsedSeconds, // Wall-clock time passed
+                    totalTime: 0, // Productive time used
                     itemsGained: {},
                     xpGained: {},
                     combat: null

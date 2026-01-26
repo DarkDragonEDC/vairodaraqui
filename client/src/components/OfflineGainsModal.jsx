@@ -34,7 +34,7 @@ const OfflineGainsModal = ({ isOpen, data, onClose }) => {
     const [showFullNumbers, setShowFullNumbers] = useState(false);
     if (!isOpen || !data) return null;
 
-    const { totalTime, itemsGained, xpGained, combat } = data;
+    const { totalTime, elapsedTime, itemsGained, xpGained, combat } = data;
 
     // Format seconds to HH:mm:ss
     const formatTime = (seconds) => {
@@ -129,7 +129,7 @@ const OfflineGainsModal = ({ isOpen, data, onClose }) => {
                             fontWeight: '500'
                         }}>
                             <Clock size={12} color="#d4af37" />
-                            <span>Away for <strong style={{ color: '#fff' }}>{formatTime(totalTime || 0)}</strong></span>
+                            <span>Away for <strong style={{ color: '#fff' }}>{formatTime(elapsedTime || totalTime || 0)}</strong></span>
                         </div>
                     </div>
 

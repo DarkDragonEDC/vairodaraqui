@@ -162,6 +162,26 @@ function App() {
     }
   }, [gameState]);
 
+  // Update Last Active on Unload
+  useEffect(() => {
+    const handleUnload = () => {
+      if (session?.access_token) {
+        const url = `${import.meta.env.VITE_API_URL || 'http://localhost:3000'}/api/update_last_active`;
+        // Use fetch with keepalive to ensure request completes after unload
+        fetch(url, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${session.access_token}`
+          },
+          keepalive: true
+        }).catch(err => console.error("Failed to update last active:", err));
+      }
+    };
+    window.addEventListener('beforeunload', handleUnload);
+    return () => window.removeEventListener('beforeunload', handleUnload);
+  }, [session]);
+
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session);

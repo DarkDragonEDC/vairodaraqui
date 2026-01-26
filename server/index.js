@@ -51,6 +51,38 @@ app.get('/api/me', authMiddleware, (req, res) => {
     res.json({ user: req.user, message: "You are authenticated!" });
 });
 
+// Update Last Active Timestamp
+app.post('/api/update_last_active', authMiddleware, async (req, res) => {
+    try {
+        const { error } = await supabase
+            .from('user_sessions')
+            .upsert({ user_id: req.user.id, last_active_at: new Date().toISOString() });
+
+        if (error) throw error;
+        res.json({ success: true });
+    } catch (err) {
+        console.error('Error updating last_active:', err);
+        res.status(500).json({ error: err.message });
+    }
+});
+
+// Get Last Active Timestamp
+app.get('/api/last_active', authMiddleware, async (req, res) => {
+    try {
+        const { data, error } = await supabase
+            .from('user_sessions')
+            .select('last_active_at')
+            .eq('user_id', req.user.id)
+            .single();
+
+        if (error && error.code !== 'PGRST116') throw error;
+        res.json({ last_active_at: data?.last_active_at || null, server_time: new Date().toISOString() });
+    } catch (err) {
+        console.error('Error getting last_active:', err);
+        res.status(500).json({ error: err.message });
+    }
+});
+
 io.use(async (socket, next) => {
     const token = socket.handshake.auth.token || socket.handshake.headers.authorization?.split(' ')[1];
 
