@@ -1043,7 +1043,7 @@ function App() {
         serverTimeOffset={clockOffset.current}
         skillProgress={gameState?.current_activity && displayedGameState?.state?.skills ? (displayedGameState.state.skills[getSkillKey(gameState.current_activity.type, gameState.current_activity.item_id)]?.xp / calculateNextLevelXP(displayedGameState.state.skills[getSkillKey(gameState.current_activity.type, gameState.current_activity.item_id)]?.level)) * 100 : 0}
       />
-      <ActivityModal isOpen={!!modalItem} onClose={() => setModalItem(null)} item={modalItem} type={modalType} gameState={displayedGameState} onStart={startActivity} onNavigate={handleNavigate} />
+      {modalItem && <ActivityModal isOpen={!!modalItem} onClose={() => setModalItem(null)} item={modalItem} type={modalType} gameState={displayedGameState} onStart={startActivity} onNavigate={handleNavigate} />}
 
       <ItemInfoModal item={infoItem} onClose={() => setInfoItem(null)} />
       {marketSellItem && (
