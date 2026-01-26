@@ -216,10 +216,10 @@ export class ActivityManager {
 
     getSkillKeyForCrafting(itemId) {
         if (itemId.includes('SWORD') || itemId.includes('PLATE') || itemId.includes('PICKAXE') || itemId.includes('SHIELD')) return 'WARRIOR_CRAFTER';
-        if (itemId.includes('BOW') || itemId.includes('LEATHER') || itemId.includes('AXE') || itemId.includes('TORCH')) return 'HUNTER_CRAFTER';
-        if (itemId.includes('STAFF') || itemId.includes('CLOTH') || itemId.includes('SICKLE') || itemId.includes('TOME')) return 'MAGE_CRAFTER';
+        if (itemId.includes('BOW') || itemId.includes('LEATHER') || itemId.includes('AXE') || itemId.includes('TORCH') || itemId.includes('KNIFE')) return 'HUNTER_CRAFTER';
+        if (itemId.includes('STAFF') || itemId.includes('CLOTH') || itemId.includes('SICKLE') || itemId.includes('TOME') || itemId.includes('ROD') || itemId.includes('MAGE_CAPE')) return 'MAGE_CRAFTER';
         if (itemId.includes('FOOD')) return 'COOKING';
-        if (itemId.includes('CAPE')) return 'WARRIOR_CRAFTER';
+        if (itemId.includes('CAPE')) return 'WARRIOR_CRAFTER'; // Fallback for Plate Cape or generic
         return null;
     }
 }
