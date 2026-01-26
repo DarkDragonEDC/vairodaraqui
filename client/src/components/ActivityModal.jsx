@@ -77,6 +77,11 @@ const ActivityModal = ({ isOpen, onClose, item, type, gameState, onStart, onNavi
     }
     const totalDuration = finalTime * qtyNum;
 
+    useEffect(() => {
+        setQuantity(maxQuantity);
+    }, [item?.id]);
+
+
     const formatDuration = (seconds) => {
         if (!seconds) return '0s';
         if (seconds < 60) return `${seconds.toFixed(1).replace(/\.0$/, '')}s`;
