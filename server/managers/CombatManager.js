@@ -228,6 +228,16 @@ export class CombatManager {
             if (error) {
                 console.error("Failed to save combat history:", error.message);
             }
+
+            // Send System Notification
+            this.gameManager.addActionSummaryNotification(char, 'Combat', {
+                itemsGained: combat.sessionLoot || {},
+                xpGained: { COMBAT: combat.sessionXp || 0 },
+                totalTime: duration,
+                kills: combat.kills || 0,
+                silverGained: combat.sessionSilver || 0
+            });
+
         } catch (err) {
             console.error("Error saving combat history log:", err);
         }

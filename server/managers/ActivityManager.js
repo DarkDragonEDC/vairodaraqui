@@ -80,7 +80,9 @@ export class ActivityManager {
                     initial_quantity: quantity,
                     time_per_action: timePerAction,
                     next_action_at: Date.now() + (timePerAction * 1000),
-                    req: item.req || null
+                    req: item.req || null,
+                    sessionItems: {},
+                    sessionXp: 0
                 },
                 activity_started_at: new Date().toISOString(),
                 last_saved: new Date().toISOString() // Prevent catchup from applying old offline item to NEW activity
@@ -92,17 +94,32 @@ export class ActivityManager {
     }
 
     async stopActivity(userId, characterId) {
+        console.log(`[DEBUG] stopActivity called. User: ${userId}, Char: ${characterId}`);
         const char = await this.gameManager.getCharacter(userId, characterId);
-        // We need to fetch character first to get ID, or we could blindly update by characterId + userId.
-        // But getCharacter handles correct resolution.
+        console.log(`[DEBUG] Character found: ${char?.name}. Activity: ${char?.current_activity?.type || 'none'}`);
+
+        if (char.current_activity) {
+            const activity = char.current_activity;
+            console.log(`[ACTIVITY] Found active ${activity.type}. Session XP: ${activity.sessionXp}`);
+            if (!activity.sessionItems) activity.sessionItems = {};
+            if (typeof activity.sessionXp === 'undefined') activity.sessionXp = 0;
+
+            const elapsedSeconds = char.activity_started_at ? (Date.now() - new Date(char.activity_started_at).getTime()) / 1000 : 0;
+            this.gameManager.addActionSummaryNotification(char, activity.type, {
+                itemsGained: activity.sessionItems,
+                xpGained: { [activity.type]: activity.sessionXp },
+                totalTime: elapsedSeconds
+            });
+        }
 
         const { error } = await this.gameManager.supabase
             .from('characters')
             .update({
                 current_activity: null,
-                activity_started_at: null
+                activity_started_at: null,
+                state: char.state
             })
-            .eq('id', char.id); // Use char.id not userId, because now multiple chars exist
+            .eq('id', char.id);
 
         if (error) throw error;
         return { success: true, message: "Activity stopped" };

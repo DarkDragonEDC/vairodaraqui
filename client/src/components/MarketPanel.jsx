@@ -387,7 +387,7 @@ const MarketPanel = ({ socket, gameState, silver = 0, onShowInfo, onListOnMarket
                                             <div style={{ flex: '1 1 0%', textAlign: 'right', display: 'flex', flexDirection: 'column', alignItems: 'flex-end', minWidth: '120px' }}>
                                                 <div style={{ fontSize: '0.7rem', color: 'var(--text-dim)', marginBottom: '2px' }}>{l.amount}x units</div>
                                                 <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '1.1rem', fontWeight: 'bold', color: 'var(--accent)' }}>
-                                                    <Coins size={16} /> {formatSilver(l.price)}
+                                                    <Coins size={16} /> {(l.price / l.amount) < 1 ? (l.price / l.amount).toFixed(2) : formatSilver(l.price / l.amount)}
                                                 </div>
                                             </div>
 
@@ -850,8 +850,22 @@ const MarketPanel = ({ socket, gameState, silver = 0, onShowInfo, onListOnMarket
                                             type="number"
                                             value={buyModal.quantity}
                                             onChange={(e) => {
-                                                const val = Math.max(1, Math.min(buyModal.max, parseInt(e.target.value) || 1));
-                                                setBuyModal(prev => ({ ...prev, quantity: val }));
+                                                const val = e.target.value;
+                                                if (val === '') {
+                                                    setBuyModal(prev => ({ ...prev, quantity: '' }));
+                                                } else {
+                                                    const parsed = parseInt(val);
+                                                    if (!isNaN(parsed)) {
+                                                        // Clamp between 1 and max
+                                                        const clamped = Math.max(1, Math.min(buyModal.max, parsed));
+                                                        setBuyModal(prev => ({ ...prev, quantity: clamped }));
+                                                    }
+                                                }
+                                            }}
+                                            onBlur={() => {
+                                                if (buyModal.quantity === '' || buyModal.quantity === 0) {
+                                                    setBuyModal(prev => ({ ...prev, quantity: 1 }));
+                                                }
                                             }}
                                             style={{
                                                 width: '100%',
@@ -882,7 +896,11 @@ const MarketPanel = ({ socket, gameState, silver = 0, onShowInfo, onListOnMarket
                                         style={{ fontSize: '0.8rem', padding: '4px 8px', background: 'transparent', border: '1px solid var(--border)', borderRadius: '4px', color: 'var(--text-dim)', cursor: 'pointer' }}
                                     >MIN (1)</button>
                                     <button
-                                        onClick={() => setBuyModal(prev => ({ ...prev, quantity: prev.max }))}
+                                        onClick={() => {
+                                            const affordable = Math.floor(silver / buyModal.pricePerUnit);
+                                            const maxAmount = Math.max(1, Math.min(buyModal.max, affordable));
+                                            setBuyModal(prev => ({ ...prev, quantity: maxAmount }));
+                                        }}
                                         style={{ fontSize: '0.8rem', padding: '4px 8px', background: 'transparent', border: '1px solid var(--border)', borderRadius: '4px', color: 'var(--text-dim)', cursor: 'pointer' }}
                                     >MAX ({buyModal.max})</button>
                                 </div>

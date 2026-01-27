@@ -212,7 +212,9 @@ function App() {
   const connectSocket = (token, characterId) => {
     if (socket?.connected) return;
 
-    const newSocket = io(import.meta.env.VITE_API_URL || 'http://localhost:3000', {
+    const socketUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+    console.log('[DEBUG-CLIENT] Connecting to socket URL:', socketUrl);
+    const newSocket = io(socketUrl, {
       auth: { token },
       transports: ['websocket']
     });
@@ -270,6 +272,7 @@ function App() {
     });
 
     newSocket.on('status_update', (status) => {
+      console.log('[DEBUG-CLIENT] status_update received. Notifications:', status.state?.notifications?.length);
       const now = Date.now();
       const serverTime = new Date(status.serverTime || now).getTime();
       clockOffset.current = now - serverTime;

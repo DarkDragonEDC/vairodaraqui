@@ -368,6 +368,27 @@ export class DungeonManager {
             if (error) {
                 console.error("Failed to save dungeon history:", error.message);
             }
+
+            // Send System Notification
+            const itemsMap = {};
+            formattedLoot.forEach(itemStr => {
+                const match = itemStr.match(/^(\d+)x (.+)$/);
+                if (match) {
+                    const qty = parseInt(match[1]);
+                    const id = match[2];
+                    itemsMap[id] = (itemsMap[id] || 0) + qty;
+                } else {
+                    itemsMap[itemStr] = (itemsMap[itemStr] || 0) + 1;
+                }
+            });
+
+            this.gameManager.addActionSummaryNotification(char, `Dungeon (${outcome})`, {
+                itemsGained: itemsMap,
+                xpGained: { DUNGEONEERING: totalXp },
+                totalTime: duration,
+                silverGained: totalSilver
+            });
+
         } catch (err) {
             console.error("Error saving dungeon history log:", err);
         }

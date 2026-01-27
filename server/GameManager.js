@@ -145,8 +145,8 @@ export class GameManager {
                     const secondsPerRound = atkSpeed / 1000;
 
                     if (elapsedSeconds >= secondsPerRound) {
-                        const roundsToProcess = Math.floor(elapsedSeconds / secondsPerRound);
-                        const maxRounds = Math.min(roundsToProcess, 43200);
+                        const maxEffectSeconds = Math.min(elapsedSeconds, 43200); // Max 12 hours real time
+                        const maxRounds = Math.floor(maxEffectSeconds / secondsPerRound);
 
                         if (maxRounds > 0) {
                             const combatReport = await this.processBatchCombat(data, maxRounds);
@@ -195,6 +195,25 @@ export class GameManager {
                 if (updated) {
                     data.offlineReport = finalReport;
                     data.last_saved = now.toISOString();
+
+                    // Trigger a system notification for the offline gain
+                    this.addActionSummaryNotification(data, 'Offline Progress', {
+                        itemsGained: finalReport.itemsGained,
+                        xpGained: finalReport.xpGained,
+                        totalTime: finalReport.totalTime,
+                        elapsedTime: elapsedSeconds,
+                        kills: finalReport.combat?.kills || 0,
+                        silverGained: finalReport.combat?.silverGained || 0
+                    });
+                }
+
+                // Hard limit cleanup: Stop activities that exceeded the idle limit
+                if (elapsedSeconds > 43200) {
+                    console.log(`[CATCHUP] Hard limit reached for ${data.name}. Clearing activities.`);
+                    data.current_activity = null;
+                    if (data.state.combat) delete data.state.combat;
+                    if (data.state.dungeon) delete data.state.dungeon;
+                    updated = true;
                 }
             }
 
@@ -520,9 +539,35 @@ export class GameManager {
                         itemsGained++;
                         if (result.leveledUp) leveledUp = result.leveledUp;
                         lastActivityResult = result;
+
+                        // Track session stats
+                        const activity = char.current_activity;
+                        if (activity) {
+                            if (!activity.sessionItems) activity.sessionItems = {};
+                            if (typeof activity.sessionXp === 'undefined') activity.sessionXp = 0;
+
+                            if (result.itemGained) {
+                                activity.sessionItems[result.itemGained] = (activity.sessionItems[result.itemGained] || 0) + (result.amountGained || 1);
+                            }
+                            if (result.xpGained) {
+                                const stats = this.inventoryManager.calculateStats(char);
+                                const xpBonus = stats.globals?.xpYield || 0;
+                                const finalXp = Math.floor(result.xpGained * (1 + xpBonus / 100));
+                                activity.sessionXp = (activity.sessionXp || 0) + finalXp;
+                            }
+                        }
+
                         const newActionsRemaining = actions_remaining - 1;
                         activityFinished = newActionsRemaining <= 0;
                         if (activityFinished) {
+                            // Generate final report before clearing
+                            const elapsedSeconds = char.activity_started_at ? (Date.now() - new Date(char.activity_started_at).getTime()) / 1000 : 0;
+                            this.addActionSummaryNotification(char, activity.type, {
+                                itemsGained: activity.sessionItems,
+                                xpGained: { [result.skillKey]: activity.sessionXp },
+                                totalTime: elapsedSeconds
+                            });
+
                             char.current_activity = null;
                             char.activity_started_at = null;
                         } else {
@@ -530,7 +575,18 @@ export class GameManager {
                         }
                     } else {
                         lastActivityResult = result;
+                        // For failure (e.g. no ingredients), also notify if we had progress
+                        const activity = char.current_activity;
+                        if (activity && (activity.sessionXp > 0 || Object.keys(activity.sessionItems).length > 0)) {
+                            const elapsedSeconds = char.activity_started_at ? (Date.now() - new Date(char.activity_started_at).getTime()) / 1000 : 0;
+                            this.addActionSummaryNotification(char, activity.type, {
+                                itemsGained: activity.sessionItems,
+                                xpGained: { [activity.type]: activity.sessionXp }, // Simplified key
+                                totalTime: elapsedSeconds
+                            });
+                        }
                         char.current_activity = null;
+                        char.activity_started_at = null;
                     }
                 }
             }
@@ -670,6 +726,40 @@ export class GameManager {
         if (char.state.notifications.length > 50) {
             char.state.notifications = char.state.notifications.slice(0, 50);
         }
+    }
+
+    addActionSummaryNotification(char, actionType, stats) {
+        console.log(`[DEBUG] addActionSummaryNotification for ${char.name}. Type: ${actionType}`);
+        // stats can be offlineReport or a simple gains object
+        // { itemsGained: {}, xpGained: {}, totalTime: seconds, kills?: number, silverGained?: number, elapsedTime?: number }
+        const { itemsGained, xpGained, totalTime, kills, silverGained, elapsedTime } = stats;
+
+        let timeVal = totalTime || elapsedTime || 0;
+        let timeStr = "";
+        if (timeVal < 60) timeStr = `${Math.floor(timeVal)}s`;
+        else if (timeVal < 3600) timeStr = `${Math.floor(timeVal / 60)}m ${Math.floor(timeVal % 60)}s`;
+        else timeStr = `${Math.floor(timeVal / 3600)}h ${Math.floor((timeVal % 3600) / 60)}m`;
+
+        let itemsStr = Object.entries(itemsGained || {})
+            .map(([id, qty]) => `${qty}x ${id.replace(/_/g, ' ')}`)
+            .join(', ');
+
+        let xpParts = [];
+        for (const [skill, xp] of Object.entries(xpGained || {})) {
+            if (xp > 0) xpParts.push(`+${xp} ${skill.replace(/_/g, ' ')}`);
+        }
+        let xpStr = xpParts.join(', ');
+
+        let message = `${actionType} Summary: `;
+        message += `Duration: ${timeStr}. `;
+        if (kills) message += `Kills: ${kills}. `;
+        if (xpStr) message += `XP: ${xpStr}. `;
+        if (silverGained) message += `Silver: +${silverGained.toLocaleString()}. `;
+        if (itemsStr) message += `Gained: ${itemsStr}.`;
+        else message += "No items gained.";
+
+        console.log(`[NOTIF] Adding system notif for ${char.name}: ${message}`);
+        this.addNotification(char, 'SYSTEM', message);
     }
 
     processFood(char) {

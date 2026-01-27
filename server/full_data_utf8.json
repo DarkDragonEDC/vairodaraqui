@@ -1,0 +1,7411 @@
+[
+  {
+    "id": "a7046214-c50e-4109-88e7-ee9c36f23322",
+    "name": "Edcedc",
+    "last_saved": "2026-01-27T11:44:08.494+00:00",
+    "current_activity": null,
+    "state": {
+      "stats": {
+        "agi": 0,
+        "int": 0,
+        "str": 0
+      },
+      "claims": [],
+      "health": 100,
+      "silver": 0,
+      "skills": {
+        "COMBAT": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 100
+        },
+        "COOKING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 100
+        },
+        "FISHING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 100
+        },
+        "ORE_MINER": {
+          "xp": 1310,
+          "level": 29,
+          "nextLevelXp": 100
+        },
+        "LUMBERJACK": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 100
+        },
+        "BOW_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 200
+        },
+        "MAGE_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 100
+        },
+        "CLOTH_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 100
+        },
+        "DUNGEONEERING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 100
+        },
+        "PLANK_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 100
+        },
+        "SWORD_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 200
+        },
+        "ANIMAL_SKINNER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 100
+        },
+        "HUNTER_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 100
+        },
+        "FIBER_HARVESTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 100
+        },
+        "LEATHER_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 100
+        },
+        "WARRIOR_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 100
+        },
+        "METAL_BAR_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 100
+        },
+        "FIRE_STAFF_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 200
+        }
+      },
+      "inventory": {
+        "T1_ORE": 16155
+      },
+      "maxHealth": 100,
+      "notifications": []
+    }
+  },
+  {
+    "id": "f34c10ae-2ea9-4fde-927c-b5ba4a08523a",
+    "name": "Kalkox",
+    "last_saved": "2026-01-27T11:44:08.862+00:00",
+    "current_activity": {
+      "req": null,
+      "type": "GATHERING",
+      "item_id": "T1_WOOD",
+      "next_action_at": 1769471745592,
+      "time_per_action": 14.955,
+      "initial_quantity": 2888,
+      "actions_remaining": 45
+    },
+    "state": {
+      "stats": {
+        "agi": 0,
+        "int": 0,
+        "str": 0
+      },
+      "claims": [],
+      "health": 150,
+      "silver": 0,
+      "skills": {
+        "COMBAT": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "COOKING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FISHING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "ORE_MINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "LUMBERJACK": {
+          "xp": 5,
+          "level": 14,
+          "nextLevelXp": 84
+        },
+        "BOW_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "MAGE_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "CLOTH_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "DUNGEONEERING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "PLANK_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "SWORD_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "ANIMAL_SKINNER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "HUNTER_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FIBER_HARVESTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "LEATHER_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "WARRIOR_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "METAL_BAR_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FIRE_STAFF_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        }
+      },
+      "inventory": {
+        "T1_WOOD": 2843
+      },
+      "maxHealth": 150,
+      "notifications": []
+    }
+  },
+  {
+    "id": "710b1716-babd-4cb0-b4a6-cd563829c3a9",
+    "name": "Notch",
+    "last_saved": "2026-01-27T11:46:05.392+00:00",
+    "current_activity": {
+      "req": null,
+      "type": "GATHERING",
+      "item_id": "T1_WOOD",
+      "next_action_at": 1769514380298,
+      "time_per_action": 14.91,
+      "initial_quantity": 2897,
+      "actions_remaining": 1080
+    },
+    "state": {
+      "stats": {
+        "agi": 0,
+        "int": 0,
+        "str": 0
+      },
+      "claims": [],
+      "health": 150,
+      "silver": 0,
+      "skills": {
+        "COMBAT": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "COOKING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FISHING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "ORE_MINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "LUMBERJACK": {
+          "xp": 260,
+          "level": 11,
+          "nextLevelXp": 84
+        },
+        "BOW_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "MAGE_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "CLOTH_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "DUNGEONEERING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "PLANK_REFINER": {
+          "xp": 94,
+          "level": 2,
+          "nextLevelXp": 84
+        },
+        "SWORD_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "ANIMAL_SKINNER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "HUNTER_CRAFTER": {
+          "xp": 40,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FIBER_HARVESTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "LEATHER_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "WARRIOR_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "METAL_BAR_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FIRE_STAFF_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        }
+      },
+      "inventory": {
+        "T1_BOW": 1,
+        "T1_WOOD": 1817,
+        "T1_PLANK": 69
+      },
+      "maxHealth": 150,
+      "notifications": [
+        {
+          "id": 1769510547628.8542,
+          "read": false,
+          "type": "LEVEL_UP",
+          "message": "Your LUMBERJACK skill raised to level 11!",
+          "timestamp": 1769510547628
+        },
+        {
+          "id": 1769505676322.047,
+          "read": false,
+          "type": "LEVEL_UP",
+          "message": "Your LUMBERJACK skill raised to level 10!",
+          "timestamp": 1769505676322
+        },
+        {
+          "id": 1769502564240.1316,
+          "read": false,
+          "type": "LEVEL_UP",
+          "message": "Your LUMBERJACK skill raised to level 9!",
+          "timestamp": 1769502564240
+        },
+        {
+          "id": 1769496854520.656,
+          "read": false,
+          "type": "LEVEL_UP",
+          "message": "Your LUMBERJACK skill raised to level 7!",
+          "timestamp": 1769496854520
+        },
+        {
+          "id": 1769494252397.193,
+          "read": false,
+          "type": "LEVEL_UP",
+          "message": "Your LUMBERJACK skill raised to level 6!",
+          "timestamp": 1769494252397
+        },
+        {
+          "id": 1769491766615.3875,
+          "read": false,
+          "type": "LEVEL_UP",
+          "message": "Your LUMBERJACK skill raised to level 5!",
+          "timestamp": 1769491766615
+        },
+        {
+          "id": 1769489453969.4324,
+          "read": false,
+          "type": "LEVEL_UP",
+          "message": "Your LUMBERJACK skill raised to level 4!",
+          "timestamp": 1769489453969
+        },
+        {
+          "id": 1769487486199.9768,
+          "read": false,
+          "type": "LEVEL_UP",
+          "message": "Your LUMBERJACK skill raised to level 3!",
+          "timestamp": 1769487486199
+        },
+        {
+          "id": 1769483780005.9983,
+          "read": false,
+          "type": "LEVEL_UP",
+          "message": "Your PLANK REFINER skill raised to level 2!",
+          "timestamp": 1769483780005
+        },
+        {
+          "id": 1769481736141.5034,
+          "read": false,
+          "type": "LEVEL_UP",
+          "message": "Your LUMBERJACK skill raised to level 2!",
+          "timestamp": 1769481736141
+        }
+      ]
+    }
+  },
+  {
+    "id": "92b30e50-050a-49a7-a13c-859aca143af5",
+    "name": "Wondher",
+    "last_saved": "2026-01-27T11:44:09.584+00:00",
+    "current_activity": null,
+    "state": {
+      "stats": {
+        "agi": 0,
+        "int": 0,
+        "str": 0
+      },
+      "claims": [],
+      "health": 100,
+      "silver": 0,
+      "skills": {
+        "COMBAT": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "COOKING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FISHING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "ORE_MINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "LUMBERJACK": {
+          "xp": 89,
+          "level": 14,
+          "nextLevelXp": 84
+        },
+        "BOW_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "MAGE_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "CLOTH_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "DUNGEONEERING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "PLANK_REFINER": {
+          "xp": 9,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "SWORD_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "ANIMAL_SKINNER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "HUNTER_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FIBER_HARVESTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "LEATHER_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "WARRIOR_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "METAL_BAR_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FIRE_STAFF_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        }
+      },
+      "inventory": {
+        "T1_WOOD": 2879
+      },
+      "maxHealth": 100,
+      "notifications": []
+    }
+  },
+  {
+    "id": "275bd906-52dc-4d5e-9a50-b875715bcb01",
+    "name": "admin2",
+    "last_saved": "2026-01-27T11:44:10.096+00:00",
+    "current_activity": null,
+    "state": {
+      "stats": {
+        "agi": 0,
+        "int": 0,
+        "str": 0,
+        "totalKills": 44
+      },
+      "claims": [],
+      "health": 0,
+      "silver": 3649062,
+      "skills": {
+        "COMBAT": {
+          "xp": 139,
+          "level": 8,
+          "nextLevelXp": 84
+        },
+        "COOKING": {
+          "xp": 54,
+          "level": 12,
+          "nextLevelXp": 84
+        },
+        "FISHING": {
+          "xp": 54,
+          "level": 12,
+          "nextLevelXp": 84
+        },
+        "ORE_MINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "LUMBERJACK": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "BOW_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "MAGE_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "CLOTH_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "DUNGEONEERING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "PLANK_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "SWORD_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "ANIMAL_SKINNER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "HUNTER_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FIBER_HARVESTER": {
+          "xp": 6,
+          "level": 2,
+          "nextLevelXp": 84
+        },
+        "LEATHER_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "WARRIOR_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "METAL_BAR_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FIRE_STAFF_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        }
+      },
+      "inventory": {
+        "T1_ORE": 793,
+        "T1_FOOD": 1068,
+        "T1_HIDE": 26,
+        "T1_FIBER": 90
+      },
+      "maxHealth": 150,
+      "notifications": [
+        {
+          "id": 1769484467921.6277,
+          "read": false,
+          "type": "SUCCESS",
+          "message": "Your item Fish (x1901) was sold! +3573880 Silver (after tax).",
+          "timestamp": 1769484467921
+        },
+        {
+          "id": 1769483168097.938,
+          "read": false,
+          "type": "SUCCESS",
+          "message": "Your item Ore (x793) was sold! +74542 Silver (after tax).",
+          "timestamp": 1769483168097
+        },
+        {
+          "id": 1769483126587.696,
+          "read": false,
+          "type": "SUCCESS",
+          "message": "Your item Fiber (x89) was sold! +168 Silver (after tax).",
+          "timestamp": 1769483126587
+        }
+      ]
+    }
+  },
+  {
+    "id": "fcc986f6-e2e0-492e-a264-4377f23adbbd",
+    "name": "W1lbert",
+    "last_saved": "2026-01-27T11:44:09.223+00:00",
+    "current_activity": null,
+    "state": {
+      "stats": {
+        "agi": 0,
+        "int": 0,
+        "str": 0
+      },
+      "claims": [],
+      "health": 100,
+      "silver": 0,
+      "skills": {
+        "COMBAT": {
+          "xp": 0,
+          "level": 1
+        },
+        "COOKING": {
+          "xp": 0,
+          "level": 1
+        },
+        "FISHING": {
+          "xp": 0,
+          "level": 1
+        },
+        "ORE_MINER": {
+          "xp": 385,
+          "level": 18
+        },
+        "LUMBERJACK": {
+          "xp": 0,
+          "level": 1
+        },
+        "BOW_MASTERY": {
+          "xp": 0,
+          "level": 1
+        },
+        "MAGE_CRAFTER": {
+          "xp": 0,
+          "level": 1
+        },
+        "CLOTH_REFINER": {
+          "xp": 0,
+          "level": 1
+        },
+        "DUNGEONEERING": {
+          "xp": 0,
+          "level": 1
+        },
+        "PLANK_REFINER": {
+          "xp": 0,
+          "level": 1
+        },
+        "SWORD_MASTERY": {
+          "xp": 0,
+          "level": 1
+        },
+        "ANIMAL_SKINNER": {
+          "xp": 0,
+          "level": 1
+        },
+        "HUNTER_CRAFTER": {
+          "xp": 0,
+          "level": 1
+        },
+        "FIBER_HARVESTER": {
+          "xp": 0,
+          "level": 1
+        },
+        "LEATHER_REFINER": {
+          "xp": 0,
+          "level": 1
+        },
+        "WARRIOR_CRAFTER": {
+          "xp": 70,
+          "level": 12
+        },
+        "METAL_BAR_REFINER": {
+          "xp": 105,
+          "level": 13
+        },
+        "FIRE_STAFF_MASTERY": {
+          "xp": 0,
+          "level": 1
+        }
+      },
+      "equipment": {
+        "tool_pickaxe": {
+          "id": "T1_PICKAXE",
+          "xp": 50,
+          "req": {
+            "T1_BAR": 1
+          },
+          "name": "Pickaxe",
+          "tier": 1,
+          "type": "TOOL_PICKAXE",
+          "stats": {
+            "efficiency": 5
+          }
+        }
+      },
+      "inventory": {
+        "T1_ORE": 2907
+      },
+      "maxHealth": 100,
+      "notifications": []
+    }
+  },
+  {
+    "id": "dbcefc8d-d7be-44b8-be27-bdd41c406962",
+    "name": "Vlad",
+    "last_saved": "2026-01-27T11:44:10.441+00:00",
+    "current_activity": {
+      "req": null,
+      "type": "GATHERING",
+      "item_id": "T1_ORE",
+      "next_action_at": 1769495333886,
+      "time_per_action": 14.955,
+      "initial_quantity": 2888,
+      "actions_remaining": 1619
+    },
+    "state": {
+      "stats": {
+        "agi": 0,
+        "int": 0,
+        "str": 0
+      },
+      "claims": [],
+      "health": 150,
+      "silver": 0,
+      "skills": {
+        "COMBAT": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "COOKING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FISHING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "ORE_MINER": {
+          "xp": 69,
+          "level": 9,
+          "nextLevelXp": 84
+        },
+        "LUMBERJACK": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "BOW_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "MAGE_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "CLOTH_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "DUNGEONEERING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "PLANK_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "SWORD_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "ANIMAL_SKINNER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "HUNTER_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FIBER_HARVESTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "LEATHER_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "WARRIOR_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "METAL_BAR_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FIRE_STAFF_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        }
+      },
+      "inventory": {
+        "T1_ORE": 1269
+      },
+      "maxHealth": 150,
+      "notifications": []
+    }
+  },
+  {
+    "id": "a622342f-8c08-4ebd-a7cc-05f2466d6f90",
+    "name": "SantaKlaus",
+    "last_saved": "2026-01-27T11:44:11.142+00:00",
+    "current_activity": {
+      "req": null,
+      "type": "GATHERING",
+      "item_id": "T1_ORE",
+      "next_action_at": 1769513763318,
+      "time_per_action": 14.775,
+      "initial_quantity": 2923,
+      "actions_remaining": 2889
+    },
+    "state": {
+      "stats": {
+        "agi": 0,
+        "int": 0,
+        "str": 0,
+        "totalKills": 22
+      },
+      "claims": [
+        {
+          "id": "1769513282426479943",
+          "type": "SOLD_ITEM",
+          "amount": 1,
+          "itemId": "T1_SHIELD_Q2",
+          "silver": 329,
+          "timestamp": 1769513282426
+        }
+      ],
+      "health": 0,
+      "silver": 243,
+      "skills": {
+        "COMBAT": {
+          "xp": 70,
+          "level": 5,
+          "nextLevelXp": 84
+        },
+        "COOKING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FISHING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "ORE_MINER": {
+          "xp": 131,
+          "level": 5,
+          "nextLevelXp": 84
+        },
+        "LUMBERJACK": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "BOW_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "MAGE_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "CLOTH_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "DUNGEONEERING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "PLANK_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "SWORD_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "ANIMAL_SKINNER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "HUNTER_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FIBER_HARVESTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "LEATHER_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "WARRIOR_CRAFTER": {
+          "xp": 80,
+          "level": 5,
+          "nextLevelXp": 84
+        },
+        "METAL_BAR_REFINER": {
+          "xp": 96,
+          "level": 5,
+          "nextLevelXp": 84
+        },
+        "FIRE_STAFF_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        }
+      },
+      "equipment": {
+        "offHand": {
+          "id": "T1_SHIELD_Q2",
+          "ip": 150,
+          "xp": 40,
+          "req": {
+            "T1_BAR": 20
+          },
+          "name": "Outstanding Shield",
+          "tier": 1,
+          "time": 240,
+          "type": "OFF_HAND",
+          "stats": {
+            "hp": 37.5,
+            "defense": 3
+          },
+          "isTool": false,
+          "quality": 2,
+          "originalId": "T1_SHIELD",
+          "qualityName": "Outstanding",
+          "rarityColor": "#4a90e2"
+        }
+      },
+      "inventory": {
+        "T1_BAR": 8,
+        "T1_ORE": 35,
+        "T1_HIDE": 9,
+        "T1_SHIELD_Q1": 2
+      },
+      "maxHealth": 150,
+      "notifications": [
+        {
+          "id": 1769513282426.4133,
+          "read": false,
+          "type": "SUCCESS",
+          "message": "Your item Outstanding Shield (x1) was sold! +329 Silver (after tax).",
+          "timestamp": 1769513282426
+        }
+      ]
+    }
+  },
+  {
+    "id": "0a7f28c3-cf5e-49bc-aad3-6500216588ba",
+    "name": "SwordFake",
+    "last_saved": "2026-01-26T23:30:09.841+00:00",
+    "current_activity": null,
+    "state": {
+      "stats": {
+        "agi": 0,
+        "int": 0,
+        "str": 0
+      },
+      "claims": [],
+      "health": 150,
+      "silver": 0,
+      "skills": {
+        "COMBAT": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "COOKING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FISHING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "ORE_MINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "LUMBERJACK": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "BOW_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "MAGE_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "CLOTH_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "DUNGEONEERING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "PLANK_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "SWORD_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "ANIMAL_SKINNER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "HUNTER_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FIBER_HARVESTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "LEATHER_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "WARRIOR_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "METAL_BAR_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FIRE_STAFF_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        }
+      },
+      "inventory": {},
+      "maxHealth": 150,
+      "notifications": []
+    }
+  },
+  {
+    "id": "3e0dd7e7-71e4-4e73-991c-befd90696064",
+    "name": "Vitao",
+    "last_saved": "2026-01-27T11:44:11.499+00:00",
+    "current_activity": {
+      "req": null,
+      "type": "GATHERING",
+      "item_id": "T1_WOOD",
+      "next_action_at": 1769513553291,
+      "time_per_action": 14.955,
+      "initial_quantity": 2888,
+      "actions_remaining": 2576
+    },
+    "state": {
+      "stats": {
+        "agi": 0,
+        "int": 0,
+        "str": 0
+      },
+      "claims": [],
+      "health": 100,
+      "silver": 80,
+      "skills": {
+        "COMBAT": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "COOKING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FISHING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "ORE_MINER": {
+          "xp": 16,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "LUMBERJACK": {
+          "xp": 120,
+          "level": 3,
+          "nextLevelXp": 84
+        },
+        "BOW_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "MAGE_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "CLOTH_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "DUNGEONEERING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "PLANK_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "SWORD_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "ANIMAL_SKINNER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "HUNTER_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FIBER_HARVESTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "LEATHER_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "WARRIOR_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "METAL_BAR_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FIRE_STAFF_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        }
+      },
+      "inventory": {
+        "T1_WOOD": 312
+      },
+      "maxHealth": 100,
+      "notifications": []
+    }
+  },
+  {
+    "id": "776f6c2a-4aa0-48f7-afeb-9b1d4432a3cd",
+    "name": "admin",
+    "last_saved": "2026-01-27T11:46:12.383+00:00",
+    "current_activity": {
+      "req": {
+        "T1_FIBER": 2
+      },
+      "type": "REFINING",
+      "item_id": "T1_CLOTH",
+      "next_action_at": 1769514380579,
+      "time_per_action": 8.25,
+      "initial_quantity": 5236,
+      "actions_remaining": 4684
+    },
+    "state": {
+      "stats": {
+        "agi": 500,
+        "int": 300,
+        "str": 500,
+        "totalKills": 1254807,
+        "dungeonsCleared": 63
+      },
+      "claims": [
+        {
+          "id": "1769514100859191658",
+          "type": "SOLD_ITEM",
+          "amount": 2507,
+          "itemId": "T1_HIDE",
+          "silver": 235658,
+          "timestamp": 1769514100859
+        },
+        {
+          "id": "1769514131057490374",
+          "type": "SOLD_ITEM",
+          "amount": 13487,
+          "itemId": "T1_FISH",
+          "silver": 1267778,
+          "timestamp": 1769514131057
+        },
+        {
+          "id": "1769514152547661973",
+          "type": "SOLD_ITEM",
+          "amount": 67700,
+          "itemId": "T1_HIDE",
+          "silver": 127276,
+          "timestamp": 1769514152547
+        }
+      ],
+      "combat": {
+        "auto": true,
+        "tier": 1,
+        "kills": 191099,
+        "mobId": "RABBIT",
+        "mobName": "Rabbit",
+        "mobDamage": 5,
+        "mobHealth": 50,
+        "sessionXp": 19109900,
+        "mobDefense": 0,
+        "started_at": "2026-01-26T19:48:54.720Z",
+        "sessionLoot": {
+          "T1_HIDE": 114744,
+          "T1_DUNGEON_MAP": 1894
+        },
+        "totalMobDmg": 191099,
+        "mobMaxHealth": 50,
+        "playerHealth": 907403,
+        "sessionSilver": 7645632,
+        "next_attack_at": 1769514372583,
+        "totalPlayerDmg": 15751335075
+      },
+      "health": 907403,
+      "silver": 2080134182,
+      "skills": {
+        "COMBAT": {
+          "xp": 2359654472,
+          "level": 100,
+          "nextLevelXp": 999999999
+        },
+        "COOKING": {
+          "xp": 20000000,
+          "level": 100,
+          "nextLevelXp": 999999999
+        },
+        "FISHING": {
+          "xp": 20219536,
+          "level": 100,
+          "nextLevelXp": 999999999
+        },
+        "ORE_MINER": {
+          "xp": 20004351,
+          "level": 100,
+          "nextLevelXp": 999999999
+        },
+        "LUMBERJACK": {
+          "xp": 20045031,
+          "level": 100,
+          "nextLevelXp": 999999999
+        },
+        "BOW_MASTERY": {
+          "xp": 20000000,
+          "level": 100,
+          "nextLevelXp": 999999999
+        },
+        "MAGE_CRAFTER": {
+          "xp": 20000000,
+          "level": 100,
+          "nextLevelXp": 999999999
+        },
+        "CLOTH_REFINER": {
+          "xp": 20001104,
+          "level": 100,
+          "nextLevelXp": 999999999
+        },
+        "DUNGEONEERING": {
+          "xp": 20013232,
+          "level": 100,
+          "nextLevelXp": 999999999
+        },
+        "PLANK_REFINER": {
+          "xp": 20021252,
+          "level": 100,
+          "nextLevelXp": 999999999
+        },
+        "SWORD_MASTERY": {
+          "xp": 20000000,
+          "level": 100,
+          "nextLevelXp": 999999999
+        },
+        "ANIMAL_SKINNER": {
+          "xp": 20001493,
+          "level": 100,
+          "nextLevelXp": 999999999
+        },
+        "HUNTER_CRAFTER": {
+          "xp": 20001244,
+          "level": 100,
+          "nextLevelXp": 999999999
+        },
+        "FIBER_HARVESTER": {
+          "xp": 20000000,
+          "level": 100,
+          "nextLevelXp": 999999999
+        },
+        "LEATHER_REFINER": {
+          "xp": 20016376,
+          "level": 100,
+          "nextLevelXp": 999999999
+        },
+        "WARRIOR_CRAFTER": {
+          "xp": 20000000,
+          "level": 100,
+          "nextLevelXp": 999999999
+        },
+        "METAL_BAR_REFINER": {
+          "xp": 20000000,
+          "level": 100,
+          "nextLevelXp": 999999999
+        },
+        "FIRE_STAFF_MASTERY": {
+          "xp": 20000000,
+          "level": 100,
+          "nextLevelXp": 999999999
+        }
+      },
+      "equipment": {
+        "cape": {
+          "id": "T10_PLATE_CAPE_Q4",
+          "ip": 1200,
+          "xp": 1840,
+          "req": {
+            "T10_BAR": 20,
+            "T10_CREST": 1
+          },
+          "name": "Masterpiece Plate Cape",
+          "tier": 10,
+          "time": 1520,
+          "type": "CAPE",
+          "stats": {
+            "hp": 120000,
+            "efficiency": {
+              "GLOBAL": 15.1
+            }
+          },
+          "isTool": false,
+          "quality": 4,
+          "originalId": "T10_PLATE_CAPE",
+          "qualityName": "Masterpiece",
+          "rarityColor": "#f5a623"
+        },
+        "food": {
+          "id": "T10_FOOD",
+          "xp": 46,
+          "req": {
+            "T10_FISH": 2
+          },
+          "heal": 200000,
+          "name": "Food",
+          "tier": 10,
+          "time": 100,
+          "type": "FOOD",
+          "amount": 214,
+          "quality": 0,
+          "qualityName": "Normal",
+          "rarityColor": "#fff"
+        },
+        "boots": {
+          "id": "T10_LEATHER_BOOTS_Q4",
+          "ip": 1200,
+          "xp": 829,
+          "req": {
+            "T10_LEATHER": 20
+          },
+          "name": "Masterpiece Leather Boots",
+          "tier": 10,
+          "time": 1520,
+          "type": "BOOTS",
+          "stats": {
+            "hp": 120000,
+            "speed": 30,
+            "defense": 9000
+          },
+          "quality": 4,
+          "originalId": "T10_LEATHER_BOOTS",
+          "qualityName": "Masterpiece",
+          "rarityColor": "#f5a623"
+        },
+        "chest": {
+          "id": "T10_LEATHER_ARMOR_Q4",
+          "ip": 1200,
+          "xp": 829,
+          "req": {
+            "T10_LEATHER": 20
+          },
+          "name": "Masterpiece Leather Armor",
+          "tier": 10,
+          "time": 1520,
+          "type": "ARMOR",
+          "stats": {
+            "hp": 420000,
+            "speed": 60,
+            "defense": 31500
+          },
+          "quality": 4,
+          "originalId": "T10_LEATHER_ARMOR",
+          "qualityName": "Masterpiece",
+          "rarityColor": "#f5a623"
+        },
+        "gloves": {
+          "id": "T10_LEATHER_GLOVES_Q4",
+          "ip": 1200,
+          "xp": 829,
+          "req": {
+            "T10_LEATHER": 20
+          },
+          "name": "Masterpiece Leather Gloves",
+          "tier": 10,
+          "time": 1520,
+          "type": "GLOVES",
+          "stats": {
+            "hp": 60000,
+            "damage": 9000,
+            "defense": 4500
+          },
+          "quality": 4,
+          "originalId": "T10_LEATHER_GLOVES",
+          "qualityName": "Masterpiece",
+          "rarityColor": "#f5a623"
+        },
+        "helmet": {
+          "id": "T10_LEATHER_HELMET_Q4",
+          "ip": 1200,
+          "xp": 829,
+          "req": {
+            "T10_LEATHER": 20
+          },
+          "name": "Masterpiece Leather Helmet",
+          "tier": 10,
+          "time": 1520,
+          "type": "HELMET",
+          "stats": {
+            "hp": 120000,
+            "speed": 30,
+            "defense": 9000
+          },
+          "quality": 4,
+          "originalId": "T10_LEATHER_HELMET",
+          "qualityName": "Masterpiece",
+          "rarityColor": "#f5a623"
+        },
+        "offHand": {
+          "id": "T10_TORCH_Q4",
+          "ip": 1200,
+          "xp": 829,
+          "req": {
+            "T10_PLANK": 20
+          },
+          "name": "Masterpiece Torch",
+          "tier": 10,
+          "time": 1520,
+          "type": "OFF_HAND",
+          "stats": {
+            "hp": 120000,
+            "speed": 60
+          },
+          "quality": 4,
+          "originalId": "T10_TORCH",
+          "qualityName": "Masterpiece",
+          "rarityColor": "#f5a623"
+        },
+        "mainHand": {
+          "id": "T10_BOW_Q4",
+          "ip": 1200,
+          "xp": 829,
+          "req": {
+            "T10_PLANK": 20
+          },
+          "name": "Masterpiece Bow",
+          "tier": 10,
+          "time": 1520,
+          "type": "WEAPON",
+          "stats": {
+            "damage": 72000,
+            "attackSpeed": 700
+          },
+          "quality": 4,
+          "originalId": "T10_BOW",
+          "qualityName": "Masterpiece",
+          "rarityColor": "#f5a623"
+        },
+        "tool_axe": {
+          "id": "T10_AXE",
+          "ip": 1000,
+          "xp": 1840,
+          "req": {
+            "T10_PLANK": 20
+          },
+          "name": "Axe",
+          "tier": 10,
+          "time": 1520,
+          "type": "TOOL_AXE",
+          "stats": {
+            "efficiency": 1
+          },
+          "isTool": true,
+          "quality": 0,
+          "qualityName": "Normal",
+          "rarityColor": "#fff"
+        },
+        "tool_rod": {
+          "id": "T10_FISHING_ROD",
+          "ip": 1000,
+          "xp": 1840,
+          "req": {
+            "T10_PLANK": 20
+          },
+          "name": "Fishing Rod",
+          "tier": 10,
+          "time": 1520,
+          "type": "TOOL_ROD",
+          "stats": {
+            "efficiency": 1
+          },
+          "isTool": true,
+          "quality": 0,
+          "qualityName": "Normal",
+          "rarityColor": "#fff"
+        },
+        "tool_knife": {
+          "id": "T10_SKINNING_KNIFE",
+          "ip": 1000,
+          "xp": 1840,
+          "req": {
+            "T10_LEATHER": 20
+          },
+          "name": "Skinning Knife",
+          "tier": 10,
+          "time": 1520,
+          "type": "TOOL_KNIFE",
+          "stats": {
+            "efficiency": 1
+          },
+          "isTool": true,
+          "quality": 0,
+          "qualityName": "Normal",
+          "rarityColor": "#fff"
+        },
+        "tool_sickle": {
+          "id": "T10_SICKLE",
+          "ip": 1000,
+          "xp": 1840,
+          "req": {
+            "T10_CLOTH": 20
+          },
+          "name": "Sickle",
+          "tier": 10,
+          "time": 1520,
+          "type": "TOOL_SICKLE",
+          "stats": {
+            "efficiency": 1
+          },
+          "isTool": true,
+          "quality": 0,
+          "qualityName": "Normal",
+          "rarityColor": "#fff"
+        },
+        "tool_pickaxe": {
+          "id": "T10_PICKAXE",
+          "ip": 1000,
+          "xp": 1840,
+          "req": {
+            "T10_BAR": 20
+          },
+          "name": "Pickaxe",
+          "tier": 10,
+          "time": 1520,
+          "type": "TOOL_PICKAXE",
+          "stats": {
+            "efficiency": 1
+          },
+          "isTool": true,
+          "quality": 0,
+          "qualityName": "Normal",
+          "rarityColor": "#fff"
+        }
+      },
+      "inventory": {
+        "T1_AXE": 1,
+        "T1_BAR": 1,
+        "T1_BOW": 1,
+        "T2_AXE": 1,
+        "T2_BAR": 1,
+        "T2_BOW": 1,
+        "T2_ORE": 1,
+        "T3_AXE": 1,
+        "T3_BAR": 1,
+        "T3_BOW": 1,
+        "T3_ORE": 1,
+        "T4_AXE": 1,
+        "T4_BAR": 1,
+        "T4_BOW": 1,
+        "T4_ORE": 1,
+        "T5_AXE": 1,
+        "T5_BAR": 1,
+        "T5_BOW": 1,
+        "T5_ORE": 1,
+        "T6_AXE": 1,
+        "T6_BAR": 1,
+        "T6_BOW": 1,
+        "T6_ORE": 1,
+        "T7_AXE": 1,
+        "T7_BAR": 1,
+        "T7_BOW": 1,
+        "T7_ORE": 1,
+        "T8_AXE": 1,
+        "T8_BAR": 1,
+        "T8_BOW": 1,
+        "T8_ORE": 1956,
+        "T9_AXE": 1,
+        "T9_BAR": 1,
+        "T9_BOW": 1,
+        "T9_ORE": 1,
+        "T10_BAR": 1,
+        "T10_BOW": 1,
+        "T10_ORE": 1,
+        "T1_FISH": 1,
+        "T1_FOOD": 1,
+        "T1_HIDE": 43279,
+        "T1_TOME": 1,
+        "T1_WOOD": 1,
+        "T2_FISH": 1,
+        "T2_FOOD": 1,
+        "T2_HIDE": 1,
+        "T2_TOME": 1,
+        "T2_WOOD": 1,
+        "T3_FISH": 1,
+        "T3_FOOD": 1,
+        "T3_HIDE": 1,
+        "T3_TOME": 1,
+        "T3_WOOD": 1,
+        "T4_FISH": 1,
+        "T4_FOOD": 1,
+        "T4_HIDE": 1,
+        "T4_TOME": 1,
+        "T4_WOOD": 1,
+        "T5_FISH": 1,
+        "T5_FOOD": 1,
+        "T5_HIDE": 1,
+        "T5_TOME": 1,
+        "T5_WOOD": 1,
+        "T6_FISH": 1,
+        "T6_FOOD": 1,
+        "T6_HIDE": 1,
+        "T6_TOME": 1,
+        "T6_WOOD": 1,
+        "T7_FISH": 1,
+        "T7_FOOD": 1,
+        "T7_HIDE": 1,
+        "T7_TOME": 1,
+        "T7_WOOD": 1,
+        "T8_FISH": 1,
+        "T8_FOOD": 1,
+        "T8_HIDE": 1,
+        "T8_TOME": 1,
+        "T8_WOOD": 1,
+        "T9_FISH": 1,
+        "T9_FOOD": 1,
+        "T9_HIDE": 1,
+        "T9_TOME": 1,
+        "T9_WOOD": 1,
+        "T10_FISH": 4773,
+        "T10_FOOD": 1,
+        "T10_HIDE": 1,
+        "T10_TOME": 1,
+        "T1_CLOTH": 553,
+        "T1_CREST": 22,
+        "T1_FIBER": 17570,
+        "T1_PLANK": 1,
+        "T1_SWORD": 1,
+        "T1_TORCH": 1,
+        "T2_CLOTH": 1,
+        "T2_CREST": 1,
+        "T2_FIBER": 1,
+        "T2_PLANK": 1,
+        "T2_SWORD": 1,
+        "T2_TORCH": 1,
+        "T3_CLOTH": 1,
+        "T3_CREST": 1,
+        "T3_FIBER": 1,
+        "T3_PLANK": 1,
+        "T3_SWORD": 1,
+        "T3_TORCH": 1,
+        "T4_CLOTH": 1,
+        "T4_CREST": 1,
+        "T4_FIBER": 1,
+        "T4_PLANK": 1,
+        "T4_SWORD": 1,
+        "T4_TORCH": 1,
+        "T5_CLOTH": 1,
+        "T5_CREST": 1,
+        "T5_FIBER": 1,
+        "T5_PLANK": 1,
+        "T5_SWORD": 1,
+        "T5_TORCH": 1,
+        "T6_CLOTH": 1,
+        "T6_CREST": 1,
+        "T6_FIBER": 1,
+        "T6_PLANK": 1,
+        "T6_SWORD": 1,
+        "T6_TORCH": 1,
+        "T7_CLOTH": 1,
+        "T7_CREST": 1,
+        "T7_FIBER": 1,
+        "T7_PLANK": 1,
+        "T7_SWORD": 1,
+        "T7_TORCH": 1,
+        "T8_CLOTH": 1,
+        "T8_CREST": 1,
+        "T8_FIBER": 1,
+        "T8_PLANK": 1,
+        "T8_SWORD": 1,
+        "T8_TORCH": 1,
+        "T9_CLOTH": 1,
+        "T9_CREST": 1,
+        "T9_FIBER": 1,
+        "T9_PLANK": 1,
+        "T9_SWORD": 1,
+        "T9_TORCH": 1,
+        "T10_CLOTH": 1,
+        "T10_CREST": 1,
+        "T10_FIBER": 1,
+        "T10_SWORD": 1,
+        "T10_TORCH": 1,
+        "T1_SHIELD": 1,
+        "T1_SICKLE": 1,
+        "T2_SHIELD": 1,
+        "T2_SICKLE": 1,
+        "T3_SHIELD": 1,
+        "T3_SICKLE": 1,
+        "T4_SHIELD": 1,
+        "T4_SICKLE": 1,
+        "T5_SHIELD": 1,
+        "T5_SICKLE": 1,
+        "T6_SHIELD": 1,
+        "T6_SICKLE": 1,
+        "T7_SHIELD": 1,
+        "T7_SICKLE": 1,
+        "T8_SHIELD": 1,
+        "T8_SICKLE": 1,
+        "T9_SHIELD": 1,
+        "T9_SICKLE": 1,
+        "T10_SHIELD": 1,
+        "T1_LEATHER": 1,
+        "T1_PICKAXE": 1,
+        "T2_LEATHER": 1,
+        "T2_PICKAXE": 1,
+        "T3_LEATHER": 1,
+        "T3_PICKAXE": 1,
+        "T4_LEATHER": 1,
+        "T4_PICKAXE": 1,
+        "T5_LEATHER": 1,
+        "T5_PICKAXE": 1,
+        "T6_LEATHER": 1,
+        "T6_PICKAXE": 1,
+        "T7_LEATHER": 1,
+        "T7_PICKAXE": 1,
+        "T8_LEATHER": 1,
+        "T8_PICKAXE": 1,
+        "T9_LEATHER": 1,
+        "T9_PICKAXE": 1,
+        "T10_LEATHER": 1,
+        "T1_MAGE_CAPE": 1,
+        "T2_MAGE_CAPE": 1,
+        "T3_MAGE_CAPE": 1,
+        "T4_MAGE_CAPE": 1,
+        "T5_MAGE_CAPE": 1,
+        "T6_MAGE_CAPE": 1,
+        "T7_MAGE_CAPE": 1,
+        "T8_MAGE_CAPE": 1,
+        "T9_MAGE_CAPE": 1,
+        "T10_MAGE_CAPE": 1,
+        "T1_FIRE_STAFF": 1,
+        "T1_PLATE_CAPE": 1,
+        "T2_FIRE_STAFF": 1,
+        "T2_PLATE_CAPE": 1,
+        "T3_FIRE_STAFF": 1,
+        "T3_PLATE_CAPE": 1,
+        "T4_FIRE_STAFF": 1,
+        "T4_PLATE_CAPE": 1,
+        "T5_FIRE_STAFF": 1,
+        "T5_PLATE_CAPE": 1,
+        "T6_FIRE_STAFF": 1,
+        "T6_PLATE_CAPE": 1,
+        "T7_FIRE_STAFF": 1,
+        "T7_PLATE_CAPE": 1,
+        "T8_FIRE_STAFF": 1,
+        "T8_PLATE_CAPE": 1,
+        "T9_FIRE_STAFF": 1,
+        "T9_PLATE_CAPE": 1,
+        "T10_FIRE_STAFF": 1,
+        "T1_CLOTH_ARMOR": 1,
+        "T1_CLOTH_BOOTS": 1,
+        "T1_DUNGEON_MAP": 1895,
+        "T1_FISHING_ROD": 1,
+        "T1_PLATE_ARMOR": 1,
+        "T1_PLATE_BOOTS": 1,
+        "T2_CLOTH_ARMOR": 1,
+        "T2_CLOTH_BOOTS": 1,
+        "T2_DUNGEON_MAP": 1,
+        "T2_FISHING_ROD": 1,
+        "T2_PLATE_ARMOR": 1,
+        "T2_PLATE_BOOTS": 1,
+        "T3_CLOTH_ARMOR": 1,
+        "T3_CLOTH_BOOTS": 1,
+        "T3_DUNGEON_MAP": 1,
+        "T3_FISHING_ROD": 1,
+        "T3_PLATE_ARMOR": 1,
+        "T3_PLATE_BOOTS": 1,
+        "T4_CLOTH_ARMOR": 1,
+        "T4_CLOTH_BOOTS": 1,
+        "T4_DUNGEON_MAP": 1,
+        "T4_FISHING_ROD": 1,
+        "T4_PLATE_ARMOR": 1,
+        "T4_PLATE_BOOTS": 1,
+        "T5_CLOTH_ARMOR": 1,
+        "T5_CLOTH_BOOTS": 1,
+        "T5_DUNGEON_MAP": 1,
+        "T5_FISHING_ROD": 1,
+        "T5_PLATE_ARMOR": 1,
+        "T5_PLATE_BOOTS": 1,
+        "T6_CLOTH_ARMOR": 1,
+        "T6_CLOTH_BOOTS": 1,
+        "T6_DUNGEON_MAP": 1,
+        "T6_FISHING_ROD": 1,
+        "T6_PLATE_ARMOR": 1,
+        "T6_PLATE_BOOTS": 1,
+        "T7_CLOTH_ARMOR": 1,
+        "T7_CLOTH_BOOTS": 1,
+        "T7_DUNGEON_MAP": 1,
+        "T7_FISHING_ROD": 1,
+        "T7_PLATE_ARMOR": 1,
+        "T7_PLATE_BOOTS": 1,
+        "T8_CLOTH_ARMOR": 1,
+        "T8_CLOTH_BOOTS": 1,
+        "T8_DUNGEON_MAP": 156,
+        "T8_FISHING_ROD": 1,
+        "T8_PLATE_ARMOR": 1,
+        "T8_PLATE_BOOTS": 1,
+        "T9_CLOTH_ARMOR": 1,
+        "T9_CLOTH_BOOTS": 1,
+        "T9_DUNGEON_MAP": 1,
+        "T9_FISHING_ROD": 1,
+        "T9_PLATE_ARMOR": 1,
+        "T9_PLATE_BOOTS": 1,
+        "T10_CLOTH_ARMOR": 1,
+        "T10_CLOTH_BOOTS": 1,
+        "T10_PLATE_ARMOR": 1,
+        "T10_PLATE_BOOTS": 1,
+        "T1_CLOTH_GLOVES": 1,
+        "T1_CLOTH_HELMET": 1,
+        "T1_LEATHER_CAPE": 1,
+        "T1_PLATE_GLOVES": 1,
+        "T1_PLATE_HELMET": 1,
+        "T2_CLOTH_GLOVES": 1,
+        "T2_CLOTH_HELMET": 1,
+        "T2_LEATHER_CAPE": 1,
+        "T2_PLATE_GLOVES": 1,
+        "T2_PLATE_HELMET": 1,
+        "T3_CLOTH_GLOVES": 1,
+        "T3_CLOTH_HELMET": 1,
+        "T3_LEATHER_CAPE": 1,
+        "T3_PLATE_GLOVES": 1,
+        "T3_PLATE_HELMET": 1,
+        "T4_CLOTH_GLOVES": 1,
+        "T4_CLOTH_HELMET": 1,
+        "T4_LEATHER_CAPE": 1,
+        "T4_PLATE_GLOVES": 1,
+        "T4_PLATE_HELMET": 1,
+        "T5_CLOTH_GLOVES": 1,
+        "T5_CLOTH_HELMET": 1,
+        "T5_LEATHER_CAPE": 1,
+        "T5_PLATE_GLOVES": 1,
+        "T5_PLATE_HELMET": 1,
+        "T6_CLOTH_GLOVES": 1,
+        "T6_CLOTH_HELMET": 1,
+        "T6_LEATHER_CAPE": 1,
+        "T6_PLATE_GLOVES": 1,
+        "T6_PLATE_HELMET": 1,
+        "T7_CLOTH_GLOVES": 1,
+        "T7_CLOTH_HELMET": 1,
+        "T7_LEATHER_CAPE": 1,
+        "T7_PLATE_GLOVES": 1,
+        "T7_PLATE_HELMET": 1,
+        "T8_CLOTH_GLOVES": 1,
+        "T8_CLOTH_HELMET": 1,
+        "T8_LEATHER_CAPE": 1,
+        "T8_PLATE_GLOVES": 1,
+        "T8_PLATE_HELMET": 1,
+        "T9_CLOTH_GLOVES": 1,
+        "T9_CLOTH_HELMET": 1,
+        "T9_LEATHER_CAPE": 1,
+        "T9_PLATE_GLOVES": 1,
+        "T9_PLATE_HELMET": 1,
+        "T10_CLOTH_GLOVES": 1,
+        "T10_CLOTH_HELMET": 1,
+        "T10_LEATHER_CAPE": 2,
+        "T10_PLATE_GLOVES": 1,
+        "T10_PLATE_HELMET": 1,
+        "T1_LEATHER_ARMOR": 1,
+        "T1_LEATHER_BOOTS": 1,
+        "T2_LEATHER_ARMOR": 1,
+        "T2_LEATHER_BOOTS": 1,
+        "T3_LEATHER_ARMOR": 1,
+        "T3_LEATHER_BOOTS": 1,
+        "T4_LEATHER_ARMOR": 1,
+        "T4_LEATHER_BOOTS": 1,
+        "T5_LEATHER_ARMOR": 1,
+        "T5_LEATHER_BOOTS": 1,
+        "T6_LEATHER_ARMOR": 1,
+        "T6_LEATHER_BOOTS": 1,
+        "T7_LEATHER_ARMOR": 1,
+        "T7_LEATHER_BOOTS": 1,
+        "T8_LEATHER_ARMOR": 1,
+        "T8_LEATHER_BOOTS": 1,
+        "T9_LEATHER_ARMOR": 1,
+        "T9_LEATHER_BOOTS": 1,
+        "T10_LEATHER_ARMOR": 1,
+        "T10_LEATHER_BOOTS": 1,
+        "T1_LEATHER_GLOVES": 1,
+        "T1_LEATHER_HELMET": 1,
+        "T1_SKINNING_KNIFE": 1,
+        "T2_LEATHER_GLOVES": 1,
+        "T2_LEATHER_HELMET": 1,
+        "T2_SKINNING_KNIFE": 1,
+        "T3_LEATHER_GLOVES": 1,
+        "T3_LEATHER_HELMET": 1,
+        "T3_SKINNING_KNIFE": 1,
+        "T4_LEATHER_GLOVES": 1,
+        "T4_LEATHER_HELMET": 1,
+        "T4_SKINNING_KNIFE": 1,
+        "T5_LEATHER_GLOVES": 1,
+        "T5_LEATHER_HELMET": 1,
+        "T5_SKINNING_KNIFE": 1,
+        "T6_LEATHER_GLOVES": 1,
+        "T6_LEATHER_HELMET": 1,
+        "T6_SKINNING_KNIFE": 1,
+        "T7_LEATHER_GLOVES": 1,
+        "T7_LEATHER_HELMET": 1,
+        "T7_SKINNING_KNIFE": 1,
+        "T8_LEATHER_GLOVES": 1,
+        "T8_LEATHER_HELMET": 1,
+        "T8_SKINNING_KNIFE": 1,
+        "T9_LEATHER_GLOVES": 1,
+        "T9_LEATHER_HELMET": 1,
+        "T9_SKINNING_KNIFE": 1,
+        "T10_LEATHER_GLOVES": 1,
+        "T10_LEATHER_HELMET": 1
+      },
+      "maxHealth": 965100,
+      "notifications": [
+        {
+          "id": 1769514152547.3718,
+          "read": false,
+          "type": "SUCCESS",
+          "message": "Your item Hide (x67700) was sold! +127276 Silver (after tax).",
+          "timestamp": 1769514152547
+        },
+        {
+          "id": 1769514131057.1404,
+          "read": false,
+          "type": "SUCCESS",
+          "message": "Your item Fish (x13487) was sold! +1267778 Silver (after tax).",
+          "timestamp": 1769514131057
+        },
+        {
+          "id": 1769514100859.882,
+          "read": false,
+          "type": "SUCCESS",
+          "message": "Your item Hide (x2507) was sold! +235658 Silver (after tax).",
+          "timestamp": 1769514100859
+        },
+        {
+          "id": 1769513282324.6467,
+          "read": true,
+          "type": "SUCCESS",
+          "message": "You bought 1x Outstanding Shield for 350 Silver.",
+          "timestamp": 1769513282324
+        },
+        {
+          "id": 1769484467455.4846,
+          "read": true,
+          "type": "SUCCESS",
+          "message": "You bought 1901x Fish for 3802000 Silver.",
+          "timestamp": 1769484467455
+        },
+        {
+          "id": 1769484348494.2285,
+          "read": true,
+          "type": "SUCCESS",
+          "message": "You bought 1901x Fish for 3802000 Silver.",
+          "timestamp": 1769484348494
+        },
+        {
+          "id": 1769484347500.6858,
+          "read": true,
+          "type": "SUCCESS",
+          "message": "You bought 1901x Fish for 3802000 Silver.",
+          "timestamp": 1769484347500
+        },
+        {
+          "id": 1769484346809.412,
+          "read": true,
+          "type": "SUCCESS",
+          "message": "You bought 1901x Fish for 3802000 Silver.",
+          "timestamp": 1769484346809
+        },
+        {
+          "id": 1769484344827.4521,
+          "read": true,
+          "type": "SUCCESS",
+          "message": "You bought 1901x Fish for 3802000 Silver.",
+          "timestamp": 1769484344827
+        },
+        {
+          "id": 1769484324660.5693,
+          "read": true,
+          "type": "SUCCESS",
+          "message": "You bought 1901x Fish for 3802000 Silver.",
+          "timestamp": 1769484324660
+        },
+        {
+          "id": 1769484313589.9778,
+          "read": true,
+          "type": "SUCCESS",
+          "message": "You bought 1901x Fish for 3802000 Silver.",
+          "timestamp": 1769484313589
+        },
+        {
+          "id": 1769483769136.4863,
+          "read": true,
+          "type": "SUCCESS",
+          "message": "You bought 89x Fiber for 178000 Silver.",
+          "timestamp": 1769483769136
+        },
+        {
+          "id": 1769388198974.4197,
+          "read": true,
+          "type": "SUCCESS",
+          "message": "You bought 20x Dungeon Map for 160000000 Silver.",
+          "timestamp": 1769388198974
+        },
+        {
+          "id": 1769292701194.7224,
+          "read": true,
+          "type": "SUCCESS",
+          "message": "Seu item Torch (x8) foi vendido! +23 Silver (após taxas).",
+          "timestamp": 1769292701194
+        },
+        {
+          "id": 1769292692717.3418,
+          "read": true,
+          "type": "SUCCESS",
+          "message": "Seu item Wood (x19) foi vendido! +1786 Silver (após taxas).",
+          "timestamp": 1769292692717
+        }
+      ]
+    }
+  },
+  {
+    "id": "6c414294-7662-4062-b395-4f43a53a17a4",
+    "name": "Aurinha",
+    "last_saved": "2026-01-27T11:44:10.806+00:00",
+    "current_activity": null,
+    "state": {
+      "stats": {
+        "agi": 0,
+        "int": 0,
+        "str": 0,
+        "totalKills": 8
+      },
+      "claims": [],
+      "health": 20,
+      "silver": 86,
+      "skills": {
+        "COMBAT": {
+          "xp": 8,
+          "level": 3,
+          "nextLevelXp": 84
+        },
+        "COOKING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FISHING": {
+          "xp": 10,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "ORE_MINER": {
+          "xp": 5,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "LUMBERJACK": {
+          "xp": 51,
+          "level": 14,
+          "nextLevelXp": 84
+        },
+        "BOW_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "MAGE_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "CLOTH_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "DUNGEONEERING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "PLANK_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "SWORD_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "ANIMAL_SKINNER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "HUNTER_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FIBER_HARVESTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "LEATHER_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "WARRIOR_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "METAL_BAR_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FIRE_STAFF_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        }
+      },
+      "inventory": {
+        "T1_ORE": 5,
+        "T1_FISH": 10,
+        "T1_HIDE": 3,
+        "T1_WOOD": 2889
+      },
+      "maxHealth": 150,
+      "notifications": []
+    }
+  },
+  {
+    "id": "11014050-df8c-48ca-9899-bc29790800e3",
+    "name": "Hosken",
+    "last_saved": "2026-01-27T11:44:13.459+00:00",
+    "current_activity": null,
+    "state": {
+      "stats": {
+        "agi": 0,
+        "int": 0,
+        "str": 0,
+        "totalKills": 14440
+      },
+      "claims": [],
+      "health": 0,
+      "silver": 212033,
+      "skills": {
+        "COMBAT": {
+          "xp": 2724,
+          "level": 73
+        },
+        "COOKING": {
+          "xp": 306,
+          "level": 12
+        },
+        "FISHING": {
+          "xp": 54,
+          "level": 13
+        },
+        "ORE_MINER": {
+          "xp": 0,
+          "level": 1
+        },
+        "LUMBERJACK": {
+          "xp": 104,
+          "level": 4
+        },
+        "BOW_MASTERY": {
+          "xp": 0,
+          "level": 1
+        },
+        "MAGE_CRAFTER": {
+          "xp": 185,
+          "level": 10
+        },
+        "CLOTH_REFINER": {
+          "xp": 600,
+          "level": 14
+        },
+        "DUNGEONEERING": {
+          "xp": 0,
+          "level": 1
+        },
+        "PLANK_REFINER": {
+          "xp": 34,
+          "level": 3
+        },
+        "SWORD_MASTERY": {
+          "xp": 0,
+          "level": 1
+        },
+        "ANIMAL_SKINNER": {
+          "xp": 0,
+          "level": 1
+        },
+        "HUNTER_CRAFTER": {
+          "xp": 0,
+          "level": 1
+        },
+        "FIBER_HARVESTER": {
+          "xp": 373,
+          "level": 13
+        },
+        "LEATHER_REFINER": {
+          "xp": 85,
+          "level": 20
+        },
+        "WARRIOR_CRAFTER": {
+          "xp": 0,
+          "level": 1
+        },
+        "METAL_BAR_REFINER": {
+          "xp": 40,
+          "level": 5
+        },
+        "FIRE_STAFF_MASTERY": {
+          "xp": 0,
+          "level": 1
+        }
+      },
+      "equipment": {
+        "head": {
+          "id": "T1_CLOTH_HELMET",
+          "ip": 100,
+          "xp": 15,
+          "req": {
+            "T1_CLOTH": 2
+          },
+          "name": "Helmet",
+          "tier": 1,
+          "type": "HELMET",
+          "stats": {
+            "damage": 4,
+            "defense": 1
+          }
+        },
+        "boots": {
+          "id": "T1_CLOTH_BOOTS_Q2",
+          "ip": 150,
+          "xp": 27,
+          "req": {
+            "T1_CLOTH": 20
+          },
+          "name": "Outstanding Cloth Boots",
+          "tier": 1,
+          "time": 240,
+          "type": "BOOTS",
+          "stats": {
+            "hp": 10.5,
+            "damage": 0,
+            "defense": 0
+          },
+          "quality": 2,
+          "originalId": "T1_CLOTH_BOOTS",
+          "qualityName": "Outstanding",
+          "rarityColor": "#4a90e2"
+        },
+        "chest": {
+          "id": "T1_CLOTH_ARMOR_Q4",
+          "ip": 300,
+          "xp": 27,
+          "req": {
+            "T1_CLOTH": 20
+          },
+          "name": "Masterpiece Cloth Armor",
+          "tier": 1,
+          "time": 240,
+          "type": "ARMOR",
+          "stats": {
+            "hp": 75,
+            "damage": 6,
+            "defense": 6
+          },
+          "quality": 4,
+          "originalId": "T1_CLOTH_ARMOR",
+          "qualityName": "Masterpiece",
+          "rarityColor": "#f5a623"
+        },
+        "shoes": {
+          "id": "T1_CLOTH_BOOTS",
+          "ip": 100,
+          "xp": 15,
+          "req": {
+            "T1_CLOTH": 2
+          },
+          "name": "Boots",
+          "tier": 1,
+          "type": "BOOTS",
+          "stats": {
+            "damage": 4,
+            "defense": 1
+          }
+        },
+        "gloves": {
+          "id": "T1_CLOTH_GLOVES_Q2",
+          "ip": 150,
+          "xp": 27,
+          "req": {
+            "T1_CLOTH": 20
+          },
+          "name": "Outstanding Cloth Gloves",
+          "tier": 1,
+          "time": 240,
+          "type": "GLOVES",
+          "stats": {
+            "hp": 7.5,
+            "damage": 1.5,
+            "defense": 0
+          },
+          "quality": 2,
+          "originalId": "T1_CLOTH_GLOVES",
+          "qualityName": "Outstanding",
+          "rarityColor": "#4a90e2"
+        },
+        "helmet": {
+          "id": "T1_CLOTH_HELMET_Q2",
+          "ip": 150,
+          "xp": 27,
+          "req": {
+            "T1_CLOTH": 20
+          },
+          "name": "Outstanding Cloth Helmet",
+          "tier": 1,
+          "time": 240,
+          "type": "HELMET",
+          "stats": {
+            "hp": 10.5,
+            "damage": 0,
+            "defense": 0
+          },
+          "quality": 2,
+          "originalId": "T1_CLOTH_HELMET",
+          "qualityName": "Outstanding",
+          "rarityColor": "#4a90e2"
+        },
+        "mainHand": {
+          "id": "T1_FIRE_STAFF_Q2",
+          "ip": 150,
+          "xp": 27,
+          "req": {
+            "T1_PLANK": 20
+          },
+          "name": "Outstanding Fire Staff",
+          "tier": 1,
+          "time": 240,
+          "type": "WEAPON",
+          "stats": {
+            "damage": 18,
+            "attackSpeed": 1500
+          },
+          "quality": 2,
+          "originalId": "T1_FIRE_STAFF",
+          "qualityName": "Outstanding",
+          "rarityColor": "#4a90e2"
+        },
+        "tool_sickle": {
+          "id": "T1_SICKLE",
+          "ip": 100,
+          "xp": 27,
+          "req": {
+            "T1_CLOTH": 20
+          },
+          "name": "Sickle",
+          "tier": 1,
+          "time": 240,
+          "type": "TOOL_SICKLE",
+          "stats": {
+            "efficiency": 1.5
+          },
+          "quality": 0,
+          "qualityName": "Normal",
+          "rarityColor": "#fff"
+        }
+      },
+      "inventory": {
+        "T1_BAR": 260,
+        "T1_ORE": 1,
+        "T1_HIDE": 1674,
+        "T2_FIBER": 9,
+        "T1_LEATHER": 2888,
+        "T1_DUNGEON_MAP": 171
+      },
+      "maxHealth": 100,
+      "notifications": []
+    }
+  },
+  {
+    "id": "ed1fb84a-8611-47d8-a6ef-07e7afac05a6",
+    "name": "Lemoon",
+    "last_saved": "2026-01-27T11:44:13.86+00:00",
+    "current_activity": null,
+    "state": {
+      "stats": {
+        "agi": 0,
+        "int": 0,
+        "str": 0,
+        "totalKills": 10
+      },
+      "claims": [],
+      "health": 0,
+      "silver": 113,
+      "skills": {
+        "COMBAT": {
+          "xp": 58,
+          "level": 3,
+          "nextLevelXp": 84
+        },
+        "COOKING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FISHING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "ORE_MINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "LUMBERJACK": {
+          "xp": 53,
+          "level": 14,
+          "nextLevelXp": 84
+        },
+        "BOW_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "MAGE_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "CLOTH_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "DUNGEONEERING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "PLANK_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "SWORD_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "ANIMAL_SKINNER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "HUNTER_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FIBER_HARVESTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "LEATHER_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "WARRIOR_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "METAL_BAR_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FIRE_STAFF_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        }
+      },
+      "inventory": {
+        "T1_HIDE": 6,
+        "T1_WOOD": 2891
+      },
+      "maxHealth": 150,
+      "notifications": [
+        {
+          "id": 1769471719246.6592,
+          "read": false,
+          "type": "LEVEL_UP",
+          "message": "Your LUMBERJACK skill raised to level 3!",
+          "timestamp": 1769471719246
+        },
+        {
+          "id": 1769470104554.5154,
+          "read": false,
+          "type": "LEVEL_UP",
+          "message": "Your LUMBERJACK skill raised to level 2!",
+          "timestamp": 1769470104554
+        }
+      ]
+    }
+  },
+  {
+    "id": "0bd09668-45c5-4844-9ef8-522695ab1e61",
+    "name": "mfvchaves",
+    "last_saved": "2026-01-27T11:44:12.297+00:00",
+    "current_activity": null,
+    "state": {
+      "stats": {
+        "agi": 0,
+        "int": 0,
+        "str": 0,
+        "totalKills": 28
+      },
+      "claims": [],
+      "health": 0,
+      "silver": 264,
+      "skills": {
+        "COMBAT": {
+          "xp": 55,
+          "level": 6,
+          "nextLevelXp": 84
+        },
+        "COOKING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FISHING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "ORE_MINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "LUMBERJACK": {
+          "xp": 50,
+          "level": 14,
+          "nextLevelXp": 84
+        },
+        "BOW_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "MAGE_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "CLOTH_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "DUNGEONEERING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "PLANK_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "SWORD_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "ANIMAL_SKINNER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "HUNTER_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FIBER_HARVESTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "LEATHER_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "WARRIOR_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "METAL_BAR_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FIRE_STAFF_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        }
+      },
+      "inventory": {
+        "T1_HIDE": 18,
+        "T1_WOOD": 2888
+      },
+      "maxHealth": 150,
+      "notifications": [
+        {
+          "id": 1769470223598.0173,
+          "read": false,
+          "type": "LEVEL_UP",
+          "message": "Your LUMBERJACK skill raised to level 2!",
+          "timestamp": 1769470223598
+        }
+      ]
+    }
+  },
+  {
+    "id": "5d415217-c194-407a-b914-34442903d0e2",
+    "name": "DarkDragon",
+    "last_saved": "2026-01-27T11:44:14.251+00:00",
+    "current_activity": {
+      "req": null,
+      "type": "GATHERING",
+      "item_id": "T8_WOOD",
+      "next_action_at": 1769508761222,
+      "time_per_action": 62.480000000000004,
+      "initial_quantity": 691,
+      "actions_remaining": 246
+    },
+    "state": {
+      "stats": {
+        "agi": 0,
+        "int": 0,
+        "str": 0
+      },
+      "claims": [],
+      "health": 100,
+      "silver": 171260,
+      "skills": {
+        "COMBAT": {
+          "xp": 0,
+          "level": 1
+        },
+        "COOKING": {
+          "xp": 0,
+          "level": 1
+        },
+        "FISHING": {
+          "xp": 0,
+          "level": 1
+        },
+        "ORE_MINER": {
+          "xp": 307,
+          "level": 14
+        },
+        "LUMBERJACK": {
+          "xp": 17802,
+          "level": 73
+        },
+        "BOW_MASTERY": {
+          "xp": 0,
+          "level": 1
+        },
+        "MAGE_CRAFTER": {
+          "xp": 0,
+          "level": 1
+        },
+        "CLOTH_REFINER": {
+          "xp": 0,
+          "level": 1
+        },
+        "DUNGEONEERING": {
+          "xp": 0,
+          "level": 1
+        },
+        "PLANK_REFINER": {
+          "xp": 0,
+          "level": 1
+        },
+        "SWORD_MASTERY": {
+          "xp": 0,
+          "level": 1
+        },
+        "ANIMAL_SKINNER": {
+          "xp": 0,
+          "level": 1
+        },
+        "HUNTER_CRAFTER": {
+          "xp": 0,
+          "level": 1
+        },
+        "FIBER_HARVESTER": {
+          "xp": 0,
+          "level": 1
+        },
+        "LEATHER_REFINER": {
+          "xp": 0,
+          "level": 1
+        },
+        "WARRIOR_CRAFTER": {
+          "xp": 0,
+          "level": 1
+        },
+        "METAL_BAR_REFINER": {
+          "xp": 0,
+          "level": 1
+        },
+        "FIRE_STAFF_MASTERY": {
+          "xp": 0,
+          "level": 1
+        }
+      },
+      "inventory": {
+        "T1_ORE": 2559,
+        "T8_WOOD": 445,
+        "T1_FIBER": 89
+      },
+      "maxHealth": 100,
+      "notifications": [
+        {
+          "id": 1769483769642.075,
+          "read": false,
+          "type": "SUCCESS",
+          "message": "Your item Fiber (x89) was sold! +167320 Silver (after tax).",
+          "timestamp": 1769483769642
+        },
+        {
+          "id": 1769483167717.6182,
+          "read": false,
+          "type": "SUCCESS",
+          "message": "You bought 793x Ore for 79300 Silver.",
+          "timestamp": 1769483167717
+        },
+        {
+          "id": 1769483126137.8599,
+          "read": false,
+          "type": "SUCCESS",
+          "message": "You bought 89x Fiber for 178 Silver.",
+          "timestamp": 1769483126137
+        },
+        {
+          "id": 1769293510324.435,
+          "read": false,
+          "type": "LEVEL_UP",
+          "message": "Your ORE MINER skill raised to level 3!",
+          "timestamp": 1769293510324
+        },
+        {
+          "id": 1769293080135.4265,
+          "read": false,
+          "type": "LEVEL_UP",
+          "message": "Sua skill de ORE MINER subiu para o nível 2!",
+          "timestamp": 1769293080135
+        },
+        {
+          "id": 1769292700757.2378,
+          "read": false,
+          "type": "SUCCESS",
+          "message": "Você comprou 8x Torch por 24 Silver.",
+          "timestamp": 1769292700757
+        },
+        {
+          "id": 1769292691916.0625,
+          "read": false,
+          "type": "SUCCESS",
+          "message": "Você comprou 19x Wood por 1900 Silver.",
+          "timestamp": 1769292691916
+        },
+        {
+          "id": 1769202442652.387,
+          "read": false,
+          "type": "SUCCESS",
+          "message": "Seu item Food (x1) foi vendido! +94 Silver (após taxas).",
+          "timestamp": 1769202442652
+        },
+        {
+          "id": 1769185288448.5554,
+          "read": false,
+          "type": "SUCCESS",
+          "message": "Seu item Wood (x12086) foi vendido! +56805 Silver (após taxas).",
+          "timestamp": 1769185288448
+        },
+        {
+          "id": 1769185041468.2273,
+          "read": false,
+          "type": "SUCCESS",
+          "message": "Seu item Wood (x1) foi vendido! +5 Silver (após taxas).",
+          "timestamp": 1769185041468
+        },
+        {
+          "id": 1769185014591.2761,
+          "read": false,
+          "type": "SUCCESS",
+          "message": "Seu item Wood (x1) foi vendido! +5 Silver (após taxas).",
+          "timestamp": 1769185014591
+        },
+        {
+          "id": 1769184211980.253,
+          "read": false,
+          "type": "SUCCESS",
+          "message": "Seu item Wood (x1) foi vendido! +5 Silver (após taxas).",
+          "timestamp": 1769184211980
+        },
+        {
+          "id": 1769184188694.9377,
+          "read": false,
+          "type": "SUCCESS",
+          "message": "Seu item Wood (x1) foi vendido! +5 Silver (após taxas).",
+          "timestamp": 1769184188694
+        }
+      ]
+    }
+  },
+  {
+    "id": "81ea62ee-c4dd-4f59-b760-af133d1046c2",
+    "name": "Stefan",
+    "last_saved": "2026-01-27T11:29:25.654+00:00",
+    "current_activity": null,
+    "state": {
+      "stats": {
+        "agi": 0,
+        "int": 0,
+        "str": 0
+      },
+      "claims": [],
+      "health": 150,
+      "silver": 0,
+      "skills": {
+        "COMBAT": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "COOKING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FISHING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "ORE_MINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "LUMBERJACK": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "BOW_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "MAGE_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "CLOTH_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "DUNGEONEERING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "PLANK_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "SWORD_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "ANIMAL_SKINNER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "HUNTER_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FIBER_HARVESTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "LEATHER_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "WARRIOR_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "METAL_BAR_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FIRE_STAFF_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        }
+      },
+      "inventory": {},
+      "maxHealth": 150,
+      "notifications": []
+    }
+  },
+  {
+    "id": "d76fed10-6987-4a7a-871b-2b7d7c799f00",
+    "name": "GUTS",
+    "last_saved": "2026-01-27T11:44:14.632+00:00",
+    "current_activity": {
+      "req": null,
+      "type": "GATHERING",
+      "item_id": "T1_ORE",
+      "next_action_at": 1769489016624,
+      "time_per_action": 14.955,
+      "initial_quantity": 2888,
+      "actions_remaining": 1195
+    },
+    "state": {
+      "stats": {
+        "agi": 0,
+        "int": 0,
+        "str": 0
+      },
+      "claims": [],
+      "health": 150,
+      "silver": 0,
+      "skills": {
+        "COMBAT": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "COOKING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FISHING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "ORE_MINER": {
+          "xp": 286,
+          "level": 10,
+          "nextLevelXp": 84
+        },
+        "LUMBERJACK": {
+          "xp": 135,
+          "level": 4,
+          "nextLevelXp": 84
+        },
+        "BOW_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "MAGE_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "CLOTH_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "DUNGEONEERING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "PLANK_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "SWORD_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "ANIMAL_SKINNER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "HUNTER_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FIBER_HARVESTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "LEATHER_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "WARRIOR_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "METAL_BAR_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FIRE_STAFF_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        }
+      },
+      "inventory": {
+        "T1_ORE": 1693,
+        "T1_WOOD": 459
+      },
+      "maxHealth": 150,
+      "notifications": []
+    }
+  },
+  {
+    "id": "12319dc3-a4d5-48e7-a2a4-ec17eeb4671f",
+    "name": "Luiz",
+    "last_saved": "2026-01-27T11:44:15.085+00:00",
+    "current_activity": {
+      "req": null,
+      "type": "GATHERING",
+      "item_id": "T1_WOOD",
+      "next_action_at": 1769498574573,
+      "time_per_action": 14.955,
+      "initial_quantity": 2888,
+      "actions_remaining": 1832
+    },
+    "state": {
+      "stats": {
+        "agi": 0,
+        "int": 0,
+        "str": 0
+      },
+      "claims": [],
+      "health": 150,
+      "silver": 0,
+      "skills": {
+        "COMBAT": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "COOKING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FISHING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "ORE_MINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "LUMBERJACK": {
+          "xp": 51,
+          "level": 8,
+          "nextLevelXp": 84
+        },
+        "BOW_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "MAGE_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "CLOTH_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "DUNGEONEERING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "PLANK_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "SWORD_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "ANIMAL_SKINNER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "HUNTER_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FIBER_HARVESTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "LEATHER_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "WARRIOR_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "METAL_BAR_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FIRE_STAFF_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        }
+      },
+      "inventory": {
+        "T1_WOOD": 1056
+      },
+      "maxHealth": 150,
+      "notifications": []
+    }
+  },
+  {
+    "id": "161ca724-3db1-4b2b-8816-bdb34168e5ad",
+    "name": "Rhafik",
+    "last_saved": "2026-01-27T00:05:23.354+00:00",
+    "current_activity": null,
+    "state": {
+      "stats": {
+        "agi": 0,
+        "int": 0,
+        "str": 0
+      },
+      "claims": [],
+      "health": 150,
+      "silver": 0,
+      "skills": {
+        "COMBAT": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "COOKING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FISHING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "ORE_MINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "LUMBERJACK": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "BOW_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "MAGE_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "CLOTH_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "DUNGEONEERING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "PLANK_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "SWORD_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "ANIMAL_SKINNER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "HUNTER_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FIBER_HARVESTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "LEATHER_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "WARRIOR_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "METAL_BAR_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FIRE_STAFF_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        }
+      },
+      "inventory": {},
+      "maxHealth": 150,
+      "notifications": []
+    }
+  },
+  {
+    "id": "8a5fd278-af64-4cf7-8ef9-95305fef5719",
+    "name": "Roflelf",
+    "last_saved": "2026-01-27T11:45:45.371+00:00",
+    "current_activity": null,
+    "state": {
+      "stats": {
+        "agi": 0,
+        "int": 0,
+        "str": 0
+      },
+      "claims": [],
+      "health": 150,
+      "silver": 0,
+      "skills": {
+        "COMBAT": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "COOKING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FISHING": {
+          "xp": 60,
+          "level": 2,
+          "nextLevelXp": 84
+        },
+        "ORE_MINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "LUMBERJACK": {
+          "xp": 48,
+          "level": 6,
+          "nextLevelXp": 84
+        },
+        "BOW_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "MAGE_CRAFTER": {
+          "xp": 48,
+          "level": 3,
+          "nextLevelXp": 84
+        },
+        "CLOTH_REFINER": {
+          "xp": 34,
+          "level": 3,
+          "nextLevelXp": 84
+        },
+        "DUNGEONEERING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "PLANK_REFINER": {
+          "xp": 124,
+          "level": 3,
+          "nextLevelXp": 84
+        },
+        "SWORD_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "ANIMAL_SKINNER": {
+          "xp": 364,
+          "level": 13,
+          "nextLevelXp": 84
+        },
+        "HUNTER_CRAFTER": {
+          "xp": 160,
+          "level": 5,
+          "nextLevelXp": 84
+        },
+        "FIBER_HARVESTER": {
+          "xp": 22,
+          "level": 6,
+          "nextLevelXp": 84
+        },
+        "LEATHER_REFINER": {
+          "xp": 134,
+          "level": 9,
+          "nextLevelXp": 84
+        },
+        "WARRIOR_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "METAL_BAR_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FIRE_STAFF_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        }
+      },
+      "equipment": {
+        "tool_axe": {
+          "id": "T1_AXE_Q3",
+          "ip": 100,
+          "xp": 40,
+          "req": {
+            "T1_PLANK": 20
+          },
+          "name": "Excellent Axe",
+          "tier": 1,
+          "time": 240,
+          "type": "TOOL_AXE",
+          "stats": {
+            "efficiency": 1
+          },
+          "isTool": true,
+          "quality": 0,
+          "originalId": "T1_AXE",
+          "qualityName": "Normal",
+          "rarityColor": "#fff"
+        },
+        "tool_rod": {
+          "id": "T1_FISHING_ROD_Q1",
+          "ip": 100,
+          "xp": 40,
+          "req": {
+            "T1_PLANK": 20
+          },
+          "name": "Good Fishing Rod",
+          "tier": 1,
+          "time": 240,
+          "type": "TOOL_ROD",
+          "stats": {
+            "efficiency": 1.5
+          },
+          "quality": 0,
+          "originalId": "T1_FISHING_ROD",
+          "qualityName": "Normal",
+          "rarityColor": "#fff"
+        },
+        "tool_knife": {
+          "id": "T1_SKINNING_KNIFE_Q1",
+          "ip": 120,
+          "xp": 40,
+          "req": {
+            "T1_LEATHER": 20
+          },
+          "name": "Good Skinning Knife",
+          "tier": 1,
+          "time": 240,
+          "type": "TOOL_KNIFE",
+          "stats": {
+            "efficiency": 1.9
+          },
+          "isTool": true,
+          "quality": 1,
+          "originalId": "T1_SKINNING_KNIFE",
+          "qualityName": "Good",
+          "rarityColor": "#4caf50"
+        },
+        "tool_sickle": {
+          "id": "T1_SICKLE_Q1",
+          "ip": 120,
+          "xp": 40,
+          "req": {
+            "T1_CLOTH": 20
+          },
+          "name": "Good Sickle",
+          "tier": 1,
+          "time": 240,
+          "type": "TOOL_SICKLE",
+          "stats": {
+            "efficiency": 1.9
+          },
+          "isTool": true,
+          "quality": 1,
+          "originalId": "T1_SICKLE",
+          "qualityName": "Good",
+          "rarityColor": "#4caf50"
+        }
+      },
+      "inventory": {
+        "T1_AXE": 2,
+        "T1_FISH": 144,
+        "T1_HIDE": 1479,
+        "T1_WOOD": 377,
+        "T1_CLOTH": 13,
+        "T1_FIBER": 441,
+        "T1_PLANK": 58,
+        "T1_AXE_Q1": 1,
+        "T1_SICKLE": 3,
+        "T1_LEATHER": 427,
+        "T1_SICKLE_Q1": 1,
+        "T1_LEATHER_ARMOR": 4,
+        "T1_SKINNING_KNIFE": 7
+      },
+      "maxHealth": 150,
+      "notifications": []
+    }
+  },
+  {
+    "id": "9d6ae090-11db-40c3-bf43-0a70355c162d",
+    "name": "Noway",
+    "last_saved": "2026-01-27T11:44:15.595+00:00",
+    "current_activity": {
+      "req": null,
+      "type": "GATHERING",
+      "item_id": "T1_ORE",
+      "next_action_at": 1769514165658,
+      "time_per_action": 14.37,
+      "initial_quantity": 3006,
+      "actions_remaining": 2994
+    },
+    "state": {
+      "stats": {
+        "agi": 0,
+        "int": 0,
+        "str": 0
+      },
+      "claims": [],
+      "health": 150,
+      "silver": 0,
+      "skills": {
+        "COMBAT": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "COOKING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FISHING": {
+          "xp": 4,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "ORE_MINER": {
+          "xp": 62,
+          "level": 14,
+          "nextLevelXp": 84
+        },
+        "LUMBERJACK": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "BOW_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "MAGE_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "CLOTH_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "DUNGEONEERING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "PLANK_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "SWORD_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "ANIMAL_SKINNER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "HUNTER_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FIBER_HARVESTER": {
+          "xp": 10,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "LEATHER_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "WARRIOR_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "METAL_BAR_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FIRE_STAFF_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        }
+      },
+      "inventory": {
+        "T1_ORE": 2900,
+        "T1_FISH": 4,
+        "T1_FIBER": 10
+      },
+      "maxHealth": 150,
+      "notifications": []
+    }
+  },
+  {
+    "id": "8313fa57-3267-4dd6-834b-2c3e1a54d948",
+    "name": "Pintudão",
+    "last_saved": "2026-01-27T11:44:08.029+00:00",
+    "current_activity": {
+      "type": "CRAFTING",
+      "item_id": "T1_FOOD",
+      "time_per_action": 1.5,
+      "initial_quantity": 14401,
+      "actions_remaining": 14218
+    },
+    "state": {
+      "stats": {
+        "agi": 0,
+        "int": 0,
+        "str": 0
+      },
+      "claims": [],
+      "health": 0,
+      "silver": 52,
+      "skills": {
+        "COMBAT": {
+          "xp": 50,
+          "level": 1
+        },
+        "COOKING": {
+          "xp": 230,
+          "level": 14
+        },
+        "FISHING": {
+          "xp": 9665,
+          "level": 39
+        },
+        "ORE_MINER": {
+          "xp": 118,
+          "level": 4
+        },
+        "LUMBERJACK": {
+          "xp": 44,
+          "level": 1
+        },
+        "BOW_MASTERY": {
+          "xp": 0,
+          "level": 1
+        },
+        "MAGE_CRAFTER": {
+          "xp": 0,
+          "level": 1
+        },
+        "CLOTH_REFINER": {
+          "xp": 0,
+          "level": 1
+        },
+        "DUNGEONEERING": {
+          "xp": 0,
+          "level": 1
+        },
+        "PLANK_REFINER": {
+          "xp": 0,
+          "level": 1
+        },
+        "SWORD_MASTERY": {
+          "xp": 0,
+          "level": 1
+        },
+        "ANIMAL_SKINNER": {
+          "xp": 0,
+          "level": 1
+        },
+        "HUNTER_CRAFTER": {
+          "xp": 0,
+          "level": 1
+        },
+        "FIBER_HARVESTER": {
+          "xp": 0,
+          "level": 1
+        },
+        "LEATHER_REFINER": {
+          "xp": 0,
+          "level": 1
+        },
+        "WARRIOR_CRAFTER": {
+          "xp": 0,
+          "level": 1
+        },
+        "METAL_BAR_REFINER": {
+          "xp": 0,
+          "level": 1
+        },
+        "FIRE_STAFF_MASTERY": {
+          "xp": 0,
+          "level": 1
+        }
+      },
+      "inventory": {},
+      "maxHealth": 100,
+      "notifications": []
+    }
+  },
+  {
+    "id": "4a9c1092-a272-4ee8-8879-66dd538f2886",
+    "name": "Guthiix2",
+    "last_saved": "2026-01-27T11:44:16.138+00:00",
+    "current_activity": null,
+    "state": {
+      "stats": {
+        "agi": 0,
+        "int": 0,
+        "str": 0
+      },
+      "claims": [],
+      "health": 150,
+      "silver": 0,
+      "skills": {
+        "COMBAT": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "COOKING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FISHING": {
+          "xp": 50,
+          "level": 14,
+          "nextLevelXp": 84
+        },
+        "ORE_MINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "LUMBERJACK": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "BOW_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "MAGE_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "CLOTH_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "DUNGEONEERING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "PLANK_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "SWORD_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "ANIMAL_SKINNER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "HUNTER_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FIBER_HARVESTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "LEATHER_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "WARRIOR_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "METAL_BAR_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FIRE_STAFF_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        }
+      },
+      "inventory": {
+        "T1_FISH": 2888
+      },
+      "maxHealth": 150,
+      "notifications": []
+    }
+  },
+  {
+    "id": "84ebb3aa-671d-4cea-8189-6a24d9faa4af",
+    "name": "Guthiix",
+    "last_saved": "2026-01-27T11:44:16.534+00:00",
+    "current_activity": {
+      "req": null,
+      "type": "GATHERING",
+      "item_id": "T5_FISH",
+      "next_action_at": 1769502986739,
+      "time_per_action": 32.99999999999999,
+      "initial_quantity": 1309,
+      "actions_remaining": 966
+    },
+    "state": {
+      "stats": {
+        "agi": 0,
+        "int": 0,
+        "str": 0,
+        "totalKills": 21773,
+        "dungeonsCleared": 115
+      },
+      "claims": [],
+      "health": 0,
+      "silver": 1710095,
+      "skills": {
+        "COMBAT": {
+          "xp": 287139,
+          "level": 90
+        },
+        "COOKING": {
+          "xp": 5363,
+          "level": 55
+        },
+        "FISHING": {
+          "xp": 38698327,
+          "level": 100
+        },
+        "ORE_MINER": {
+          "xp": 884,
+          "level": 21
+        },
+        "LUMBERJACK": {
+          "xp": 553,
+          "level": 15
+        },
+        "BOW_MASTERY": {
+          "xp": 0,
+          "level": 1
+        },
+        "MAGE_CRAFTER": {
+          "xp": 17,
+          "level": 20
+        },
+        "CLOTH_REFINER": {
+          "xp": 813,
+          "level": 25
+        },
+        "DUNGEONEERING": {
+          "xp": 265,
+          "level": 34
+        },
+        "PLANK_REFINER": {
+          "xp": 263,
+          "level": 14
+        },
+        "SWORD_MASTERY": {
+          "xp": 0,
+          "level": 1
+        },
+        "ANIMAL_SKINNER": {
+          "xp": 3,
+          "level": 12
+        },
+        "HUNTER_CRAFTER": {
+          "xp": 0,
+          "level": 1
+        },
+        "FIBER_HARVESTER": {
+          "xp": 1128,
+          "level": 28
+        },
+        "LEATHER_REFINER": {
+          "xp": 300,
+          "level": 14
+        },
+        "WARRIOR_CRAFTER": {
+          "xp": 51,
+          "level": 2
+        },
+        "METAL_BAR_REFINER": {
+          "xp": 83,
+          "level": 20
+        },
+        "FIRE_STAFF_MASTERY": {
+          "xp": 0,
+          "level": 1
+        }
+      },
+      "equipment": {
+        "cape": {
+          "id": "T2_MAGE_CAPE_Q2",
+          "ip": 250,
+          "xp": 80,
+          "req": {
+            "T2_CLOTH": 20,
+            "T2_CREST": 1
+          },
+          "name": "Outstanding Mage Cape",
+          "tier": 2,
+          "time": 320,
+          "type": "CAPE",
+          "stats": {
+            "hp": 36,
+            "efficiency": {
+              "GLOBAL": 2.2
+            }
+          },
+          "quality": 2,
+          "originalId": "T2_MAGE_CAPE",
+          "qualityName": "Outstanding",
+          "rarityColor": "#4a90e2"
+        },
+        "boots": {
+          "id": "T1_CLOTH_BOOTS",
+          "ip": 100,
+          "xp": 40,
+          "req": {
+            "T1_CLOTH": 20
+          },
+          "name": "Cloth Boots",
+          "tier": 1,
+          "time": 240,
+          "type": "BOOTS",
+          "stats": {
+            "hp": 7,
+            "damage": 0,
+            "defense": 0
+          },
+          "quality": 0,
+          "qualityName": "Normal",
+          "rarityColor": "#fff"
+        },
+        "chest": {
+          "id": "T1_CLOTH_ARMOR",
+          "ip": 100,
+          "xp": 27,
+          "req": {
+            "T1_CLOTH": 20
+          },
+          "name": "Cloth Armor",
+          "tier": 1,
+          "time": 240,
+          "type": "ARMOR",
+          "stats": {
+            "hp": 25,
+            "damage": 2,
+            "defense": 2
+          },
+          "quality": 0,
+          "qualityName": "Normal",
+          "rarityColor": "#fff"
+        },
+        "gloves": {
+          "id": "T1_CLOTH_GLOVES",
+          "ip": 100,
+          "xp": 27,
+          "req": {
+            "T1_CLOTH": 20
+          },
+          "name": "Cloth Gloves",
+          "tier": 1,
+          "time": 240,
+          "type": "GLOVES",
+          "stats": {
+            "hp": 5,
+            "damage": 1,
+            "defense": 0
+          },
+          "quality": 0,
+          "qualityName": "Normal",
+          "rarityColor": "#fff"
+        },
+        "helmet": {
+          "id": "T1_CLOTH_HELMET",
+          "ip": 100,
+          "xp": 27,
+          "req": {
+            "T1_CLOTH": 20
+          },
+          "name": "Cloth Helmet",
+          "tier": 1,
+          "time": 240,
+          "type": "HELMET",
+          "stats": {
+            "hp": 7,
+            "damage": 0,
+            "defense": 0
+          },
+          "quality": 0,
+          "qualityName": "Normal",
+          "rarityColor": "#fff"
+        },
+        "offHand": {
+          "id": "T1_TOME_Q2",
+          "ip": 150,
+          "xp": 27,
+          "req": {
+            "T1_CLOTH": 20
+          },
+          "name": "Outstanding Tome",
+          "tier": 1,
+          "time": 240,
+          "type": "OFF_HAND",
+          "stats": {
+            "damage": 4.5
+          },
+          "quality": 2,
+          "originalId": "T1_TOME",
+          "qualityName": "Outstanding",
+          "rarityColor": "#4a90e2"
+        },
+        "mainHand": {
+          "id": "T1_FIRE_STAFF_Q2",
+          "ip": 150,
+          "xp": 27,
+          "req": {
+            "T1_PLANK": 20
+          },
+          "name": "Outstanding Fire Staff",
+          "tier": 1,
+          "time": 240,
+          "type": "WEAPON",
+          "stats": {
+            "damage": 18,
+            "attackSpeed": 1500
+          },
+          "quality": 2,
+          "originalId": "T1_FIRE_STAFF",
+          "qualityName": "Outstanding",
+          "rarityColor": "#4a90e2"
+        },
+        "tool_rod": {
+          "id": "T1_FISHING_ROD",
+          "ip": 100,
+          "xp": 18,
+          "req": {
+            "T1_PLANK": 20
+          },
+          "name": "Fishing Rod",
+          "tier": 1,
+          "time": 240,
+          "type": "TOOL_ROD",
+          "stats": {
+            "efficiency": 5
+          },
+          "quality": 0,
+          "qualityName": "Normal",
+          "rarityColor": "#fff"
+        },
+        "tool_sickle": {
+          "id": "T2_SICKLE_Q2",
+          "ip": 250,
+          "xp": 80,
+          "req": {
+            "T2_CLOTH": 20
+          },
+          "name": "Outstanding Sickle",
+          "tier": 2,
+          "time": 320,
+          "type": "TOOL_SICKLE",
+          "stats": {
+            "efficiency": 7.3
+          },
+          "isTool": true,
+          "quality": 2,
+          "originalId": "T2_SICKLE",
+          "qualityName": "Outstanding",
+          "rarityColor": "#4a90e2"
+        }
+      },
+      "inventory": {
+        "T1_ORE": 2038,
+        "T2_ORE": 17,
+        "T3_ORE": 1159,
+        "T2_HIDE": 3456,
+        "T2_WOOD": 328,
+        "T5_FISH": 465,
+        "T1_CLOTH": 12,
+        "T1_FIBER": 1,
+        "T2_CLOTH": 233,
+        "T2_CREST": 12,
+        "T3_CLOTH": 504,
+        "T2_SICKLE": 17,
+        "T2_MAGE_CAPE": 17,
+        "T2_SICKLE_Q1": 7,
+        "T1_DUNGEON_MAP": 129,
+        "T2_CLOTH_ARMOR": 5,
+        "T2_DUNGEON_MAP": 117,
+        "T3_DUNGEON_MAP": 64
+      },
+      "maxHealth": 100,
+      "notifications": [
+        {
+          "id": 1769491837661.5703,
+          "read": true,
+          "type": "LEVEL_UP",
+          "message": "Your CLOTH REFINER skill raised to level 25!",
+          "timestamp": 1769491837661
+        },
+        {
+          "id": 1769485153598.931,
+          "read": true,
+          "type": "LEVEL_UP",
+          "message": "Your CLOTH REFINER skill raised to level 23!",
+          "timestamp": 1769485153598
+        },
+        {
+          "id": 1769482134307.1204,
+          "read": true,
+          "type": "LEVEL_UP",
+          "message": "Your CLOTH REFINER skill raised to level 22!",
+          "timestamp": 1769482134307
+        },
+        {
+          "id": 1769458731450.428,
+          "read": true,
+          "type": "LEVEL_UP",
+          "message": "Your FIBER HARVESTER skill raised to level 26!",
+          "timestamp": 1769458731450
+        },
+        {
+          "id": 1769455626744.7517,
+          "read": true,
+          "type": "LEVEL_UP",
+          "message": "Your MAGE CRAFTER skill raised to level 20!",
+          "timestamp": 1769455626744
+        },
+        {
+          "id": 1769449801020.2622,
+          "read": true,
+          "type": "LEVEL_UP",
+          "message": "Your CLOTH REFINER skill raised to level 21!",
+          "timestamp": 1769449801020
+        },
+        {
+          "id": 1769446264394.2917,
+          "read": true,
+          "type": "LEVEL_UP",
+          "message": "Your CLOTH REFINER skill raised to level 20!",
+          "timestamp": 1769446264394
+        },
+        {
+          "id": 1769445092134.7227,
+          "read": true,
+          "type": "LEVEL_UP",
+          "message": "Your MAGE CRAFTER skill raised to level 19!",
+          "timestamp": 1769445092134
+        },
+        {
+          "id": 1769436118895.5962,
+          "read": true,
+          "type": "LEVEL_UP",
+          "message": "Your CLOTH REFINER skill raised to level 19!",
+          "timestamp": 1769436118895
+        },
+        {
+          "id": 1769433737774.052,
+          "read": true,
+          "type": "LEVEL_UP",
+          "message": "Your CLOTH REFINER skill raised to level 18!",
+          "timestamp": 1769433737774
+        },
+        {
+          "id": 1769431469687.4973,
+          "read": true,
+          "type": "LEVEL_UP",
+          "message": "Your CLOTH REFINER skill raised to level 17!",
+          "timestamp": 1769431469687
+        },
+        {
+          "id": 1769398595493.5835,
+          "read": true,
+          "type": "LEVEL_UP",
+          "message": "Your MAGE CRAFTER skill raised to level 15!",
+          "timestamp": 1769398595493
+        },
+        {
+          "id": 1769395515815.7417,
+          "read": true,
+          "type": "LEVEL_UP",
+          "message": "Your MAGE CRAFTER skill raised to level 13!",
+          "timestamp": 1769395515815
+        },
+        {
+          "id": 1769393978789.1768,
+          "read": true,
+          "type": "LEVEL_UP",
+          "message": "Your MAGE CRAFTER skill raised to level 12!",
+          "timestamp": 1769393978789
+        },
+        {
+          "id": 1769392567834.2563,
+          "read": true,
+          "type": "LEVEL_UP",
+          "message": "Your CLOTH REFINER skill raised to level 16!",
+          "timestamp": 1769392567834
+        },
+        {
+          "id": 1769390498882.6877,
+          "read": true,
+          "type": "LEVEL_UP",
+          "message": "Your CLOTH REFINER skill raised to level 15!",
+          "timestamp": 1769390498882
+        },
+        {
+          "id": 1769387339843.3699,
+          "read": true,
+          "type": "LEVEL_UP",
+          "message": "Your CLOTH REFINER skill raised to level 14!",
+          "timestamp": 1769387339843
+        },
+        {
+          "id": 1769385498988.0938,
+          "read": true,
+          "type": "LEVEL_UP",
+          "message": "Your CLOTH REFINER skill raised to level 13!",
+          "timestamp": 1769385498988
+        },
+        {
+          "id": 1769353277321.0942,
+          "read": true,
+          "type": "LEVEL_UP",
+          "message": "Your FISHING skill raised to level 100!",
+          "timestamp": 1769353277321
+        },
+        {
+          "id": 1769284327559.869,
+          "read": true,
+          "type": "LEVEL_UP",
+          "message": "Sua skill de MAGE CRAFTER subiu para o nível 5!",
+          "timestamp": 1769284327559
+        },
+        {
+          "id": 1769282945243.6482,
+          "read": true,
+          "type": "LEVEL_UP",
+          "message": "Sua skill de MAGE CRAFTER subiu para o nível 4!",
+          "timestamp": 1769282945243
+        },
+        {
+          "id": 1769282023297.577,
+          "read": true,
+          "type": "LEVEL_UP",
+          "message": "Sua skill de MAGE CRAFTER subiu para o nível 3!",
+          "timestamp": 1769282023297
+        },
+        {
+          "id": 1769281530099.4863,
+          "read": true,
+          "type": "LEVEL_UP",
+          "message": "Sua skill de WARRIOR CRAFTER subiu para o nível 2!",
+          "timestamp": 1769281530099
+        },
+        {
+          "id": 1769280535693.2278,
+          "read": true,
+          "type": "LEVEL_UP",
+          "message": "Sua skill de CLOTH REFINER subiu para o nível 10!",
+          "timestamp": 1769280535693
+        },
+        {
+          "id": 1769279072105.0662,
+          "read": true,
+          "type": "LEVEL_UP",
+          "message": "Sua skill de CLOTH REFINER subiu para o nível 9!",
+          "timestamp": 1769279072105
+        },
+        {
+          "id": 1769277676576.947,
+          "read": true,
+          "type": "LEVEL_UP",
+          "message": "Sua skill de CLOTH REFINER subiu para o nível 8!",
+          "timestamp": 1769277676576
+        },
+        {
+          "id": 1769273805618.0767,
+          "read": true,
+          "type": "LEVEL_UP",
+          "message": "Sua skill de CLOTH REFINER subiu para o nível 5!",
+          "timestamp": 1769273805618
+        },
+        {
+          "id": 1769272659014.2178,
+          "read": true,
+          "type": "LEVEL_UP",
+          "message": "Sua skill de CLOTH REFINER subiu para o nível 4!",
+          "timestamp": 1769272659014
+        },
+        {
+          "id": 1769271660051.6724,
+          "read": true,
+          "type": "LEVEL_UP",
+          "message": "Sua skill de CLOTH REFINER subiu para o nível 3!",
+          "timestamp": 1769271660051
+        },
+        {
+          "id": 1769233310616.141,
+          "read": true,
+          "type": "LEVEL_UP",
+          "message": "Sua skill de FIBER HARVESTER subiu para o nível 12!",
+          "timestamp": 1769233310616
+        },
+        {
+          "id": 1769229207067.5215,
+          "read": true,
+          "type": "LEVEL_UP",
+          "message": "Sua skill de MAGE CRAFTER subiu para o nível 2!",
+          "timestamp": 1769229207067
+        },
+        {
+          "id": 1769224750869.2405,
+          "read": true,
+          "type": "LEVEL_UP",
+          "message": "Sua skill de CLOTH REFINER subiu para o nível 2!",
+          "timestamp": 1769224750869
+        },
+        {
+          "id": 1769223209154.0737,
+          "read": true,
+          "type": "LEVEL_UP",
+          "message": "Sua skill de FIBER HARVESTER subiu para o nível 11!",
+          "timestamp": 1769223209154
+        },
+        {
+          "id": 1769219511388.768,
+          "read": true,
+          "type": "LEVEL_UP",
+          "message": "Sua skill de COOKING subiu para o nível 55!",
+          "timestamp": 1769219511388
+        }
+      ]
+    }
+  },
+  {
+    "id": "13554996-ecbb-48a2-8747-ace5d4d40b2c",
+    "name": "DrSleepy",
+    "last_saved": "2026-01-27T11:44:16.882+00:00",
+    "current_activity": {
+      "req": null,
+      "type": "GATHERING",
+      "item_id": "T2_WOOD",
+      "next_action_at": 1769510243289,
+      "time_per_action": 19.16,
+      "initial_quantity": 2254,
+      "actions_remaining": 2039
+    },
+    "state": {
+      "stats": {
+        "agi": 0,
+        "int": 0,
+        "str": 0
+      },
+      "claims": [],
+      "health": 150,
+      "silver": 0,
+      "skills": {
+        "COMBAT": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "COOKING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FISHING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "ORE_MINER": {
+          "xp": 67,
+          "level": 3,
+          "nextLevelXp": 84
+        },
+        "LUMBERJACK": {
+          "xp": 264,
+          "level": 15,
+          "nextLevelXp": 84
+        },
+        "BOW_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "MAGE_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "CLOTH_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "DUNGEONEERING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "PLANK_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "SWORD_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "ANIMAL_SKINNER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "HUNTER_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FIBER_HARVESTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "LEATHER_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "WARRIOR_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "METAL_BAR_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FIRE_STAFF_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        }
+      },
+      "inventory": {
+        "T1_ORE": 259,
+        "T1_WOOD": 1437,
+        "T2_WOOD": 1038
+      },
+      "maxHealth": 150,
+      "notifications": []
+    }
+  },
+  {
+    "id": "7d8404a1-281f-492a-8c53-f2811f48bb4d",
+    "name": "DeMolay",
+    "last_saved": "2026-01-27T11:44:17.273+00:00",
+    "current_activity": null,
+    "state": {
+      "stats": {
+        "agi": 0,
+        "int": 0,
+        "str": 0,
+        "totalKills": 10
+      },
+      "claims": [],
+      "health": 0,
+      "silver": 88,
+      "skills": {
+        "COMBAT": {
+          "xp": 58,
+          "level": 3,
+          "nextLevelXp": 84
+        },
+        "COOKING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FISHING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "ORE_MINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "LUMBERJACK": {
+          "xp": 50,
+          "level": 14,
+          "nextLevelXp": 84
+        },
+        "BOW_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "MAGE_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "CLOTH_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "DUNGEONEERING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "PLANK_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "SWORD_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "ANIMAL_SKINNER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "HUNTER_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FIBER_HARVESTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "LEATHER_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "WARRIOR_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "METAL_BAR_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FIRE_STAFF_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        }
+      },
+      "inventory": {
+        "T1_HIDE": 5,
+        "T1_WOOD": 2888
+      },
+      "maxHealth": 150,
+      "notifications": []
+    }
+  },
+  {
+    "id": "20b57955-7720-4a42-bf32-6caffa61f1d3",
+    "name": "ANXioso",
+    "last_saved": "2026-01-27T11:44:17.647+00:00",
+    "current_activity": {
+      "req": null,
+      "type": "GATHERING",
+      "item_id": "T1_FISH",
+      "next_action_at": 1769507338580,
+      "time_per_action": 14.91,
+      "initial_quantity": 2897,
+      "actions_remaining": 1409
+    },
+    "state": {
+      "stats": {
+        "agi": 0,
+        "int": 0,
+        "str": 0,
+        "totalKills": 15
+      },
+      "claims": [],
+      "health": 0,
+      "silver": 179,
+      "skills": {
+        "COMBAT": {
+          "xp": 111,
+          "level": 4,
+          "nextLevelXp": 84
+        },
+        "COOKING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FISHING": {
+          "xp": 227,
+          "level": 10,
+          "nextLevelXp": 84
+        },
+        "ORE_MINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "LUMBERJACK": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "BOW_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "MAGE_CRAFTER": {
+          "xp": 40,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "CLOTH_REFINER": {
+          "xp": 16,
+          "level": 7,
+          "nextLevelXp": 84
+        },
+        "DUNGEONEERING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "PLANK_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "SWORD_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "ANIMAL_SKINNER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "HUNTER_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FIBER_HARVESTER": {
+          "xp": 78,
+          "level": 16,
+          "nextLevelXp": 84
+        },
+        "LEATHER_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "WARRIOR_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "METAL_BAR_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FIRE_STAFF_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        }
+      },
+      "equipment": {
+        "offHand": {
+          "id": "T1_TOME",
+          "ip": 100,
+          "xp": 40,
+          "req": {
+            "T1_CLOTH": 20
+          },
+          "name": "Tome",
+          "tier": 1,
+          "time": 240,
+          "type": "OFF_HAND",
+          "stats": {
+            "damage": 3
+          },
+          "isTool": false,
+          "quality": 0,
+          "originalId": "T1_TOME",
+          "qualityName": "Normal",
+          "rarityColor": "#fff"
+        }
+      },
+      "inventory": {
+        "T1_FISH": 1634,
+        "T1_HIDE": 9,
+        "T1_CLOTH": 398,
+        "T1_FIBER": 2052,
+        "T2_FIBER": 437
+      },
+      "maxHealth": 150,
+      "notifications": []
+    }
+  },
+  {
+    "id": "02e6544c-8e40-419f-9447-442b500b52ad",
+    "name": "Brutamontes",
+    "last_saved": "2026-01-27T11:44:17.996+00:00",
+    "current_activity": {
+      "req": null,
+      "type": "GATHERING",
+      "item_id": "T1_ORE",
+      "next_action_at": 1769479017641,
+      "time_per_action": 14.955,
+      "initial_quantity": 2888,
+      "actions_remaining": 228
+    },
+    "state": {
+      "stats": {
+        "agi": 0,
+        "int": 0,
+        "str": 0
+      },
+      "claims": [],
+      "health": 150,
+      "silver": 0,
+      "skills": {
+        "COMBAT": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "COOKING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FISHING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "ORE_MINER": {
+          "xp": 211,
+          "level": 13,
+          "nextLevelXp": 84
+        },
+        "LUMBERJACK": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "BOW_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "MAGE_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "CLOTH_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "DUNGEONEERING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "PLANK_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "SWORD_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "ANIMAL_SKINNER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "HUNTER_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FIBER_HARVESTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "LEATHER_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "WARRIOR_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "METAL_BAR_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FIRE_STAFF_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        }
+      },
+      "inventory": {
+        "T1_ORE": 2660
+      },
+      "maxHealth": 150,
+      "notifications": []
+    }
+  },
+  {
+    "id": "3c559a00-3fd3-4dbe-a401-a0499e63e6d8",
+    "name": "Squadrani",
+    "last_saved": "2026-01-27T11:44:18.34+00:00",
+    "current_activity": null,
+    "state": {
+      "stats": {
+        "agi": 0,
+        "int": 0,
+        "str": 0
+      },
+      "claims": [],
+      "health": 150,
+      "silver": 0,
+      "skills": {
+        "COMBAT": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "COOKING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FISHING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "ORE_MINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "LUMBERJACK": {
+          "xp": 50,
+          "level": 14,
+          "nextLevelXp": 84
+        },
+        "BOW_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "MAGE_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "CLOTH_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "DUNGEONEERING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "PLANK_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "SWORD_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "ANIMAL_SKINNER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "HUNTER_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FIBER_HARVESTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "LEATHER_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "WARRIOR_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "METAL_BAR_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FIRE_STAFF_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        }
+      },
+      "inventory": {
+        "T1_WOOD": 2888
+      },
+      "maxHealth": 150,
+      "notifications": [
+        {
+          "id": 1769470211704.0063,
+          "read": false,
+          "type": "LEVEL_UP",
+          "message": "Your LUMBERJACK skill raised to level 2!",
+          "timestamp": 1769470211704
+        }
+      ]
+    }
+  },
+  {
+    "id": "f8b37291-56d4-4120-87af-045fbdb8184a",
+    "name": "Kayn",
+    "last_saved": "2026-01-26T23:42:28.454+00:00",
+    "current_activity": null,
+    "state": {
+      "stats": {
+        "agi": 0,
+        "int": 0,
+        "str": 0,
+        "totalKills": 10
+      },
+      "claims": [],
+      "health": 0,
+      "silver": 96,
+      "skills": {
+        "COMBAT": {
+          "xp": 58,
+          "level": 3,
+          "nextLevelXp": 84
+        },
+        "COOKING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FISHING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "ORE_MINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "LUMBERJACK": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "BOW_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "MAGE_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "CLOTH_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "DUNGEONEERING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "PLANK_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "SWORD_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "ANIMAL_SKINNER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "HUNTER_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FIBER_HARVESTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "LEATHER_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "WARRIOR_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "METAL_BAR_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FIRE_STAFF_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        }
+      },
+      "inventory": {
+        "T1_HIDE": 4
+      },
+      "maxHealth": 150,
+      "notifications": []
+    }
+  },
+  {
+    "id": "e2b2271a-7bd6-46c1-a7ac-c9342975e5c0",
+    "name": "Auraaaa",
+    "last_saved": "2026-01-27T11:44:18.687+00:00",
+    "current_activity": null,
+    "state": {
+      "stats": {
+        "agi": 0,
+        "int": 0,
+        "str": 0
+      },
+      "claims": [],
+      "health": 100,
+      "silver": 0,
+      "skills": {
+        "COMBAT": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "COOKING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FISHING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "ORE_MINER": {
+          "xp": 71,
+          "level": 14,
+          "nextLevelXp": 84
+        },
+        "LUMBERJACK": {
+          "xp": 71,
+          "level": 14,
+          "nextLevelXp": 84
+        },
+        "BOW_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "MAGE_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "CLOTH_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "DUNGEONEERING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "PLANK_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "SWORD_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "ANIMAL_SKINNER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "HUNTER_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FIBER_HARVESTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "LEATHER_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "WARRIOR_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "METAL_BAR_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FIRE_STAFF_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        }
+      },
+      "inventory": {
+        "T1_ORE": 2907
+      },
+      "maxHealth": 100,
+      "notifications": []
+    }
+  },
+  {
+    "id": "0f17d81e-424e-4f6a-a56c-835268182557",
+    "name": "Rixester",
+    "last_saved": "2026-01-27T11:44:19.194+00:00",
+    "current_activity": {
+      "req": null,
+      "type": "GATHERING",
+      "item_id": "T1_WOOD",
+      "next_action_at": 1769476371571,
+      "time_per_action": 14.955,
+      "initial_quantity": 2888,
+      "actions_remaining": 210
+    },
+    "state": {
+      "stats": {
+        "agi": 0,
+        "int": 0,
+        "str": 0
+      },
+      "claims": [],
+      "health": 150,
+      "silver": 0,
+      "skills": {
+        "COMBAT": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "COOKING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FISHING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "ORE_MINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "LUMBERJACK": {
+          "xp": 234,
+          "level": 13,
+          "nextLevelXp": 84
+        },
+        "BOW_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "MAGE_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "CLOTH_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "DUNGEONEERING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "PLANK_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "SWORD_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "ANIMAL_SKINNER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "HUNTER_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FIBER_HARVESTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "LEATHER_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "WARRIOR_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "METAL_BAR_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FIRE_STAFF_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        }
+      },
+      "inventory": {
+        "T1_WOOD": 2683
+      },
+      "maxHealth": 150,
+      "notifications": [
+        {
+          "id": 1769475384737.1592,
+          "read": false,
+          "type": "LEVEL_UP",
+          "message": "Your LUMBERJACK skill raised to level 2!",
+          "timestamp": 1769475384737
+        }
+      ]
+    }
+  },
+  {
+    "id": "973147e6-057d-487d-80cc-9a46cafc1b6a",
+    "name": "Anx5991",
+    "last_saved": "2026-01-24T23:24:24.188+00:00",
+    "current_activity": {
+      "req": {
+        "T1_CLOTH": 20
+      },
+      "type": "CRAFTING",
+      "item_id": "T1_CLOTH_GLOVES",
+      "next_action_at": 1769297277788,
+      "time_per_action": 213.6,
+      "initial_quantity": 9,
+      "actions_remaining": 5
+    },
+    "state": {
+      "stats": {
+        "agi": 0,
+        "int": 0,
+        "str": 0,
+        "totalKills": 80
+      },
+      "claims": [],
+      "health": 0,
+      "silver": 208517,
+      "skills": {
+        "COMBAT": {
+          "xp": 1395,
+          "level": 38
+        },
+        "COOKING": {
+          "xp": 315,
+          "level": 28
+        },
+        "FISHING": {
+          "xp": 2159,
+          "level": 43
+        },
+        "ORE_MINER": {
+          "xp": 340,
+          "level": 11
+        },
+        "LUMBERJACK": {
+          "xp": 129,
+          "level": 15
+        },
+        "BOW_MASTERY": {
+          "xp": 0,
+          "level": 1
+        },
+        "MAGE_CRAFTER": {
+          "xp": 121,
+          "level": 11
+        },
+        "CLOTH_REFINER": {
+          "xp": 193,
+          "level": 9
+        },
+        "DUNGEONEERING": {
+          "xp": 0,
+          "level": 1
+        },
+        "PLANK_REFINER": {
+          "xp": 205,
+          "level": 10
+        },
+        "SWORD_MASTERY": {
+          "xp": 0,
+          "level": 1
+        },
+        "ANIMAL_SKINNER": {
+          "xp": 0,
+          "level": 1
+        },
+        "HUNTER_CRAFTER": {
+          "xp": 0,
+          "level": 1
+        },
+        "FIBER_HARVESTER": {
+          "xp": 78,
+          "level": 11
+        },
+        "LEATHER_REFINER": {
+          "xp": 5,
+          "level": 1
+        },
+        "WARRIOR_CRAFTER": {
+          "xp": 0,
+          "level": 1
+        },
+        "METAL_BAR_REFINER": {
+          "xp": 0,
+          "level": 1
+        },
+        "FIRE_STAFF_MASTERY": {
+          "xp": 0,
+          "level": 1
+        }
+      },
+      "equipment": {
+        "head": {
+          "id": "T1_CLOTH_HELMET",
+          "ip": 100,
+          "xp": 15,
+          "req": {
+            "T1_CLOTH": 2
+          },
+          "name": "Helmet",
+          "tier": 1,
+          "type": "HELMET",
+          "stats": {
+            "damage": 4,
+            "defense": 1
+          }
+        },
+        "chest": {
+          "id": "T1_LEATHER_ARMOR",
+          "ip": 200,
+          "xp": 50,
+          "req": {
+            "T1_LEATHER": 9
+          },
+          "name": "Excellent Leather Armor",
+          "tier": 1,
+          "type": "ARMOR",
+          "stats": {
+            "hp": 35,
+            "speed": 2,
+            "defense": 3
+          },
+          "quality": 3,
+          "originalId": "T1_LEATHER_ARMOR_Q3",
+          "rarityColor": "#9013fe"
+        },
+        "helmet": {
+          "id": "T1_CLOTH_HELMET_Q2",
+          "ip": 150,
+          "xp": 18,
+          "req": {
+            "T1_CLOTH": 20
+          },
+          "name": "Outstanding Cloth Helmet",
+          "tier": 1,
+          "time": 240,
+          "type": "HELMET",
+          "stats": {
+            "hp": 10.5,
+            "damage": 0,
+            "defense": 0
+          },
+          "quality": 2,
+          "originalId": "T1_CLOTH_HELMET",
+          "qualityName": "Outstanding",
+          "rarityColor": "#4a90e2"
+        },
+        "mainHand": {
+          "id": "T1_FIRE_STAFF",
+          "ip": 100,
+          "xp": 18,
+          "req": {
+            "T1_PLANK": 20
+          },
+          "name": "Fire Staff",
+          "tier": 1,
+          "time": 240,
+          "type": "WEAPON",
+          "stats": {
+            "damage": 12,
+            "attackSpeed": 1500
+          },
+          "quality": 0,
+          "qualityName": "Normal",
+          "rarityColor": "#fff"
+        }
+      },
+      "inventory": {},
+      "maxHealth": 100,
+      "notifications": [
+        {
+          "id": 1769269761967.5156,
+          "read": false,
+          "type": "LEVEL_UP",
+          "message": "Sua skill de FIBER HARVESTER subiu para o nível 10!",
+          "timestamp": 1769269761967
+        },
+        {
+          "id": 1769267361932.7395,
+          "read": false,
+          "type": "LEVEL_UP",
+          "message": "Sua skill de CLOTH REFINER subiu para o nível 9!",
+          "timestamp": 1769267361932
+        }
+      ]
+    }
+  },
+  {
+    "id": "91d9626d-fee1-4517-b31e-f14db28ae808",
+    "name": "Krugs",
+    "last_saved": "2026-01-26T23:52:44.35+00:00",
+    "current_activity": null,
+    "state": {
+      "stats": {
+        "agi": 0,
+        "int": 0,
+        "str": 0
+      },
+      "claims": [],
+      "health": 150,
+      "silver": 0,
+      "skills": {
+        "COMBAT": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "COOKING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FISHING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "ORE_MINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "LUMBERJACK": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "BOW_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "MAGE_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "CLOTH_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "DUNGEONEERING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "PLANK_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "SWORD_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "ANIMAL_SKINNER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "HUNTER_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FIBER_HARVESTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "LEATHER_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "WARRIOR_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "METAL_BAR_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FIRE_STAFF_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        }
+      },
+      "inventory": {},
+      "maxHealth": 150,
+      "notifications": []
+    }
+  },
+  {
+    "id": "9925d79c-54ff-4b5f-87a0-813d0b7a2b1e",
+    "name": "food",
+    "last_saved": "2026-01-27T11:46:08.379+00:00",
+    "current_activity": {
+      "req": {
+        "T1_FISH": 2
+      },
+      "type": "CRAFTING",
+      "item_id": "T1_FOOD",
+      "next_action_at": 1769514382150,
+      "time_per_action": 14.235,
+      "initial_quantity": 1531,
+      "actions_remaining": 1527
+    },
+    "state": {
+      "stats": {
+        "agi": 0,
+        "int": 0,
+        "str": 0
+      },
+      "claims": [
+        {
+          "id": "1769514351618444430",
+          "type": "SOLD_ITEM",
+          "amount": 2064,
+          "itemId": "T1_FOOD",
+          "silver": 194016,
+          "timestamp": 1769514351618
+        }
+      ],
+      "health": 100,
+      "silver": 1049,
+      "skills": {
+        "COMBAT": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "COOKING": {
+          "xp": 148,
+          "level": 17,
+          "nextLevelXp": 84
+        },
+        "FISHING": {
+          "xp": 818,
+          "level": 23,
+          "nextLevelXp": 84
+        },
+        "ORE_MINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "LUMBERJACK": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "BOW_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "MAGE_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "CLOTH_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "DUNGEONEERING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "PLANK_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "SWORD_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "ANIMAL_SKINNER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "HUNTER_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FIBER_HARVESTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "LEATHER_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "WARRIOR_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "METAL_BAR_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FIRE_STAFF_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        }
+      },
+      "inventory": {
+        "T1_FISH": 3055,
+        "T1_FOOD": 3
+      },
+      "maxHealth": 100,
+      "notifications": [
+        {
+          "id": 1769514351618.8484,
+          "read": false,
+          "type": "SUCCESS",
+          "message": "Your item Food (x2064) was sold! +194016 Silver (after tax).",
+          "timestamp": 1769514351618
+        },
+        {
+          "id": 1769469873446.1135,
+          "read": false,
+          "type": "LEVEL_UP",
+          "message": "Your FISHING skill raised to level 21!",
+          "timestamp": 1769469873446
+        },
+        {
+          "id": 1769451927861.3494,
+          "read": false,
+          "type": "LEVEL_UP",
+          "message": "Your COOKING skill raised to level 17!",
+          "timestamp": 1769451927861
+        },
+        {
+          "id": 1769445244255.5955,
+          "read": false,
+          "type": "LEVEL_UP",
+          "message": "Your COOKING skill raised to level 15!",
+          "timestamp": 1769445244255
+        },
+        {
+          "id": 1769442238124.4377,
+          "read": false,
+          "type": "LEVEL_UP",
+          "message": "Your COOKING skill raised to level 14!",
+          "timestamp": 1769442238124
+        },
+        {
+          "id": 1769436656114.541,
+          "read": false,
+          "type": "LEVEL_UP",
+          "message": "Your COOKING skill raised to level 12!",
+          "timestamp": 1769436656114
+        },
+        {
+          "id": 1769434131958.0095,
+          "read": false,
+          "type": "LEVEL_UP",
+          "message": "Your COOKING skill raised to level 11!",
+          "timestamp": 1769434131958
+        },
+        {
+          "id": 1769431737805.2046,
+          "read": false,
+          "type": "LEVEL_UP",
+          "message": "Your COOKING skill raised to level 10!",
+          "timestamp": 1769431737805
+        },
+        {
+          "id": 1769386931630.1125,
+          "read": false,
+          "type": "LEVEL_UP",
+          "message": "Your FISHING skill raised to level 16!",
+          "timestamp": 1769386931630
+        },
+        {
+          "id": 1769380689841.7996,
+          "read": false,
+          "type": "LEVEL_UP",
+          "message": "Your FISHING skill raised to level 15!",
+          "timestamp": 1769380689841
+        },
+        {
+          "id": 1769297082196.4253,
+          "read": false,
+          "type": "LEVEL_UP",
+          "message": "Your COOKING skill raised to level 9!",
+          "timestamp": 1769297082196
+        },
+        {
+          "id": 1769296508934.7178,
+          "read": false,
+          "type": "SUCCESS",
+          "message": "Your item Food (x560) was sold! +527 Silver (after tax).",
+          "timestamp": 1769296508934
+        },
+        {
+          "id": 1769291750042.6611,
+          "read": false,
+          "type": "LEVEL_UP",
+          "message": "Sua skill de COOKING subiu para o nível 5!",
+          "timestamp": 1769291750042
+        },
+        {
+          "id": 1769289637279.0276,
+          "read": false,
+          "type": "LEVEL_UP",
+          "message": "Sua skill de COOKING subiu para o nível 3!",
+          "timestamp": 1769289637279
+        },
+        {
+          "id": 1769288835898.9292,
+          "read": false,
+          "type": "LEVEL_UP",
+          "message": "Sua skill de COOKING subiu para o nível 2!",
+          "timestamp": 1769288835898
+        },
+        {
+          "id": 1769215504186.2285,
+          "read": false,
+          "type": "LEVEL_UP",
+          "message": "Sua skill de FISHING subiu para o nível 6!",
+          "timestamp": 1769215504186
+        },
+        {
+          "id": 1769214194044.8801,
+          "read": false,
+          "type": "SUCCESS",
+          "message": "Seu item Fish (x555) foi vendido! +522 Silver (após taxas).",
+          "timestamp": 1769214194044
+        },
+        {
+          "id": 1769213053815.8972,
+          "read": false,
+          "type": "LEVEL_UP",
+          "message": "Sua skill de FISHING subiu para o nível 5!",
+          "timestamp": 1769213053815
+        },
+        {
+          "id": 1769210736677.4824,
+          "read": false,
+          "type": "LEVEL_UP",
+          "message": "Sua skill de FISHING subiu para o nível 4!",
+          "timestamp": 1769210736677
+        },
+        {
+          "id": 1769208776839.4797,
+          "read": false,
+          "type": "LEVEL_UP",
+          "message": "Sua skill de FISHING subiu para o nível 3!",
+          "timestamp": 1769208776839
+        },
+        {
+          "id": 1769207200532.7483,
+          "read": false,
+          "type": "LEVEL_UP",
+          "message": "Sua skill de FISHING subiu para o nível 2!",
+          "timestamp": 1769207200532
+        }
+      ]
+    }
+  },
+  {
+    "id": "06efaa46-35ea-4154-a187-afb4fa206de8",
+    "name": "tlsBR420",
+    "last_saved": "2026-01-27T11:46:12.397+00:00",
+    "current_activity": {
+      "req": null,
+      "type": "GATHERING",
+      "item_id": "T1_ORE",
+      "next_action_at": 1769514386524,
+      "time_per_action": 14.955,
+      "initial_quantity": 2888,
+      "actions_remaining": 854
+    },
+    "state": {
+      "stats": {
+        "agi": 0,
+        "int": 0,
+        "str": 0
+      },
+      "claims": [],
+      "health": 150,
+      "silver": 0,
+      "skills": {
+        "COMBAT": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "COOKING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FISHING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "ORE_MINER": {
+          "xp": 299,
+          "level": 11,
+          "nextLevelXp": 84
+        },
+        "LUMBERJACK": {
+          "xp": 136,
+          "level": 6,
+          "nextLevelXp": 84
+        },
+        "BOW_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "MAGE_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "CLOTH_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "DUNGEONEERING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "PLANK_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "SWORD_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "ANIMAL_SKINNER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "HUNTER_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FIBER_HARVESTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "LEATHER_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "WARRIOR_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "METAL_BAR_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FIRE_STAFF_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        }
+      },
+      "inventory": {
+        "T1_ORE": 2034,
+        "T1_WOOD": 781
+      },
+      "maxHealth": 150,
+      "notifications": [
+        {
+          "id": 1769509878329.8257,
+          "read": false,
+          "type": "LEVEL_UP",
+          "message": "Your ORE MINER skill raised to level 11!",
+          "timestamp": 1769509878329
+        },
+        {
+          "id": 1769504979818.8823,
+          "read": false,
+          "type": "LEVEL_UP",
+          "message": "Your ORE MINER skill raised to level 10!",
+          "timestamp": 1769504979818
+        },
+        {
+          "id": 1769501870621.788,
+          "read": false,
+          "type": "LEVEL_UP",
+          "message": "Your ORE MINER skill raised to level 9!",
+          "timestamp": 1769501870621
+        },
+        {
+          "id": 1769498957768.4097,
+          "read": false,
+          "type": "LEVEL_UP",
+          "message": "Your ORE MINER skill raised to level 8!",
+          "timestamp": 1769498957768
+        },
+        {
+          "id": 1769496138172.424,
+          "read": false,
+          "type": "LEVEL_UP",
+          "message": "Your ORE MINER skill raised to level 7!",
+          "timestamp": 1769496138172
+        },
+        {
+          "id": 1769493533433.859,
+          "read": false,
+          "type": "LEVEL_UP",
+          "message": "Your ORE MINER skill raised to level 6!",
+          "timestamp": 1769493533433
+        },
+        {
+          "id": 1769491037594.9712,
+          "read": false,
+          "type": "LEVEL_UP",
+          "message": "Your ORE MINER skill raised to level 5!",
+          "timestamp": 1769491037594
+        },
+        {
+          "id": 1769488704655.925,
+          "read": false,
+          "type": "LEVEL_UP",
+          "message": "Your ORE MINER skill raised to level 4!",
+          "timestamp": 1769488704655
+        },
+        {
+          "id": 1769486730449.438,
+          "read": false,
+          "type": "LEVEL_UP",
+          "message": "Your ORE MINER skill raised to level 3!",
+          "timestamp": 1769486730449
+        },
+        {
+          "id": 1769485126588.4194,
+          "read": false,
+          "type": "LEVEL_UP",
+          "message": "Your ORE MINER skill raised to level 2!",
+          "timestamp": 1769485126588
+        },
+        {
+          "id": 1769481828225.1292,
+          "read": false,
+          "type": "LEVEL_UP",
+          "message": "Your LUMBERJACK skill raised to level 6!",
+          "timestamp": 1769481828225
+        },
+        {
+          "id": 1769479360871.4265,
+          "read": false,
+          "type": "LEVEL_UP",
+          "message": "Your LUMBERJACK skill raised to level 5!",
+          "timestamp": 1769479360871
+        },
+        {
+          "id": 1769477030420.4946,
+          "read": false,
+          "type": "LEVEL_UP",
+          "message": "Your LUMBERJACK skill raised to level 4!",
+          "timestamp": 1769477030420
+        },
+        {
+          "id": 1769475066489.0217,
+          "read": false,
+          "type": "LEVEL_UP",
+          "message": "Your LUMBERJACK skill raised to level 3!",
+          "timestamp": 1769475066489
+        },
+        {
+          "id": 1769473450921.8103,
+          "read": false,
+          "type": "LEVEL_UP",
+          "message": "Your LUMBERJACK skill raised to level 2!",
+          "timestamp": 1769473450921
+        }
+      ]
+    }
+  },
+  {
+    "id": "5d2aa1af-9d45-4bf0-8f77-c77f470cb5fe",
+    "name": "Aura",
+    "last_saved": "2026-01-27T11:44:19.658+00:00",
+    "current_activity": null,
+    "state": {
+      "stats": {
+        "agi": 0,
+        "int": 0,
+        "str": 0
+      },
+      "claims": [],
+      "health": 0,
+      "silver": 188,
+      "skills": {
+        "COMBAT": {
+          "xp": 100,
+          "level": 2
+        },
+        "COOKING": {
+          "xp": 45,
+          "level": 13
+        },
+        "FISHING": {
+          "xp": 100,
+          "level": 9
+        },
+        "ORE_MINER": {
+          "xp": 0,
+          "level": 1
+        },
+        "LUMBERJACK": {
+          "xp": 940,
+          "level": 29
+        },
+        "BOW_MASTERY": {
+          "xp": 0,
+          "level": 1
+        },
+        "MAGE_CRAFTER": {
+          "xp": 0,
+          "level": 1
+        },
+        "CLOTH_REFINER": {
+          "xp": 0,
+          "level": 1
+        },
+        "DUNGEONEERING": {
+          "xp": 0,
+          "level": 1
+        },
+        "PLANK_REFINER": {
+          "xp": 105,
+          "level": 10
+        },
+        "SWORD_MASTERY": {
+          "xp": 0,
+          "level": 1
+        },
+        "ANIMAL_SKINNER": {
+          "xp": 0,
+          "level": 1
+        },
+        "HUNTER_CRAFTER": {
+          "xp": 555,
+          "level": 15
+        },
+        "FIBER_HARVESTER": {
+          "xp": 0,
+          "level": 1
+        },
+        "LEATHER_REFINER": {
+          "xp": 0,
+          "level": 1
+        },
+        "WARRIOR_CRAFTER": {
+          "xp": 0,
+          "level": 1
+        },
+        "METAL_BAR_REFINER": {
+          "xp": 0,
+          "level": 1
+        },
+        "FIRE_STAFF_MASTERY": {
+          "xp": 0,
+          "level": 1
+        }
+      },
+      "equipment": {
+        "mainHand": {
+          "id": "T1_BOW",
+          "ip": 110,
+          "xp": 25,
+          "req": {
+            "T1_PLANK": 8
+          },
+          "name": "Good Bow",
+          "tier": 1,
+          "type": "WEAPON",
+          "stats": {
+            "damage": 8,
+            "attackSpeed": 700
+          },
+          "quality": 1,
+          "originalId": "T1_BOW_Q1"
+        }
+      },
+      "inventory": {
+        "T1_WOOD": 14395
+      },
+      "maxHealth": 100,
+      "notifications": []
+    }
+  },
+  {
+    "id": "387fe116-b060-4d03-8aa6-a06b37ce5460",
+    "name": "food2",
+    "last_saved": "2026-01-27T11:44:40.886+00:00",
+    "current_activity": {
+      "req": {
+        "T1_FISH": 2
+      },
+      "type": "CRAFTING",
+      "item_id": "T1_FOOD",
+      "next_action_at": 1769514295841,
+      "time_per_action": 14.955,
+      "initial_quantity": 1444,
+      "actions_remaining": 1444
+    },
+    "state": {
+      "stats": {
+        "agi": 0,
+        "int": 0,
+        "str": 0
+      },
+      "claims": [],
+      "health": 150,
+      "silver": 0,
+      "skills": {
+        "COMBAT": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "COOKING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FISHING": {
+          "xp": 50,
+          "level": 14,
+          "nextLevelXp": 84
+        },
+        "ORE_MINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "LUMBERJACK": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "BOW_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "MAGE_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "CLOTH_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "DUNGEONEERING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "PLANK_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "SWORD_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "ANIMAL_SKINNER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "HUNTER_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FIBER_HARVESTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "LEATHER_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "WARRIOR_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "METAL_BAR_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FIRE_STAFF_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        }
+      },
+      "inventory": {
+        "T1_FISH": 2888
+      },
+      "maxHealth": 150,
+      "notifications": [
+        {
+          "id": 1769512705379.0374,
+          "read": false,
+          "type": "LEVEL_UP",
+          "message": "Your FISHING skill raised to level 14!",
+          "timestamp": 1769512705379
+        },
+        {
+          "id": 1769473141778.8567,
+          "read": false,
+          "type": "LEVEL_UP",
+          "message": "Your FISHING skill raised to level 3!",
+          "timestamp": 1769473141778
+        },
+        {
+          "id": 1769471526612.789,
+          "read": false,
+          "type": "LEVEL_UP",
+          "message": "Your FISHING skill raised to level 2!",
+          "timestamp": 1769471526612
+        }
+      ]
+    }
+  },
+  {
+    "id": "22aae0d0-ed05-4513-ba19-c119f3d4bc5e",
+    "name": "Moonwisp",
+    "last_saved": "2026-01-27T04:33:50.568+00:00",
+    "current_activity": null,
+    "state": {
+      "stats": {
+        "agi": 0,
+        "int": 0,
+        "str": 0
+      },
+      "claims": [],
+      "health": 150,
+      "silver": 0,
+      "skills": {
+        "COMBAT": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "COOKING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FISHING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "ORE_MINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "LUMBERJACK": {
+          "xp": 42,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "BOW_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "MAGE_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "CLOTH_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "DUNGEONEERING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "PLANK_REFINER": {
+          "xp": 40,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "SWORD_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "ANIMAL_SKINNER": {
+          "xp": 1,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "HUNTER_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FIBER_HARVESTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "LEATHER_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "WARRIOR_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "METAL_BAR_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FIRE_STAFF_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        }
+      },
+      "inventory": {
+        "T1_HIDE": 1,
+        "T1_WOOD": 2,
+        "T1_PLANK": 20
+      },
+      "maxHealth": 150,
+      "notifications": []
+    }
+  },
+  {
+    "id": "53b567ad-75b4-40d3-85af-99b58946c6d1",
+    "name": "Aaa",
+    "last_saved": "2026-01-24T04:38:38.199547+00:00",
+    "current_activity": null,
+    "state": {
+      "stats": {
+        "agi": 0,
+        "int": 0,
+        "str": 0
+      },
+      "health": 100,
+      "silver": 0,
+      "skills": {
+        "COMBAT": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "COOKING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FISHING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "ORE_MINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "LUMBERJACK": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "BOW_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "MAGE_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "CLOTH_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "DUNGEONEERING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "PLANK_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "SWORD_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "ANIMAL_SKINNER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "HUNTER_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FIBER_HARVESTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "LEATHER_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "WARRIOR_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "METAL_BAR_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FIRE_STAFF_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        }
+      },
+      "inventory": {},
+      "maxHealth": 100,
+      "notifications": []
+    }
+  },
+  {
+    "id": "055f16cf-3b09-492a-976d-c24cdf7c8793",
+    "name": "dbn",
+    "last_saved": "2026-01-27T11:44:20.023+00:00",
+    "current_activity": {
+      "req": null,
+      "type": "GATHERING",
+      "item_id": "T1_FISH",
+      "next_action_at": 1769488216364,
+      "time_per_action": 14.955,
+      "initial_quantity": 2888,
+      "actions_remaining": 1117
+    },
+    "state": {
+      "stats": {
+        "agi": 0,
+        "int": 0,
+        "str": 0
+      },
+      "claims": [],
+      "health": 150,
+      "silver": 0,
+      "skills": {
+        "COMBAT": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "COOKING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FISHING": {
+          "xp": 36,
+          "level": 11,
+          "nextLevelXp": 84
+        },
+        "ORE_MINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "LUMBERJACK": {
+          "xp": 12,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "BOW_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "MAGE_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "CLOTH_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "DUNGEONEERING": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "PLANK_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "SWORD_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "ANIMAL_SKINNER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "HUNTER_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FIBER_HARVESTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "LEATHER_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "WARRIOR_CRAFTER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "METAL_BAR_REFINER": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        },
+        "FIRE_STAFF_MASTERY": {
+          "xp": 0,
+          "level": 1,
+          "nextLevelXp": 84
+        }
+      },
+      "inventory": {
+        "T1_FISH": 1771,
+        "T1_WOOD": 12
+      },
+      "maxHealth": 150,
+      "notifications": []
+    }
+  },
+  {
+    "id": "83765d12-84ca-46c3-9754-d572295ba701",
+    "name": "Brola",
+    "last_saved": "2026-01-27T11:46:05.375+00:00",
+    "current_activity": {
+      "req": {
+        "T1_BAR": 20
+      },
+      "type": "CRAFTING",
+      "item_id": "T1_SWORD",
+      "next_action_at": 1769514478904,
+      "time_per_action": 235.44,
+      "initial_quantity": 146,
+      "actions_remaining": 146
+    },
+    "state": {
+      "stats": {
+        "agi": 0,
+        "int": 0,
+        "str": 0,
+        "totalKills": 35198,
+        "dungeonsCleared": 1
+      },
+      "claims": [],
+      "health": 900,
+      "silver": 156641003,
+      "skills": {
+        "COMBAT": {
+          "xp": 131444,
+          "level": 82
+        },
+        "COOKING": {
+          "xp": 871,
+          "level": 22
+        },
+        "FISHING": {
+          "xp": 316,
+          "level": 22
+        },
+        "ORE_MINER": {
+          "xp": 16,
+          "level": 2
+        },
+        "LUMBERJACK": {
+          "xp": 58,
+          "level": 6
+        },
+        "BOW_MASTERY": {
+          "xp": 0,
+          "level": 1
+        },
+        "MAGE_CRAFTER": {
+          "xp": 0,
+          "level": 1
+        },
+        "CLOTH_REFINER": {
+          "xp": 0,
+          "level": 1
+        },
+        "DUNGEONEERING": {
+          "xp": 35,
+          "level": 6
+        },
+        "PLANK_REFINER": {
+          "xp": 0,
+          "level": 1
+        },
+        "SWORD_MASTERY": {
+          "xp": 0,
+          "level": 1
+        },
+        "ANIMAL_SKINNER": {
+          "xp": 0,
+          "level": 1
+        },
+        "HUNTER_CRAFTER": {
+          "xp": 0,
+          "level": 1
+        },
+        "FIBER_HARVESTER": {
+          "xp": 0,
+          "level": 1
+        },
+        "LEATHER_REFINER": {
+          "xp": 0,
+          "level": 1
+        },
+        "WARRIOR_CRAFTER": {
+          "xp": 60,
+          "level": 2
+        },
+        "METAL_BAR_REFINER": {
+          "xp": 188,
+          "level": 20
+        },
+        "FIRE_STAFF_MASTERY": {
+          "xp": 0,
+          "level": 1
+        }
+      },
+      "equipment": {
+        "cape": {
+          "id": "T1_PLATE_CAPE_Q1",
+          "ip": 120,
+          "xp": 18,
+          "req": {
+            "T1_BAR": 20,
+            "T1_CREST": 1
+          },
+          "name": "Good Plate Cape",
+          "tier": 1,
+          "time": 240,
+          "type": "CAPE",
+          "stats": {
+            "hp": 11,
+            "efficiency": {
+              "GLOBAL": 2
+            }
+          },
+          "quality": 1,
+          "originalId": "T1_PLATE_CAPE",
+          "qualityName": "Good",
+          "rarityColor": "#4caf50"
+        },
+        "food": {
+          "id": "T1_FOOD",
+          "ip": 0,
+          "xp": 2,
+          "req": {
+            "T1_FISH": 2
+          },
+          "heal": 50,
+          "icon": "/items/T1_FOOD.png",
+          "name": "Food",
+          "tier": 1,
+          "time": 15,
+          "type": "FOOD",
+          "scale": "200%",
+          "stats": {},
+          "amount": 2046,
+          "quality": 0,
+          "originalId": "T1_FOOD",
+          "qualityName": "Normal",
+          "rarityColor": "#fff"
+        },
+        "boots": {
+          "id": "T1_PLATE_BOOTS",
+          "ip": 100,
+          "xp": 27,
+          "req": {
+            "T1_BAR": 20
+          },
+          "name": "Plate Boots",
+          "tier": 1,
+          "time": 240,
+          "type": "BOOTS",
+          "stats": {
+            "hp": 12,
+            "defense": 1
+          },
+          "quality": 0,
+          "qualityName": "Normal",
+          "rarityColor": "#fff"
+        },
+        "chest": {
+          "id": "T1_PLATE_ARMOR",
+          "ip": 100,
+          "xp": 18,
+          "req": {
+            "T1_BAR": 20
+          },
+          "name": "Plate Armor",
+          "tier": 1,
+          "time": 240,
+          "type": "ARMOR",
+          "stats": {
+            "hp": 50,
+            "defense": 5
+          },
+          "quality": 0,
+          "qualityName": "Normal",
+          "rarityColor": "#fff"
+        },
+        "gloves": {
+          "id": "T1_PLATE_GLOVES_Q1",
+          "ip": 120,
+          "xp": 18,
+          "req": {
+            "T1_BAR": 20
+          },
+          "name": "Good Plate Gloves",
+          "tier": 1,
+          "time": 240,
+          "type": "GLOVES",
+          "stats": {
+            "hp": 7.7,
+            "damage": 0,
+            "defense": 0
+          },
+          "quality": 1,
+          "originalId": "T1_PLATE_GLOVES",
+          "qualityName": "Good",
+          "rarityColor": "#4caf50"
+        },
+        "helmet": {
+          "id": "T1_PLATE_HELMET",
+          "ip": 100,
+          "xp": 27,
+          "req": {
+            "T1_BAR": 20
+          },
+          "name": "Plate Helmet",
+          "tier": 1,
+          "time": 240,
+          "type": "HELMET",
+          "stats": {
+            "hp": 12,
+            "defense": 1
+          },
+          "quality": 0,
+          "qualityName": "Normal",
+          "rarityColor": "#fff"
+        },
+        "offHand": {
+          "id": "T1_SHIELD_Q1",
+          "ip": 120,
+          "xp": 18,
+          "req": {
+            "T1_BAR": 20
+          },
+          "name": "Good Shield",
+          "tier": 1,
+          "time": 240,
+          "type": "OFF_HAND",
+          "stats": {
+            "hp": 27.5,
+            "damage": 1.1,
+            "defense": 2.2
+          },
+          "quality": 1,
+          "originalId": "T1_SHIELD",
+          "qualityName": "Good",
+          "rarityColor": "#4caf50"
+        },
+        "mainHand": {
+          "id": "T1_SWORD_Q2",
+          "ip": 150,
+          "xp": 18,
+          "req": {
+            "T1_BAR": 20
+          },
+          "name": "Outstanding Sword",
+          "tier": 1,
+          "time": 240,
+          "type": "WEAPON",
+          "stats": {
+            "damage": 12.5,
+            "attackSpeed": 1000
+          },
+          "quality": 2,
+          "originalId": "T1_SWORD",
+          "qualityName": "Outstanding",
+          "rarityColor": "#4a90e2"
+        }
+      },
+      "inventory": {
+        "T1_BAR": 2923,
+        "T1_ORE": 3154,
+        "T1_FISH": 13487,
+        "T1_HIDE": 70207,
+        "T1_DUNGEON_MAP": 622
+      },
+      "maxHealth": 100,
+      "notifications": [
+        {
+          "id": 1769514351555.9946,
+          "read": false,
+          "type": "SUCCESS",
+          "message": "You bought 2064x Food for 206400 Silver.",
+          "timestamp": 1769514351555
+        },
+        {
+          "id": 1769514152488.2153,
+          "read": false,
+          "type": "SUCCESS",
+          "message": "You bought 67700x Hide for 135400 Silver.",
+          "timestamp": 1769514152488
+        },
+        {
+          "id": 1769514130997.202,
+          "read": false,
+          "type": "SUCCESS",
+          "message": "You bought 13487x Fish for 1348700 Silver.",
+          "timestamp": 1769514130997
+        },
+        {
+          "id": 1769514100802.0417,
+          "read": false,
+          "type": "SUCCESS",
+          "message": "You bought 2507x Hide for 250700 Silver.",
+          "timestamp": 1769514100802
+        },
+        {
+          "id": 1769472475534.1047,
+          "read": false,
+          "type": "LEVEL_UP",
+          "message": "Your METAL BAR REFINER skill raised to level 10!",
+          "timestamp": 1769472475534
+        },
+        {
+          "id": 1769470954357.7017,
+          "read": false,
+          "type": "LEVEL_UP",
+          "message": "Your METAL BAR REFINER skill raised to level 9!",
+          "timestamp": 1769470954357
+        },
+        {
+          "id": 1769469506304.9526,
+          "read": false,
+          "type": "LEVEL_UP",
+          "message": "Your METAL BAR REFINER skill raised to level 8!",
+          "timestamp": 1769469506304
+        },
+        {
+          "id": 1769468140664.306,
+          "read": false,
+          "type": "LEVEL_UP",
+          "message": "Your METAL BAR REFINER skill raised to level 7!",
+          "timestamp": 1769468140664
+        },
+        {
+          "id": 1769466835028.7693,
+          "read": false,
+          "type": "LEVEL_UP",
+          "message": "Your METAL BAR REFINER skill raised to level 6!",
+          "timestamp": 1769466835028
+        },
+        {
+          "id": 1769465623463.3313,
+          "read": false,
+          "type": "LEVEL_UP",
+          "message": "Your METAL BAR REFINER skill raised to level 5!",
+          "timestamp": 1769465623463
+        },
+        {
+          "id": 1769464468627.481,
+          "read": false,
+          "type": "LEVEL_UP",
+          "message": "Your METAL BAR REFINER skill raised to level 4!",
+          "timestamp": 1769464468627
+        },
+        {
+          "id": 1769463488297.3093,
+          "read": false,
+          "type": "LEVEL_UP",
+          "message": "Your METAL BAR REFINER skill raised to level 3!",
+          "timestamp": 1769463488297
+        },
+        {
+          "id": 1769462572017.4048,
+          "read": false,
+          "type": "LEVEL_UP",
+          "message": "Your METAL BAR REFINER skill raised to level 2!",
+          "timestamp": 1769462572017
+        },
+        {
+          "id": 1769452699122.0723,
+          "read": false,
+          "type": "LEVEL_UP",
+          "message": "Your COOKING skill raised to level 22!",
+          "timestamp": 1769452699122
+        },
+        {
+          "id": 1769438600041.1306,
+          "read": false,
+          "type": "LEVEL_UP",
+          "message": "Your FISHING skill raised to level 21!",
+          "timestamp": 1769438600041
+        },
+        {
+          "id": 1769388199358.062,
+          "read": false,
+          "type": "SUCCESS",
+          "message": "Your item Dungeon Map (x20) was sold! +150400000 Silver (after tax).",
+          "timestamp": 1769388199358
+        },
+        {
+          "id": 1769385163610.205,
+          "read": false,
+          "type": "LEVEL_UP",
+          "message": "Your COOKING skill raised to level 20!",
+          "timestamp": 1769385163610
+        },
+        {
+          "id": 1769380106787.8718,
+          "read": false,
+          "type": "LEVEL_UP",
+          "message": "Your COOKING skill raised to level 18!",
+          "timestamp": 1769380106787
+        },
+        {
+          "id": 1769367728482.8044,
+          "read": false,
+          "type": "LEVEL_UP",
+          "message": "Your COOKING skill raised to level 16!",
+          "timestamp": 1769367728482
+        },
+        {
+          "id": 1769343187563.0972,
+          "read": false,
+          "type": "LEVEL_UP",
+          "message": "Your FISHING skill raised to level 20!",
+          "timestamp": 1769343187563
+        }
+      ]
+    }
+  }
+]
