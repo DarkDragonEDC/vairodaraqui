@@ -465,14 +465,14 @@ io.on('connection', (socket) => {
                 .from('dungeon_history')
                 .select('*')
                 .eq('character_id', charId)
-                .order('started_at', { ascending: false })
+                .order('occurred_at', { ascending: false })
                 .limit(20);
 
             if (error) throw error;
             socket.emit('dungeon_history_update', data);
         } catch (err) {
             console.error('Error fetching dungeon history:', err);
-            socket.emit('error', { message: 'Failed to fetch dungeon history' });
+            socket.emit('error', { message: `Failed to fetch dungeon history: ${err.message}` });
         }
     });
 

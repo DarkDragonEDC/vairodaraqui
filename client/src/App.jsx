@@ -25,7 +25,7 @@ import {
   Axe, Pickaxe, Target, Shield, Sword,
   Star, Layers, Box, Castle, Lock, Menu, X, Tag, Clock, Heart, LogOut
 } from 'lucide-react';
-import { ITEMS, resolveItem } from '@shared/items';
+import { ITEMS, resolveItem, getSkillForItem, getLevelRequirement } from '@shared/items';
 import { calculateNextLevelXP, XP_TABLE } from '@shared/skills';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useOptimisticState } from './hooks/useOptimisticState';
@@ -54,7 +54,8 @@ const mapTabCategoryToSkill = (tab, category) => {
       HUNTERS_LODGE: 'HUNTER_CRAFTER',
       MAGES_TOWER: 'MAGE_CRAFTER',
       COOKING_STATION: 'COOKING',
-      ALCHEMY_LAB: 'ALCHEMY'
+      ALCHEMY_LAB: 'ALCHEMY',
+      TOOLMAKER: 'TOOL_CRAFTER'
     },
     combat: {
       COMBAT: 'COMBAT'
@@ -357,38 +358,17 @@ function App() {
     socket.emit('claim_reward');
   };
 
-  // --- Helpers de Bloqueio ---
-  const getSkillKey = (type, itemId) => {
-    if (type === 'GATHERING') {
-      if (itemId.includes('WOOD')) return 'LUMBERJACK';
-      if (itemId.includes('ORE')) return 'ORE_MINER';
-      if (itemId.includes('HIDE')) return 'ANIMAL_SKINNER';
-      if (itemId.includes('FIBER')) return 'FIBER_HARVESTER';
-      if (itemId.includes('FISH')) return 'FISHING';
-      if (itemId.includes('HERB')) return 'HERBALISM';
-    }
-    if (type === 'REFINING') {
-      if (itemId.includes('PLANK')) return 'PLANK_REFINER';
-      if (itemId.includes('BAR')) return 'METAL_BAR_REFINER';
-      if (itemId.includes('LEATHER')) return 'LEATHER_REFINER';
-      if (itemId.includes('CLOTH')) return 'CLOTH_REFINER';
-    }
-    if (type === 'CRAFTING') {
-      if (itemId.includes('SWORD') || itemId.includes('PLATE') || itemId.includes('PICKAXE') || itemId.includes('SHIELD')) return 'WARRIOR_CRAFTER';
-      if (itemId.includes('BOW') || itemId.includes('LEATHER') || itemId.includes('AXE') || itemId.includes('TORCH') || itemId.includes('KNIFE')) return 'HUNTER_CRAFTER';
-      if (itemId.includes('STAFF') || itemId.includes('CLOTH') || itemId.includes('SICKLE') || itemId.includes('TOME') || itemId.includes('ROD') || itemId.includes('MAGE_CAPE')) return 'MAGE_CRAFTER';
-      if (itemId.includes('FOOD')) return 'COOKING';
-    }
-    return null;
-  };
-
-  const getLevelRequirement = (tier) => tier === 1 ? 1 : (tier - 1) * 10;
-
   const isLocked = (type, item) => {
-    if (!displayedGameState?.state) return false;
-    const skillKey = getSkillKey(type, item.id);
-    const userLevel = displayedGameState.state.skills[skillKey]?.level || 1;
-    const requiredLevel = getLevelRequirement(item.tier);
+    if (!displayedGameState?.state || !item) return false;
+    const tier = Number(item.tier) || 1;
+    const skillKey = getSkillForItem(item.id, type);
+    const userLevel = displayedGameState.state.skills?.[skillKey]?.level || 1;
+    const requiredLevel = getLevelRequirement(tier);
+
+    if (tier > 1) {
+      console.log(`[DEBUG-LOCK-LIST] ${item.id}: Tier=${tier}, Skill=${skillKey}, UserLv=${userLevel}, ReqLv=${requiredLevel}, LOCKED=${userLevel < requiredLevel}`);
+    }
+
     return userLevel < requiredLevel;
   };
 
@@ -784,7 +764,9 @@ function App() {
                           : stats.hp ? { icon: <Heart size={12} />, val: `${stats.hp} HP`, color: '#ff4444' } // Fallback HP
                             : null;
 
-                    const locked = isLocked('CRAFTING', item);
+                    const type = activeTab.toUpperCase();
+                    const locked = isLocked(type, item);
+                    const reqLevel = getLevelRequirement(item.tier);
                     const isActive = displayedGameState?.current_activity?.item_id === item.id;
                     const duration = (item.time || 3.0) * 1000;
 
@@ -797,12 +779,10 @@ function App() {
                       <button
                         key={item.id}
                         onClick={() => {
-                          if (!locked) {
-                            setModalItem(item);
-                            setModalType('CRAFTING');
-                          }
+                          setModalItem(item);
+                          setModalType('CRAFTING');
                         }}
-                        disabled={locked}
+
                         className="resource-card"
                         style={{
                           borderLeft: isActive ? '4px solid var(--accent)' : 'none',
@@ -810,8 +790,8 @@ function App() {
                           gap: '12px',
                           alignItems: 'center',
                           padding: '12px',
-                          opacity: locked ? 0.5 : 1,
-                          cursor: locked ? 'not-allowed' : 'pointer',
+                          opacity: locked ? 0.7 : 1,
+                          cursor: 'pointer',
                           filter: 'none',
                           background: isActive ? 'rgba(212, 175, 55, 0.05)' : 'rgba(0,0,0,0.2)',
                           width: '100%',
@@ -1131,7 +1111,7 @@ function App() {
         onNavigate={handleNavigate}
         isMobile={isMobile}
         serverTimeOffset={clockOffset.current}
-        skillProgress={gameState?.current_activity && displayedGameState?.state?.skills ? (displayedGameState.state.skills[getSkillKey(gameState.current_activity.type, gameState.current_activity.item_id)]?.xp / calculateNextLevelXP(displayedGameState.state.skills[getSkillKey(gameState.current_activity.type, gameState.current_activity.item_id)]?.level || 1)) * 100 : 0}
+        skillProgress={gameState?.current_activity && displayedGameState?.state?.skills ? (displayedGameState.state.skills[getSkillForItem(gameState.current_activity.item_id, gameState.current_activity.type)]?.xp / calculateNextLevelXP(displayedGameState.state.skills[getSkillForItem(gameState.current_activity.item_id, gameState.current_activity.type)]?.level || 1)) * 100 : 0}
       />
       {modalItem && <ActivityModal isOpen={!!modalItem} onClose={() => setModalItem(null)} item={modalItem} type={modalType} gameState={displayedGameState} onStart={startActivity} onNavigate={handleNavigate} />}
 

@@ -187,7 +187,6 @@ export class CombatManager {
                 combat.sessionSilver = (combat.sessionSilver || 0) + (finalSilver || 0);
 
             } catch (err) {
-                console.error("[COMBAT] Error processing kill rewards:", err);
             }
 
             if (combat.isDungeon) {

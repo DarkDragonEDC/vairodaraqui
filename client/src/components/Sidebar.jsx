@@ -378,7 +378,7 @@ const Sidebar = ({ gameState, activeTab, setActiveTab, activeCategory, setActive
                     SWITCH CHARACTER
                 </button>
                 <div style={{ textAlign: 'center', fontSize: '0.55rem', color: '#333', marginTop: '10px', fontWeight: 'bold' }}>
-                    v2.0.1
+                    v2.1 Rarity
                 </div>
             </div>
         </div>

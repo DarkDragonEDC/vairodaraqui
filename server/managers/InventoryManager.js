@@ -241,6 +241,7 @@ export class InventoryManager {
         efficiency.HIDE += resolveToolEff(equipment.tool_knife);
         efficiency.FIBER += resolveToolEff(equipment.tool_sickle);
         efficiency.FISH += resolveToolEff(equipment.tool_rod);
+        efficiency.HERB += resolveToolEff(equipment.tool_pouch);
 
         // 2. Global/Other Item Bonuses (e.g., Capes)
         Object.values(equipment).forEach(item => {
@@ -309,7 +310,6 @@ export class InventoryManager {
         if (char.state.active_buffs) {
             const now = Date.now();
             const activeCount = Object.keys(char.state.active_buffs).length;
-            if (activeCount > 0) console.log(`[DEBUG-BUFFS] Processing ${activeCount} buffs for ${char.name}`);
 
             Object.entries(char.state.active_buffs).forEach(([type, buff]) => {
                 const remaining = (buff.expiresAt - now) / 1000;

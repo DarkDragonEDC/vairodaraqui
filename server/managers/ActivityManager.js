@@ -1,16 +1,4 @@
-import { ITEMS } from '../../shared/items.js';
-
-const ITEM_LOOKUP = {};
-const flattenItems = (obj) => {
-    for (const key in obj) {
-        if (obj[key] && obj[key].id) {
-            ITEM_LOOKUP[obj[key].id] = obj[key];
-        } else if (typeof obj[key] === 'object') {
-            flattenItems(obj[key]);
-        }
-    }
-};
-flattenItems(ITEMS);
+import { ITEMS, getSkillForItem, getLevelRequirement, ITEM_LOOKUP } from '../../shared/items.js';
 
 export class ActivityManager {
     constructor(gameManager) {
@@ -25,12 +13,15 @@ export class ActivityManager {
         const item = ITEM_LOOKUP[itemId];
         if (!item) throw new Error("Item not found");
 
-        const skillKey = this.getSkillKeyForActivity(type, itemId);
+        const skillKey = getSkillForItem(itemId, type);
         const userLevel = char.state.skills[skillKey]?.level || 1;
-        const requiredLevel = item.tier === 1 ? 1 : (item.tier - 1) * 10;
+        const tier = Number(item.tier) || 1;
+        const requiredLevel = getLevelRequirement(tier);
+
+        console.log(`[DEBUG-SERVER-LOCK] ${char.name} -> ${itemId}: Type=${type}, Tier=${tier}, Skill=${skillKey}, UserLv=${userLevel}, ReqLv=${requiredLevel}, LOCKED=${userLevel < requiredLevel}`);
 
         if (userLevel < requiredLevel) {
-            throw new Error(`Insufficient level! Requires ${skillKey} Lv ${requiredLevel}`);
+            throw new Error(`Insufficient level! Requires ${skillKey ? skillKey.replace('_', ' ') : 'Skill'} Lv ${requiredLevel} (Your Lv: ${userLevel})`);
         }
 
         // Pre-emptive Inventory Check
@@ -197,46 +188,45 @@ export class ActivityManager {
 
         let finalItemId = item.id;
         let qualityName = '';
-        const equippableTypes = ['WEAPON', 'ARMOR', 'HELMET', 'BOOTS', 'GLOVES', 'CAPE', 'OFF_HAND', 'TOOL', 'TOOL_PICKAXE', 'TOOL_AXE', 'TOOL_KNIFE', 'TOOL_SICKLE', 'TOOL_ROD'];
+        const equippableTypes = ['WEAPON', 'ARMOR', 'HELMET', 'BOOTS', 'GLOVES', 'CAPE', 'OFF_HAND', 'TOOL', 'TOOL_PICKAXE', 'TOOL_AXE', 'TOOL_KNIFE', 'TOOL_SICKLE', 'TOOL_ROD', 'TOOL_POUCH'];
 
         if (equippableTypes.includes(item.type)) {
             const stats = this.gameManager.inventoryManager.calculateStats(char);
             const qualityBonus = stats.globals?.qualityChance || 0;
 
             const rand = Math.random() * 100; // 0 to 100
-            // Base Chances: Q4 (0.1%), Q3 (1%), Q2 (10%), Q1 (20%)
-            // With bonus: Increase the thresholds?
-            // Simplest approach: Add bonus to the ROLL? Or reduce threshold?
-            // Let's reduce thresholds.
-            // Default Thresholds (descending check):
-            // > 99.9 -> Q4
-            // > 99.0 -> Q3
-            // > 90.0 -> Q2
-            // > 70.0 -> Q1
+            const BASE_QUALITY_CHANCES = {
+                1: { q4: 1.40, q3: 9.80, q2: 14.40, q1: 30.00 },
+                2: { q4: 1.25, q3: 8.76, q2: 13.30, q1: 28.89 },
+                3: { q4: 1.10, q3: 7.72, q2: 12.20, q1: 27.78 },
+                4: { q4: 0.95, q3: 6.68, q2: 11.10, q1: 26.67 },
+                5: { q4: 0.80, q3: 5.64, q2: 10.00, q1: 25.56 },
+                6: { q4: 0.65, q3: 4.61, q2: 8.90, q1: 24.44 },
+                7: { q4: 0.50, q3: 3.57, q2: 7.80, q1: 23.33 },
+                8: { q4: 0.35, q3: 2.53, q2: 6.70, q1: 22.22 },
+                9: { q4: 0.20, q3: 1.49, q2: 5.60, q1: 21.11 },
+                10: { q4: 0.05, q3: 0.45, q2: 4.50, q1: 20.00 }
+            };
 
-            // Bonus is percentage increase to the CHANCE.
-            // e.g. +10% quality chance means 0.1% becomes 0.11%. Hard to model linearly.
-
-            // Alternative: Add flat value to the roll?
-            // If I have +50 Quality, I add 0.5 to the roll?
-
-            // Let's stick to the Potion Plan: "Increases Quality Chance".
-            // Let's map it as a multiplier to the base probabilities.
-            // Q4 Chance = 0.1 * (1 + bonus/100)
-            // Q3 Chance = 1.0 * (1 + bonus/100)
-            // etc.
-
+            const tierStats = BASE_QUALITY_CHANCES[item.tier] || BASE_QUALITY_CHANCES[1];
             const mult = 1 + (qualityBonus / 100);
-            const q4Chance = 0.1 * mult;
-            const q3Chance = 0.9 * mult; // 1.0 - 0.1
-            const q2Chance = 9.0 * mult; // 10.0 - 1.0
-            const q1Chance = 20.0 * mult; // 30.0 - 10.0
 
-            // Normalized Thresholds from Top (100)
-            const t4 = 100 - q4Chance;
-            const t3 = t4 - q3Chance;
-            const t2 = t3 - q2Chance;
-            const t1 = t2 - q1Chance;
+            // Calculate thresholds based on chances.
+            // Chances are distinct percentages. Q4 is top, then Q3, etc.
+            // Thresholds are cumulative from 100 downwards.
+            // T4_Cutoff = 100 - (Q4_Chance * mult)
+            // T3_Cutoff = T4_Cutoff - (Q3_Chance * mult)
+            // ...
+
+            const q4C = tierStats.q4 * mult;
+            const q3C = tierStats.q3 * mult;
+            const q2C = tierStats.q2 * mult;
+            const q1C = tierStats.q1 * mult;
+
+            const t4 = 100 - q4C;
+            const t3 = t4 - q3C;
+            const t2 = t3 - q2C;
+            const t1 = t2 - q1C;
 
             let quality = 0;
             if (rand > t4) quality = 4;
@@ -245,7 +235,7 @@ export class ActivityManager {
             else if (rand > t1) quality = 1;
 
             if (quality > 0) {
-                const { QUALITIES } = await import('../../shared/items.js');
+                const { resolveItem, ITEM_LOOKUP, getSkillForItem, getLevelRequirement } = require('../../shared/items.js');
                 finalItemId += QUALITIES[quality].suffix;
                 qualityName = `[${QUALITIES[quality].name}] `;
             }
@@ -278,46 +268,20 @@ export class ActivityManager {
         };
     }
 
+    // Simplified delegation to shared logic
     getSkillKeyForActivity(type, itemId) {
-        switch (type) {
-            case 'GATHERING': return this.getSkillKeyForResource(itemId);
-            case 'REFINING': return this.getSkillKeyForRefining(itemId);
-            case 'CRAFTING': return this.getSkillKeyForCrafting(itemId);
-            default: return null;
-        }
+        return getSkillForItem(itemId, type);
     }
 
     getSkillKeyForResource(itemId) {
-        if (itemId.includes('WOOD')) return 'LUMBERJACK';
-        if (itemId.includes('ORE')) return 'ORE_MINER';
-        if (itemId.includes('HIDE')) return 'ANIMAL_SKINNER';
-        if (itemId.includes('FIBER')) return 'FIBER_HARVESTER';
-        if (itemId.includes('FISH')) return 'FISHING';
-        if (itemId.includes('HERB')) {
-            console.log(`[ACTIVITY] Mapping ${itemId} to HERBALISM`);
-            return 'HERBALISM';
-        }
-        return null;
+        return getSkillForItem(itemId, 'GATHERING');
     }
 
     getSkillKeyForRefining(itemId) {
-        if (itemId.includes('PLANK')) return 'PLANK_REFINER';
-        if (itemId.includes('BAR')) return 'METAL_BAR_REFINER';
-        if (itemId.includes('LEATHER')) return 'LEATHER_REFINER';
-        if (itemId.includes('CLOTH')) return 'CLOTH_REFINER';
-        if (itemId.includes('EXTRACT')) return 'DISTILLATION';
-        return null;
+        return getSkillForItem(itemId, 'REFINING');
     }
 
     getSkillKeyForCrafting(itemId) {
-        if (itemId.includes('PICKAXE') || itemId.includes('AXE') || itemId.includes('KNIFE') || itemId.includes('SICKLE') || itemId.includes('ROD')) return 'TOOL_CRAFTER';
-
-        if (itemId.includes('SWORD') || itemId.includes('PLATE') || itemId.includes('SHIELD')) return 'WARRIOR_CRAFTER';
-        if (itemId.includes('BOW') || itemId.includes('LEATHER') || itemId.includes('TORCH')) return 'HUNTER_CRAFTER';
-        if (itemId.includes('STAFF') || itemId.includes('CLOTH') || itemId.includes('TOME') || itemId.includes('MAGE_CAPE')) return 'MAGE_CRAFTER';
-        if (itemId.includes('FOOD')) return 'COOKING';
-        if (itemId.includes('POTION')) return 'ALCHEMY';
-        if (itemId.includes('CAPE')) return 'WARRIOR_CRAFTER'; // Fallback for Plate Cape or generic
-        return null;
+        return getSkillForItem(itemId, 'CRAFTING');
     }
 }

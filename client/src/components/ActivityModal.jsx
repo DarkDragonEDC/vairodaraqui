@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { formatNumber, formatSilver } from '@utils/format';
-import { X, Clock, Zap, Target, Star, ChevronRight, Package, Box, Sword, Shield, Heart } from 'lucide-react';
+import { X, Clock, Zap, Target, Star, ChevronRight, Package, Box, Sword, Shield, Heart, Lock } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { resolveItem, formatItemId, QUALITIES } from '@shared/items';
+import { resolveItem, formatItemId, QUALITIES, getSkillForItem, getLevelRequirement } from '@shared/items';
 
 const ActivityModal = ({ isOpen, onClose, item, type, gameState, onStart, onNavigate }) => {
     const [quantity, setQuantity] = useState(1);
@@ -12,6 +12,30 @@ const ActivityModal = ({ isOpen, onClose, item, type, gameState, onStart, onNavi
     if (!item) return null;
 
     const charStats = gameState?.state?.stats || { str: 0, agi: 0, int: 0 };
+
+    const checkLocked = () => {
+        if (!gameState?.state) return { locked: false, req: 0, skill: '' };
+
+        // Defensive tier extraction
+        const tier = Number(item.tier) || 1;
+        const skillKey = getSkillForItem(item.id, type);
+        const userLevel = gameState.state.skills[skillKey]?.level || 1;
+        const requiredLevel = getLevelRequirement(tier);
+
+        const isLockedStatus = userLevel < requiredLevel;
+
+        console.log(`[DEBUG-LOCKED-MODAL] ID: ${item.id}, Type: ${type}, Tier: ${tier}, Skill: ${skillKey}, User: ${userLevel}, Req: ${requiredLevel}, LOCKED: ${isLockedStatus}`);
+
+        return {
+            locked: isLockedStatus,
+            req: requiredLevel,
+            skill: skillKey ? skillKey.replace('_', ' ') : 'SKILL',
+            userLevel,
+            skillKey
+        };
+    };
+
+    const { locked, req, skill: skillName, userLevel } = checkLocked();
 
     // Cálculos
     const qtyNum = Number(quantity) || 0;
@@ -33,7 +57,7 @@ const ActivityModal = ({ isOpen, onClose, item, type, gameState, onStart, onNavi
             if (itemId.includes('CLOTH')) return 'CLOTH';
             if (itemId.includes('EXTRACT')) return 'EXTRACT';
         } else if (type === 'CRAFTING') {
-            if (itemId.includes('PICKAXE') || itemId.includes('AXE') || itemId.includes('KNIFE') || itemId.includes('SICKLE') || itemId.includes('ROD')) return 'TOOLS';
+            if (itemId.includes('PICKAXE') || itemId.includes('AXE') || itemId.includes('KNIFE') || itemId.includes('SICKLE') || itemId.includes('ROD') || itemId.includes('POUCH')) return 'TOOLS';
 
             if (itemId.includes('SWORD') || itemId.includes('PLATE') || itemId.includes('SHIELD')) return 'WARRIOR';
             if (itemId.includes('BOW') || itemId.includes('LEATHER') || itemId.includes('TORCH')) return 'HUNTER';
@@ -289,23 +313,53 @@ const ActivityModal = ({ isOpen, onClose, item, type, gameState, onStart, onNavi
                                 </div>
                             </div>
 
-                            <button
-                                onClick={handleStart}
-                                style={{
+                            {locked ? (
+                                <div style={{
                                     width: '100%',
-                                    padding: '10px',
-                                    background: '#d4af37',
-                                    color: 'rgb(255, 255, 255)',
-                                    border: 'none',
-                                    borderRadius: '4px',
-                                    fontWeight: 'bold',
-                                    cursor: 'pointer',
-                                    fontSize: '0.85rem',
+                                    padding: '12px',
+                                    background: 'rgba(255, 68, 68, 0.1)',
+                                    color: '#ff4444',
+                                    border: '1px solid rgba(255, 68, 68, 0.3)',
+                                    borderRadius: '8px',
+                                    textAlign: 'center',
+                                    fontSize: '0.8rem',
+                                    fontWeight: '900',
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    gap: '6px',
+                                    letterSpacing: '1px',
                                     textTransform: 'uppercase'
-                                }}
-                            >
-                                START ACTIVITY ({formatDuration(totalDuration)})
-                            </button>
+                                }}>
+                                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
+                                        <Lock size={16} />
+                                        <span>{skillName} LV {req} REQUIRED</span>
+                                    </div>
+                                    <div style={{ opacity: 0.5, fontSize: '0.65rem' }}>
+                                        CURRENT LV: {userLevel}
+                                    </div>
+                                </div>
+                            ) : (
+                                <button
+                                    onClick={handleStart}
+                                    style={{
+                                        width: '100%',
+                                        padding: '12px',
+                                        background: '#d4af37',
+                                        color: '#000',
+                                        border: 'none',
+                                        borderRadius: '8px',
+                                        fontWeight: '900',
+                                        cursor: 'pointer',
+                                        fontSize: '0.85rem',
+                                        textTransform: 'uppercase',
+                                        letterSpacing: '1.5px',
+                                        boxShadow: '0 4px 15px rgba(212, 175, 55, 0.2)',
+                                        transition: 'all 0.2s ease'
+                                    }}
+                                >
+                                    START ACTIVITY ({formatDuration(totalDuration)})
+                                </button>
+                            )}
                         </motion.div>
                     </div>
                 )}
@@ -334,22 +388,44 @@ const ActivityModal = ({ isOpen, onClose, item, type, gameState, onStart, onNavi
 
 
         // Qualidades baseadas no QUALITIES real do shared/items.js
+        // Qualidades baseadas no QUALITIES real do shared/items.js
         const qualityBonus = stats.globals?.qualityChance || 0;
         const mult = 1 + (qualityBonus / 100);
 
+        const BASE_QUALITY_CHANCES = {
+            1: { q4: 1.40, q3: 9.80, q2: 14.40, q1: 30.00 },
+            2: { q4: 1.25, q3: 8.76, q2: 13.30, q1: 28.89 },
+            3: { q4: 1.10, q3: 7.72, q2: 12.20, q1: 27.78 },
+            4: { q4: 0.95, q3: 6.68, q2: 11.10, q1: 26.67 },
+            5: { q4: 0.80, q3: 5.64, q2: 10.00, q1: 25.56 },
+            6: { q4: 0.65, q3: 4.61, q2: 8.90, q1: 24.44 },
+            7: { q4: 0.50, q3: 3.57, q2: 7.80, q1: 23.33 },
+            8: { q4: 0.35, q3: 2.53, q2: 6.70, q1: 22.22 },
+            9: { q4: 0.20, q3: 1.49, q2: 5.60, q1: 21.11 },
+            10: { q4: 0.05, q3: 0.45, q2: 4.50, q1: 20.00 }
+        };
+
+        const tierStats = BASE_QUALITY_CHANCES[resolvedItem.tier] || BASE_QUALITY_CHANCES[1];
+
         const CRAFT_QUALITIES = Object.values(QUALITIES).map(q => {
-            let displayChance = q.chance * mult;
+            let displayChance = 0;
+
+            // Map generic IDs to our specific keys
+            if (q.id === 4) displayChance = tierStats.q4 * mult;
+            else if (q.id === 3) displayChance = tierStats.q3 * mult;
+            else if (q.id === 2) displayChance = tierStats.q2 * mult;
+            else if (q.id === 1) displayChance = tierStats.q1 * mult;
+
             if (q.id === 0) {
-                // Normal chance = 1 - sum of others boosted by mult
-                const otherSum = Object.values(QUALITIES)
-                    .filter(o => o.id > 0)
-                    .reduce((sum, o) => sum + (o.chance * mult), 0);
-                displayChance = Math.max(0, 1 - otherSum);
+                // Normal chance = 100 - sum of others
+                const otherSum = (tierStats.q4 + tierStats.q3 + tierStats.q2 + tierStats.q1) * mult;
+                displayChance = Math.max(0, 100 - otherSum);
             }
+
             return {
                 id: q.id,
                 name: q.name,
-                chance: (Math.min(100, displayChance * 100)).toFixed(1) + '%',
+                chance: displayChance.toFixed(2) + '%',
                 color: q.color,
                 ipBonus: q.ipBonus
             };
@@ -540,7 +616,7 @@ const ActivityModal = ({ isOpen, onClose, item, type, gameState, onStart, onNavi
                                     >
                                         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                                             <Box size={14} />
-                                            <span>Probabilities & Potential Results</span>
+                                            <span>PROBABILITIES (T{resolvedItem.tier}) & RESULTS</span>
                                         </div>
                                         <ChevronRight size={16} style={{ transform: showProbabilities ? 'rotate(90deg)' : 'rotate(0deg)', transition: '0.2s' }} />
                                     </button>
@@ -603,28 +679,57 @@ const ActivityModal = ({ isOpen, onClose, item, type, gameState, onStart, onNavi
                                 </div>
                             )}
 
-                            <button
-                                onClick={hasAllMaterials ? handleStart : null}
-                                disabled={!hasAllMaterials}
-                                style={{
+                            {locked ? (
+                                <div style={{
                                     width: '100%',
-                                    padding: '10px',
-                                    background: hasAllMaterials ? '#d4af37' : 'rgba(100, 100, 100, 0.3)',
-                                    color: hasAllMaterials ? 'rgb(255, 255, 255)' : 'rgb(102, 102, 102)',
-                                    border: 'none',
-                                    borderRadius: '4px',
-                                    fontWeight: 'bold',
-                                    cursor: hasAllMaterials ? 'pointer' : 'not-allowed',
-                                    fontSize: '0.85rem',
+                                    padding: '12px',
+                                    background: 'rgba(255, 68, 68, 0.1)',
+                                    color: '#ff4444',
+                                    border: '1px solid rgba(255, 68, 68, 0.3)',
+                                    borderRadius: '8px',
+                                    textAlign: 'center',
+                                    fontSize: '0.8rem',
+                                    fontWeight: '900',
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    gap: '6px',
+                                    letterSpacing: '1px',
                                     textTransform: 'uppercase'
-                                }}
-                            >
-                                {hasAllMaterials ? `START ACTIVITY (${formatDuration(totalDuration)})` : 'INSUFFICIENT MATERIALS'}
-                            </button>
+                                }}>
+                                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
+                                        <Lock size={16} />
+                                        <span>{skillName} LV {req} REQUIRED</span>
+                                    </div>
+                                    <div style={{ opacity: 0.5, fontSize: '0.65rem' }}>
+                                        CURRENT LV: {userLevel}
+                                    </div>
+                                </div>
+                            ) : (
+                                <button
+                                    onClick={hasAllMaterials ? handleStart : null}
+                                    disabled={!hasAllMaterials}
+                                    style={{
+                                        width: '100%',
+                                        padding: '12px',
+                                        background: hasAllMaterials ? '#d4af37' : 'rgba(100, 100, 100, 0.3)',
+                                        color: hasAllMaterials ? (hasAllMaterials ? '#000' : '#444') : 'rgb(102, 102, 102)',
+                                        border: 'none',
+                                        borderRadius: '8px',
+                                        fontWeight: '900',
+                                        cursor: hasAllMaterials ? 'pointer' : 'not-allowed',
+                                        fontSize: '0.85rem',
+                                        textTransform: 'uppercase',
+                                        letterSpacing: '1.5px',
+                                        boxShadow: hasAllMaterials ? '0 4px 15px rgba(212, 175, 55, 0.2)' : 'none'
+                                    }}
+                                >
+                                    {hasAllMaterials ? `START ACTIVITY (${formatDuration(totalDuration)})` : 'INSUFFICIENT MATERIALS'}
+                                </button>
+                            )}
                         </motion.div>
-                    </div>
+                    </div >
                 )}
-            </AnimatePresence>
+            </AnimatePresence >
         );
     }
 
@@ -751,23 +856,53 @@ const ActivityModal = ({ isOpen, onClose, item, type, gameState, onStart, onNavi
                                 </div>
                             </div>
 
-                            <button
-                                onClick={handleStart}
-                                style={{
+                            {locked ? (
+                                <div style={{
                                     width: '100%',
-                                    padding: '10px',
-                                    background: '#d4af37',
-                                    color: 'rgb(255, 255, 255)',
-                                    border: 'none',
-                                    borderRadius: '4px',
-                                    fontWeight: 'bold',
-                                    cursor: 'pointer',
-                                    fontSize: '0.85rem',
+                                    padding: '12px',
+                                    background: 'rgba(255, 68, 68, 0.1)',
+                                    color: '#ff4444',
+                                    border: '1px solid rgba(255, 68, 68, 0.3)',
+                                    borderRadius: '8px',
+                                    textAlign: 'center',
+                                    fontSize: '0.8rem',
+                                    fontWeight: '900',
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    gap: '6px',
+                                    letterSpacing: '1px',
                                     textTransform: 'uppercase'
-                                }}
-                            >
-                                START ACTIVITY ({formatDuration(totalDuration)})
-                            </button>
+                                }}>
+                                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
+                                        <Lock size={16} />
+                                        <span>{skillName} LV {req} REQUIRED</span>
+                                    </div>
+                                    <div style={{ opacity: 0.5, fontSize: '0.65rem' }}>
+                                        CURRENT LV: {userLevel}
+                                    </div>
+                                </div>
+                            ) : (
+                                <button
+                                    onClick={handleStart}
+                                    style={{
+                                        width: '100%',
+                                        padding: '12px',
+                                        background: '#d4af37',
+                                        color: '#000',
+                                        border: 'none',
+                                        borderRadius: '8px',
+                                        fontWeight: '900',
+                                        cursor: 'pointer',
+                                        fontSize: '0.85rem',
+                                        textTransform: 'uppercase',
+                                        letterSpacing: '1.5px',
+                                        boxShadow: '0 4px 15px rgba(212, 175, 55, 0.2)',
+                                        transition: 'all 0.2s ease'
+                                    }}
+                                >
+                                    START ACTIVITY ({formatDuration(totalDuration)})
+                                </button>
+                            )}
                         </motion.div>
                     </div>
                 )}
@@ -950,39 +1085,66 @@ const ActivityModal = ({ isOpen, onClose, item, type, gameState, onStart, onNavi
                         </div>
 
                         {/* Action Buttons */}
-                        <button
-                            onClick={handleStart}
-                            style={{
+                        {locked ? (
+                            <div style={{
                                 width: '100%',
-                                padding: '16px',
-                                background: '#d4af37',
-                                color: '#000',
-                                border: 'none',
-                                borderRadius: '12px',
-                                fontSize: '0.9rem',
-                                fontWeight: '800',
-                                letterSpacing: '1px',
-                                cursor: 'pointer',
-                                transition: '0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
-                                textTransform: 'uppercase',
-                                boxShadow: '0 4px 15px rgba(212, 175, 55, 0.3)',
+                                padding: '12px',
+                                background: 'rgba(255, 68, 68, 0.1)',
+                                color: '#ff4444',
+                                border: '1px solid rgba(255, 68, 68, 0.3)',
+                                borderRadius: '8px',
+                                textAlign: 'center',
+                                fontSize: '0.8rem',
+                                fontWeight: '900',
                                 display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                gap: '10px'
-                            }}
-                            onMouseEnter={(e) => {
-                                e.currentTarget.style.transform = 'translateY(-2px)';
-                                e.currentTarget.style.boxShadow = '0 8px 25px rgba(212, 175, 55, 0.4)';
-                            }}
-                            onMouseLeave={(e) => {
-                                e.currentTarget.style.transform = 'translateY(0)';
-                                e.currentTarget.style.boxShadow = '0 4px 15px rgba(212, 175, 55, 0.3)';
-                            }}
-                        >
-                            <Target size={18} strokeWidth={3} />
-                            INICIAR ({finalTime}s)
-                        </button>
+                                flexDirection: 'column',
+                                gap: '6px',
+                                letterSpacing: '1px',
+                                textTransform: 'uppercase'
+                            }}>
+                                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
+                                    <Lock size={16} />
+                                    <span>{skillName} LV {req} REQUIRED</span>
+                                </div>
+                                <div style={{ opacity: 0.5, fontSize: '0.65rem' }}>
+                                    CURRENT LV: {userLevel}
+                                </div>
+                            </div>
+                        ) : (
+                            <button
+                                onClick={handleStart}
+                                style={{
+                                    width: '100%',
+                                    padding: '16px',
+                                    background: '#d4af37',
+                                    color: '#000',
+                                    border: 'none',
+                                    borderRadius: '12px',
+                                    fontSize: '0.9rem',
+                                    fontWeight: '800',
+                                    letterSpacing: '1px',
+                                    cursor: 'pointer',
+                                    transition: '0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+                                    textTransform: 'uppercase',
+                                    boxShadow: '0 4px 15px rgba(212, 175, 55, 0.3)',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    gap: '10px'
+                                }}
+                                onMouseEnter={(e) => {
+                                    e.currentTarget.style.transform = 'translateY(-2px)';
+                                    e.currentTarget.style.boxShadow = '0 8px 25px rgba(212, 175, 55, 0.4)';
+                                }}
+                                onMouseLeave={(e) => {
+                                    e.currentTarget.style.transform = 'translateY(0)';
+                                    e.currentTarget.style.boxShadow = '0 4px 15px rgba(212, 175, 55, 0.3)';
+                                }}
+                            >
+                                <Target size={18} strokeWidth={3} />
+                                INICIAR ({finalTime.toFixed(1)}s)
+                            </button>
+                        )}
 
                     </motion.div>
                 </div>

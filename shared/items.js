@@ -472,6 +472,7 @@ genGear('TOOLMAKER', 'AXE', 'TOOL_AXE', 'AXE', 'PLANK', { eff: 1 });
 genGear('TOOLMAKER', 'SKINNING_KNIFE', 'TOOL_KNIFE', 'SKINNING_KNIFE', 'LEATHER', { eff: 1 });
 genGear('TOOLMAKER', 'SICKLE', 'TOOL_SICKLE', 'SICKLE', 'CLOTH', { eff: 1 });
 genGear('TOOLMAKER', 'FISHING_ROD', 'TOOL_ROD', 'FISHING_ROD', 'PLANK', { eff: 1 });
+genGear('TOOLMAKER', 'POUCH', 'TOOL_POUCH', 'POUCH', 'LEATHER', { eff: 1 });
 
 
 export const ITEM_LOOKUP = {};
@@ -537,7 +538,7 @@ export const resolveItem = (itemId, overrideQuality = null) => {
     // Materials (WOOD, ORE, etc), Refined (PLANK, BAR, etc), and Consumables (FOOD) are always Normal.
     const equipmentTypes = [
         'WEAPON', 'OFF_HAND', 'ARMOR', 'HELMET', 'BOOTS', 'GLOVES', 'CAPE',
-        'TOOL', 'TOOL_AXE', 'TOOL_PICKAXE', 'TOOL_KNIFE', 'TOOL_SICKLE', 'TOOL_ROD'
+        'TOOL', 'TOOL_AXE', 'TOOL_PICKAXE', 'TOOL_KNIFE', 'TOOL_SICKLE', 'TOOL_ROD', 'TOOL_POUCH'
     ];
     const canHaveQuality = equipmentTypes.includes(baseItem.type);
 
@@ -624,4 +625,68 @@ export const calculateItemSellPrice = (item, itemId) => {
     if (!item) return 0;
     const tierPrices = { 1: 5, 2: 15, 3: 40, 4: 100, 5: 250, 6: 600, 7: 1500, 8: 4000, 9: 10000, 10: 25000 };
     return tierPrices[item.tier] || 5;
+};
+
+/**
+ * Centralized mapping of item ID + Action Type to Skill Key.
+ * Shared between Client and Server to ensure consistency.
+ */
+export const getSkillForItem = (itemId, actionType) => {
+    if (!itemId) return null;
+    const id = String(itemId).toUpperCase();
+    const type = String(actionType).toUpperCase();
+
+    if (type === 'GATHERING') {
+        if (id.includes('WOOD')) return 'LUMBERJACK';
+        if (id.includes('ORE')) return 'ORE_MINER';
+        if (id.includes('HIDE')) return 'ANIMAL_SKINNER';
+        if (id.includes('FIBER')) return 'FIBER_HARVESTER';
+        if (id.includes('FISH')) return 'FISHING';
+        if (id.includes('HERB')) return 'HERBALISM';
+    }
+
+    if (type === 'REFINING') {
+        if (id.includes('PLANK')) return 'PLANK_REFINER';
+        if (id.includes('BAR')) return 'METAL_BAR_REFINER';
+        if (id.includes('LEATHER')) return 'LEATHER_REFINER';
+        if (id.includes('CLOTH')) return 'CLOTH_REFINER';
+        if (id.includes('EXTRACT')) return 'DISTILLATION';
+    }
+
+    if (type === 'CRAFTING') {
+        // Tools & Pouches
+        if (id.includes('PICKAXE') || id.includes('AXE') || id.includes('KNIFE') || id.includes('SICKLE') || id.includes('ROD') || id.includes('POUCH')) {
+            return 'TOOL_CRAFTER';
+        }
+        // Warrior
+        if (id.includes('SWORD') || id.includes('PLATE') || id.includes('SHIELD') || id.includes('WARRIOR_CAPE')) {
+            return 'WARRIOR_CRAFTER';
+        }
+        // Hunter
+        if (id.includes('BOW') || (id.includes('LEATHER') && id.includes('ARMOR')) || id.includes('TORCH') || id.includes('HUNTER_CAPE')) {
+            return 'HUNTER_CRAFTER';
+        }
+        // Mage
+        if (id.includes('STAFF') || (id.includes('CLOTH') && id.includes('ARMOR')) || id.includes('TOME') || id.includes('MAGE_CAPE')) {
+            return 'MAGE_CRAFTER';
+        }
+        // General Capes fallback
+        if (id.includes('CAPE')) return 'WARRIOR_CRAFTER';
+        // Consumables
+        if (id.includes('FOOD')) return 'COOKING';
+        if (id.includes('POTION')) return 'ALCHEMY';
+    }
+
+    if (type === 'COOKING') return 'COOKING';
+
+    return null;
+};
+
+/**
+ * Returns the required skill level for a given tier.
+ */
+export const getLevelRequirement = (tier) => {
+    const t = parseInt(tier) || 1;
+    if (t <= 1) return 1;
+    return (t - 1) * 10;
 };
