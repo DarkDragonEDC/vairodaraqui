@@ -270,9 +270,23 @@ function App() {
             return;
           } else {
             console.error('Failed to auto-refresh session:', error);
-            // If refresh failed, the user might need to log in again
-            // Only sign out if the error is clearly "invalid refresh token" 
-            // but for now let's just let it fall through to the 5s timeout
+
+            // Critical Fix: If Refresh Token is invalid/missing, we MUST log out to break the loop.
+            const isFatalAuthError =
+              error?.message?.includes('Refresh Token Not Found') ||
+              error?.message?.includes('Invalid Refresh Token') ||
+              error?.code === '400';
+
+            if (isFatalAuthError) {
+              console.log('Fatal Auth Error - Forcing Logout');
+              await supabase.auth.signOut();
+              setSession(null);
+              setGameState(null);
+              setSelectedCharacter(null);
+              localStorage.removeItem('selectedCharacterId');
+              setSocket(null);
+              return;
+            }
           }
         }
       }
