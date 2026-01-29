@@ -388,8 +388,7 @@ for (const t of TIERS) {
         name: 'Dungeon Chest',
         tier: t,
         type: 'CONSUMABLE', // Or 'CONTAINER' if supported, but CONSUMABLE allows 'use_item'
-        desc: 'Contains random loot from the dungeon.',
-        icon: `/items/T${t}_CHEST.png` // Assuming icon naming convention
+        desc: 'Contains random loot from the dungeon.'
     };
 }
 
