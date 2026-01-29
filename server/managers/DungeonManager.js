@@ -230,18 +230,13 @@ export class DungeonManager {
         // Silver reward removed (now charged on entry)
         // char.state.silver = (char.state.silver || 0) + rewards.silver;
 
-        // Crest (Chance) - Boss drop only roughly, but keeping existing logic if any
-        if (rewards.crest && Math.random() <= rewards.crest.chance) {
-            this.gameManager.inventoryManager.addItemToInventory(char, rewards.crest.id, 1);
-            loot.push(rewards.crest.id);
-        }
+        // Guaranteed Chest Drop
+        const chestId = `T${config.tier}_DUNGEON_CHEST`;
+        this.gameManager.inventoryManager.addItemToInventory(char, chestId, 1);
+        loot.push(`1x ${chestId}`);
 
-        // Resource
-        if (rewards.resource && Math.random() <= rewards.resource.chance) {
-            const qty = Math.floor(Math.random() * (rewards.resource.max - rewards.resource.min + 1)) + rewards.resource.min;
-            this.gameManager.inventoryManager.addItemToInventory(char, rewards.resource.id, qty);
-            loot.push(`${qty}x ${rewards.resource.id}`);
-        }
+        // Removed old random drops (Crest/Resource) in favor of the Chest
+
 
         // Track Persistent Stats (Dungeons)
         if (!char.state.stats) char.state.stats = {};

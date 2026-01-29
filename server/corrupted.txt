@@ -1,0 +1,9 @@
+﻿[dotenv@17.2.3] injecting env (3) from .env -- tip: ÔÜÖ´©Å  specify custom .env file path with { path: '/custom/path/.env' }
+Checking for corrupted characters...
+Scanned 56 characters.
+ÔØî Found 1 corrupted characters:
+
+- Name: "excluir1" (ID: 776f6c2a-4aa0-48f7-afeb-9b1d4432a3cd)
+  Issues: State is NULL
+  User ID: 776f6c2a-4aa0-48f7-afeb-9b1d4432a3cd
+

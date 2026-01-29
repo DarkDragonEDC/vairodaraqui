@@ -61,7 +61,7 @@ export const ITEMS = {
         ALCHEMY_LAB: { POTION: {} }
     },
     MAPS: {},
-    SPECIAL: { CREST: {} }
+    SPECIAL: { CREST: {}, CHEST: {} }
 };
 
 // --- GENERATOR FUNCTIONS ---
@@ -381,6 +381,18 @@ for (const t of TIERS) {
     ITEMS.SPECIAL.CREST[t] = { id: `T${t}_CREST`, name: 'Boss Crest', tier: t, type: 'CRAFTING_MATERIAL' };
 }
 
+// Generate Dungeon Chests
+for (const t of TIERS) {
+    ITEMS.SPECIAL.CHEST[t] = {
+        id: `T${t}_DUNGEON_CHEST`,
+        name: 'Dungeon Chest',
+        tier: t,
+        type: 'CONSUMABLE', // Or 'CONTAINER' if supported, but CONSUMABLE allows 'use_item'
+        desc: 'Contains random loot from the dungeon.',
+        icon: `/items/T${t}_CHEST.png` // Assuming icon naming convention
+    };
+}
+
 // Helper for Gear Generation
 const genGear = (category, slot, type, idSuffix, matType, statMultipliers = {}) => {
     for (const t of TIERS) {
@@ -659,15 +671,16 @@ export const getSkillForItem = (itemId, actionType) => {
             return 'TOOL_CRAFTER';
         }
         // Warrior
+        // Warrior - Includes PLATE (Armor, Boots, Helm, Gloves), SWORD, SHIELD, CAPE
         if (id.includes('SWORD') || id.includes('PLATE') || id.includes('SHIELD') || id.includes('WARRIOR_CAPE')) {
             return 'WARRIOR_CRAFTER';
         }
-        // Hunter
-        if (id.includes('BOW') || (id.includes('LEATHER') && id.includes('ARMOR')) || id.includes('TORCH') || id.includes('HUNTER_CAPE')) {
+        // Hunter - Includes LEATHER (Armor, Boots, Helm, Gloves), BOW, TORCH
+        if (id.includes('BOW') || id.includes('LEATHER') || id.includes('TORCH') || id.includes('HUNTER_CAPE')) {
             return 'HUNTER_CRAFTER';
         }
-        // Mage
-        if (id.includes('STAFF') || (id.includes('CLOTH') && id.includes('ARMOR')) || id.includes('TOME') || id.includes('MAGE_CAPE')) {
+        // Mage - Includes CLOTH (Armor, Boots, Helm, Gloves), STAFF, TOME
+        if (id.includes('STAFF') || id.includes('CLOTH') || id.includes('TOME') || id.includes('MAGE_CAPE')) {
             return 'MAGE_CRAFTER';
         }
         // General Capes fallback

@@ -465,7 +465,7 @@ Multiplier: ~0.16 per Level (Max 100 Total)`;
                                         <Info size={10} color="#777" />
                                     </div>
                                 </div>
-                                <div style={{ fontSize: '1.6rem', fontWeight: '900', color: stat.color }}>{Number(stat.value).toFixed(2)}</div>
+                                <div style={{ fontSize: '1.6rem', fontWeight: '900', color: stat.color }}>{parseFloat(Number(stat.value).toFixed(2))}</div>
                             </div>
                         ))}
                     </div>

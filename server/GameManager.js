@@ -71,7 +71,10 @@ export class GameManager {
         if (error && error.code !== 'PGRST116') throw error;
 
 
-        if (data && data.state) {
+
+        if (data) {
+            if (!data.state) data.state = {};
+
             let updated = false;
 
             if (!data.state.skills) {
@@ -1003,6 +1006,7 @@ export class GameManager {
         if (error) return [];
 
         return data
+            .filter(c => c && c.state)
             .sort((a, b) => {
                 const getVal = (char, key) => {
                     if (key === 'SILVER') return char.state.silver || 0;

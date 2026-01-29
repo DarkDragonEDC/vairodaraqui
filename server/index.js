@@ -479,8 +479,19 @@ io.on('connection', (socket) => {
 
     socket.on('send_message', async ({ content }) => {
         try {
+            // Cooldown Check (10s)
+            const lastChat = socket.data.lastChatTime || 0;
+            const now = Date.now();
+            if (now - lastChat < 10000) {
+                const remaining = Math.ceil((10000 - (now - lastChat)) / 1000);
+                socket.emit('error', { message: `Chat cooldown: Wait ${remaining}s` });
+                return;
+            }
+
             const char = await gameManager.getCharacter(socket.user.id, socket.data.characterId);
             if (!char) return;
+
+            socket.data.lastChatTime = now;
 
             // Enforce character limit
             if (content.length > 100) {

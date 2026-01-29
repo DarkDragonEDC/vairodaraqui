@@ -1,4 +1,4 @@
-import { ITEMS, getSkillForItem, getLevelRequirement, ITEM_LOOKUP } from '../../shared/items.js';
+import { ITEMS, getSkillForItem, getLevelRequirement, ITEM_LOOKUP, QUALITIES } from '../../shared/items.js';
 
 export class ActivityManager {
     constructor(gameManager) {
@@ -235,7 +235,6 @@ export class ActivityManager {
             else if (rand > t1) quality = 1;
 
             if (quality > 0) {
-                const { resolveItem, ITEM_LOOKUP, getSkillForItem, getLevelRequirement } = require('../../shared/items.js');
                 finalItemId += QUALITIES[quality].suffix;
                 qualityName = `[${QUALITIES[quality].name}] `;
             }
