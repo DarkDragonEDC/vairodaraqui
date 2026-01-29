@@ -30,7 +30,8 @@ const CATEGORIES = {
             { key: 'ORE_MINER', label: 'Mining' },
             { key: 'ANIMAL_SKINNER', label: 'Skinning' },
             { key: 'FIBER_HARVESTER', label: 'Harvesting' },
-            { key: 'FISHING', label: 'Fishing' }
+            { key: 'FISHING', label: 'Fishing' },
+            { key: 'HERBALISM', label: 'Herbalism' }
         ]
     },
     REFINING: {
@@ -39,7 +40,8 @@ const CATEGORIES = {
             { key: 'PLANK_REFINER', label: 'Plank Refining' },
             { key: 'METAL_BAR_REFINER', label: 'Smelting' },
             { key: 'LEATHER_REFINER', label: 'Leather Refining' },
-            { key: 'CLOTH_REFINER', label: 'Cloth Refining' }
+            { key: 'CLOTH_REFINER', label: 'Cloth Refining' },
+            { key: 'DISTILLATION', label: 'Distillation' }
         ]
     },
     CRAFTING: {
@@ -49,7 +51,8 @@ const CATEGORIES = {
             { key: 'HUNTER_CRAFTER', label: 'Hunter' },
             { key: 'MAGE_CRAFTER', label: 'Mage' },
             { key: 'TOOL_CRAFTER', label: 'Toolmaker' },
-            { key: 'COOKING', label: 'Cooking' }
+            { key: 'COOKING', label: 'Cooking' },
+            { key: 'ALCHEMY', label: 'Alchemy' }
         ]
     }
 };
@@ -63,12 +66,9 @@ const RankingPanel = ({ gameState, isMobile, socket }) => {
     useEffect(() => {
         if (!socket) return;
 
-        // Determine which server-side leaderboard type to fetch
-        let type = 'COMBAT';
-
-        if (mainCategory === 'COMBAT') type = 'COMBAT';
-        else if (mainCategory === 'DUNGEON') type = 'DUNGEON';
-        else type = 'COMBAT';
+        // Use subCategory as the primary sort key (e.g., 'FISHING', 'COMBAT', 'SILVER')
+        // mainCategory is just for UI grouping now
+        const type = subCategory;
 
         setLoading(true);
         socket.emit('get_leaderboard', type);
@@ -81,7 +81,7 @@ const RankingPanel = ({ gameState, isMobile, socket }) => {
 
         socket.on('leaderboard_update', handleLeaderboard);
         return () => socket.off('leaderboard_update', handleLeaderboard);
-    }, [socket, mainCategory]);
+    }, [socket, mainCategory, subCategory]);
 
     const handleMainCategoryChange = (key) => {
         setMainCategory(key);
@@ -97,17 +97,7 @@ const RankingPanel = ({ gameState, isMobile, socket }) => {
             let subValue = 0;
             let label = 'LEVEL';
 
-            if (mainCategory === 'COMBAT') {
-                const skill = state.skills?.COMBAT || { level: 1, xp: 0 };
-                value = skill.level;
-                subValue = skill.xp;
-                label = 'COMBAT LEVEL';
-            } else if (mainCategory === 'DUNGEON') {
-                const skill = state.skills?.DUNGEONEERING || { level: 1, xp: 0 };
-                value = skill.level;
-                subValue = skill.xp;
-                label = 'DUNGEONEERING LEVEL';
-            } else if (subCategory === 'SILVER') {
+            if (subCategory === 'SILVER') {
                 value = state.silver || 0;
                 label = 'SILVER';
             } else if (subCategory === 'LEVEL') {
@@ -116,10 +106,11 @@ const RankingPanel = ({ gameState, isMobile, socket }) => {
                 subValue = Object.values(skills).reduce((acc, s) => acc + (s.xp || 0), 0);
                 label = 'TOTAL LEVEL';
             } else {
-                const skill = (state.skills || {})[subCategory];
-                value = skill ? skill.level : 1;
-                subValue = skill ? skill.xp : 0;
-                label = 'SKILL LEVEL';
+                // Generic Skill Handler
+                const skill = (state.skills || {})[subCategory] || { level: 1, xp: 0 };
+                value = skill.level;
+                subValue = skill.xp;
+                label = subCategory.replace(/_/g, ' ') + ' LEVEL';
             }
 
             return { ...char, value, subValue, label };

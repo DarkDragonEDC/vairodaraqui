@@ -15,6 +15,23 @@ const POTION_METADATA = {
 const BuffsDrawer = ({ gameState, isMobile }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [now, setNow] = useState(Date.now());
+    const drawerRef = React.useRef(null);
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (drawerRef.current && !drawerRef.current.contains(event.target)) {
+                setIsOpen(false);
+            }
+        };
+
+        if (isOpen) {
+            document.addEventListener('mousedown', handleClickOutside);
+        }
+
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [isOpen]);
 
     useEffect(() => {
         if (!isOpen) return;
@@ -42,7 +59,9 @@ const BuffsDrawer = ({ gameState, isMobile }) => {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'flex-end'
-        }}>
+        }}
+            ref={drawerRef}
+        >
             {/* Drawer Content */}
             <AnimatePresence>
                 {isOpen && (
@@ -65,11 +84,12 @@ const BuffsDrawer = ({ gameState, isMobile }) => {
                         }}
                     >
                         <div style={{ fontSize: '0.65rem', color: '#888', fontWeight: '900', letterSpacing: '1px', marginBottom: '4px', borderBottom: '1px solid rgba(255,255,255,0.05)', paddingBottom: '4px' }}>
-                            POTION EFFECTS
+                            ACTIVE BONUSES
                         </div>
 
                         {Object.entries(POTION_METADATA).map(([key, meta]) => {
-                            const active = activeBuffs[key];
+                            const rawActive = activeBuffs[key];
+                            const active = (rawActive && rawActive.expiresAt > now) ? rawActive : null;
                             const timeRemaining = active ? active.expiresAt - now : 0;
 
                             // Pegar valor do bônus total para o badge principal
@@ -88,10 +108,15 @@ const BuffsDrawer = ({ gameState, isMobile }) => {
                             // Calcular bônus base (INT ou outros)
                             // XP e Silver agora usam 0.5% por INT
                             let baseBonus = totalBonus - potionBonusPercent;
+
+                            // Visual Fix: If Base Bonus is effectively 0 (or close to it), show 0 to avoid "-1%" noise
+                            if (Math.abs(baseBonus) < 1) baseBonus = 0;
+                            // Also if Total is 0 but Potion is active, it means stats aren't synced yet.
+                            // We can clamp to avoid negative numbers if we know INT can't be negative.
+                            if (baseBonus < 0) baseBonus = 0;
+
                             if (key === 'GLOBAL_XP' || key === 'GOLD') {
-                                // Se quisermos ser super precisos e mostrar o valor real do INT:
-                                // baseBonus = Math.floor(stats.int * 0.5); 
-                                // Mas 'totalBonus - potionBonusPercent' já deve dar isso se não houver outros buffs.
+                                // For these, we know INT is the source
                             }
 
                             return (
@@ -117,7 +142,11 @@ const BuffsDrawer = ({ gameState, isMobile }) => {
 
                                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '12px' }}>
                                         <div style={{ fontSize: '0.55rem', color: '#555', fontWeight: 'bold' }}>
-                                            POTION: <span style={{ color: active ? '#d4af37' : 'inherit' }}>+{potionBonusPercent}%</span> | INT: +{baseBonus.toFixed(0)}%
+                                            {active && (
+                                                <>POTION: <span style={{ color: '#d4af37' }}>+{potionBonusPercent}%</span> | </>
+                                            )}
+                                            {/* INT ou Base Bonus. Se for muito óbvio que é só INT, talvez nem precise do label, mas vamos manter o padrão. */}
+                                            INT: +{baseBonus.toFixed(0)}%
                                         </div>
                                         {active && (
                                             <span style={{ fontSize: '0.55rem', color: '#d4af37', display: 'flex', alignItems: 'center', gap: '2px' }}>

@@ -341,7 +341,7 @@ export class GameManager {
         let dungeonsTotalCleared = 0;
         let died = false;
 
-        console.log(`[DUNGEON-BATCH] Starting batch for ${char.name}, ${seconds}s available.`);
+        // console.log(`[DUNGEON-BATCH] Starting batch for ${char.name}, ${seconds}s available.`);
 
         while (remainingSeconds >= 5 && char.state.dungeon && !died) {
             const dungeonState = char.state.dungeon;
@@ -541,9 +541,9 @@ export class GameManager {
                             case 'CRAFTING': result = await this.activityManager.processCrafting(char, item); break;
                         }
                         if (result && result.error) {
-                            console.log(`[ProcessTick] Activity Failed for ${char.name}: ${result.error}`);
+                            // console.log(`[ProcessTick] Activity Failed for ${char.name}: ${result.error}`);
                         } else if (result) {
-                            console.log(`[ProcessTick] Activity Success for ${char.name}: ${item.name} (${result.skillKey})`);
+                            // console.log(`[ProcessTick] Activity Success for ${char.name}: ${item.name} (${result.skillKey})`);
                         }
                     } catch (err) {
                         console.error(`[ProcessTick] Activity Error for ${char.name} (${type}, ${item_id}):`, err);
@@ -810,7 +810,7 @@ export class GameManager {
     }
 
     addActionSummaryNotification(char, actionType, stats) {
-        console.log(`[DEBUG] addActionSummaryNotification for ${char.name}. Type: ${actionType}`);
+        // console.log(`[DEBUG] addActionSummaryNotification for ${char.name}. Type: ${actionType}`);
         // stats can be offlineReport or a simple gains object
         // { itemsGained: {}, xpGained: {}, totalTime: seconds, kills?: number, silverGained?: number, elapsedTime?: number }
         const { itemsGained, xpGained, totalTime, kills, silverGained, elapsedTime } = stats;
@@ -839,7 +839,7 @@ export class GameManager {
         if (itemsStr) message += `Gained: ${itemsStr}.`;
         else message += "No items gained.";
 
-        console.log(`[NOTIF] Adding system notif for ${char.name}: ${message}`);
+        // console.log(`[NOTIF] Adding system notif for ${char.name}: ${message}`);
         this.addNotification(char, 'SYSTEM', message);
     }
 
@@ -884,51 +884,35 @@ export class GameManager {
     }
 
     async getLeaderboard(type = 'COMBAT') {
-        // type: COMBAT | DUNGEON
-
-        // Note: Sort logic requires Supabase Indexing or Client-side Sort if few users
-        // For scalability, index on: (state->'stats'->>'totalKills')::int
-
         let query = this.supabase
             .from('characters')
             .select('id, name, state')
-            .or('is_admin.is.null,is_admin.eq.false') // Exclude characters where is_admin is true
+            .or('is_admin.is.null,is_admin.eq.false'); // Exclude admins
 
-        if (type === 'COMBAT') {
-            // Sort by state->stats->totalKills DESC
-            // Note: Supabase JS limit handling via order() arg
-            // raw SQL equivalent: ORDER BY (state->'stats'->>'totalKills')::int DESC
+        const { data, error } = await query.limit(100);
+        if (error) return [];
 
-            // Temporary JS Sort for simplicity (assumes < 1000 users)
-            // Ideally should be done in DB query
-            const { data, error } = await query.limit(100);
-            if (error) return [];
+        return data
+            .sort((a, b) => {
+                const getVal = (char, key) => {
+                    if (key === 'SILVER') return char.state.silver || 0;
+                    if (key === 'LEVEL') {
+                        // Total Level
+                        return Object.values(char.state.skills || {}).reduce((acc, s) => acc + (s.level || 1), 0);
+                    }
+                    // Specific Skill
+                    const skill = char.state.skills?.[key] || { level: 1, xp: 0 };
+                    // Return a composite value for sorting: Level * 1Billion + XP
+                    // This ensures Level is primary, XP is secondary
+                    return (skill.level * 1000000000) + skill.xp;
+                };
 
-            return data
-                .sort((a, b) => {
-                    const skillA = a.state?.skills?.COMBAT || { level: 1, xp: 0 };
-                    const skillB = b.state?.skills?.COMBAT || { level: 1, xp: 0 };
-                    if (skillB.level !== skillA.level) return skillB.level - skillA.level;
-                    return skillB.xp - skillA.xp;
-                })
-                .slice(0, 50);
+                const valA = getVal(a, type);
+                const valB = getVal(b, type);
 
-        } else if (type === 'DUNGEON') {
-            // Sort by state->stats->dungeonsCleared DESC
-            const { data, error } = await query.limit(100);
-            if (error) return [];
-
-            return data
-                .sort((a, b) => {
-                    const skillA = a.state?.skills?.DUNGEONEERING || { level: 1, xp: 0 };
-                    const skillB = b.state?.skills?.DUNGEONEERING || { level: 1, xp: 0 };
-                    if (skillB.level !== skillA.level) return skillB.level - skillA.level;
-                    return skillB.xp - skillA.xp;
-                })
-                .slice(0, 50);
-        }
-
-        return [];
+                return valB - valA; // DESC
+            })
+            .slice(0, 50);
     }
 
     // Delegation Methods
@@ -957,7 +941,7 @@ export class GameManager {
         const itemData = this.inventoryManager.resolveItem(itemId);
         const safeQty = Math.max(1, parseInt(quantity) || 1);
 
-        console.log(`[DEBUG-POTION] Consuming: ${safeQty}x ${itemId}. Found data:`, itemData?.id, itemData?.effect);
+        // console.log(`[DEBUG-POTION] Consuming: ${safeQty}x ${itemId}. Found data:`, itemData?.id, itemData?.effect);
 
         if (!itemData) throw new Error("Item not found");
 
@@ -1001,7 +985,7 @@ export class GameManager {
             // Case 1: Same value (allow small float error) -> ADD time
             if (Math.abs(existing.value - value) < 0.0001) {
                 existing.expiresAt += durationMs;
-                console.log(`[DEBUG-POTION] Stacking ${type}: Added ${durationSeconds}s. New expiry: ${new Date(existing.expiresAt).toLocaleTimeString()}`);
+                // console.log(`[DEBUG-POTION] Stacking ${type}: Added ${durationSeconds}s. New expiry: ${new Date(existing.expiresAt).toLocaleTimeString()}`);
             }
             // Case 2: New value is BETTER -> Overwrite (Reset time to new potion)
             else if (value > existing.value) {
@@ -1009,11 +993,11 @@ export class GameManager {
                     value: value,
                     expiresAt: now + durationMs
                 };
-                console.log(`[DEBUG-POTION] Upgraded ${type} value from ${existing.value} to ${value}. Resetting time.`);
+                // console.log(`[DEBUG-POTION] Upgraded ${type} value from ${existing.value} to ${value}. Resetting time.`);
             }
             // Case 3: New value is WORSE -> Ignore (we have a better one active)
             else {
-                console.log(`[DEBUG-POTION] Ignored weaker potion for ${type} (Active: ${existing.value}, New: ${value})`);
+                // console.log(`[DEBUG-POTION] Ignored weaker potion for ${type} (Active: ${existing.value}, New: ${value})`);
             }
         } else {
             // Case 4: No existing or expired -> Apply fresh
@@ -1021,7 +1005,7 @@ export class GameManager {
                 value: value,
                 expiresAt: now + durationMs
             };
-            console.log(`[DEBUG-POTION] Applied fresh ${type} buff: ${value} for ${durationSeconds}s`);
+            // console.log(`[DEBUG-POTION] Applied fresh ${type} buff: ${value} for ${durationSeconds}s`);
         }
     }
 }

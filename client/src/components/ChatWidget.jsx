@@ -6,8 +6,19 @@ const ChatWidget = ({ socket, user, characterName, isMobile }) => {
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
     const [unreadCount, setUnreadCount] = useState(0);
+    const [cooldown, setCooldown] = useState(0);
     const messagesEndRef = useRef(null);
     const isOpenRef = useRef(isOpen);
+
+    useEffect(() => {
+        let interval;
+        if (cooldown > 0) {
+            interval = setInterval(() => {
+                setCooldown((prev) => prev - 1);
+            }, 1000);
+        }
+        return () => clearInterval(interval);
+    }, [cooldown]);
 
     useEffect(() => {
         isOpenRef.current = isOpen;
@@ -50,10 +61,11 @@ const ChatWidget = ({ socket, user, characterName, isMobile }) => {
 
     const handleSend = (e) => {
         e.preventDefault();
-        if (!message.trim() || !socket) return;
+        if (!message.trim() || !socket || cooldown > 0) return;
 
         socket.emit('send_message', { content: message.trim() });
         setMessage('');
+        setCooldown(10);
     };
 
     if (!isOpen) {
@@ -229,21 +241,23 @@ const ChatWidget = ({ socket, user, characterName, isMobile }) => {
                     />
                     <button
                         type="submit"
-                        disabled={!message.trim()}
+                        disabled={!message.trim() || cooldown > 0}
                         style={{
-                            background: message.trim() ? '#d4af37' : 'rgba(212, 175, 55, 0.2)',
+                            background: (message.trim() && cooldown === 0) ? '#d4af37' : 'rgba(212, 175, 55, 0.2)',
                             border: 'none',
                             borderRadius: '6px',
                             width: '40px',
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',
-                            cursor: message.trim() ? 'pointer' : 'default',
+                            cursor: (message.trim() && cooldown === 0) ? 'pointer' : 'default',
                             color: '#000',
-                            transition: '0.2s'
+                            transition: '0.2s',
+                            fontSize: '0.8rem',
+                            fontWeight: 'bold'
                         }}
                     >
-                        <Send size={18} />
+                        {cooldown > 0 ? cooldown : <Send size={18} />}
                     </button>
                 </form>
             </div>

@@ -69,7 +69,7 @@ export class InventoryManager {
         const item = this.resolveItem(itemId);
         if (!item) throw new Error("Item not found");
 
-        const validSlots = ['WEAPON', 'ARMOR', 'HELMET', 'BOOTS', 'GLOVES', 'CAPE', 'OFF_HAND', 'TOOL', 'TOOL_AXE', 'TOOL_PICKAXE', 'TOOL_KNIFE', 'TOOL_SICKLE', 'TOOL_ROD', 'FOOD'];
+        const validSlots = ['WEAPON', 'ARMOR', 'HELMET', 'BOOTS', 'GLOVES', 'CAPE', 'OFF_HAND', 'TOOL', 'TOOL_AXE', 'TOOL_PICKAXE', 'TOOL_KNIFE', 'TOOL_SICKLE', 'TOOL_ROD', 'TOOL_POUCH', 'FOOD'];
         if (!validSlots.includes(item.type)) {
             throw new Error("This item cannot be equipped");
         }
@@ -93,7 +93,9 @@ export class InventoryManager {
             case 'TOOL_PICKAXE': slotName = 'tool_pickaxe'; break;
             case 'TOOL_KNIFE': slotName = 'tool_knife'; break;
             case 'TOOL_SICKLE': slotName = 'tool_sickle'; break;
+            case 'TOOL_SICKLE': slotName = 'tool_sickle'; break;
             case 'TOOL_ROD': slotName = 'tool_rod'; break;
+            case 'TOOL_POUCH': slotName = 'tool_pouch'; break;
             case 'FOOD': slotName = 'food'; break;
             default: throw new Error("Unknown slot type");
         }
@@ -309,39 +311,47 @@ export class InventoryManager {
         // 5. Active Buffs Process
         if (char.state.active_buffs) {
             const now = Date.now();
-            const activeCount = Object.keys(char.state.active_buffs).length;
+            const activeBuffs = typeof char.state.active_buffs === 'string'
+                ? JSON.parse(char.state.active_buffs)
+                : char.state.active_buffs;
 
-            Object.entries(char.state.active_buffs).forEach(([type, buff]) => {
-                const remaining = (buff.expiresAt - now) / 1000;
-                if (buff.expiresAt > now) {
-                    console.log(`[DEBUG-BUFFS] Active: ${type}, val: ${buff.value}, rem: ${remaining.toFixed(0)}s`);
-                    const valPc = buff.value * 100; // 0.05 -> 5
+            if (activeBuffs) {
+                Object.entries(activeBuffs).forEach(([type, buff]) => {
+                    // Ensure numeric types
+                    const expiresAt = Number(buff.expiresAt);
+                    const value = Number(buff.value);
 
-                    switch (type) {
-                        case 'GLOBAL_XP':
-                            globals.xpYield += valPc;
-                            break;
-                        case 'GOLD':
-                            globals.silverYield += valPc;
-                            break;
-                        case 'DROP':
-                            globals.dropRate += valPc;
-                            break;
-                        case 'QUALITY':
-                            globals.qualityChance += valPc;
-                            break;
-                        case 'GATHER_XP':
-                            xpBonus.GATHERING += valPc;
-                            break;
-                        case 'REFINE_XP':
-                            xpBonus.REFINING += valPc;
-                            break;
-                        case 'CRAFT_XP':
-                            xpBonus.CRAFTING += valPc;
-                            break;
+                    if (expiresAt > now) {
+                        const remaining = (expiresAt - now) / 1000;
+                        // console.log(`[DEBUG-BUFFS] Applying: ${type}, val: ${value}, rem: ${remaining.toFixed(0)}s`);
+                        const valPc = value * 100; // 0.05 -> 5
+
+                        switch (type) {
+                            case 'GLOBAL_XP':
+                                globals.xpYield += valPc;
+                                break;
+                            case 'GOLD':
+                                globals.silverYield += valPc;
+                                break;
+                            case 'DROP':
+                                globals.dropRate += valPc;
+                                break;
+                            case 'QUALITY':
+                                globals.qualityChance += valPc;
+                                break;
+                            case 'GATHER_XP':
+                                xpBonus.GATHERING += valPc;
+                                break;
+                            case 'REFINE_XP':
+                                xpBonus.REFINING += valPc;
+                                break;
+                            case 'CRAFT_XP':
+                                xpBonus.CRAFTING += valPc;
+                                break;
+                        }
                     }
-                }
-            });
+                });
+            }
         }
 
         // Apply Global to all specific categories (if we had any global efficiency sources, they would go here)

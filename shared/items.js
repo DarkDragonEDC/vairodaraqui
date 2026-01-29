@@ -283,7 +283,7 @@ const genPotions = () => {
             ITEMS.GEAR.ALCHEMY_LAB[key][t] = potionItem;
         }
     }
-    console.log(`[DEBUG-ITEMS] Generated ${Object.keys(POTION_TYPES).length} potion types across ${TIERS.length} tiers.`);
+    // console.log(`[DEBUG-ITEMS] Generated ${Object.keys(POTION_TYPES).length} potion types across ${TIERS.length} tiers.`);
 };
 genPotions();
 

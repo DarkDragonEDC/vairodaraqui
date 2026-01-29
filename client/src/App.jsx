@@ -226,7 +226,7 @@ function App() {
     if (socket?.connected) return;
 
     const socketUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000';
-    console.log('[DEBUG-CLIENT] Connecting to socket URL:', socketUrl);
+    // console.log('[DEBUG-CLIENT] Connecting to socket URL:', socketUrl);
     const newSocket = io(socketUrl, {
       auth: { token },
       transports: ['websocket']
@@ -285,7 +285,7 @@ function App() {
     });
 
     newSocket.on('status_update', (status) => {
-      console.log('[DEBUG-CLIENT] status_update received. Notifications:', status.state?.notifications?.length);
+      // console.log('[DEBUG-CLIENT] status_update received. Notifications:', status.state?.notifications?.length);
       const now = Date.now();
       const serverTime = new Date(status.serverTime || now).getTime();
       clockOffset.current = now - serverTime;
@@ -366,7 +366,7 @@ function App() {
     const requiredLevel = getLevelRequirement(tier);
 
     if (tier > 1) {
-      console.log(`[DEBUG-LOCK-LIST] ${item.id}: Tier=${tier}, Skill=${skillKey}, UserLv=${userLevel}, ReqLv=${requiredLevel}, LOCKED=${userLevel < requiredLevel}`);
+      // console.log(`[DEBUG-LOCK-LIST] ${item.id}: Tier=${tier}, Skill=${skillKey}, UserLv=${userLevel}, ReqLv=${requiredLevel}, LOCKED=${userLevel < requiredLevel}`);
     }
 
     return userLevel < requiredLevel;
@@ -545,7 +545,6 @@ function App() {
               <div style={{ padding: isMobile ? '20px' : '30px 40px', borderBottom: '1px solid var(--border)' }}>
                 <h2 style={{ margin: 0, color: '#fff', fontSize: '1.2rem', fontWeight: '900', letterSpacing: '2px' }}>
                   {activeCategory} {isGathering ? 'GATHERING' : 'REFINING'}
-                  {(activeCategory.includes('HERB') || activeCategory.includes('EXTRACT')) && <span style={{ fontSize: '0.6rem', color: '#ff4444', marginLeft: '10px', verticalAlign: 'middle', background: 'rgba(255, 68, 68, 0.1)', padding: '2px 6px', borderRadius: '4px', border: '1px solid rgba(255, 68, 68, 0.2)' }}>🚧 EXPERIMENTAL / IN TESTING</span>}
                 </h2>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '6px', marginTop: '15px' }}>
                   {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(t => (
@@ -572,12 +571,10 @@ function App() {
                       <button
                         key={item.id}
                         onClick={() => {
-                          if (!locked) {
-                            setModalItem(item);
-                            setModalType(isGathering ? 'GATHERING' : 'REFINING');
-                          }
+                          setModalItem(item);
+                          setModalType(isGathering ? 'GATHERING' : 'REFINING');
                         }}
-                        disabled={locked}
+                        disabled={false}
                         className="resource-card"
                         style={{
                           borderLeft: isActive ? '4px solid var(--accent)' : 'none',
@@ -585,8 +582,8 @@ function App() {
                           gap: '12px',
                           alignItems: 'center',
                           padding: '12px',
-                          opacity: locked ? 0.5 : 1,
-                          cursor: locked ? 'not-allowed' : 'pointer',
+                          opacity: locked ? 0.7 : 1,
+                          cursor: 'pointer',
                           filter: 'none',
                           background: isActive ? 'rgba(212, 175, 55, 0.05)' : 'rgba(0,0,0,0.2)',
                           width: '100%',
@@ -745,7 +742,6 @@ function App() {
               <div style={{ padding: isMobile ? '20px' : '30px 40px', borderBottom: '1px solid var(--border)' }}>
                 <h2 style={{ margin: 0, color: '#fff', fontSize: '1.2rem', fontWeight: '900', letterSpacing: '2px' }}>
                   {activeCategory} CRAFTING
-                  {activeCategory.includes('ALCHEMY') && <span style={{ fontSize: '0.6rem', color: '#ff4444', marginLeft: '10px', verticalAlign: 'middle', background: 'rgba(255, 68, 68, 0.1)', padding: '2px 6px', borderRadius: '4px', border: '1px solid rgba(255, 68, 68, 0.2)' }}>🚧 EXPERIMENTAL / IN TESTING</span>}
                 </h2>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '6px', marginTop: '15px' }}>
                   {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(t => (

@@ -572,7 +572,7 @@ setInterval(async () => {
                 await gameManager.executeLocked(user.id, async () => {
                     const result = await gameManager.processTick(user.id, charId);
                     if (result) {
-                        console.log(`[TICKER] Emitting update for ${user.email} (Status change: ${!!result.status})`);
+                        // console.log(`[TICKER] Emitting update for ${user.email} (Status change: ${!!result.status})`);
                         sockets.forEach(s => {
                             // Fix: Emit if message OR combatUpdate OR dungeonUpdate exists
                             const shouldEmit = result.message || result.combatUpdate || (result.dungeonUpdate && result.dungeonUpdate.message) || result.healingUpdate;

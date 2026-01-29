@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import {
     Heart, Shield, Sword, Zap,
     User, Target, Star, Layers,
-    Axe, Pickaxe, Scissors, Anchor, Apple, Info
+    Axe, Pickaxe, Scissors, Anchor, Apple, Info, ShoppingBag
 } from 'lucide-react';
 import { resolveItem, getTierColor } from '@shared/items';
 import StatBreakdownModal from './StatBreakdownModal';
@@ -434,6 +434,7 @@ Multiplier: ~0.16 per Level (Max 100 Total)`;
                             <EquipmentSlot slot="tool_sickle" icon={<Scissors size={20} />} label="SICKLE" item={equipment.tool_sickle} onClick={() => setSelectedSlot('tool_sickle')} onShowInfo={onShowInfo} />
                             <EquipmentSlot slot="tool_knife" icon={<Sword size={20} style={{ transform: 'rotate(45deg)' }} />} label="KNIFE" item={equipment.tool_knife} onClick={() => setSelectedSlot('tool_knife')} onShowInfo={onShowInfo} />
                             <EquipmentSlot slot="tool_rod" icon={<Anchor size={20} />} label="ROD" item={equipment.tool_rod} onClick={() => setSelectedSlot('tool_rod')} onShowInfo={onShowInfo} />
+                            <EquipmentSlot slot="tool_pouch" icon={<ShoppingBag size={20} />} label="POUCH" item={equipment.tool_pouch} onClick={() => setSelectedSlot('tool_pouch')} onShowInfo={onShowInfo} />
                         </div>
                     </div>
 
@@ -464,7 +465,7 @@ Multiplier: ~0.16 per Level (Max 100 Total)`;
                                         <Info size={10} color="#777" />
                                     </div>
                                 </div>
-                                <div style={{ fontSize: '1.6rem', fontWeight: '900', color: stat.color }}>{stat.value}</div>
+                                <div style={{ fontSize: '1.6rem', fontWeight: '900', color: stat.color }}>{Number(stat.value).toFixed(2)}</div>
                             </div>
                         ))}
                     </div>
