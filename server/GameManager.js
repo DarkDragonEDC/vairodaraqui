@@ -1,5 +1,6 @@
 import crypto from 'crypto';
-import { ITEMS, CHEST_DROP_TABLE } from '../shared/items.js';
+import { ITEMS } from '../shared/items.js';
+import { CHEST_DROP_TABLE } from '../shared/chest_drops.js';
 import { INITIAL_SKILLS, calculateNextLevelXP } from '../shared/skills.js';
 import { InventoryManager } from './managers/InventoryManager.js';
 import { ActivityManager } from './managers/ActivityManager.js';

@@ -1,6 +1,7 @@
 import React from 'react';
 import { X, Sword, Shield, Heart, Star, Zap } from 'lucide-react';
-import { QUALITIES, resolveItem, CHEST_DROP_TABLE } from '@shared/items';
+import { QUALITIES, resolveItem } from '@shared/items';
+import { CHEST_DROP_TABLE } from '@shared/chest_drops';
 
 const ItemInfoModal = ({ item: rawItem, onClose }) => {
     if (!rawItem) return null;
