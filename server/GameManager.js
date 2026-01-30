@@ -1154,7 +1154,6 @@ export class GameManager {
         const itemData = this.inventoryManager.resolveItem(itemId);
         const safeQty = Math.max(1, parseInt(quantity) || 1);
 
-        console.log(`[DEBUG-CONSUME] Consuming ${safeQty}x ${itemId}. Resolved Type: ${itemData?.type}`);
 
         if (!itemData) throw new Error("Item not found");
 

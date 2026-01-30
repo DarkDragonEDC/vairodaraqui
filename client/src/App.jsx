@@ -242,7 +242,6 @@ function App() {
     });
 
     newSocket.on('connect', () => {
-      console.log('Connected to server');
       setConnectionError(null);
       setIsConnecting(false);
       // Join Character Room
@@ -250,7 +249,6 @@ function App() {
     });
 
     newSocket.on('disconnect', () => {
-      console.log('Disconnected');
       setIsConnecting(true);
     });
 

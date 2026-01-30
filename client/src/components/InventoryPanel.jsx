@@ -273,10 +273,7 @@ const InventoryPanel = ({ gameState, socket, onEquip, onListOnMarket, onShowInfo
 
                         const tierColor = getTierColor(item.tier);
 
-                        // DEBUG: Check why border is wrong
-                        if (item.id.includes('CHEST')) {
-                            console.log(`[RENDER-CHEST] ID: ${item.id}, Rarity: ${item.rarity}, Color: ${item.rarityColor}`);
-                        }
+                        // Specific border color logic
 
                         // Rarity Color Logic
                         let specificBorderColor = 'var(--border)';
@@ -365,10 +362,8 @@ const InventoryPanel = ({ gameState, socket, onEquip, onListOnMarket, onShowInfo
                         onClose={() => setSelectedItemForModal(null)}
                         onEquip={onEquip}
                         onUse={(id) => {
-                            console.log('[DEBUG-CLIENT] InventoryPanel onUse clicked:', id);
                             setSelectedItemForModal(null);
                             const item = resolveItem(id);
-                            console.log('[DEBUG-CLIENT] Resolved Item Type:', item?.type);
 
                             if (item?.type === 'POTION' || item?.type === 'CHEST' || id.includes('CHEST') || item?.type === 'CONSUMABLE') {
                                 setUsePotionModal({

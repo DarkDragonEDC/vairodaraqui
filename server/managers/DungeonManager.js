@@ -115,7 +115,6 @@ export class DungeonManager {
             if (char.state.combat) return;
 
             if (char.state.health <= 0) {
-                console.log(`[DUNGEON] Player ${char.name} died. Failing dungeon.`);
                 await this.saveDungeonLog(char, dungeonConfig, 'FAILED');
                 delete char.state.dungeon;
                 return { dungeonUpdate: { status: 'FAILED', message: "You died in the dungeon!" } };
@@ -126,7 +125,6 @@ export class DungeonManager {
             }
 
             if (dungeonState.status === 'FIGHTING' || dungeonState.status === 'BOSS_FIGHT') {
-                console.log(`[DUNGEON] Wave cleared or boss defeated for ${char.name}. Wave: ${dungeonState.wave}`);
 
                 // Check Wave Duration
                 const waveElapsed = now - (dungeonState.wave_started_at || now);
@@ -194,7 +192,6 @@ export class DungeonManager {
             defense: Math.floor(baseMob.defense * scalingFactor)
         };
 
-        console.log(`[DUNGEON] Spawning ${mobId} for ${char.name} (Wave ${wave}, Scaling: ${scalingFactor.toFixed(1)}x)`);
         try {
             await this.gameManager.combatManager.startCombat(char.user_id, char.id, mobId, config.tier, char, true, scaledStats);
         } catch (e) {

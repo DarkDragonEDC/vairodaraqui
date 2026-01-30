@@ -33,7 +33,6 @@ const MarketPanel = ({ socket, gameState, silver = 0, onShowInfo, onListOnMarket
         socket.emit('get_market_listings');
 
         const handleUpdate = (newListings) => {
-            console.log("Market Listings Updated:", newListings);
             setMarketListings(newListings || []);
         };
 
