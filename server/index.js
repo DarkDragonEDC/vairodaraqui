@@ -144,9 +144,18 @@ io.on('connection', (socket) => {
     console.log(`[SOCKET] User connected: ${socket.user?.email || 'Unknown'} (Socket: ${socket.id})`);
     connectedSockets.set(socket.id, socket);
 
-    socket.on('disconnect', (reason) => {
+    socket.on('disconnect', async (reason) => {
         console.log(`[SOCKET] User disconnected: ${socket.id}. Reason: ${reason}`);
         connectedSockets.delete(socket.id);
+
+        // Persist character data on disconnect
+        if (socket.data.characterId) {
+            try {
+                await gameManager.persistCharacter(socket.data.characterId);
+            } catch (err) {
+                console.error(`[SOCKET] Error persisting char ${socket.data.characterId} on disconnect:`, err);
+            }
+        }
     });
 
     socket.on('join_character', async ({ characterId }) => {
@@ -629,6 +638,11 @@ setInterval(async () => {
 setInterval(() => {
     gameManager.runMaintenance();
 }, 600000);
+
+// --- Background Sync (1 min) ---
+setInterval(() => {
+    gameManager.persistAllDirty();
+}, 60000);
 
 // Run once on startup
 setTimeout(() => {

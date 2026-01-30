@@ -28,6 +28,8 @@ export class GameManager {
         this.marketManager = new MarketManager(this);
         this.dungeonManager = new DungeonManager(this);
         this.userLocks = new Map(); // userId -> Promise (current task)
+        this.cache = new Map(); // charId -> character object
+        this.dirty = new Set(); // set of charIds that need persisting
     }
 
     async executeLocked(userId, task) {
@@ -56,6 +58,12 @@ export class GameManager {
     }
 
     async getCharacter(userId, characterId = null, catchup = false) {
+        // Try Cache first
+        if (characterId && this.cache.has(characterId)) {
+            // console.log(`[CACHE] Hit for ${characterId}`);
+            return this.cache.get(characterId);
+        }
+
         let query = this.supabase
             .from('characters')
             .select('*');
@@ -69,6 +77,10 @@ export class GameManager {
 
         const { data, error } = await query;
         if (error && error.code !== 'PGRST116') throw error;
+
+        if (data && !this.cache.has(data.id)) {
+            this.cache.set(data.id, data);
+        }
 
 
 
@@ -252,18 +264,44 @@ export class GameManager {
             }
 
             if (updated) {
-                await this.supabase
-                    .from('characters')
-                    .update({
-                        state: data.state,
-                        current_activity: data.current_activity,
-                        activity_started_at: data.activity_started_at,
-                        last_saved: new Date().toISOString()
-                    })
-                    .eq('id', data.id);
+                this.markDirty(data.id);
             }
         }
         return data;
+    }
+
+    markDirty(charId) {
+        this.dirty.add(charId);
+    }
+
+    async persistCharacter(charId) {
+        if (!this.dirty.has(charId)) return;
+        const char = this.cache.get(charId);
+        if (!char) return;
+
+        // console.log(`[DB] Persisting character ${char.name} (${charId})`);
+        const { error } = await this.supabase
+            .from('characters')
+            .update({
+                state: char.state,
+                current_activity: char.current_activity,
+                activity_started_at: char.activity_started_at,
+                last_saved: new Date().toISOString()
+            })
+            .eq('id', charId);
+
+        if (!error) {
+            this.dirty.delete(charId);
+        } else {
+            console.error(`[DB] Error persisting ${char.name}:`, error);
+        }
+    }
+
+    async persistAllDirty() {
+        if (this.dirty.size === 0) return;
+        // console.log(`[DB] Persisting ${this.dirty.size} dirty characters...`);
+        const promises = Array.from(this.dirty).map(id => this.persistCharacter(id));
+        await Promise.all(promises);
     }
 
     async processBatchActions(char, quantity) {
@@ -506,6 +544,10 @@ export class GameManager {
             }
             throw new Error(error.message || 'Error creating character');
         }
+
+        if (data) {
+            this.cache.set(data.id, data);
+        }
         return data;
     }
 
@@ -635,15 +677,8 @@ export class GameManager {
             if (char.state.combat) delete char.state.combat;
             if (char.state.dungeon) delete char.state.dungeon;
 
-            await this.supabase
-                .from('characters')
-                .update({
-                    state: char.state,
-                    current_activity: null,
-                    activity_started_at: null,
-                    last_saved: new Date().toISOString()
-                })
-                .eq('id', char.id);
+            this.markDirty(char.id);
+            await this.persistCharacter(char.id);
 
             return {
                 success: false,
@@ -872,15 +907,7 @@ export class GameManager {
         }
 
         if (itemsGained > 0 || combatResult || foodUsed || activityFinished || stateChanged || dungeonResult) {
-            await this.supabase
-                .from('characters')
-                .update({
-                    state: char.state,
-                    current_activity: char.current_activity,
-                    activity_started_at: char.activity_started_at,
-                    last_saved: new Date().toISOString()
-                })
-                .eq('id', char.id);
+            this.markDirty(char.id);
         }
 
         if (char.current_activity || char.state.combat || itemsGained > 0 || combatResult || dungeonResult) {
@@ -929,11 +956,7 @@ export class GameManager {
     }
 
     async saveState(charId, state) {
-        const { error } = await this.supabase
-            .from('characters')
-            .update({ state })
-            .eq('id', charId);
-        if (error) throw error;
+        this.markDirty(charId);
     }
 
     addNotification(char, type, message) {
@@ -1059,26 +1082,73 @@ export class GameManager {
     }
 
     // Delegation Methods
-    // Delegation Methods - Updated for Multi-Character
     async startActivity(u, c, t, i, q) {
-        return this.activityManager.startActivity(u, c, t, i, q);
+        const res = await this.activityManager.startActivity(u, c, t, i, q);
+        await this.persistCharacter(c);
+        return res;
     }
-    async stopActivity(u, c) { return this.activityManager.stopActivity(u, c); }
+    async stopActivity(u, c) {
+        const res = await this.activityManager.stopActivity(u, c);
+        await this.persistCharacter(c);
+        return res;
+    }
 
     async startCombat(u, c, m, t) {
-        return this.combatManager.startCombat(u, c, m, t);
+        const res = await this.combatManager.startCombat(u, c, m, t);
+        await this.persistCharacter(c);
+        return res;
     }
-    async stopCombat(u, c) { return this.combatManager.stopCombat(u, c); }
-    async equipItem(u, c, i) { return this.inventoryManager.equipItem(u, c, i); }
-    async unequipItem(u, c, s) { return this.inventoryManager.unequipItem(u, c, s); }
+    async stopCombat(u, c) {
+        const res = await this.combatManager.stopCombat(u, c);
+        await this.persistCharacter(c);
+        return res;
+    }
+    async equipItem(u, c, i) {
+        const res = await this.inventoryManager.equipItem(u, c, i);
+        await this.persistCharacter(c);
+        return res;
+    }
+    async unequipItem(u, c, s) {
+        const res = await this.inventoryManager.unequipItem(u, c, s);
+        await this.persistCharacter(c);
+        return res;
+    }
     async getMarketListings(f) { return this.marketManager.getMarketListings(f); } // Global
-    async sellItem(u, c, i, q) { return this.marketManager.sellItem(u, c, i, q); }
-    async listMarketItem(u, c, i, a, p) { return this.marketManager.listMarketItem(u, c, i, a, p); }
-    async buyMarketItem(b, c, l, q) { return this.marketManager.buyMarketItem(b, c, l, q); }
-    async cancelMarketListing(u, c, l) { return this.marketManager.cancelMarketListing(u, c, l); }
-    async claimMarketItem(u, c, cl) { return this.marketManager.claimMarketItem(u, c, cl); }
-    async startDungeon(u, c, d, r) { return this.dungeonManager.startDungeon(u, c, d, r); }
-    async stopDungeon(u, c) { return this.dungeonManager.stopDungeon(u, c); }
+    async sellItem(u, c, i, q) {
+        const res = await this.marketManager.sellItem(u, c, i, q);
+        await this.persistCharacter(c);
+        return res;
+    }
+    async listMarketItem(u, c, i, a, p) {
+        const res = await this.marketManager.listMarketItem(u, c, i, a, p);
+        await this.persistCharacter(c);
+        return res;
+    }
+    async buyMarketItem(b, c, l, q) {
+        const res = await this.marketManager.buyMarketItem(b, c, l, q);
+        await this.persistCharacter(c);
+        return res;
+    }
+    async cancelMarketListing(u, c, l) {
+        const res = await this.marketManager.cancelMarketListing(u, c, l);
+        await this.persistCharacter(c);
+        return res;
+    }
+    async claimMarketItem(u, c, cl) {
+        const res = await this.marketManager.claimMarketItem(u, c, cl);
+        await this.persistCharacter(c);
+        return res;
+    }
+    async startDungeon(u, c, d, r) {
+        const res = await this.dungeonManager.startDungeon(u, c, d, r);
+        await this.persistCharacter(c);
+        return res;
+    }
+    async stopDungeon(u, c) {
+        const res = await this.dungeonManager.stopDungeon(u, c);
+        await this.persistCharacter(c);
+        return res;
+    }
     async consumeItem(userId, characterId, itemId, quantity = 1) {
         const char = await this.getCharacter(userId, characterId);
         const itemData = this.inventoryManager.resolveItem(itemId);
@@ -1181,6 +1251,7 @@ export class GameManager {
             }
 
             await this.saveState(char.id, char.state);
+            await this.persistCharacter(char.id);
             return { success: true, message, itemId, rewards: rewards.items.length > 0 ? rewards : null };
         } else if (false) { // Skip old block
 
@@ -1190,6 +1261,7 @@ export class GameManager {
         }
 
         await this.saveState(char.id, char.state);
+        await this.persistCharacter(char.id);
         return { success: true, message, itemId };
     }
 
