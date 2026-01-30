@@ -35,7 +35,11 @@ const InventoryPanel = ({ gameState, socket, onEquip, onListOnMarket, onShowInfo
 
     const inventoryItems = Object.entries(gameState?.state?.inventory || {}).map(([id, qty]) => {
         const item = resolveItem(id);
-        if (!item || qty <= 0) return null;
+        if (!item) {
+            console.warn(`[INVENTORY] Failed to resolve item: ${id}`);
+            return null;
+        }
+        if (qty <= 0) return null;
         return { ...item, qty, id }; // id is key
     }).filter(Boolean);
 
@@ -44,7 +48,7 @@ const InventoryPanel = ({ gameState, socket, onEquip, onListOnMarket, onShowInfo
         if (filter !== 'ALL') {
             const isGear = ['WEAPON', 'ARMOR', 'HELMET', 'BOOTS', 'GLOVES', 'OFF_HAND', 'CAPE'].includes(item.type) || item.type.startsWith('TOOL');
             const isRaw = ['RESOURCE', 'RAW', 'CRAFTING_MATERIAL'].includes(item.type) || item.id.includes('_ORE') || item.id.includes('_WOOD');
-            const isConsumable = ['FOOD', 'POTION', 'MAP'].includes(item.type);
+            const isConsumable = ['FOOD', 'POTION', 'MAP', 'CONSUMABLE', 'CHEST'].includes(item.type);
 
             if (filter === 'EQUIPMENT' && !isGear) return false;
             if (filter === 'RESOURCE' && !isRaw) return false;
@@ -268,7 +272,30 @@ const InventoryPanel = ({ gameState, socket, onEquip, onListOnMarket, onShowInfo
                         }
 
                         const tierColor = getTierColor(item.tier);
-                        const borderColor = item.rarityColor || 'transparent';
+
+                        // DEBUG: Check why border is wrong
+                        if (item.id.includes('CHEST')) {
+                            console.log(`[RENDER-CHEST] ID: ${item.id}, Rarity: ${item.rarity}, Color: ${item.rarityColor}`);
+                        }
+
+                        // Rarity Color Logic
+                        let specificBorderColor = 'var(--border)';
+                        if (item.rarityColor) {
+                            specificBorderColor = item.rarityColor;
+                        } else if (item.rarity) {
+                            switch (item.rarity) {
+                                case 'COMMON': specificBorderColor = '#9CA3AF'; break; // Gray
+                                case 'UNCOMMON': specificBorderColor = '#10B981'; break; // Green
+                                case 'RARE': specificBorderColor = '#3B82F6'; break; // Blue
+                                case 'EPIC': specificBorderColor = '#F59E0B'; break; // Gold/Orange
+                                case 'LEGENDARY': specificBorderColor = '#EF4444'; break; // Red
+                                case 'MYTHIC': specificBorderColor = '#A855F7'; break; // Purple
+                                default: specificBorderColor = 'var(--border)';
+                            }
+                        }
+
+                        // If it's a high rarity, add a slight glow or thicker border? 
+                        // User asked for "border in color".
 
                         return (
                             <div
@@ -276,7 +303,8 @@ const InventoryPanel = ({ gameState, socket, onEquip, onListOnMarket, onShowInfo
                                 onClick={() => handleItemClick(item)}
                                 style={{
                                     background: 'rgba(0,0,0,0.2)',
-                                    border: '1px solid var(--border)',
+                                    border: `1px solid ${specificBorderColor}`,
+                                    boxShadow: (item.rarity && item.rarity !== 'COMMON') ? `0 0 4px ${specificBorderColor}40` : 'none', // Subtle glow
                                     borderRadius: '10px',
                                     padding: '10px',
                                     display: 'flex',

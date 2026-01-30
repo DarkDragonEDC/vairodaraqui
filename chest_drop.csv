@@ -1,10 +1,51 @@
-Chest ID,Rarity,Refined Materials (Plank;Bar;Cloth;Leather),Crest Qty,Silver Multiplier
-T1_CHEST_COMMON,Common,5-6 each,0,1x
-T1_CHEST_RARE,Rare,8-9 each,1,1.5x
-T1_CHEST_GOLD,Epic,12-13 each,2,3x
-T1_CHEST_MYTHIC,Legendary,20-21 each,5,5x
-T2_CHEST_COMMON,Common,5+ each,0,1x
-T2_CHEST_RARE,Rare,8+ each,1,1.5x
-T2_CHEST_GOLD,Epic,12+ each,2,3x
-T2_CHEST_MYTHIC,Legendary,20+ each,5,5x
-(Pattern repeats for T3-T10),,,,
+Chest ID,Name,Tier,Rarity,Refined Mat (Type),Min Mat Qty,Max Mat Qty,Crest Info
+T1_CHEST_NORMAL,Dungeon Chest (Normal),1,NORMAL,Random Single Type (Plank/Bar/Cloth/Leather/Extract),5,5,0%
+T1_CHEST_GOOD,Dungeon Chest (Good),1,GOOD,Random Single Type (Plank/Bar/Cloth/Leather/Extract),6,6,1% (1x)
+T1_CHEST_OUTSTANDING,Dungeon Chest (Outstanding),1,OUTSTANDING,Random Single Type (Plank/Bar/Cloth/Leather/Extract),8,8,3% (1x)
+T1_CHEST_EXCELLENT,Dungeon Chest (Excellent),1,EXCELLENT,Random Single Type (Plank/Bar/Cloth/Leather/Extract),12,12,4% (1x)
+T1_CHEST_MASTERPIECE,Dungeon Chest (Masterpiece),1,MASTERPIECE,Random Single Type (Plank/Bar/Cloth/Leather/Extract),20,20,5% (1x)
+T2_CHEST_NORMAL,Dungeon Chest (Normal),2,NORMAL,Random Single Type (Plank/Bar/Cloth/Leather/Extract),5,6,0%
+T2_CHEST_GOOD,Dungeon Chest (Good),2,GOOD,Random Single Type (Plank/Bar/Cloth/Leather/Extract),6,7,1% (1x)
+T2_CHEST_OUTSTANDING,Dungeon Chest (Outstanding),2,OUTSTANDING,Random Single Type (Plank/Bar/Cloth/Leather/Extract),8,9,3% (1x)
+T2_CHEST_EXCELLENT,Dungeon Chest (Excellent),2,EXCELLENT,Random Single Type (Plank/Bar/Cloth/Leather/Extract),12,13,4% (1x)
+T2_CHEST_MASTERPIECE,Dungeon Chest (Masterpiece),2,MASTERPIECE,Random Single Type (Plank/Bar/Cloth/Leather/Extract),20,21,5% (1x)
+T3_CHEST_NORMAL,Dungeon Chest (Normal),3,NORMAL,Random Single Type (Plank/Bar/Cloth/Leather/Extract),5,7,0%
+T3_CHEST_GOOD,Dungeon Chest (Good),3,GOOD,Random Single Type (Plank/Bar/Cloth/Leather/Extract),6,8,1% (1x)
+T3_CHEST_OUTSTANDING,Dungeon Chest (Outstanding),3,OUTSTANDING,Random Single Type (Plank/Bar/Cloth/Leather/Extract),8,10,3% (1x)
+T3_CHEST_EXCELLENT,Dungeon Chest (Excellent),3,EXCELLENT,Random Single Type (Plank/Bar/Cloth/Leather/Extract),12,14,4% (1x)
+T3_CHEST_MASTERPIECE,Dungeon Chest (Masterpiece),3,MASTERPIECE,Random Single Type (Plank/Bar/Cloth/Leather/Extract),20,22,5% (1x)
+T4_CHEST_NORMAL,Dungeon Chest (Normal),4,NORMAL,Random Single Type (Plank/Bar/Cloth/Leather/Extract),5,8,0%
+T4_CHEST_GOOD,Dungeon Chest (Good),4,GOOD,Random Single Type (Plank/Bar/Cloth/Leather/Extract),6,9,1% (1x)
+T4_CHEST_OUTSTANDING,Dungeon Chest (Outstanding),4,OUTSTANDING,Random Single Type (Plank/Bar/Cloth/Leather/Extract),8,11,3% (1x)
+T4_CHEST_EXCELLENT,Dungeon Chest (Excellent),4,EXCELLENT,Random Single Type (Plank/Bar/Cloth/Leather/Extract),12,15,4% (1x)
+T4_CHEST_MASTERPIECE,Dungeon Chest (Masterpiece),4,MASTERPIECE,Random Single Type (Plank/Bar/Cloth/Leather/Extract),20,23,5% (1x)
+T5_CHEST_NORMAL,Dungeon Chest (Normal),5,NORMAL,Random Single Type (Plank/Bar/Cloth/Leather/Extract),5,9,0%
+T5_CHEST_GOOD,Dungeon Chest (Good),5,GOOD,Random Single Type (Plank/Bar/Cloth/Leather/Extract),6,10,1% (1x)
+T5_CHEST_OUTSTANDING,Dungeon Chest (Outstanding),5,OUTSTANDING,Random Single Type (Plank/Bar/Cloth/Leather/Extract),8,12,3% (1x)
+T5_CHEST_EXCELLENT,Dungeon Chest (Excellent),5,EXCELLENT,Random Single Type (Plank/Bar/Cloth/Leather/Extract),12,16,4% (1x)
+T5_CHEST_MASTERPIECE,Dungeon Chest (Masterpiece),5,MASTERPIECE,Random Single Type (Plank/Bar/Cloth/Leather/Extract),20,24,5% (1x)
+T6_CHEST_NORMAL,Dungeon Chest (Normal),6,NORMAL,Random Single Type (Plank/Bar/Cloth/Leather/Extract),5,10,0%
+T6_CHEST_GOOD,Dungeon Chest (Good),6,GOOD,Random Single Type (Plank/Bar/Cloth/Leather/Extract),6,11,1% (1x)
+T6_CHEST_OUTSTANDING,Dungeon Chest (Outstanding),6,OUTSTANDING,Random Single Type (Plank/Bar/Cloth/Leather/Extract),8,13,3% (1x)
+T6_CHEST_EXCELLENT,Dungeon Chest (Excellent),6,EXCELLENT,Random Single Type (Plank/Bar/Cloth/Leather/Extract),12,17,4% (1x)
+T6_CHEST_MASTERPIECE,Dungeon Chest (Masterpiece),6,MASTERPIECE,Random Single Type (Plank/Bar/Cloth/Leather/Extract),20,25,5% (1x)
+T7_CHEST_NORMAL,Dungeon Chest (Normal),7,NORMAL,Random Single Type (Plank/Bar/Cloth/Leather/Extract),5,11,0%
+T7_CHEST_GOOD,Dungeon Chest (Good),7,GOOD,Random Single Type (Plank/Bar/Cloth/Leather/Extract),6,12,1% (1x)
+T7_CHEST_OUTSTANDING,Dungeon Chest (Outstanding),7,OUTSTANDING,Random Single Type (Plank/Bar/Cloth/Leather/Extract),8,14,3% (1x)
+T7_CHEST_EXCELLENT,Dungeon Chest (Excellent),7,EXCELLENT,Random Single Type (Plank/Bar/Cloth/Leather/Extract),12,18,4% (1x)
+T7_CHEST_MASTERPIECE,Dungeon Chest (Masterpiece),7,MASTERPIECE,Random Single Type (Plank/Bar/Cloth/Leather/Extract),20,26,5% (1x)
+T8_CHEST_NORMAL,Dungeon Chest (Normal),8,NORMAL,Random Single Type (Plank/Bar/Cloth/Leather/Extract),5,12,0%
+T8_CHEST_GOOD,Dungeon Chest (Good),8,GOOD,Random Single Type (Plank/Bar/Cloth/Leather/Extract),6,13,1% (1x)
+T8_CHEST_OUTSTANDING,Dungeon Chest (Outstanding),8,OUTSTANDING,Random Single Type (Plank/Bar/Cloth/Leather/Extract),8,15,3% (1x)
+T8_CHEST_EXCELLENT,Dungeon Chest (Excellent),8,EXCELLENT,Random Single Type (Plank/Bar/Cloth/Leather/Extract),12,19,4% (1x)
+T8_CHEST_MASTERPIECE,Dungeon Chest (Masterpiece),8,MASTERPIECE,Random Single Type (Plank/Bar/Cloth/Leather/Extract),20,27,5% (1x)
+T9_CHEST_NORMAL,Dungeon Chest (Normal),9,NORMAL,Random Single Type (Plank/Bar/Cloth/Leather/Extract),5,13,0%
+T9_CHEST_GOOD,Dungeon Chest (Good),9,GOOD,Random Single Type (Plank/Bar/Cloth/Leather/Extract),6,14,1% (1x)
+T9_CHEST_OUTSTANDING,Dungeon Chest (Outstanding),9,OUTSTANDING,Random Single Type (Plank/Bar/Cloth/Leather/Extract),8,16,3% (1x)
+T9_CHEST_EXCELLENT,Dungeon Chest (Excellent),9,EXCELLENT,Random Single Type (Plank/Bar/Cloth/Leather/Extract),12,20,4% (1x)
+T9_CHEST_MASTERPIECE,Dungeon Chest (Masterpiece),9,MASTERPIECE,Random Single Type (Plank/Bar/Cloth/Leather/Extract),20,28,5% (1x)
+T10_CHEST_NORMAL,Dungeon Chest (Normal),10,NORMAL,Random Single Type (Plank/Bar/Cloth/Leather/Extract),5,14,0%
+T10_CHEST_GOOD,Dungeon Chest (Good),10,GOOD,Random Single Type (Plank/Bar/Cloth/Leather/Extract),6,15,1% (1x)
+T10_CHEST_OUTSTANDING,Dungeon Chest (Outstanding),10,OUTSTANDING,Random Single Type (Plank/Bar/Cloth/Leather/Extract),8,17,3% (1x)
+T10_CHEST_EXCELLENT,Dungeon Chest (Excellent),10,EXCELLENT,Random Single Type (Plank/Bar/Cloth/Leather/Extract),12,21,4% (1x)
+T10_CHEST_MASTERPIECE,Dungeon Chest (Masterpiece),10,MASTERPIECE,Random Single Type (Plank/Bar/Cloth/Leather/Extract),20,29,5% (1x)

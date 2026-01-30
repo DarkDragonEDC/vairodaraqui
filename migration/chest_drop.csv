@@ -1,0 +1,51 @@
+Chest ID,Name,Tier,Rarity,Min Silver,Max Silver,Refined Mat (Type),Min Mat Qty,Max Mat Qty,Crest Info
+T1_CHEST_COMMON,T1 Dungeon Chest (Common),1,COMMON,25,75,Random Single Type,5,5,0%
+T1_DUNGEON_CHEST,T1 Dungeon Chest,1,COMMON,25,75,Random Single Type,5,5,0%
+T1_CHEST_RARE,T1 Dungeon Chest (Rare),1,RARE,37,112,Random Single Type,8,8,5% (1x)
+T1_CHEST_GOLD,T1 Dungeon Chest (Gold),1,EPIC,75,225,Random Single Type,12,12,15% (1x)
+T1_CHEST_MYTHIC,T1 Dungeon Chest (Mythic),1,LEGENDARY,125,375,Random Single Type,20,20,30% (1x)
+T2_CHEST_COMMON,T2 Dungeon Chest (Common),2,COMMON,50,150,Random Single Type,5,6,0%
+T2_DUNGEON_CHEST,T2 Dungeon Chest,2,COMMON,50,150,Random Single Type,5,6,0%
+T2_CHEST_RARE,T2 Dungeon Chest (Rare),2,RARE,75,225,Random Single Type,8,9,5% (1x)
+T2_CHEST_GOLD,T2 Dungeon Chest (Gold),2,EPIC,150,450,Random Single Type,12,13,15% (1x)
+T2_CHEST_MYTHIC,T2 Dungeon Chest (Mythic),2,LEGENDARY,250,750,Random Single Type,20,21,30% (1x)
+T3_CHEST_COMMON,T3 Dungeon Chest (Common),3,COMMON,75,225,Random Single Type,5,7,0%
+T3_DUNGEON_CHEST,T3 Dungeon Chest,3,COMMON,75,225,Random Single Type,5,7,0%
+T3_CHEST_RARE,T3 Dungeon Chest (Rare),3,RARE,112,337,Random Single Type,8,10,5% (1x)
+T3_CHEST_GOLD,T3 Dungeon Chest (Gold),3,EPIC,225,675,Random Single Type,12,14,15% (1x)
+T3_CHEST_MYTHIC,T3 Dungeon Chest (Mythic),3,LEGENDARY,375,1125,Random Single Type,20,22,30% (1x)
+T4_CHEST_COMMON,T4 Dungeon Chest (Common),4,COMMON,100,300,Random Single Type,5,8,0%
+T4_DUNGEON_CHEST,T4 Dungeon Chest,4,COMMON,100,300,Random Single Type,5,8,0%
+T4_CHEST_RARE,T4 Dungeon Chest (Rare),4,RARE,150,450,Random Single Type,8,11,5% (1x)
+T4_CHEST_GOLD,T4 Dungeon Chest (Gold),4,EPIC,300,900,Random Single Type,12,15,15% (1x)
+T4_CHEST_MYTHIC,T4 Dungeon Chest (Mythic),4,LEGENDARY,500,1500,Random Single Type,20,23,30% (1x)
+T5_CHEST_COMMON,T5 Dungeon Chest (Common),5,COMMON,125,375,Random Single Type,5,9,0%
+T5_DUNGEON_CHEST,T5 Dungeon Chest,5,COMMON,125,375,Random Single Type,5,9,0%
+T5_CHEST_RARE,T5 Dungeon Chest (Rare),5,RARE,187,562,Random Single Type,8,12,5% (1x)
+T5_CHEST_GOLD,T5 Dungeon Chest (Gold),5,EPIC,375,1125,Random Single Type,12,16,15% (1x)
+T5_CHEST_MYTHIC,T5 Dungeon Chest (Mythic),5,LEGENDARY,625,1875,Random Single Type,20,24,30% (1x)
+T6_CHEST_COMMON,T6 Dungeon Chest (Common),6,COMMON,150,450,Random Single Type,5,10,0%
+T6_DUNGEON_CHEST,T6 Dungeon Chest,6,COMMON,150,450,Random Single Type,5,10,0%
+T6_CHEST_RARE,T6 Dungeon Chest (Rare),6,RARE,225,675,Random Single Type,8,13,5% (1x)
+T6_CHEST_GOLD,T6 Dungeon Chest (Gold),6,EPIC,450,1350,Random Single Type,12,17,15% (1x)
+T6_CHEST_MYTHIC,T6 Dungeon Chest (Mythic),6,LEGENDARY,750,2250,Random Single Type,20,25,30% (1x)
+T7_CHEST_COMMON,T7 Dungeon Chest (Common),7,COMMON,175,525,Random Single Type,5,11,0%
+T7_DUNGEON_CHEST,T7 Dungeon Chest,7,COMMON,175,525,Random Single Type,5,11,0%
+T7_CHEST_RARE,T7 Dungeon Chest (Rare),7,RARE,262,787,Random Single Type,8,14,5% (1x)
+T7_CHEST_GOLD,T7 Dungeon Chest (Gold),7,EPIC,525,1575,Random Single Type,12,18,15% (1x)
+T7_CHEST_MYTHIC,T7 Dungeon Chest (Mythic),7,LEGENDARY,875,2625,Random Single Type,20,26,30% (1x)
+T8_CHEST_COMMON,T8 Dungeon Chest (Common),8,COMMON,200,600,Random Single Type,5,12,0%
+T8_DUNGEON_CHEST,T8 Dungeon Chest,8,COMMON,200,600,Random Single Type,5,12,0%
+T8_CHEST_RARE,T8 Dungeon Chest (Rare),8,RARE,300,900,Random Single Type,8,15,5% (1x)
+T8_CHEST_GOLD,T8 Dungeon Chest (Gold),8,EPIC,600,1800,Random Single Type,12,19,15% (1x)
+T8_CHEST_MYTHIC,T8 Dungeon Chest (Mythic),8,LEGENDARY,1000,3000,Random Single Type,20,27,30% (1x)
+T9_CHEST_COMMON,T9 Dungeon Chest (Common),9,COMMON,225,675,Random Single Type,5,13,0%
+T9_DUNGEON_CHEST,T9 Dungeon Chest,9,COMMON,225,675,Random Single Type,5,13,0%
+T9_CHEST_RARE,T9 Dungeon Chest (Rare),9,RARE,337,1012,Random Single Type,8,16,5% (1x)
+T9_CHEST_GOLD,T9 Dungeon Chest (Gold),9,EPIC,675,2025,Random Single Type,12,20,15% (1x)
+T9_CHEST_MYTHIC,T9 Dungeon Chest (Mythic),9,LEGENDARY,1125,3375,Random Single Type,20,28,30% (1x)
+T10_CHEST_COMMON,T10 Dungeon Chest (Common),10,COMMON,250,750,Random Single Type,5,14,0%
+T10_DUNGEON_CHEST,T10 Dungeon Chest,10,COMMON,250,750,Random Single Type,5,14,0%
+T10_CHEST_RARE,T10 Dungeon Chest (Rare),10,RARE,375,1125,Random Single Type,8,17,5% (1x)
+T10_CHEST_GOLD,T10 Dungeon Chest (Gold),10,EPIC,750,2250,Random Single Type,12,21,15% (1x)
+T10_CHEST_MYTHIC,T10 Dungeon Chest (Mythic),10,LEGENDARY,1250,3750,Random Single Type,20,29,30% (1x)

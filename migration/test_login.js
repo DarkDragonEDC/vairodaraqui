@@ -25,7 +25,9 @@ async function testLogin() {
         console.error("Detalhes:", JSON.stringify(error, null, 2));
     } else {
         console.log("✅ Login com sucesso!");
-        console.log("Token recebido:", data.session.access_token.substring(0, 20) + "...");
+        console.log("ACCESS_TOKEN_START");
+        console.log(data.session.access_token);
+        console.log("ACCESS_TOKEN_END");
     }
 }
 

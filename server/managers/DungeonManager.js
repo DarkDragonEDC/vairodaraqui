@@ -231,16 +231,25 @@ export class DungeonManager {
         // char.state.silver = (char.state.silver || 0) + rewards.silver;
 
         // Guaranteed Chest Drop with Rarity
+        // Guaranteed Chest Drop with Rarity (5 Tiers)
         const roll = Math.random();
-        let rarity = 'COMMON';
-        if (roll < 0.01) rarity = 'MYTHIC';      // 1%
-        else if (roll < 0.10) rarity = 'GOLD';   // 9%
-        else if (roll < 0.40) rarity = 'RARE';   // 30%
-        else rarity = 'COMMON';                  // 60%
+        let rarity = 'NORMAL';
+
+        if (roll < 0.01) rarity = 'MASTERPIECE';     // 1%
+        else if (roll < 0.05) rarity = 'EXCELLENT';  // 4% (0.01 to 0.05)
+        else if (roll < 0.20) rarity = 'OUTSTANDING';// 15% (0.05 to 0.20)
+        else if (roll < 0.50) rarity = 'GOOD';       // 30% (0.20 to 0.50)
+        else rarity = 'NORMAL';                      // 50% (0.50 to 1.00)
 
         const chestId = `T${config.tier}_CHEST_${rarity}`;
-        this.gameManager.inventoryManager.addItemToInventory(char, chestId, 1);
-        loot.push(`1x ${chestId}`);
+        const added = this.gameManager.inventoryManager.addItemToInventory(char, chestId, 1);
+
+        if (added) {
+            loot.push(`1x ${chestId}`);
+        } else {
+            loot.push(`(Full) ${chestId} LOST`);
+            this.gameManager.addNotification(char, 'WARNING', `Inventory Full! ${chestId} lost.`);
+        }
 
         // Removed old random drops (Crest/Resource) in favor of the Chest
 

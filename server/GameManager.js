@@ -96,6 +96,35 @@ export class GameManager {
                 updated = true;
             }
 
+            // --- RUNTIME MIGRATION: CHESTS ---
+            // Fixes issue where running server overwrites DB migration
+            if (data.state.inventory) {
+                const inv = data.state.inventory;
+                let migratedChests = false;
+                for (const key of Object.keys(inv)) {
+                    let newKey = key;
+                    if (key.includes('_CHEST_COMMON')) newKey = key.replace('_CHEST_COMMON', '_CHEST_NORMAL');
+                    else if (key.includes('_CHEST_RARE')) newKey = key.replace('_CHEST_RARE', '_CHEST_OUTSTANDING');
+                    else if (key.includes('_CHEST_GOLD')) newKey = key.replace('_CHEST_GOLD', '_CHEST_EXCELLENT');
+                    else if (key.includes('_CHEST_MYTHIC')) newKey = key.replace('_CHEST_MYTHIC', '_CHEST_MASTERPIECE');
+                    else if (key.includes('_DUNGEON_CHEST')) newKey = key.replace('_DUNGEON_CHEST', '_CHEST_NORMAL');
+
+                    if (newKey !== key) {
+                        console.log(`[MIGRATION-RUNTIME] Converting ${key} -> ${newKey} for ${data.name}`);
+                        if (inv[newKey]) {
+                            // Merge quantities
+                            if (typeof inv[key] === 'number') inv[newKey] += inv[key];
+                            else inv[newKey].qty += inv[key].qty;
+                        } else {
+                            inv[newKey] = inv[key];
+                        }
+                        delete inv[key];
+                        migratedChests = true;
+                    }
+                }
+                if (migratedChests) updated = true;
+            }
+
             if (!data.state.notifications) {
                 data.state.notifications = [];
                 updated = true;
@@ -1081,39 +1110,88 @@ export class GameManager {
             // Chest Logic
             const tier = itemData.tier || 1;
             const silverMultiplier = itemData.rarity === 'COMMON' ? 1 : itemData.rarity === 'RARE' ? 1.5 : itemData.rarity === 'EPIC' ? 3 : 5;
-            const silverReward = Math.floor((Math.random() * 50 * tier + (25 * tier)) * silverMultiplier);
-            char.state.silver = (char.state.silver || 0) + silverReward;
 
+            // Simulate adding items to check for space
+            const tempInv = { ...char.state.inventory };
+            const SIMULATED_MAX = 50;
+
+            // Collect all potential new items first
+            const potentialDrops = [];
+
+            // Refined Resources
+            // Refined Resources
+            const REFINED_TYPES = ['PLANK', 'BAR', 'CLOTH', 'LEATHER', 'EXTRACT'];
+            // Base Qty Logic: Normal(5), Good(6), Outstanding(8), Excellent(12), Masterpiece(20)
+            let baseQty = 5;
+            if (itemData.rarity === 'UNCOMMON') baseQty = 6;
+            if (itemData.rarity === 'RARE') baseQty = 8;
+            if (itemData.rarity === 'EPIC') baseQty = 12;
+            if (itemData.rarity === 'LEGENDARY') baseQty = 20;
+
+            REFINED_TYPES.forEach(type => {
+                // ... logic below uses baseQty ...
+            });
+
+            // Logic moved up to calculate rewards BEFORE checking
             const rewards = {
-                silver: silverReward,
+                silver: 0,
                 items: []
             };
 
-            message += `\nContents: ${silverReward} Silver`;
+            // 1. Calculate Silver (REMOVED)
+            const silverReward = 0;
+            rewards.silver = silverReward;
 
-            // Refined Resources (All 4 types)
-            const REFINED_TYPES = ['PLANK', 'BAR', 'CLOTH', 'LEATHER'];
-            const baseQty = itemData.rarity === 'COMMON' ? 5 : itemData.rarity === 'RARE' ? 8 : itemData.rarity === 'EPIC' ? 12 : 20;
+            // 2. Calculate Items
+            // Single Refined Type Drop
+            const randomType = REFINED_TYPES[Math.floor(Math.random() * REFINED_TYPES.length)];
+            const qty = Math.floor(baseQty + (Math.random() * tier));
 
-            REFINED_TYPES.forEach(type => {
-                const qty = Math.floor(baseQty + (Math.random() * tier));
-                if (qty > 0) {
-                    const rId = `T${tier}_${type}`;
-                    this.inventoryManager.addItemToInventory(char, rId, qty);
-                    rewards.items.push({ id: rId, qty });
-                    message += `, ${qty}x ${type}`;
-                }
-            });
-
-            // Crests (For Rare+)
-            if (itemData.rarity === 'RARE' || itemData.rarity === 'EPIC' || itemData.rarity === 'LEGENDARY') {
-                const crestId = `T${tier}_CREST`;
-                const crestQty = itemData.rarity === 'RARE' ? 1 : itemData.rarity === 'EPIC' ? 2 : 5;
-                this.inventoryManager.addItemToInventory(char, crestId, crestQty);
-                rewards.items.push({ id: crestId, qty: crestQty });
-                message += `, ${crestQty}x CREST`;
+            if (qty > 0) {
+                const rId = `T${tier}_${randomType}`;
+                rewards.items.push({ id: rId, qty });
             }
 
+            // Crests (Low Chance, Max 1)
+            // Normal: 0%, Good: 1%, Outstanding: 3%, Excellent: 4%, Masterpiece: 5%
+            let crestChance = 0;
+            if (itemData.rarity === 'UNCOMMON') crestChance = 0.01; // 1%
+            if (itemData.rarity === 'RARE') crestChance = 0.03;     // 3%
+            if (itemData.rarity === 'EPIC') crestChance = 0.04;     // 4%
+            if (itemData.rarity === 'LEGENDARY') crestChance = 0.05;// 5%
+
+            if (Math.random() < crestChance) {
+                const crestId = `T${tier}_CREST`;
+                rewards.items.push({ id: crestId, qty: 1 });
+            }
+
+            // 3. Check Space using rewards list
+            for (const reward of rewards.items) {
+                if (!tempInv[reward.id]) {
+                    // New slot needed
+                    if (Object.keys(tempInv).length >= SIMULATED_MAX) {
+                        throw new Error("Inventory Full! Cannot open chest."); // Abort!
+                    }
+                    tempInv[reward.id] = (tempInv[reward.id] || 0) + reward.qty;
+                }
+            }
+
+            // 4. Apply Rewards (Space Guaranteed)
+            // char.state.silver = (char.state.silver || 0) + rewards.silver; // Silver removed
+
+            let message = `Used ${safeQty}x ${itemData.name}\nContents:`;
+
+            rewards.items.forEach(r => {
+                this.inventoryManager.addItemToInventory(char, r.id, r.qty);
+                message += `, ${r.qty}x ${r.id.replace(/T\d+_/, '')}`;
+            });
+
+            await this.saveState(char.id, char.state);
+            return { success: true, message, itemId, rewards };
+        } else if (false) { // Skip old block
+
+
+            await this.saveState(char.id, char.state);
             return { success: true, message, itemId, rewards };
         }
 

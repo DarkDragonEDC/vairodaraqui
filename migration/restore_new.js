@@ -107,10 +107,9 @@ async function restoreTable(tableName, idColumn = 'user_id') {
             // NÃO, se o ID do registro for o próprio Auth UID (como em characters.id = auth.uid())
 
             if (tableName === 'characters') {
-                // Em characters: id é PK e DEFAULT auth.uid().
-                // Mas no banco antigo, o ID do personagem ERA o ID do usuário.
-                // Então aqui também deve ser.
-                newRecord.id = idMap[oldId];
+                // CORREÇÃO: Manter o ID original do personagem (UUID)
+                // Isso permite múltiplos personagens por conta (Many-to-One).
+                newRecord.id = record.id;
             }
             else if (tableName === 'market_listings') {
                 // market_listings: seller_id vira o novo ID. O 'id' do listing pode ser mantido ou novo.
@@ -145,6 +144,12 @@ async function restoreTable(tableName, idColumn = 'user_id') {
     }
 }
 
+async function cleanTable(tableName) {
+    console.log(`🧹 Limpando tabela ${tableName}...`);
+    const { error } = await supabase.from(tableName).delete().neq('id', '00000000-0000-0000-0000-000000000000'); // Delete *
+    if (error) console.error("Erro ao limpar:", error.message);
+}
+
 async function run() {
     await restoreUsers();
 
@@ -153,7 +158,8 @@ async function run() {
         idMap = JSON.parse(fs.readFileSync(ID_MAP_FILE));
     }
 
-    await restoreTable('characters', 'user_id'); // characters.user_id -> map -> characters.id
+    await cleanTable('characters');
+    await restoreTable('characters', 'user_id'); // characters.user_id -> map -> newRecord.user_id (ID preserved)
 
     // Outras tabelas
     await restoreTable('market_listings', 'seller_id');

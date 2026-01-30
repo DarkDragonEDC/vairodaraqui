@@ -383,45 +383,73 @@ for (const t of TIERS) {
 
 // Generate Dungeon Chests
 for (const t of TIERS) {
-    // Common
-    ITEMS.SPECIAL.CHEST[`${t}_COMMON`] = {
-        id: `T${t}_CHEST_COMMON`,
-        name: `T${t} Dungeon Chest (Common)`,
+    // Normal (White)
+    ITEMS.SPECIAL.CHEST[`${t}_NORMAL`] = {
+        id: `T${t}_CHEST_NORMAL`,
+        name: `Dungeon Chest (Normal)`,
         tier: t,
         rarity: 'COMMON',
         type: 'CONSUMABLE',
+        rarityColor: '#ffffff',
         desc: 'Contains standard dungeon loot.'
     };
-    // Rare
-    ITEMS.SPECIAL.CHEST[`${t}_RARE`] = {
-        id: `T${t}_CHEST_RARE`,
-        name: `T${t} Dungeon Chest (Rare)`,
+    // Good (Green)
+    ITEMS.SPECIAL.CHEST[`${t}_GOOD`] = {
+        id: `T${t}_CHEST_GOOD`,
+        name: `Dungeon Chest (Good)`,
+        tier: t,
+        rarity: 'UNCOMMON',
+        type: 'CONSUMABLE',
+        rarityColor: '#4caf50',
+        desc: 'A good chest with decent rewards.'
+    };
+    // Outstanding (Blue)
+    ITEMS.SPECIAL.CHEST[`${t}_OUTSTANDING`] = {
+        id: `T${t}_CHEST_OUTSTANDING`,
+        name: `Dungeon Chest (Outstanding)`,
         tier: t,
         rarity: 'RARE',
         type: 'CONSUMABLE',
-        rarityColor: '#3b82f6', // Blue
-        desc: 'Contains dungeon loot and a chance for crests.'
+        rarityColor: '#4a90e2',
+        desc: 'An outstanding chest with high value rewards.'
     };
-    // Gold
-    ITEMS.SPECIAL.CHEST[`${t}_GOLD`] = {
-        id: `T${t}_CHEST_GOLD`,
-        name: `T${t} Dungeon Chest (Gold)`,
+    // Excellent (Purple)
+    ITEMS.SPECIAL.CHEST[`${t}_EXCELLENT`] = {
+        id: `T${t}_CHEST_EXCELLENT`,
+        name: `Dungeon Chest (Excellent)`,
         tier: t,
         rarity: 'EPIC',
         type: 'CONSUMABLE',
-        rarityColor: '#ffd700', // Gold
-        desc: 'Contains dungeon loot and crests.'
+        rarityColor: '#9013fe',
+        desc: 'An excellent reward for great feats.'
     };
-    // Mythic
-    ITEMS.SPECIAL.CHEST[`${t}_MYTHIC`] = {
-        id: `T${t}_CHEST_MYTHIC`,
-        name: `T${t} Dungeon Chest (Mythic)`,
+    // Masterpiece (Orange)
+    ITEMS.SPECIAL.CHEST[`${t}_MASTERPIECE`] = {
+        id: `T${t}_CHEST_MASTERPIECE`,
+        name: `Dungeon Chest (Masterpiece)`,
         tier: t,
         rarity: 'LEGENDARY',
         type: 'CONSUMABLE',
-        rarityColor: '#ff0000', // Red
-        desc: 'Contains distinct dungeon loot and crests.'
+        rarityColor: '#f5a623', // Orange/Gold
+        desc: 'The highest quality chest with the best rewards.'
     };
+    // Generic/Legacy Fallback
+    ITEMS.SPECIAL.CHEST[`${t}_GENERIC`] = {
+        id: `T${t}_DUNGEON_CHEST`,
+        name: `Dungeon Chest (Legacy)`,
+        tier: t,
+        rarity: 'COMMON',
+        type: 'CONSUMABLE',
+        desc: 'A standard dungeon chest.'
+    };
+
+    // --- LEGACY ALIASES (Fix for crash) ---
+    // We copy the object and override ID so resolveItem() indexes it correctly.
+    ITEMS.SPECIAL.CHEST[`${t}_COMMON`] = { ...ITEMS.SPECIAL.CHEST[`${t}_NORMAL`], id: `T${t}_CHEST_COMMON`, name: `Dungeon Chest (Normal)` };
+    ITEMS.SPECIAL.CHEST[`${t}_RARE`] = { ...ITEMS.SPECIAL.CHEST[`${t}_OUTSTANDING`], id: `T${t}_CHEST_RARE`, name: `Dungeon Chest (Outstanding)` };
+    ITEMS.SPECIAL.CHEST[`${t}_GOLD`] = { ...ITEMS.SPECIAL.CHEST[`${t}_EXCELLENT`], id: `T${t}_CHEST_GOLD`, name: `Dungeon Chest (Excellent)` };
+    ITEMS.SPECIAL.CHEST[`${t}_MYTHIC`] = { ...ITEMS.SPECIAL.CHEST[`${t}_MASTERPIECE`], id: `T${t}_CHEST_MYTHIC`, name: `Dungeon Chest (Masterpiece)` };
+
 }
 
 // Helper for Gear Generation
@@ -647,7 +675,7 @@ export const resolveItem = (itemId, overrideQuality = null) => {
         ...baseItem,
         id: rawId,
         name: `${qualityPrefix}${baseItem.name}`,
-        rarityColor: effectiveQuality.color,
+        rarityColor: baseItem.rarityColor || effectiveQuality.color,
         quality: effectiveQualityId,
         qualityName: effectiveQuality.name,
         originalId: baseId,
