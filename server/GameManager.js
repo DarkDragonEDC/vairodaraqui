@@ -77,7 +77,13 @@ export class GameManager {
     }
 
     calculateHash(state) {
-        return crypto.createHash('md5').update(JSON.stringify(state)).digest('hex');
+        try {
+            if (!state) return '';
+            return crypto.createHash('md5').update(JSON.stringify(state)).digest('hex');
+        } catch (err) {
+            console.error(`[HASH-ERROR] Failed to calculate hash:`, err);
+            return 'error-' + Date.now();
+        }
     }
 
     async getCharacter(userId, characterId = null, catchup = false, bypassCache = false) {
@@ -320,7 +326,7 @@ export class GameManager {
     }
 
     async persistCharacter(charId) {
-        if (!this.dirty.size === 0) return;
+        if (!this.dirty.has(charId)) return;
         const char = this.cache.get(charId);
         if (!char) return;
 
