@@ -17,7 +17,7 @@ const Sidebar = ({ gameState, activeTab, setActiveTab, activeCategory, setActive
     useEffect(() => {
         const fetchActivePlayers = async () => {
             try {
-                const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+                const apiUrl = import.meta.env.VITE_API_URL;
                 const res = await fetch(`${apiUrl}/api/active_players`);
                 if (res.ok) {
                     const data = await res.json();

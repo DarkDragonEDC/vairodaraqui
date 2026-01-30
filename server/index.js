@@ -8,14 +8,24 @@ import fs from 'fs';
 
 dotenv.config();
 
+process.on('unhandledRejection', (reason, promise) => {
+    console.error('!!! Unhandled Rejection at:', promise, 'reason:', reason);
+});
+
+process.on('uncaughtException', (err) => {
+    console.error('!!! Uncaught Exception:', err);
+});
+
+
 const app = express();
 const httpServer = createServer(app);
 const io = new Server(httpServer, {
     cors: {
-        origin: "*", // Or explicitly set your Netlify URL here
+        origin: ["http://localhost:5173", "http://127.0.0.1:5173", "https://vairodaraqui-fj1t.onrender.com"],
         methods: ["GET", "POST"],
         credentials: true
-    }
+    },
+    transports: ['websocket', 'polling']
 });
 
 // Manual socket registry for Ticker reliability
@@ -171,12 +181,12 @@ io.on('connection', (socket) => {
 
         console.log(`[SOCKET] User ${socket.user.email} joined character ${characterId}`);
 
-        // Sync with DB to pick up any manual edits
-        await gameManager.syncWithDatabase(characterId);
-
-        // Immediately send status for this character
         try {
-            await gameManager.executeLocked(socket.user.id, async () => {
+            // Sync with DB to pick up any manual edits
+            await gameManager.syncWithDatabase(characterId, userId);
+
+            // Immediately send status for this character
+            await gameManager.executeLocked(userId, async () => {
                 const status = await gameManager.getStatus(socket.user.id, true, characterId, true);
                 socket.emit('status_update', status);
             });
@@ -652,13 +662,21 @@ setInterval(async () => {
 }, 1000);
 
 // --- Background Maintenance (10 mins) ---
-setInterval(() => {
-    gameManager.runMaintenance();
+setInterval(async () => {
+    try {
+        await gameManager.runMaintenance();
+    } catch (err) {
+        console.error('[MAINTENANCE-LOOP] Error:', err);
+    }
 }, 600000);
 
 // --- Background Sync (1 min) ---
-setInterval(() => {
-    gameManager.persistAllDirty();
+setInterval(async () => {
+    try {
+        await gameManager.persistAllDirty();
+    } catch (err) {
+        console.error('[SYNC-LOOP] Error:', err);
+    }
 }, 60000);
 
 // Run once on startup

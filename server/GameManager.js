@@ -33,8 +33,12 @@ export class GameManager {
         this.dirty = new Set(); // set of charIds that need persisting
 
         // Periodic Persistence Loop (Every 60 seconds)
-        setInterval(() => {
-            this.flushDirtyCharacters();
+        setInterval(async () => {
+            try {
+                await this.flushDirtyCharacters();
+            } catch (err) {
+                console.error('[DB] Error in periodic flush loop:', err);
+            }
         }, 60000);
     }
 
@@ -98,9 +102,12 @@ export class GameManager {
             .select('*');
 
         if (characterId) {
-            query = query.eq('id', characterId).eq('user_id', userId).single();
+            query = query.eq('id', characterId);
+            if (userId) query = query.eq('user_id', userId);
+            query = query.single();
         } else {
             // Fallback for legacy calls or first load: get the first character
+            if (!userId) throw new Error("userId is required when characterId is not provided");
             query = query.eq('user_id', userId).limit(1).maybeSingle();
         }
 
@@ -368,9 +375,9 @@ export class GameManager {
         }
     }
 
-    async syncWithDatabase(charId) {
+    async syncWithDatabase(charId, userId = null) {
         const char = this.cache.get(charId);
-        if (!char) return await this.getCharacter(null, charId, false, true);
+        if (!char) return await this.getCharacter(userId, charId, false, true);
 
         const { data: dbChar, error } = await this.supabase
             .from('characters')

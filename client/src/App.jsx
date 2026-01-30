@@ -171,7 +171,7 @@ function App() {
   useEffect(() => {
     const handleUnload = () => {
       if (session?.access_token) {
-        const url = `${import.meta.env.VITE_API_URL || 'http://localhost:3000'}/api/update_last_active`;
+        const url = `${import.meta.env.VITE_API_URL}/api/update_last_active`;
 
         // Use sendBeacon for reliable unload requests (no CORS preflight if simple content type)
         if (navigator.sendBeacon) {
@@ -244,7 +244,7 @@ function App() {
   const connectSocket = (token, characterId) => {
     if (socket?.connected) return;
 
-    const socketUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+    const socketUrl = import.meta.env.VITE_API_URL;
     // console.log('[DEBUG-CLIENT] Connecting to socket URL:', socketUrl);
     const newSocket = io(socketUrl, {
       auth: { token },
@@ -295,13 +295,20 @@ function App() {
               error?.code === '400';
 
             if (isFatalAuthError) {
-              console.log('Fatal Auth Error - Forcing Logout');
+              console.log('Fatal Auth Error - Forcing Logout and Cleanup');
               await supabase.auth.signOut();
+
+              // Limpeza profunda para evitar loops de refresh com dados antigos
+              localStorage.clear();
+              sessionStorage.clear();
+
               setSession(null);
               setGameState(null);
               setSelectedCharacter(null);
-              localStorage.removeItem('selectedCharacterId');
               setSocket(null);
+
+              // Recarrega para garantir que o estado do Supabase seja reiniciado
+              window.location.reload();
               return;
             }
           }
