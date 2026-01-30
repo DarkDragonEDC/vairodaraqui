@@ -31,6 +31,20 @@ export class GameManager {
         this.userLocks = new Map(); // userId -> Promise (current task)
         this.cache = new Map(); // charId -> character object
         this.dirty = new Set(); // set of charIds that need persisting
+
+        // Periodic Persistence Loop (Every 60 seconds)
+        setInterval(() => {
+            this.flushDirtyCharacters();
+        }, 60000);
+    }
+
+    async flushDirtyCharacters() {
+        if (this.dirty.size === 0) return;
+        console.log(`[DB] Periodic flush for ${this.dirty.size} characters...`);
+        const ids = Array.from(this.dirty);
+        for (const id of ids) {
+            await this.persistCharacter(id);
+        }
     }
 
     async executeLocked(userId, task) {
@@ -56,6 +70,10 @@ export class GameManager {
 
         this.userLocks.set(userId, nextLock);
         return nextLock;
+    }
+
+    isLocked(userId) {
+        return this.userLocks.has(userId);
     }
 
     async getCharacter(userId, characterId = null, catchup = false) {
@@ -1083,73 +1101,24 @@ export class GameManager {
     }
 
     // Delegation Methods
-    async startActivity(u, c, t, i, q) {
-        const res = await this.activityManager.startActivity(u, c, t, i, q);
-        await this.persistCharacter(c);
-        return res;
-    }
-    async stopActivity(u, c) {
-        const res = await this.activityManager.stopActivity(u, c);
-        await this.persistCharacter(c);
-        return res;
-    }
+    async startActivity(u, c, t, i, q) { return this.activityManager.startActivity(u, c, t, i, q); }
+    async stopActivity(u, c) { return this.activityManager.stopActivity(u, c); }
 
-    async startCombat(u, c, m, t) {
-        const res = await this.combatManager.startCombat(u, c, m, t);
-        await this.persistCharacter(c);
-        return res;
-    }
-    async stopCombat(u, c) {
-        const res = await this.combatManager.stopCombat(u, c);
-        await this.persistCharacter(c);
-        return res;
-    }
-    async equipItem(u, c, i) {
-        const res = await this.inventoryManager.equipItem(u, c, i);
-        await this.persistCharacter(c);
-        return res;
-    }
-    async unequipItem(u, c, s) {
-        const res = await this.inventoryManager.unequipItem(u, c, s);
-        await this.persistCharacter(c);
-        return res;
-    }
-    async getMarketListings(f) { return this.marketManager.getMarketListings(f); } // Global
-    async sellItem(u, c, i, q) {
-        const res = await this.marketManager.sellItem(u, c, i, q);
-        await this.persistCharacter(c);
-        return res;
-    }
-    async listMarketItem(u, c, i, a, p) {
-        const res = await this.marketManager.listMarketItem(u, c, i, a, p);
-        await this.persistCharacter(c);
-        return res;
-    }
-    async buyMarketItem(b, c, l, q) {
-        const res = await this.marketManager.buyMarketItem(b, c, l, q);
-        await this.persistCharacter(c);
-        return res;
-    }
-    async cancelMarketListing(u, c, l) {
-        const res = await this.marketManager.cancelMarketListing(u, c, l);
-        await this.persistCharacter(c);
-        return res;
-    }
-    async claimMarketItem(u, c, cl) {
-        const res = await this.marketManager.claimMarketItem(u, c, cl);
-        await this.persistCharacter(c);
-        return res;
-    }
-    async startDungeon(u, c, d, r) {
-        const res = await this.dungeonManager.startDungeon(u, c, d, r);
-        await this.persistCharacter(c);
-        return res;
-    }
-    async stopDungeon(u, c) {
-        const res = await this.dungeonManager.stopDungeon(u, c);
-        await this.persistCharacter(c);
-        return res;
-    }
+    async startCombat(u, c, m, t) { return this.combatManager.startCombat(u, c, m, t); }
+    async stopCombat(u, c) { return this.combatManager.stopCombat(u, c); }
+
+    async equipItem(u, c, i) { return this.inventoryManager.equipItem(u, c, i); }
+    async unequipItem(u, c, s) { return this.inventoryManager.unequipItem(u, c, s); }
+
+    async getMarketListings(f) { return this.marketManager.getMarketListings(f); }
+    async sellItem(u, c, i, q) { return this.marketManager.sellItem(u, c, i, q); }
+    async listMarketItem(u, c, i, a, p) { return this.marketManager.listMarketItem(u, c, i, a, p); }
+    async buyMarketItem(b, c, l, q) { return this.marketManager.buyMarketItem(b, c, l, q); }
+    async cancelMarketListing(u, c, l) { return this.marketManager.cancelMarketListing(u, c, l); }
+    async claimMarketItem(u, c, cl) { return this.marketManager.claimMarketItem(u, c, cl); }
+
+    async startDungeon(u, c, d, r) { return this.dungeonManager.startDungeon(u, c, d, r); }
+    async stopDungeon(u, c) { return this.dungeonManager.stopDungeon(u, c); }
     async consumeItem(userId, characterId, itemId, quantity = 1) {
         const char = await this.getCharacter(userId, characterId);
         const itemData = this.inventoryManager.resolveItem(itemId);

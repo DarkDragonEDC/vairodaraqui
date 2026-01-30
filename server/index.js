@@ -590,6 +590,12 @@ setInterval(async () => {
 
         await Promise.all(Object.values(charGroups).map(async ({ user, charId, sockets }) => {
             try {
+                // Skip if already locked (prevent queue accumulation)
+                if (gameManager.isLocked(user.id)) {
+                    // console.log(`[TICKER] Skipping user ${user.email} (task pending)`);
+                    return;
+                }
+
                 await gameManager.executeLocked(user.id, async () => {
                     const result = await gameManager.processTick(user.id, charId);
                     if (result) {

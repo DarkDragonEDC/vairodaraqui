@@ -9,7 +9,7 @@ export class ActivityManager {
         console.log(`[ACTIVITY] Start Request: User=${userId}, Type=${actionType}, Item=${itemId}`);
         const type = actionType.toUpperCase();
         const char = await this.gameManager.getCharacter(userId, characterId);
-        console.log(`[ACTIVITY] Char loaded: ${char?.name}. Skills keys: ${Object.keys(char.state.skills).length}`);
+        console.log(`[ACTIVITY] Char loaded: ${char?.name}. Skills keys: ${char?.state?.skills ? Object.keys(char.state.skills).length : 0}`);
         const item = ITEM_LOOKUP[itemId];
         if (!item) throw new Error("Item not found");
 
@@ -72,26 +72,24 @@ export class ActivityManager {
             throw new Error("Maximum duration exceeded (Limit: 12 Hours)");
         }
 
-        const { error } = await this.gameManager.supabase
-            .from('characters')
-            .update({
-                current_activity: {
-                    type: type,
-                    item_id: itemId,
-                    actions_remaining: quantity,
-                    initial_quantity: quantity,
-                    time_per_action: timePerAction,
-                    next_action_at: Date.now() + (timePerAction * 1000),
-                    req: item.req || null,
-                    sessionItems: {},
-                    sessionXp: 0
-                },
-                activity_started_at: new Date().toISOString(),
-                last_saved: new Date().toISOString() // Prevent catchup from applying old offline item to NEW activity
-            })
-            .eq('id', char.id);
+        // Update Character Object (Cache)
+        char.current_activity = {
+            type: type,
+            item_id: itemId,
+            actions_remaining: quantity,
+            initial_quantity: quantity,
+            time_per_action: timePerAction,
+            next_action_at: Date.now() + (timePerAction * 1000),
+            req: item.req || null,
+            sessionItems: {},
+            sessionXp: 0
+        };
+        char.activity_started_at = new Date().toISOString();
+        char.last_saved = new Date().toISOString();
 
-        if (error) throw error;
+        // Mark for persistence
+        this.gameManager.markDirty(char.id);
+
         return { success: true, actionType, itemId, quantity, timePerAction };
     }
 
@@ -114,16 +112,13 @@ export class ActivityManager {
             });
         }
 
-        const { error } = await this.gameManager.supabase
-            .from('characters')
-            .update({
-                current_activity: null,
-                activity_started_at: null,
-                state: char.state
-            })
-            .eq('id', char.id);
+        // Update Character Object (Cache)
+        char.current_activity = null;
+        char.activity_started_at = null;
 
-        if (error) throw error;
+        // Mark for persistence
+        this.gameManager.markDirty(char.id);
+
         return { success: true, message: "Activity stopped" };
     }
 

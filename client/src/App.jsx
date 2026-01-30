@@ -408,6 +408,7 @@ function App() {
   };
 
   const startActivity = (type, itemId, quantity = 1) => {
+    console.log(`[CLIENT] Requesting Start Activity: ${type}, Item: ${itemId}, Qty: ${quantity}`);
     socket.emit('start_activity', { actionType: type, itemId, quantity });
   };
 
