@@ -439,8 +439,8 @@ const MarketPanel = ({ socket, gameState, silver = 0, onShowInfo, onListOnMarket
                         <div className="scroll-container" style={{ flex: 1, paddingRight: '5px' }}>
                             <div style={{
                                 display: 'grid',
-                                gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
-                                gap: '12px',
+                                gridTemplateColumns: 'repeat(auto-fill, minmax(90px, 1fr))',
+                                gap: isMobile ? '8px' : '12px',
                                 paddingBottom: '20px'
                             }}>
                                 {Object.entries(gameState?.state?.inventory || {}).filter(([id, qty]) => {
@@ -451,7 +451,19 @@ const MarketPanel = ({ socket, gameState, silver = 0, onShowInfo, onListOnMarket
                                     return true;
                                 }).map(([id, qty]) => {
                                     const data = resolveItem(id);
-                                    const tierColor = getTierColor(data.tier);
+                                    // Simple rarity check for border color if needed, similar to Inventory
+                                    let specificBorderColor = 'var(--border)';
+                                    if (data.rarity) {
+                                        switch (data.rarity) {
+                                            case 'COMMON': specificBorderColor = '#9CA3AF'; break;
+                                            case 'UNCOMMON': specificBorderColor = '#10B981'; break;
+                                            case 'RARE': specificBorderColor = '#3B82F6'; break;
+                                            case 'EPIC': specificBorderColor = '#F59E0B'; break;
+                                            case 'LEGENDARY': specificBorderColor = '#EF4444'; break;
+                                            case 'MYTHIC': specificBorderColor = '#A855F7'; break;
+                                            default: specificBorderColor = 'var(--border)';
+                                        }
+                                    }
 
                                     return (
                                         <button
@@ -459,7 +471,8 @@ const MarketPanel = ({ socket, gameState, silver = 0, onShowInfo, onListOnMarket
                                             onClick={() => onListOnMarket({ itemId: id, max: qty })}
                                             style={{
                                                 background: 'rgba(0,0,0,0.2)',
-                                                border: '1px solid var(--border)',
+                                                border: `1px solid ${specificBorderColor}`,
+                                                boxShadow: (data.rarity && data.rarity !== 'COMMON') ? `0 0 4px ${specificBorderColor}40` : 'none',
                                                 borderRadius: '10px',
                                                 padding: '10px',
                                                 display: 'flex',
@@ -469,7 +482,8 @@ const MarketPanel = ({ socket, gameState, silver = 0, onShowInfo, onListOnMarket
                                                 aspectRatio: '1/1',
                                                 cursor: 'pointer',
                                                 position: 'relative',
-                                                transition: '0.2s'
+                                                transition: '0.2s',
+                                                minHeight: '80px'
                                             }}
                                         >
                                             <div style={{ position: 'absolute', top: 6, left: 6, fontSize: '0.6rem', color: '#fff', fontWeight: '900', textShadow: '0 0 4px rgba(0,0,0,0.8)' }}>T{data.tier}</div>

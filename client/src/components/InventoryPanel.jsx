@@ -370,7 +370,7 @@ const InventoryPanel = ({ gameState, socket, onEquip, onListOnMarket, onShowInfo
                             const item = resolveItem(id);
                             console.log('[DEBUG-CLIENT] Resolved Item Type:', item?.type);
 
-                            if (item?.type === 'POTION') {
+                            if (item?.type === 'POTION' || item?.type === 'CHEST' || id.includes('CHEST') || item?.type === 'CONSUMABLE') {
                                 setUsePotionModal({
                                     itemId: id,
                                     item: item,
@@ -581,7 +581,9 @@ const InventoryPanel = ({ gameState, socket, onEquip, onListOnMarket, onShowInfo
                                         <Package size={32} color="#d4af37" />
                                     )}
                                 </div>
-                                <h3 style={{ margin: 0, fontSize: '1.2rem', color: '#fff', fontWeight: '900', letterSpacing: '1px' }}>Drink {usePotionModal.item.name}</h3>
+                                <h3 style={{ margin: 0, fontSize: '1.2rem', color: '#fff', fontWeight: '900', letterSpacing: '1px' }}>
+                                    {usePotionModal.item.type === 'POTION' ? 'Drink' : usePotionModal.item.type === 'CHEST' || usePotionModal.itemId.includes('CHEST') ? 'Open' : 'Use'} {usePotionModal.item.name}
+                                </h3>
                                 <div style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.5)', marginTop: '4px' }}>
                                     Available: <span style={{ color: '#d4af37', fontWeight: 'bold' }}>{usePotionModal.max}</span>
                                 </div>
@@ -633,23 +635,42 @@ const InventoryPanel = ({ gameState, socket, onEquip, onListOnMarket, onShowInfo
                                     >MAX</button>
                                 </div>
 
-                                <div style={{
-                                    background: 'rgba(255,255,255,0.03)',
-                                    borderRadius: '12px',
-                                    padding: '15px',
-                                    border: '1px solid rgba(255,255,255,0.05)'
-                                }}>
-                                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
-                                        <span style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.75rem' }}>Duration per potion:</span>
-                                        <span style={{ color: '#fff', fontSize: '0.75rem', fontWeight: 'bold' }}>{Math.round((usePotionModal.item.duration || 3600) / 60)} min</span>
+                                {/* Info Block (Conditional) */}
+                                {usePotionModal.item.type === 'POTION' && (
+                                    <div style={{
+                                        background: 'rgba(255,255,255,0.03)',
+                                        borderRadius: '12px',
+                                        padding: '15px',
+                                        border: '1px solid rgba(255,255,255,0.05)'
+                                    }}>
+                                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
+                                            <span style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.75rem' }}>Duration per potion:</span>
+                                            <span style={{ color: '#fff', fontSize: '0.75rem', fontWeight: 'bold' }}>{Math.round((usePotionModal.item.duration || 3600) / 60)} min</span>
+                                        </div>
+                                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                            <span style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.75rem' }}>Total Added Time:</span>
+                                            <span style={{ color: '#4caf50', fontSize: '0.9rem', fontWeight: '900' }}>
+                                                {Math.floor(((usePotionModal.item.duration || 3600) * usePotionModal.quantity) / 3600)}h {Math.round((((usePotionModal.item.duration || 3600) * usePotionModal.quantity) % 3600) / 60)}m
+                                            </span>
+                                        </div>
                                     </div>
-                                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                        <span style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.75rem' }}>Total Added Time:</span>
-                                        <span style={{ color: '#4caf50', fontSize: '0.9rem', fontWeight: '900' }}>
-                                            {Math.floor(((usePotionModal.item.duration || 3600) * usePotionModal.quantity) / 3600)}h {Math.round((((usePotionModal.item.duration || 3600) * usePotionModal.quantity) % 3600) / 60)}m
-                                        </span>
+                                )}
+
+                                {/* Chest Info Hint */}
+                                {(usePotionModal.item.type === 'CHEST' || usePotionModal.itemId?.includes('CHEST')) && (
+                                    <div style={{
+                                        background: 'rgba(255,255,255,0.03)',
+                                        borderRadius: '12px',
+                                        padding: '15px',
+                                        border: '1px solid rgba(255,255,255,0.05)',
+                                        textAlign: 'center',
+                                        color: '#ccc',
+                                        fontSize: '0.8rem'
+                                    }}>
+                                        Contains random resources.<br />
+                                        Opening multiple aggregates all rewards.
                                     </div>
-                                </div>
+                                )}
                             </div>
 
                             <div style={{ display: 'flex', gap: '12px', position: 'relative', zIndex: 1 }}>

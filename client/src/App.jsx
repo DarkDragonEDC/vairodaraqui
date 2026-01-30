@@ -1096,16 +1096,16 @@ function App() {
           justifyContent: 'space-between',
           alignItems: 'center',
           zIndex: 100,
-          flexWrap: 'wrap',
+          flexWrap: 'nowrap',
           gap: '10px'
         }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 20, minWidth: 0 }}>
             {isMobile && <button onClick={() => setSidebarOpen(true)} style={{ color: '#fff', opacity: 0.6 }}><Menu size={24} /></button>}
-            <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-              <div style={{ width: 32, height: 32, background: 'linear-gradient(135deg, #d4af37 0%, #8a6d0a 100%)', borderRadius: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 12, minWidth: 0 }}>
+              <div style={{ width: 32, height: 32, background: 'linear-gradient(135deg, #d4af37 0%, #8a6d0a 100%)', borderRadius: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                 <User color="#000" size={16} />
               </div>
-              <div style={{ fontWeight: '900', fontSize: isMobile ? '0.85rem' : '1rem', color: '#fff', letterSpacing: '2px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: isMobile ? '120px' : 'auto' }}>{displayedGameState?.name?.toUpperCase() || 'ADVENTURER'}</div>
+              <div style={{ fontWeight: '900', fontSize: isMobile ? '0.85rem' : '1rem', color: '#fff', letterSpacing: '2px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: isMobile ? '90px' : '200px' }}>{displayedGameState?.name?.toUpperCase() || 'ADVENTURER'}</div>
             </div>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: isMobile ? 12 : 20 }}>

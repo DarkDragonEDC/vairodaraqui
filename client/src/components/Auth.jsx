@@ -127,7 +127,7 @@ const Auth = ({ onLogin, initialView = 'LOGIN' }) => {
                     alignItems: 'center',
                     gap: '6px',
                     background: 'rgba(212, 175, 55, 0.1)',
-                    padding: '6px 16px',
+                    padding: '4px 12px',
                     borderRadius: '20px',
                     border: '1px solid rgba(212, 175, 55, 0.2)',
                     color: '#d4af37'
@@ -145,7 +145,7 @@ const Auth = ({ onLogin, initialView = 'LOGIN' }) => {
             </div>
             <div style={{
                 width: '380px',
-                padding: '2rem',
+                padding: '1.5rem',
                 background: 'rgba(20, 20, 20, 0.8)',
                 backdropFilter: 'blur(10px)',
                 borderRadius: '16px',
@@ -156,16 +156,16 @@ const Auth = ({ onLogin, initialView = 'LOGIN' }) => {
                 alignItems: 'center'
             }}>
                 {/* Logo and Title */}
-                <div style={{ marginBottom: '2rem', textAlign: 'center' }}>
+                <div style={{ marginBottom: '1.25rem', textAlign: 'center' }}>
                     <img
                         src="/logo.png"
                         alt="Forged Lands Logo"
-                        style={{ width: '120px', height: 'auto', marginBottom: '1rem', filter: 'drop-shadow(0 0 10px rgba(212,175,55,0.3))' }}
+                        style={{ width: '70px', height: 'auto', marginBottom: '0.25rem', filter: 'drop-shadow(0 0 10px rgba(212,175,55,0.3))' }}
                     />
                     <h1 style={{
                         color: 'var(--accent, #d4af37)',
                         margin: 0,
-                        fontSize: '2rem',
+                        fontSize: '1.2rem',
                         fontWeight: '800',
                         textTransform: 'uppercase',
                         letterSpacing: '2px',
@@ -173,18 +173,18 @@ const Auth = ({ onLogin, initialView = 'LOGIN' }) => {
                     }}>
                         Forged Lands
                     </h1>
-                    <div style={{ height: '2px', background: 'linear-gradient(90deg, transparent, var(--accent, #d4af37), transparent)', width: '100%', marginTop: '10px', opacity: 0.5 }}></div>
+                    <div style={{ height: '2px', background: 'linear-gradient(90deg, transparent, var(--accent, #d4af37), transparent)', width: '100%', marginTop: '6px', opacity: 0.5 }}></div>
                 </div>
 
                 <form onSubmit={handleSubmit} style={{ width: '100%' }}>
                     {view !== 'RESET' && (
-                        <div style={{ marginBottom: '1.25rem' }}>
+                        <div style={{ marginBottom: '1rem' }}>
                             <label style={{
                                 display: 'block',
-                                fontSize: '0.75rem',
+                                fontSize: '0.7rem',
                                 color: '#aaa',
                                 fontWeight: '600',
-                                marginBottom: '0.5rem',
+                                marginBottom: '0.4rem',
                                 letterSpacing: '1px'
                             }}>
                                 EMAIL ADDRESS
@@ -193,7 +193,7 @@ const Auth = ({ onLogin, initialView = 'LOGIN' }) => {
                                 type="text"
                                 style={{
                                     width: '100%',
-                                    padding: '12px',
+                                    padding: '8px 12px',
                                     background: 'rgba(0,0,0,0.4)',
                                     border: '1px solid rgba(255,255,255,0.1)',
                                     borderRadius: '8px',
@@ -217,10 +217,10 @@ const Auth = ({ onLogin, initialView = 'LOGIN' }) => {
                         <div style={{ marginBottom: view === 'LOGIN' ? '0.5rem' : '2rem' }}>
                             <label style={{
                                 display: 'block',
-                                fontSize: '0.75rem',
+                                fontSize: '0.7rem',
                                 color: '#aaa',
                                 fontWeight: '600',
-                                marginBottom: '0.5rem',
+                                marginBottom: '0.4rem',
                                 letterSpacing: '1px'
                             }}>
                                 PASSWORD
@@ -229,7 +229,7 @@ const Auth = ({ onLogin, initialView = 'LOGIN' }) => {
                                 type="password"
                                 style={{
                                     width: '100%',
-                                    padding: '12px',
+                                    padding: '8px 12px',
                                     background: 'rgba(0,0,0,0.4)',
                                     border: '1px solid rgba(255,255,255,0.1)',
                                     borderRadius: '8px',
@@ -250,10 +250,10 @@ const Auth = ({ onLogin, initialView = 'LOGIN' }) => {
                     )}
 
                     {view === 'LOGIN' && (
-                        <div style={{ textAlign: 'right', marginBottom: '1.5rem' }}>
+                        <div style={{ textAlign: 'right', marginBottom: '0.75rem' }}>
                             <span
                                 onClick={() => { setView('FORGOT'); setError(''); setMessage(''); }}
-                                style={{ color: '#888', fontSize: '0.75rem', cursor: 'pointer', textDecoration: 'underline' }}
+                                style={{ color: '#888', fontSize: '0.65rem', cursor: 'pointer', textDecoration: 'underline' }}
                             >
                                 Forgot Password?
                             </span>
@@ -326,8 +326,8 @@ const Auth = ({ onLogin, initialView = 'LOGIN' }) => {
                         disabled={isLoading}
                         style={{
                             width: '100%',
-                            padding: '14px',
-                            marginBottom: '1.5rem',
+                            padding: '10px',
+                            marginBottom: '0.5rem',
                             background: isLoading
                                 ? 'rgba(212, 175, 55, 0.5)'
                                 : 'linear-gradient(135deg, #d4af37 0%, #b8860b 100%)',
@@ -349,32 +349,79 @@ const Auth = ({ onLogin, initialView = 'LOGIN' }) => {
                             : (view === 'REGISTER' ? 'CREATE ACCOUNT' : view === 'FORGOT' ? 'SEND RESET LINK' : view === 'RESET' ? 'UPDATE PASSWORD' : 'START JOURNEY')}
                     </button>
 
-                    <div
-                        onClick={() => {
-                            if (isLoading) return;
-                            if (view === 'LOGIN') setView('REGISTER');
-                            else setView('LOGIN');
-                            setError('');
-                            setMessage('');
-                        }}
-                        style={{
-                            color: '#888',
-                            fontSize: '0.9rem',
-                            textAlign: 'center',
-                            cursor: 'pointer',
-                            display: 'flex',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            gap: '5px'
-                        }}
-                    >
-                        <span>
-                            {view === 'REGISTER' ? 'Already an adventurer?' : view === 'FORGOT' ? 'Remembered?' : view === 'RESET' ? 'Back to' : 'New here?'}
-                        </span>
-                        <span style={{ color: '#d4af37', fontWeight: 'bold' }}>
-                            {view === 'REGISTER' ? 'Login' : view === 'FORGOT' ? 'Login' : view === 'RESET' ? 'Login' : 'Create Account'}
-                        </span>
-                    </div>
+                    {/* Google Login Button */}
+                    {view === 'LOGIN' && (
+                        <button
+                            type="button"
+                            onClick={async () => {
+                                setIsLoading(true);
+                                const { error } = await supabase.auth.signInWithOAuth({
+                                    provider: 'google',
+                                    options: {
+                                        redirectTo: window.location.origin
+                                    }
+                                });
+                                if (error) setError(error.message);
+                                setIsLoading(false);
+                            }}
+                            disabled={isLoading}
+                            style={{
+                                width: '100%',
+                                padding: '10px',
+                                marginBottom: '1rem',
+                                background: 'rgba(255,255,255,0.05)',
+                                border: '1px solid rgba(255,255,255,0.1)',
+                                borderRadius: '8px',
+                                color: '#fff',
+                                fontWeight: '600',
+                                fontSize: '0.9rem',
+                                cursor: 'pointer',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                gap: '10px',
+                                transition: '0.2s'
+                            }}
+                            onMouseOver={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.1)'}
+                            onMouseOut={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.05)'}
+                        >
+                            <svg width="18" height="18" viewBox="0 0 18 18">
+                                <path fill="#4285F4" d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.248h2.908c1.702-1.567 2.684-3.874 2.684-6.615z" />
+                                <path fill="#34A853" d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.248c-.806.54-1.836.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332C2.438 15.983 5.482 18 9 18z" />
+                                <path fill="#FBBC05" d="M3.964 10.719c-.18-.54-.282-1.117-.282-1.719s.102-1.179.282-1.719V4.949H.957C.347 6.169 0 7.548 0 9s.347 2.831.957 4.051l3.007-2.332z" />
+                                <path fill="#EA4335" d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0 5.482 0 2.438 2.017.957 4.949L3.964 7.28c.708-2.127 2.692-3.711 5.036-3.711z" />
+                            </svg>
+                            CONTINUE WITH GOOGLE
+                        </button>
+                    )}
+
+                    {view !== 'LOGIN' && (
+                        <div
+                            onClick={() => {
+                                if (isLoading) return;
+                                setView('LOGIN');
+                                setError('');
+                                setMessage('');
+                            }}
+                            style={{
+                                color: '#888',
+                                fontSize: '0.9rem',
+                                textAlign: 'center',
+                                cursor: 'pointer',
+                                display: 'flex',
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                gap: '5px'
+                            }}
+                        >
+                            <span>
+                                {view === 'FORGOT' ? 'Remembered?' : view === 'RESET' ? 'Back to' : ''}
+                            </span>
+                            <span style={{ color: '#d4af37', fontWeight: 'bold' }}>
+                                Login
+                            </span>
+                        </div>
+                    )}
                 </form>
             </div>
 

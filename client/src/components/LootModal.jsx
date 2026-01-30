@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Coins, Box } from 'lucide-react';
-import { getTierColor } from '@shared/items';
+import { getTierColor, resolveItem } from '@shared/items';
 
 const LootModal = ({ isOpen, onClose, rewards }) => {
     if (!isOpen || !rewards) return null;
@@ -68,7 +68,22 @@ const LootModal = ({ isOpen, onClose, rewards }) => {
                         CHEST OPENED!
                     </h2>
 
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '15px', position: 'relative', zIndex: 1 }}>
+                    <div style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: '15px',
+                        position: 'relative',
+                        zIndex: 1,
+                        maxHeight: '60vh',
+                        overflowY: 'auto',
+                        paddingRight: '10px'
+                    }} className="custom-scroll">
+                        <style>{`
+                            .custom-scroll::-webkit-scrollbar { width: 6px; }
+                            .custom-scroll::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); border-radius: 4px; }
+                            .custom-scroll::-webkit-scrollbar-thumb { background: rgba(212, 175, 55, 0.5); border-radius: 4px; }
+                            .custom-scroll::-webkit-scrollbar-thumb:hover { background: rgba(212, 175, 55, 0.8); }
+                        `}</style>
                         {/* Silver Reward */}
                         {rewards.silver > 0 && (
                             <motion.div
@@ -105,7 +120,22 @@ const LootModal = ({ isOpen, onClose, rewards }) => {
 
                         {/* Items Reward */}
                         {rewards.items && rewards.items.map((item, index) => {
-                            const tierColor = getTierColor(item.id.split('_')[0].replace('T', '')); // Rough parsing for now
+                            const resolvedItem = resolveItem(item.id);
+                            const tierColor = getTierColor(item.id.split('_')[0].replace('T', ''));
+
+                            // Determine Icon
+                            let IconComponent = Box;
+                            if (item.id.includes('PLANK') || item.id.includes('LOG')) IconComponent = 'LOG';
+                            if (item.id.includes('BAR') || item.id.includes('ORE')) IconComponent = 'ORE';
+                            if (item.id.includes('LEATHER') || item.id.includes('HIDE')) IconComponent = 'HIDE';
+                            if (item.id.includes('CLOTH') || item.id.includes('FIBER')) IconComponent = 'FIBER';
+                            if (item.id.includes('CREST')) IconComponent = 'CREST';
+
+                            // Map custom strings to Lucide (for now, or SVG paths)
+                            // Better: Just use generic Box if no image, but color it well.
+                            // BUT wait, does resolvedItem have .icon?
+                            const iconUrl = resolvedItem?.icon;
+
                             return (
                                 <motion.div
                                     key={index}
@@ -123,21 +153,27 @@ const LootModal = ({ isOpen, onClose, rewards }) => {
                                     }}
                                 >
                                     <div style={{
-                                        width: '40px', height: '40px',
+                                        width: '48px', height: '48px',
                                         background: `${tierColor}22`,
                                         borderRadius: '8px',
                                         display: 'flex',
                                         alignItems: 'center',
                                         justifyContent: 'center',
-                                        border: `1px solid ${tierColor}66`
+                                        border: `1px solid ${tierColor}66`,
+                                        overflow: 'hidden',
+                                        padding: '5px'
                                     }}>
-                                        <Box size={20} color={tierColor} />
+                                        {iconUrl ? (
+                                            <img src={iconUrl} alt={item.id} style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+                                        ) : (
+                                            <Box size={24} color={tierColor} />
+                                        )}
                                     </div>
                                     <div style={{ textAlign: 'left' }}>
                                         <div style={{ fontSize: '1.1rem', fontWeight: 'bold', color: '#fff' }}>
-                                            {item.qty}x <span style={{ color: tierColor }}>{item.id}</span>
+                                            {item.qty}x <span style={{ color: tierColor }}>{resolvedItem?.name || item.id}</span>
                                         </div>
-                                        <div style={{ fontSize: '0.8rem', color: '#888' }}>Resource</div>
+                                        <div style={{ fontSize: '0.8rem', color: '#888' }}>{resolvedItem?.type || 'Resource'}</div>
                                     </div>
                                 </motion.div>
                             );

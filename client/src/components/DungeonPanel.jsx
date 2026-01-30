@@ -457,17 +457,15 @@ const DungeonPanel = ({ gameState, socket, isMobile, serverTimeOffset = 0 }) => 
 
                         const estimatedTimeRun = calculateEstimatedTime(tier, 1);
 
-                        // Possible Loot
-                        const lootItems = [];
-                        if (dungeon.rewards?.resource) lootItems.push({ id: dungeon.rewards.resource.id, chance: dungeon.rewards.resource.chance });
-
-                        // Boss Loot (Crests)
+                        // Possible Loot (Chests with Rarity Chances)
                         const bossMob = MONSTERS[tier]?.find(m => m.id === dungeon.bossId);
-                        if (bossMob && bossMob.loot) {
-                            Object.entries(bossMob.loot).forEach(([itemId, chance]) => {
-                                if (itemId.includes('_CREST')) lootItems.push({ id: itemId, chance });
-                            });
-                        }
+                        const lootItems = [
+                            { id: `T${tier}_CHEST_MASTERPIECE`, chance: 0.01 },
+                            { id: `T${tier}_CHEST_EXCELLENT`, chance: 0.04 },
+                            { id: `T${tier}_CHEST_OUTSTANDING`, chance: 0.15 },
+                            { id: `T${tier}_CHEST_GOOD`, chance: 0.30 },
+                            { id: `T${tier}_CHEST_NORMAL`, chance: 0.50 }
+                        ];
 
                         return (
                             <motion.div
@@ -589,14 +587,29 @@ const DungeonPanel = ({ gameState, socket, isMobile, serverTimeOffset = 0 }) => 
                                         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
                                             {lootItems.map((loot, idx) => {
                                                 const item = resolveItem(loot.id);
+                                                const borderColor = item?.rarityColor || '#3D4255';
+
                                                 return (
-                                                    <div key={`${loot.id}-${idx}`} title={`${loot.id.replace(/_/g, ' ')} (${(loot.chance * 100).toFixed(1)}%)`} style={{ width: '36px', height: '36px', borderRadius: '8px', overflow: 'hidden', border: '1px solid #3D4255', background: '#2A3041', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                                                    <div key={`${loot.id}-${idx}`} title={`${item?.name || loot.id.replace(/_/g, ' ')} (${(loot.chance * 100).toFixed(0)}%)`} style={{
+                                                        width: '42px', height: '42px', borderRadius: '10px', overflow: 'hidden',
+                                                        border: `1px solid ${borderColor}`,
+                                                        boxShadow: `0 0 5px ${borderColor}20`,
+                                                        background: '#2A3041', display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                                        position: 'relative'
+                                                    }}>
                                                         <div style={{ width: '100%', height: '100%', background: '#1E2330', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
                                                             {item?.icon ? (
-                                                                <img src={item.icon} alt={item.name} style={{ width: '130%', height: '130%', objectFit: 'contain' }} />
+                                                                <img src={item.icon} alt={item.name} style={{ width: '120%', height: '120%', objectFit: 'contain' }} />
                                                             ) : (
-                                                                loot.id.includes('CREST') ? <Star size={16} color="#666" /> : <Package size={16} color="#666" />
+                                                                <Package size={20} color={borderColor} />
                                                             )}
+                                                        </div>
+                                                        <div style={{
+                                                            position: 'absolute', bottom: 0, right: 0,
+                                                            background: 'rgba(0,0,0,0.8)', color: '#fff', fontSize: '0.55rem',
+                                                            padding: '1px 3px', borderTopLeftRadius: '4px', fontWeight: '900'
+                                                        }}>
+                                                            {(loot.chance * 100).toFixed(0)}%
                                                         </div>
                                                     </div>
                                                 );
@@ -607,6 +620,8 @@ const DungeonPanel = ({ gameState, socket, isMobile, serverTimeOffset = 0 }) => 
                             </motion.div>
                         );
                     })}
+                {/* Bottom Spacer for Scroll */}
+                <div style={{ height: '80px', flexShrink: 0 }}></div>
             </div>
 
             {/* Modal Overlay */}
