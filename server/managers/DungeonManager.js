@@ -4,6 +4,7 @@ import { MONSTERS } from '../../shared/monsters.js';
 
 const WAVE_DURATION = 60 * 1000; // 1 minute per wave
 const MAX_DUNGEON_TIME = 12 * 60 * 60 * 1000; // 12 hours safety limit
+const MAX_DUNGEON_XP = 100_000_000; // 100M
 
 export class DungeonManager {
     constructor(gameManager) {
@@ -221,8 +222,11 @@ export class DungeonManager {
         const loot = [];
 
         // XP
-        const leveledUpCombat = this.gameManager.addXP(char, 'COMBAT', rewards.xp);
-        const leveledUpDungeon = this.gameManager.addXP(char, 'DUNGEONEERING', rewards.xp);
+        let dungeonXp = rewards.xp || 100;
+        if (dungeonXp > MAX_DUNGEON_XP) dungeonXp = MAX_DUNGEON_XP;
+
+        const leveledUpCombat = this.gameManager.addXP(char, 'COMBAT', dungeonXp);
+        const leveledUpDungeon = this.gameManager.addXP(char, 'DUNGEONEERING', dungeonXp);
         const leveledUp = leveledUpCombat || leveledUpDungeon;
 
         // Silver reward removed (now charged on entry)

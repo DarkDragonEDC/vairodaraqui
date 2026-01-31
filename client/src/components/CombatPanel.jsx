@@ -261,10 +261,11 @@ const CombatPanel = ({ socket, gameState, isMobile, onShowHistory }) => {
                             return newLoot;
                         });
                         details.lootGained.forEach(item => {
+                            const itemData = resolveItem(item);
                             newLogs.push({
                                 id: generateLogId(),
                                 type: 'loot',
-                                content: `Item found: ${item}!`,
+                                content: `Item found: ${itemData?.name || item}!`,
                                 color: '#ae00ff'
                             });
                         });
@@ -624,20 +625,23 @@ const CombatPanel = ({ socket, gameState, isMobile, onShowHistory }) => {
                                 {Object.entries(sessionLoot).length === 0 ? (
                                     <span style={{ fontSize: '0.65rem', color: 'var(--text-dim)', fontStyle: 'italic' }}>Waiting for drops...</span>
                                 ) : (
-                                    Object.entries(sessionLoot).map(([id, qty]) => (
-                                        <div key={id} style={{
-                                            background: 'rgba(0,0,0,0.3)',
-                                            padding: '2px 8px',
-                                            borderRadius: '4px',
-                                            border: '1px solid rgba(174, 0, 255, 0.2)',
-                                            display: 'flex',
-                                            alignItems: 'center',
-                                            gap: '5px'
-                                        }}>
-                                            <span style={{ fontSize: '0.7rem', fontWeight: 'bold', color: '#fff' }}>{qty}x</span>
-                                            <span style={{ fontSize: '0.7rem', color: '#ae00ff', textTransform: 'capitalize' }}>{id.replace(/_/g, ' ')}</span>
-                                        </div>
-                                    ))
+                                    Object.entries(sessionLoot).map(([id, qty]) => {
+                                        const itemData = resolveItem(id);
+                                        return (
+                                            <div key={id} style={{
+                                                background: 'rgba(0,0,0,0.3)',
+                                                padding: '2px 8px',
+                                                borderRadius: '4px',
+                                                border: '1px solid rgba(174, 0, 255, 0.2)',
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                gap: '5px'
+                                            }}>
+                                                <span style={{ fontSize: '0.7rem', fontWeight: 'bold', color: '#fff' }}>{qty}x</span>
+                                                <span style={{ fontSize: '0.7rem', color: '#ae00ff', textTransform: 'capitalize' }}>{itemData?.name || id.replace(/_/g, ' ')}</span>
+                                            </div>
+                                        );
+                                    })
                                 )}
                             </div>
                         </div>

@@ -1047,7 +1047,13 @@ export class GameManager {
     addXP(char, skillKey, amount) {
         if (!skillKey || !char.state.skills[skillKey]) return null;
         const skill = char.state.skills[skillKey];
-        skill.xp += amount;
+
+        // Safety Cap & Type check
+        let safeAmount = Number(amount) || 0;
+        if (safeAmount > 100_000_000) safeAmount = 100_000_000;
+        if (safeAmount < 0) safeAmount = 0;
+
+        skill.xp += safeAmount;
         let leveledUp = false;
         let nextLevelXP = calculateNextLevelXP(skill.level);
         // Loop while we have enough XP and haven't hit the cap

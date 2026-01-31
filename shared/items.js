@@ -387,7 +387,7 @@ for (const t of TIERS) {
     // Normal (White)
     ITEMS.SPECIAL.CHEST[`${t}_NORMAL`] = {
         id: `T${t}_CHEST_NORMAL`,
-        name: `Dungeon Chest`,
+        name: `Dungeon Chest (Normal)`,
         tier: t,
         rarity: 'COMMON',
         type: 'CONSUMABLE',
@@ -397,7 +397,7 @@ for (const t of TIERS) {
     // Good (Green)
     ITEMS.SPECIAL.CHEST[`${t}_GOOD`] = {
         id: `T${t}_CHEST_GOOD`,
-        name: `Dungeon Chest`,
+        name: `Dungeon Chest (Good)`,
         tier: t,
         rarity: 'UNCOMMON',
         type: 'CONSUMABLE',
@@ -407,7 +407,7 @@ for (const t of TIERS) {
     // Outstanding (Blue)
     ITEMS.SPECIAL.CHEST[`${t}_OUTSTANDING`] = {
         id: `T${t}_CHEST_OUTSTANDING`,
-        name: `Dungeon Chest`,
+        name: `Dungeon Chest (Outstanding)`,
         tier: t,
         rarity: 'RARE',
         type: 'CONSUMABLE',
@@ -417,7 +417,7 @@ for (const t of TIERS) {
     // Excellent (Purple)
     ITEMS.SPECIAL.CHEST[`${t}_EXCELLENT`] = {
         id: `T${t}_CHEST_EXCELLENT`,
-        name: `Dungeon Chest`,
+        name: `Dungeon Chest (Excellent)`,
         tier: t,
         rarity: 'EPIC',
         type: 'CONSUMABLE',
@@ -427,7 +427,7 @@ for (const t of TIERS) {
     // Masterpiece (Orange)
     ITEMS.SPECIAL.CHEST[`${t}_MASTERPIECE`] = {
         id: `T${t}_CHEST_MASTERPIECE`,
-        name: `Dungeon Chest`,
+        name: `Dungeon Chest (Masterpiece)`,
         tier: t,
         rarity: 'LEGENDARY',
         type: 'CONSUMABLE',
@@ -446,10 +446,10 @@ for (const t of TIERS) {
 
     // --- LEGACY ALIASES (Fix for crash) ---
     // We copy the object and override ID so resolveItem() indexes it correctly.
-    ITEMS.SPECIAL.CHEST[`${t}_COMMON`] = { ...ITEMS.SPECIAL.CHEST[`${t}_NORMAL`], id: `T${t}_CHEST_COMMON`, name: `Dungeon Chest` };
-    ITEMS.SPECIAL.CHEST[`${t}_RARE`] = { ...ITEMS.SPECIAL.CHEST[`${t}_OUTSTANDING`], id: `T${t}_CHEST_RARE`, name: `Dungeon Chest` };
-    ITEMS.SPECIAL.CHEST[`${t}_GOLD`] = { ...ITEMS.SPECIAL.CHEST[`${t}_EXCELLENT`], id: `T${t}_CHEST_GOLD`, name: `Dungeon Chest` };
-    ITEMS.SPECIAL.CHEST[`${t}_MYTHIC`] = { ...ITEMS.SPECIAL.CHEST[`${t}_MASTERPIECE`], id: `T${t}_CHEST_MYTHIC`, name: `Dungeon Chest` };
+    ITEMS.SPECIAL.CHEST[`${t}_COMMON`] = { ...ITEMS.SPECIAL.CHEST[`${t}_NORMAL`], id: `T${t}_CHEST_COMMON` };
+    ITEMS.SPECIAL.CHEST[`${t}_RARE`] = { ...ITEMS.SPECIAL.CHEST[`${t}_OUTSTANDING`], id: `T${t}_CHEST_RARE` };
+    ITEMS.SPECIAL.CHEST[`${t}_GOLD`] = { ...ITEMS.SPECIAL.CHEST[`${t}_EXCELLENT`], id: `T${t}_CHEST_GOLD` };
+    ITEMS.SPECIAL.CHEST[`${t}_MYTHIC`] = { ...ITEMS.SPECIAL.CHEST[`${t}_MASTERPIECE`], id: `T${t}_CHEST_MYTHIC` };
 
 }
 

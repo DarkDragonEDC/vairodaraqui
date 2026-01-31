@@ -341,19 +341,22 @@ const DungeonPanel = ({ gameState, socket, isMobile, serverTimeOffset = 0 }) => 
                                             background: 'rgba(0,0,0,0.2)',
                                             borderRadius: '10px'
                                         }}>
-                                            {Object.entries(totals.items).map(([id, qty]) => (
-                                                <div key={id} style={{
-                                                    background: 'rgba(174, 0, 255, 0.1)',
-                                                    color: '#ae00ff',
-                                                    padding: '3px 8px',
-                                                    borderRadius: '6px',
-                                                    fontSize: '0.7rem',
-                                                    border: '1px solid rgba(174, 0, 255, 0.2)',
-                                                    fontWeight: 'bold'
-                                                }}>
-                                                    {qty}x {id.replace(/_/g, ' ')}
-                                                </div>
-                                            ))}
+                                            {Object.entries(totals.items).map(([id, qty]) => {
+                                                const itemData = resolveItem(id);
+                                                return (
+                                                    <div key={id} style={{
+                                                        background: 'rgba(174, 0, 255, 0.1)',
+                                                        color: '#ae00ff',
+                                                        padding: '3px 8px',
+                                                        borderRadius: '6px',
+                                                        fontSize: '0.7rem',
+                                                        border: '1px solid rgba(174, 0, 255, 0.2)',
+                                                        fontWeight: 'bold'
+                                                    }}>
+                                                        {qty}x {itemData?.name || id.replace(/_/g, ' ')}
+                                                    </div>
+                                                );
+                                            })}
                                         </div>
                                     )}
                                 </div>

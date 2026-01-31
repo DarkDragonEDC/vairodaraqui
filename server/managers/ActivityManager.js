@@ -1,5 +1,7 @@
 import { ITEMS, getSkillForItem, getLevelRequirement, ITEM_LOOKUP, QUALITIES } from '../../shared/items.js';
 
+const MAX_ACTIVITY_XP = 1_000_000; // 1M per action
+
 export class ActivityManager {
     constructor(gameManager) {
         this.gameManager = gameManager;
@@ -133,7 +135,9 @@ export class ActivityManager {
         // Multipliers
         const yieldMult = 1 + (stats.globals?.xpYield || 0) / 100;
         const specificMult = 1 + (stats.xpBonus?.GATHERING || 0) / 100;
-        const xpAmount = Math.floor(baseXp * yieldMult * specificMult);
+        let xpAmount = Math.floor(baseXp * yieldMult * specificMult);
+
+        if (xpAmount > MAX_ACTIVITY_XP) xpAmount = MAX_ACTIVITY_XP;
 
         const leveledUp = this.gameManager.addXP(char, skillKey, xpAmount);
 
@@ -163,7 +167,9 @@ export class ActivityManager {
         // Multipliers
         const yieldMult = 1 + (stats.globals?.xpYield || 0) / 100;
         const specificMult = 1 + (stats.xpBonus?.REFINING || 0) / 100;
-        const xpAmount = Math.floor(baseXp * yieldMult * specificMult);
+        let xpAmount = Math.floor(baseXp * yieldMult * specificMult);
+
+        if (xpAmount > MAX_ACTIVITY_XP) xpAmount = MAX_ACTIVITY_XP;
 
         const leveledUp = this.gameManager.addXP(char, skillKey, xpAmount);
 
@@ -247,7 +253,9 @@ export class ActivityManager {
         // Multipliers
         const yieldMult = 1 + (stats.globals?.xpYield || 0) / 100;
         const specificMult = 1 + (stats.xpBonus?.CRAFTING || 0) / 100;
-        const xpAmount = Math.floor(baseXp * yieldMult * specificMult);
+        let xpAmount = Math.floor(baseXp * yieldMult * specificMult);
+
+        if (xpAmount > MAX_ACTIVITY_XP) xpAmount = MAX_ACTIVITY_XP;
 
         const leveledUp = this.gameManager.addXP(char, skillKey, xpAmount);
 

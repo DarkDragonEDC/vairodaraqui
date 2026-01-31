@@ -1,5 +1,8 @@
 import { calculateItemSellPrice } from '../../shared/items.js';
 
+const MAX_MARKET_PRICE = 1_000_000_000_000; // 1 Trilion
+const MAX_MARKET_AMOUNT = 1_000_000_000; // 1 Billion
+
 export class MarketManager {
     constructor(gameManager) {
         this.gameManager = gameManager;
@@ -53,8 +56,15 @@ export class MarketManager {
 
     async listMarketItem(userId, characterId, itemId, amount, price) {
         // Robust numeric parsing for both arguments
-        const parsedAmount = Math.floor(Number(amount));
-        const parsedPrice = Math.floor(Number(price));
+        let parsedAmount = Math.floor(Number(amount));
+        let parsedPrice = Math.floor(Number(price));
+
+        if (isNaN(parsedAmount) || parsedAmount <= 0) throw new Error("Invalid amount");
+        if (isNaN(parsedPrice) || parsedPrice < 0) throw new Error("Invalid price");
+
+        // Safety Caps
+        if (parsedAmount > MAX_MARKET_AMOUNT) parsedAmount = MAX_MARKET_AMOUNT;
+        if (parsedPrice > MAX_MARKET_PRICE) parsedPrice = MAX_MARKET_PRICE;
 
         if (!parsedAmount || parsedAmount <= 0) throw new Error("Invalid amount");
         if (!parsedPrice || parsedPrice <= 0) throw new Error("Invalid price");

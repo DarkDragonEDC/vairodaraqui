@@ -134,8 +134,9 @@ const MarketPanel = ({ socket, gameState, silver = 0, onShowInfo, onListOnMarket
     const activeBuyListings = activeListingsForValues.filter(l => {
         if (isOwnListing(l)) return false; // Hide current character's listings
 
-        const itemName = l.item_data?.name || formatItemId(l.item_id);
-        const itemTier = l.item_data?.tier;
+        const currentItem = resolveItem(l.item_id);
+        const itemName = currentItem?.name || l.item_data?.name || formatItemId(l.item_id);
+        const itemTier = currentItem?.tier || l.item_data?.tier;
         const fullDisplay = itemTier ? `T${itemTier} ${itemName}` : itemName;
         const itemIdSpaces = l.item_id.replace(/_/g, ' ');
 
@@ -384,7 +385,7 @@ const MarketPanel = ({ socket, gameState, silver = 0, onShowInfo, onListOnMarket
 
                                             <div style={{ flex: '2 1 0%', minWidth: '150px' }}>
                                                 <div style={{ fontWeight: 'bold', fontSize: '0.95rem', color: '#fff', display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
-                                                    <span>{l.item_data.name}</span>
+                                                    <span>{resolveItem(l.item_id)?.name || l.item_data.name}</span>
                                                     <button onClick={() => onShowInfo(l.item_data)} style={{ background: 'none', border: 'none', padding: '0', color: 'var(--text-dim)', cursor: 'pointer', display: 'flex' }}>
                                                         <Info size={14} />
                                                     </button>
@@ -556,7 +557,7 @@ const MarketPanel = ({ socket, gameState, silver = 0, onShowInfo, onListOnMarket
 
                                             <div style={{ flex: '2 1 0%', minWidth: '150px' }}>
                                                 <div style={{ fontWeight: 'bold', fontSize: '0.95rem', color: '#fff', display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
-                                                    <span>{l.item_data.qualityName && l.item_data.qualityName !== 'Normal' ? `${l.item_data.qualityName} ` : ''}{l.item_data.name}</span>
+                                                    <span>{l.item_data.qualityName && l.item_data.qualityName !== 'Normal' ? `${l.item_data.qualityName} ` : ''}{resolveItem(l.item_id)?.name || l.item_data.name}</span>
                                                 </div>
                                                 <div style={{ fontSize: '0.75rem', color: 'var(--text-dim)', marginTop: '2px', display: 'flex', gap: '15px' }}>
                                                     <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>

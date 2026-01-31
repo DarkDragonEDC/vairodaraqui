@@ -1,5 +1,8 @@
 import { MONSTERS } from '../../shared/monsters.js';
 
+const MAX_XP_PER_KILL = 10_000_000; // 10M
+const MAX_SILVER_PER_KILL = 100_000_000; // 100M
+
 export class CombatManager {
     constructor(gameManager) {
         this.gameManager = gameManager;
@@ -144,7 +147,11 @@ export class CombatManager {
             try {
                 const baseXp = mobData ? mobData.xp : 10;
                 const xpBonus = playerStats.globals?.xpYield || 0;
-                const finalXp = Math.floor(baseXp * (1 + xpBonus / 100)); // +1% per point
+                let finalXp = Math.floor(baseXp * (1 + xpBonus / 100)); // +1% per point
+
+                // Safety Cap
+                if (finalXp > MAX_XP_PER_KILL) finalXp = MAX_XP_PER_KILL;
+
                 leveledUp = this.gameManager.addXP(char, 'COMBAT', finalXp);
                 roundDetails.xpGained = finalXp;
 
@@ -159,7 +166,10 @@ export class CombatManager {
                     const baseSilver = Math.floor(Math.random() * (sMax - sMin + 1)) + sMin;
 
                     const silverBonus = playerStats.globals?.silverYield || 0;
-                    finalSilver = Math.floor(baseSilver * (1 + silverBonus / 100));
+                    let finalSilver = Math.floor(baseSilver * (1 + silverBonus / 100));
+
+                    // Safety Cap
+                    if (finalSilver > MAX_SILVER_PER_KILL) finalSilver = MAX_SILVER_PER_KILL;
 
                     char.state.silver = (char.state.silver || 0) + finalSilver;
                     roundDetails.silverGained = finalSilver;
