@@ -114,7 +114,8 @@ export class GameManager {
         const { data, error } = await query;
         if (error && error.code !== 'PGRST116') throw error;
 
-        if (data && !this.cache.has(data.id)) {
+        if (data) {
+            // Always update cache when we fetch from DB (especially for bypassCache)
             this.cache.set(data.id, data);
         }
 
@@ -404,6 +405,9 @@ export class GameManager {
         const item = ITEM_LOOKUP[char.current_activity.item_id];
         if (!item) return { processed: 0, itemsGained: {}, xpGained: {} };
 
+        const invBefore = char.state.inventory[item.id] || 0;
+        console.log(`[BATCH] Starting ${quantity}x ${type} for ${item.id}. Inv before: ${invBefore}`);
+
         let processed = 0;
         let leveledUp = false;
         const itemsGained = {};
@@ -443,6 +447,8 @@ export class GameManager {
                 char.activity_started_at = null;
             }
         }
+        const invAfter = char.state.inventory[item.id] || 0;
+        console.log(`[BATCH] Finished ${processed}/${quantity} ${type}. Inv after: ${invAfter}`);
         return { processed, leveledUp, itemsGained, xpGained, totalTime: processed * (char.current_activity?.time_per_action || 3) };
     }
 

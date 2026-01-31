@@ -182,10 +182,11 @@ io.on('connection', (socket) => {
         console.log(`[SOCKET] User ${socket.user.email} joined character ${characterId}`);
 
         try {
-            // Sync with DB to pick up any manual edits
-            await gameManager.syncWithDatabase(characterId, userId);
+            // Note: Removed syncWithDatabase here - it was preventing catchup from working
+            // because it populated cache with old DB data BEFORE getStatus could run catchup.
+            // The getStatus with bypassCache=true handles fresh loading properly.
 
-            // Immediately send status for this character
+            // Immediately send status for this character (with catchup=true for offline progress)
             await gameManager.executeLocked(userId, async () => {
                 const status = await gameManager.getStatus(socket.user.id, true, characterId, true);
                 socket.emit('status_update', status);
