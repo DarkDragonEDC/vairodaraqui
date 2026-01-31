@@ -356,18 +356,20 @@ export class GameManager {
         }
 
         // console.log(`[DB] Persisting character ${char.name} (${charId})`);
+        const saveTime = new Date().toISOString();
         const { error } = await this.supabase
             .from('characters')
             .update({
                 state: char.state,
                 current_activity: char.current_activity,
                 activity_started_at: char.activity_started_at,
-                last_saved: char.last_saved || new Date().toISOString()
+                last_saved: saveTime
             })
             .eq('id', charId);
 
         if (!error) {
-            // Update snapshot hash after successful save
+            // Update snapshot hash and last_saved after successful save
+            char.last_saved = saveTime;
             char.dbHash = this.calculateHash(char.state);
             this.dirty.delete(charId);
         } else {
