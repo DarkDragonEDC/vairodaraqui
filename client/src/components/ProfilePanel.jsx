@@ -368,6 +368,7 @@ Multiplier: ~0.16 per Level (Max 100 Total)`;
                             <div style={{ fontSize: '0.6rem', color: '#555', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '2px' }}>Lands Explorer</div>
                         </div>
                         <div style={{ textAlign: 'right' }}>
+                            {/* Item Power */}
                             <div style={{ fontSize: '1.8rem', fontWeight: '900', color: '#d4af37', textShadow: '0 0 15px rgba(212, 175, 55, 0.2)' }}>{avgIP}</div>
                             <div style={{ fontSize: '0.55rem', color: '#555', fontWeight: '900', letterSpacing: '1px' }}>ITEM POWER</div>
                         </div>

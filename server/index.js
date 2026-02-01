@@ -5,8 +5,11 @@ import { createClient } from '@supabase/supabase-js';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import fs from 'fs';
+import Stripe from 'stripe';
 
 dotenv.config();
+
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 process.on('unhandledRejection', (reason, promise) => {
     console.error('!!! Unhandled Rejection at:', promise, 'reason:', reason);
@@ -32,6 +35,63 @@ const io = new Server(httpServer, {
 const connectedSockets = new Map();
 
 app.use(cors());
+
+// Webhook must be BEFORE express.json() to get raw body
+app.post('/api/webhooks/stripe', express.raw({ type: 'application/json' }), async (req, res) => {
+    const sig = req.headers['stripe-signature'];
+    let event;
+
+    try {
+        event = stripe.webhooks.constructEvent(
+            req.body,
+            sig,
+            process.env.STRIPE_WEBHOOK_SECRET || 'whsec_test_secret'
+        );
+    } catch (err) {
+        console.error(`Webhook Error: ${err.message}`);
+        return res.status(400).send(`Webhook Error: ${err.message}`);
+    }
+
+    // Handle the event
+    if (event.type === 'checkout.session.completed') {
+        const session = event.data.object;
+        const { userId, characterId, crownAmount, packageId } = session.metadata;
+
+        console.log(`[STRIPE] Payment confirmed for user ${userId}, character ${characterId}: ${crownAmount} Crowns`);
+
+        try {
+            await gameManager.executeLocked(userId, async () => {
+                const char = await gameManager.getCharacter(userId, characterId);
+                const result = gameManager.crownsManager.addCrowns(char, parseInt(crownAmount), `STRIPE_${packageId}`);
+
+                if (result.success) {
+                    await gameManager.saveState(char.id, char.state);
+
+                    // Notify client if connected
+                    const userSockets = Array.from(connectedSockets.values())
+                        .filter(s => s.user?.id === userId);
+
+                    userSockets.forEach(s => {
+                        s.emit('crown_purchase_success', {
+                            message: `Payment confirmed! Added ${crownAmount} Crowns.`,
+                            newBalance: result.newBalance
+                        });
+                        // Also trigger a full status update
+                        gameManager.getStatus(userId, true, characterId).then(status => {
+                            s.emit('status_update', status);
+                        });
+                    });
+                }
+            });
+        } catch (err) {
+            console.error('[STRIPE] Error processing character update:', err);
+            // Stripe will retry if we don't send 200, but we might want 200 if it's a logic error
+        }
+    }
+
+    res.json({ received: true });
+});
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -588,6 +648,122 @@ io.on('connection', (socket) => {
             });
         } catch (err) {
             console.error('Error clearing notifications:', err);
+        }
+    });
+
+    // ===== CROWN STORE EVENTS =====
+
+    // Get crown store items
+    socket.on('get_crown_store', async () => {
+        try {
+            const { getAllStoreItems } = await import('../shared/crownStore.js');
+            socket.emit('crown_store_update', getAllStoreItems());
+        } catch (err) {
+            console.error('Error getting crown store:', err);
+            socket.emit('error', { message: err.message });
+        }
+    });
+
+    // Purchase item with crowns
+    socket.on('purchase_crown_item', async ({ itemId }) => {
+        try {
+            await gameManager.executeLocked(socket.user.id, async () => {
+                const char = await gameManager.getCharacter(socket.user.id, socket.data.characterId);
+                const result = await gameManager.crownsManager.purchaseItem(char, itemId);
+
+                if (result.success) {
+                    await gameManager.saveState(char.id, char.state);
+                    socket.emit('crown_purchase_success', result);
+                } else {
+                    socket.emit('crown_purchase_error', result);
+                }
+
+                socket.emit('status_update', await gameManager.getStatus(socket.user.id, true, socket.data.characterId));
+            });
+        } catch (err) {
+            console.error('Error purchasing crown item:', err);
+            socket.emit('error', { message: err.message });
+        }
+    });
+
+    // Buy crowns (real money package)
+    socket.on('buy_crown_package', async ({ packageId }) => {
+        try {
+            await gameManager.executeLocked(socket.user.id, async () => {
+                const { CROWN_STORE } = await import('../shared/crownStore.js');
+                const pkg = CROWN_STORE.PACKAGES[packageId];
+
+                if (!pkg) {
+                    return socket.emit('crown_purchase_error', { error: 'Package not found' });
+                }
+
+                const char = await gameManager.getCharacter(socket.user.id, socket.data.characterId);
+                const CLIENT_URL = process.env.CLIENT_URL || 'http://localhost:5173';
+
+                // Create Stripe Checkout Session
+                const session = await stripe.checkout.sessions.create({
+                    payment_method_types: ['card'],
+                    line_items: [{
+                        price_data: {
+                            currency: pkg.currency.toLowerCase(),
+                            product_data: {
+                                name: pkg.name,
+                                description: pkg.description,
+                                images: ['https://raw.githubusercontent.com/lucide-react/lucide/main/icons/crown.svg'],
+                            },
+                            unit_amount: Math.round(pkg.price * 100), // Stripe uses cents
+                        },
+                        quantity: 1,
+                    }],
+                    mode: 'payment',
+                    success_url: `${CLIENT_URL}/?payment=success&package=${packageId}`,
+                    cancel_url: `${CLIENT_URL}/?payment=cancel`,
+                    metadata: {
+                        userId: socket.user.id,
+                        characterId: socket.data.characterId,
+                        packageId: packageId,
+                        crownAmount: pkg.amount
+                    }
+                });
+
+                socket.emit('stripe_checkout_session', { url: session.url });
+            });
+        } catch (err) {
+            console.error('Error creating checkout session:', err);
+            socket.emit('crown_purchase_error', { error: 'Failed to initiate payment' });
+        }
+    });
+
+    // Get crown balance
+    socket.on('get_crown_balance', async () => {
+        try {
+            const char = await gameManager.getCharacter(socket.user.id, socket.data.characterId);
+            const balance = gameManager.crownsManager.getCrowns(char);
+            socket.emit('crown_balance_update', { crowns: balance });
+        } catch (err) {
+            console.error('Error getting crown balance:', err);
+            socket.emit('error', { message: err.message });
+        }
+    });
+
+    // ADMIN: Add crowns (for testing - should be protected in production)
+    socket.on('admin_add_crowns', async ({ amount }) => {
+        try {
+            // TODO: Add admin check in production
+            await gameManager.executeLocked(socket.user.id, async () => {
+                const char = await gameManager.getCharacter(socket.user.id, socket.data.characterId);
+                const result = gameManager.crownsManager.addCrowns(char, amount, 'ADMIN');
+
+                if (result.success) {
+                    await gameManager.saveState(char.id, char.state);
+                    socket.emit('crown_balance_update', { crowns: result.newBalance });
+                }
+
+                socket.emit('status_update', await gameManager.getStatus(socket.user.id, true, socket.data.characterId));
+            });
+        } catch (err) {
+            console.error('Error adding crowns:', err);
+            socket.emit('error', { message: err.message });
         }
     });
 });

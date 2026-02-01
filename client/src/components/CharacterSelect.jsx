@@ -19,7 +19,7 @@ const CharacterSelect = ({ socket, user, gameState, onLogout, onSelect, serverEr
             <div style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#0a0a0f', color: '#fff' }}>
                 <div style={{ textAlign: 'center' }}>
                     <div className="loading-spinner" style={{ marginBottom: '20px' }}>Loading character...</div>
-                    <div style={{ opacity: 0.5, fontSize: '0.8rem' }}>Connecting to Forged Lands...</div>
+                    <div style={{ opacity: 0.5, fontSize: '0.8rem' }}>Connecting to Eternal Idle...</div>
                 </div>
             </div>
         );
@@ -190,7 +190,7 @@ const CharacterSelect = ({ socket, user, gameState, onLogout, onSelect, serverEr
                 color: 'rgba(255,255,255,0.1)',
                 fontSize: '0.7rem'
             }}>
-                FORGED LANDS v2.0.0 • CHARACTER SELECTION
+                ETERNAL IDLE v2.0.0 • CHARACTER SELECTION
             </div>
         </div>
     );

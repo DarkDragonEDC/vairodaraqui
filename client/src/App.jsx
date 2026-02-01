@@ -21,10 +21,11 @@ import CombatHistoryModal from './components/CombatHistoryModal';
 import LootModal from './components/LootModal';
 import BuffsDrawer from './components/BuffsDrawer';
 import NotificationCenter from './components/NotificationCenter';
+import CrownShop from './components/CrownShop';
 import {
   Zap, Package, User, Trophy, Coins,
   Axe, Pickaxe, Target, Shield, Sword,
-  Star, Layers, Box, Castle, Lock, Menu, X, Tag, Clock, Heart, LogOut
+  Star, Layers, Box, Castle, Lock, Menu, X, Tag, Clock, Heart, LogOut, ChevronDown, Crown
 } from 'lucide-react';
 import { ITEMS, resolveItem, getSkillForItem, getLevelRequirement } from '@shared/items';
 import { calculateNextLevelXP, XP_TABLE } from '@shared/skills';
@@ -98,6 +99,8 @@ function App() {
   const [showFullNumbers, setShowFullNumbers] = useState(false);
 
   const [lootModalData, setLootModalData] = useState(null);
+  const [showCrownShop, setShowCrownShop] = useState(false);
+  const [showCurrencyDropdown, setShowCurrencyDropdown] = useState(false);
 
   useEffect(() => {
     if (gameState?.state?.notifications) {
@@ -136,11 +139,23 @@ function App() {
         setSidebarOpen(false);
         setShowNotifications(false);
         setShowCombatHistory(false);
+        setShowCurrencyDropdown(false);
       }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
+
+  // Close currency dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (showCurrencyDropdown && !e.target.closest('[data-currency-dropdown]')) {
+        setShowCurrencyDropdown(false);
+      }
+    };
+    document.addEventListener('click', handleClickOutside);
+    return () => document.removeEventListener('click', handleClickOutside);
+  }, [showCurrencyDropdown]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -1125,30 +1140,123 @@ function App() {
             </div>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: isMobile ? 12 : 20 }}>
-            <button
-              onClick={() => setShowFullNumbers(!showFullNumbers)}
-              style={{
-                background: 'rgba(212, 175, 55, 0.08)',
-                border: '1px solid rgba(212, 175, 55, 0.2)',
-                borderRadius: '8px',
-                padding: '6px 12px',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '8px',
-                cursor: 'pointer',
-                marginRight: isMobile ? '4px' : '8px',
-                transition: '0.2s'
-              }}
-              onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(212, 175, 55, 0.15)'}
-              onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(212, 175, 55, 0.08)'}
-            >
-              <Coins size={16} color="#d4af37" />
-              <span style={{ fontSize: '0.9rem', fontWeight: 'bold', color: '#d4af37', fontFamily: 'monospace' }}>
-                {showFullNumbers
-                  ? formatNumber(displayedGameState?.state?.silver || 0)
-                  : formatSilver(displayedGameState?.state?.silver || 0)}
-              </span>
-            </button>
+            {/* Currency Display with Dropdown */}
+            <div style={{ position: 'relative' }} data-currency-dropdown>
+              <button
+                onClick={() => setShowCurrencyDropdown(!showCurrencyDropdown)}
+                style={{
+                  background: 'rgba(212, 175, 55, 0.08)',
+                  border: '1px solid rgba(212, 175, 55, 0.2)',
+                  borderRadius: '8px',
+                  padding: '6px 12px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  cursor: 'pointer',
+                  marginRight: isMobile ? '4px' : '8px',
+                  transition: '0.2s'
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(212, 175, 55, 0.15)'}
+                onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(212, 175, 55, 0.08)'}
+              >
+                <Coins size={16} color="#d4af37" />
+                <span style={{ fontSize: '0.9rem', fontWeight: 'bold', color: '#d4af37', fontFamily: 'monospace' }}>
+                  {showFullNumbers
+                    ? formatNumber(displayedGameState?.state?.silver || 0)
+                    : formatSilver(displayedGameState?.state?.silver || 0)}
+                </span>
+                <ChevronDown
+                  size={14}
+                  color="#d4af37"
+                  style={{
+                    transition: '0.2s',
+                    transform: showCurrencyDropdown ? 'rotate(180deg)' : 'rotate(0deg)',
+                    opacity: 0.6
+                  }}
+                />
+              </button>
+
+              {/* Currency Dropdown */}
+              {showCurrencyDropdown && (
+                <div
+                  style={{
+                    position: 'absolute',
+                    top: '100%',
+                    right: 0,
+                    marginTop: '8px',
+                    background: 'rgba(20, 25, 35, 0.98)',
+                    border: '1px solid rgba(212, 175, 55, 0.2)',
+                    borderRadius: '12px',
+                    padding: '12px',
+                    minWidth: '200px',
+                    zIndex: 1000,
+                    boxShadow: '0 10px 40px rgba(0,0,0,0.5)',
+                    backdropFilter: 'blur(10px)'
+                  }}
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  {/* Silver Row */}
+                  <div
+                    onClick={() => {
+                      setShowFullNumbers(!showFullNumbers);
+                    }}
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      padding: '10px 12px',
+                      background: 'rgba(212, 175, 55, 0.1)',
+                      borderRadius: '8px',
+                      marginBottom: '8px',
+                      cursor: 'pointer',
+                      border: '1px solid rgba(212, 175, 55, 0.15)'
+                    }}
+                  >
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                      <Coins size={20} color="#d4af37" />
+                      <div>
+                        <div style={{ fontSize: '0.65rem', color: '#888', fontWeight: 'bold', letterSpacing: '1px' }}>SILVER</div>
+                        <div style={{ fontSize: '1rem', fontWeight: '900', color: '#d4af37', fontFamily: 'monospace' }}>
+                          {formatNumber(displayedGameState?.state?.silver || 0)}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Crowns Row */}
+                  <div
+                    onClick={() => {
+                      setShowCurrencyDropdown(false);
+                      setShowCrownShop(true);
+                    }}
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      padding: '10px 12px',
+                      background: 'rgba(255, 215, 0, 0.05)',
+                      borderRadius: '8px',
+                      cursor: 'pointer',
+                      border: '1px solid rgba(255, 215, 0, 0.15)',
+                      transition: '0.2s'
+                    }}
+                    onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(255, 215, 0, 0.12)'}
+                    onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(255, 215, 0, 0.05)'}
+                  >
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                      <Crown size={20} color="#ffd700" />
+                      <div>
+                        <div style={{ fontSize: '0.65rem', color: '#888', fontWeight: 'bold', letterSpacing: '1px' }}>CROWNS</div>
+                        <div style={{ fontSize: '1rem', fontWeight: '900', color: '#ffd700', fontFamily: 'monospace' }}>
+                          {displayedGameState?.state?.crowns || 0}
+                        </div>
+                      </div>
+                    </div>
+                    <div style={{ fontSize: '0.6rem', color: '#ffd700', fontWeight: 'bold', opacity: 0.7 }}>SHOP →</div>
+                  </div>
+                </div>
+              )}
+            </div>
 
             <NotificationCenter
               notifications={notifications}
@@ -1235,6 +1343,14 @@ function App() {
         onClose={() => setLootModalData(null)}
         rewards={lootModalData}
       />
+
+      {showCrownShop && (
+        <CrownShop
+          socket={socket}
+          gameState={displayedGameState}
+          onClose={() => setShowCrownShop(false)}
+        />
+      )}
 
       <AnimatePresence>
         {serverError && (

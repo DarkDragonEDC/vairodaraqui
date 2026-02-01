@@ -158,9 +158,9 @@ const Auth = ({ onLogin, initialView = 'LOGIN' }) => {
                 {/* Logo and Title */}
                 <div style={{ marginBottom: '1.25rem', textAlign: 'center' }}>
                     <img
-                        src="/logo.png"
-                        alt="Forged Lands Logo"
-                        style={{ width: '70px', height: 'auto', marginBottom: '0.25rem', filter: 'drop-shadow(0 0 10px rgba(212,175,55,0.3))' }}
+                        src={`/logo.jpg?v=${Date.now()}`}
+                        alt="Eternal Idle Logo"
+                        style={{ width: '180px', height: 'auto', marginBottom: '1rem', filter: 'drop-shadow(0 0 15px rgba(212,175,55,0.4))', borderRadius: '12px' }}
                     />
                     <h1 style={{
                         color: 'var(--accent, #d4af37)',
@@ -171,7 +171,7 @@ const Auth = ({ onLogin, initialView = 'LOGIN' }) => {
                         letterSpacing: '2px',
                         textShadow: '0 2px 4px rgba(0,0,0,0.5)'
                     }}>
-                        Forged Lands
+                        Eternal Idle
                     </h1>
                     <div style={{ height: '2px', background: 'linear-gradient(90deg, transparent, var(--accent, #d4af37), transparent)', width: '100%', marginTop: '6px', opacity: 0.5 }}></div>
                 </div>
@@ -432,7 +432,7 @@ const Auth = ({ onLogin, initialView = 'LOGIN' }) => {
                 color: 'rgba(255,255,255,0.1)',
                 fontSize: '0.7rem'
             }}>
-                FORGED LANDS v2.0.0 • SERVER-SIDE RPG
+                ETERNAL IDLE v2.0.0 • SERVER-SIDE RPG
             </div>
         </div>
     );
