@@ -3,56 +3,46 @@
 export const CROWN_STORE = {
     // Real money packages to get Crowns
     PACKAGES: {
-        CROWNS_100: {
-            id: 'CROWNS_100',
-            name: '100 Crowns',
-            description: 'Starter pack of Crowns',
-            price: 4.90,
-            amount: 100,
+        CROWNS_250: {
+            id: 'CROWNS_250',
+            name: '250 Crowns',
+            description: 'Pack with +25 Bonus Crowns!',
+            price: 6.99,
+            amount: 275,
             icon: '💎',
             category: 'PACKAGE',
-            currency: 'BRL'
+            currency: 'USD'
         },
         CROWNS_500: {
             id: 'CROWNS_500',
             name: '500 Crowns',
-            description: 'Includes 25 bonus Crowns!',
-            price: 19.90,
-            amount: 525,
+            description: 'Pack with +50 Bonus Crowns!',
+            price: 13.99,
+            amount: 550,
             icon: '💰',
             category: 'PACKAGE',
-            currency: 'BRL',
+            currency: 'USD',
             bestSeller: true
         },
         CROWNS_1000: {
             id: 'CROWNS_1000',
             name: '1000 Crowns',
-            description: 'Includes 100 bonus Crowns!',
-            price: 34.90,
+            description: 'Pack with +100 Bonus Crowns!',
+            price: 25.99,
             amount: 1100,
             icon: '📦',
             category: 'PACKAGE',
-            currency: 'BRL'
+            currency: 'USD'
         },
         CROWNS_2500: {
             id: 'CROWNS_2500',
             name: '2500 Crowns',
-            description: 'Includes 300 bonus Crowns!',
-            price: 79.90,
-            amount: 2800,
-            icon: '🏛️',
+            description: 'Pack with +250 Bonus Crowns! (Best Value)',
+            price: 64.99,
+            amount: 2750,
+            icon: '👑',
             category: 'PACKAGE',
-            currency: 'BRL'
-        },
-        CROWNS_5000: {
-            id: 'CROWNS_5000',
-            name: '5000 Crowns',
-            description: 'Includes 750 bonus Crowns! Best value!',
-            price: 149.90,
-            amount: 5750,
-            icon: '🏰',
-            category: 'PACKAGE',
-            currency: 'BRL',
+            currency: 'USD',
             premium: true
         }
     },

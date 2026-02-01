@@ -241,8 +241,8 @@ const CrownShop = ({ socket, gameState, onClose }) => {
                                                 {item.bestSeller && (
                                                     <div style={{
                                                         position: 'absolute',
-                                                        top: '10px',
-                                                        right: '-30px',
+                                                        top: '6px',
+                                                        right: '-32px',
                                                         background: '#ffd700',
                                                         color: '#000',
                                                         padding: '4px 35px',
@@ -256,8 +256,8 @@ const CrownShop = ({ socket, gameState, onClose }) => {
                                                 {item.premium && (
                                                     <div style={{
                                                         position: 'absolute',
-                                                        top: '10px',
-                                                        right: '-30px',
+                                                        top: '6px',
+                                                        right: '-32px',
                                                         background: '#e040fb',
                                                         color: '#fff',
                                                         padding: '4px 35px',
@@ -292,11 +292,13 @@ const CrownShop = ({ socket, gameState, onClose }) => {
                                                         background: isPackage ? 'rgba(76, 175, 80, 0.1)' : 'rgba(255,215,0,0.1)',
                                                         padding: '4px 10px',
                                                         borderRadius: '12px',
-                                                        border: `1px solid ${isPackage ? 'rgba(76, 175, 80, 0.3)' : 'rgba(255,215,0,0.2)'}`
+                                                        border: `1px solid ${isPackage ? 'rgba(76, 175, 80, 0.3)' : 'rgba(255,215,0,0.2)'}`,
+                                                        position: 'relative',
+                                                        zIndex: 2
                                                     }}>
                                                         {!isPackage && <Crown size={12} color="#ffd700" />}
                                                         <span style={{ color: isPackage ? '#4caf50' : '#ffd700', fontWeight: 'bold', fontSize: '0.85rem' }}>
-                                                            {isPackage ? `R$ ${item.price.toFixed(2)}` : item.cost}
+                                                            {isPackage ? `$${item.price.toFixed(2)}` : item.cost}
                                                         </span>
                                                     </div>
                                                 </div>
