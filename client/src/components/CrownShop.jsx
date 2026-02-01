@@ -10,9 +10,6 @@ const CrownShop = ({ socket, gameState, onClose }) => {
     const crowns = gameState?.state?.crowns || 0;
 
     useEffect(() => {
-        // Request store items
-        socket.emit('get_crown_store');
-
         const handleStoreUpdate = (items) => {
             setStoreItems(items);
             setLoading(false);
@@ -44,6 +41,9 @@ const CrownShop = ({ socket, gameState, onClose }) => {
         socket.on('crown_purchase_success', handlePurchaseSuccess);
         socket.on('crown_purchase_error', handlePurchaseError);
         socket.on('stripe_checkout_session', handleStripeSession);
+
+        // Request store items AFTER registering listeners
+        socket.emit('get_crown_store');
 
         return () => {
             socket.off('crown_store_update', handleStoreUpdate);

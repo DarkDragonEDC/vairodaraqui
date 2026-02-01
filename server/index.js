@@ -24,7 +24,7 @@ const app = express();
 const httpServer = createServer(app);
 const io = new Server(httpServer, {
     cors: {
-        origin: ["http://localhost:5173", "http://127.0.0.1:5173", "https://vairodaraqui-fj1t.onrender.com"],
+        origin: "*", // Allow all for alpha/testing to avoid Vercel block
         methods: ["GET", "POST"],
         credentials: true
     },
@@ -656,8 +656,11 @@ io.on('connection', (socket) => {
     // Get crown store items
     socket.on('get_crown_store', async () => {
         try {
+            console.log(`[CROWN STORE] Request from ${socket.user?.email}`);
             const { getAllStoreItems } = await import('../shared/crownStore.js');
-            socket.emit('crown_store_update', getAllStoreItems());
+            const items = getAllStoreItems();
+            console.log(`[CROWN STORE] Sending ${items.length} items to client`);
+            socket.emit('crown_store_update', items);
         } catch (err) {
             console.error('Error getting crown store:', err);
             socket.emit('error', { message: err.message });
